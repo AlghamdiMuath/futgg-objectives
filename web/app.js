@@ -12,6 +12,10 @@ const arabicUI = {
   'Conditional minimum for separate-match tasks. Goals, assists, wins, and squad rules must hold; cumulative targets can progress here but may need more matches.':'الحد الأدنى المشروط لمهام المباريات المنفصلة. يجب تحقيق شروط الأهداف والتمريرات والفوز والتشكيلة؛ ويمكن التقدم في الأهداف التراكمية هنا لكنها قد تحتاج إلى مباريات إضافية.',
   'Shared across ':'مشتركة بين ',' challenges':' تحديات','Suggested starting squad: ':'التشكيلة الأساسية المقترحة: ',
   'One starter can satisfy more than one listed trait when eligible.':'يمكن للاعب أساسي واحد استيفاء أكثر من سمة مذكورة إذا كان مؤهلاً لها.',
+  'Check that you own an eligible card for any overlapping traits.':'تحقق من امتلاكك بطاقة مؤهلة للسمات المتداخلة.',
+  'Compatible routes for this run: ':'المسارات المتوافقة لهذه المباريات: ',
+  'For Squad Battles wins at this difficulty, play the weakest available team for a better chance of winning.':'لفوز Squad Battles بهذه الصعوبة، العب ضد أضعف فريق متاح لفرصة أفضل للفوز.',
+  'Required scorers and assisters must start; they can be substituted after contributing.':'يجب أن يبدأ اللاعبون المطلوب منهم التسجيل أو الصناعة؛ ويمكن استبدالهم بعد مساهمتهم.',
   'Cumulative targets that can progress during this run':'الأهداف التراكمية التي يمكن التقدم فيها خلال هذه المباريات',
   'Required scorer: ':'اللاعب الذي يسجل: ','Required assister: ':'اللاعب الذي يصنع الأهداف: ',' (must start)':' (يجب أن يبدأ المباراة)',
   'No shared match runs can be planned.':'لا يمكن تخطيط مباريات مشتركة.','Search limited; this is the best plan found, not a proven minimum.':'البحث محدود؛ هذه أفضل خطة عُثر عليها، وقد لا تكون الحد الأدنى.',
@@ -368,9 +372,17 @@ function renderPlan() {
     add(card,node('p','fine',ui('Shared across ')+run.group_ids.map(id=>tr(names.get(id)||id)).join(', ')));
     if(run.squad_requirements.length) {
       add(card,node('p','',ui('Suggested starting squad: ')+run.squad_requirements.map(req=>`${req.minimum==='all'?ui('All'):number(req.minimum)} ${tr(req.trait)}`).join(' · ')));
-      if(run.squad_requirements.length > 1) add(card,node('p','fine',ui('One starter can satisfy more than one listed trait when eligible.')));
+      if(run.squad_requirements.length > 1) add(card,node('p','fine',ui('One starter can satisfy more than one listed trait when eligible.')+' '+ui('Check that you own an eligible card for any overlapping traits.')));
     }
-    if(run.player_roles?.length) add(card,node('p','',run.player_roles.map(role=>`${ui(role.role==='scoring_player'?'Required scorer: ':'Required assister: ')}${tr(role.trait)}${role.must_start?ui(' (must start)'):''}`).join(' · ')));
+    if(run.player_roles?.length) {
+      add(card,node('p','',run.player_roles.map(role=>`${ui(role.role==='scoring_player'?'Required scorer: ':'Required assister: ')}${tr(role.trait)}${role.must_start?ui(' (must start)'):''}`).join(' · ')));
+      if(run.player_roles.some(role=>role.must_start)) add(card,node('p','fine',ui('Required scorers and assisters must start; they can be substituted after contributing.')));
+    }
+    if(run.route_options?.length > 1) {
+      const choices=run.route_options.map(option=>[option.event ? tr(option.event) : label(option.mode),option.minimum_difficulty && `${ui('Minimum ')}${ui(option.minimum_difficulty)}`].filter(Boolean).join(' · '));
+      add(card,node('p','fine',ui('Compatible routes for this run: ')+choices.join(' · ')));
+    }
+    if(run.mode_option.mode==='squad_battles' && run.mode_option.minimum_difficulty && run.match_tasks.some(task=>task.conditions.some(condition=>condition.type==='result'&&condition.value==='win'))) add(card,node('p','fine',ui('For Squad Battles wins at this difficulty, play the weakest available team for a better chance of winning.')));
     run.match_tasks.forEach(task=>add(card,node('p','',tr(task.source_text))));
     if(run.cumulative_targets.length){
       add(card,node('strong','',ui('Cumulative targets that can progress during this run')));

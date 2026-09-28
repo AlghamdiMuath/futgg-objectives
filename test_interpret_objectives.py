@@ -90,6 +90,14 @@ class InterpretationTests(unittest.TestCase):
         self.assertNotEqual(layer.progress_key("61:464", "2026-09-27T07:00:00Z", repeat), layer.progress_key("61:464", "2026-09-28T07:00:00Z", repeat))
         self.assertEqual(layer.progress_key("94:1696", None, self.groups["94"]["repeat"]), "94:1696")
 
+    def test_omitted_mode_on_a_parsed_match_task_means_any_fut_mode(self):
+        task = {"id": "example:1", "title": "Example",
+                "description": "Score in 2 separate matches using a French player.", "rewards": []}
+        interpreted = layer.interpret_task(task, {"id": "example"}, {})
+        self.assertEqual(interpreted["status"], "parsed")
+        self.assertEqual(interpreted["mode_options"],
+                         [{"mode": "any_fut", "event": None, "minimum_difficulty": None}])
+
     def test_changed_text_deadline_and_unlisting_are_reported(self):
         new = copy.deepcopy(RAW)
         new["fetched_at"] = "2099-01-01T00:00:00Z"

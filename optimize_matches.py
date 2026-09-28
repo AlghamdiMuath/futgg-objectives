@@ -49,18 +49,12 @@ def _player_roles(tasks: list[dict]) -> list[dict]:
             for role, trait, must_start in sorted(roles)]
 
 
-def _trait_key(trait: str) -> str:
-    return trait.lower().removesuffix(" players").removesuffix(" player").strip()
-
-
 def _can_share(tasks: list[dict]) -> bool:
-    # Treat different traits as distinct players. This conservative limit can
-    # reject an overlap that a dual-eligible card would make possible.
+    # A card may satisfy several traits. Card ownership and eligibility remain
+    # for the player to verify, so use the largest stated starting-XI minimum.
     squad = [item for item in _squad_requirements(tasks)
              if item["slot"] == "starting_11" and isinstance(item["minimum"], int)]
-    covered = {_trait_key(item["trait"]) for item in squad}
-    extra_roles = {_trait_key(role["trait"]) for role in _player_roles(tasks)} - covered
-    return sum(item["minimum"] for item in squad) + len(extra_roles) <= 11
+    return max((item["minimum"] for item in squad), default=0) <= 11
 
 
 def _candidate_routes(tasks: list[dict]) -> list[tuple[str, str | None]]:
@@ -162,11 +156,19 @@ def combine_tasks(separate_tasks: list[dict], cumulative_tasks: list[dict]) -> d
         route = bin_["route"]
         tasks = bin_["tasks"]
         all_tasks = tasks + bonuses[index]
+        compatible_routes = [candidate for candidate in _candidate_routes(all_tasks)
+                             if all(_fits(task, candidate) for task in all_tasks)
+                             and _can_share(all_tasks)]
+        def route_option(candidate: tuple[str, str | None]) -> dict:
+            candidate_levels = [level for level in (_difficulty(task, candidate) for task in all_tasks) if level]
+            return {"mode": candidate[0], "event": candidate[1],
+                    "minimum_difficulty": max(candidate_levels, key=lambda n: DIFFICULTY.get(n, 100)) if candidate_levels else None}
         levels = [_difficulty(task, route) for task in all_tasks]
         levels = [level for level in levels if level]
         runs.append({
             "mode_option": {"mode": route[0], "event": route[1],
                             "minimum_difficulty": max(levels, key=lambda n: DIFFICULTY.get(n, 100)) if levels else None},
+            "route_options": [route_option(candidate) for candidate in compatible_routes],
             "qualifying_matches": bin_["count"],
             "group_ids": sorted({task["group_id"] for task in all_tasks}),
             "squad_requirements": _squad_requirements(all_tasks),

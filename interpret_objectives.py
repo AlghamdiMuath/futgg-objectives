@@ -20,9 +20,8 @@ MODE_NAMES = {
 }
 DIFFICULTIES = ("Semi-Pro", "Professional", "World Class", "Legendary", "Ultimate")
 
-# Verified in-game behavior supplied by a domain expert. Keep source-specific
-# rules here instead of treating every omitted mode as unrestricted.
-VERIFIED_ANY_FUT_TASK_IDS = {"113:1758"}
+# Verified in-game behavior supplied by a domain expert: when a parsed match
+# task omits a mode, it can be completed in any FUT game mode.
 
 
 def fingerprint(value: object) -> str:
@@ -193,7 +192,7 @@ def interpret_task(task: dict, group: dict, titles: dict[str, str]) -> dict:
             kind, (target, conditions) = "match", parsed
             conditions += parse_conditions(text)
             if mode_status != "explicit": reasons.append("mode_" + mode_status)
-            if task["id"] in VERIFIED_ANY_FUT_TASK_IDS:
+            if mode_status == "unspecified":
                 modes = [_mode_option("any_fut")]
                 reasons = [reason for reason in reasons if reason != "mode_unspecified"]
             if re.search(r"\b(?:goals?|assists?) in any [\w ]+ match\b", text, re.I):

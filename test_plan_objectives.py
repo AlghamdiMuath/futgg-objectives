@@ -161,8 +161,9 @@ class PlanningTests(unittest.TestCase):
                          [{"slot": "starting_11", "trait": "Spanish players", "minimum": 2}])
         self.assertEqual({role["trait"] for role in result["runs"][0]["player_roles"]},
                          {"Spanish", "English winger", "Argentinian"})
+        self.assertEqual(result["runs"][0]["route_options"], [route])
 
-    def test_incompatible_lineups_create_two_runs_in_same_mode(self):
+    def test_unverified_card_overlap_is_planned_as_an_optional_lineup_optimization(self):
         route = {"mode": "squad_battles", "event": None, "minimum_difficulty": None}
         tasks = [
             {"group_id": "a", "task_id": "spanish eleven", "source_text": "spanish eleven",
@@ -174,8 +175,18 @@ class PlanningTests(unittest.TestCase):
              "options": [route]},
         ]
         result = combine_tasks(tasks, [])
-        self.assertEqual(result["qualifying_match_count"], 15)
-        self.assertEqual([run["qualifying_matches"] for run in result["runs"]], [10, 5])
+        self.assertEqual(result["qualifying_match_count"], 10)
+        self.assertEqual([run["qualifying_matches"] for run in result["runs"]], [10])
+
+    def test_equally_qualifying_routes_are_exposed_for_the_player_to_choose(self):
+        squad = {"mode": "squad_battles", "event": None, "minimum_difficulty": "Semi-Pro"}
+        rivals = {"mode": "rivals", "event": None, "minimum_difficulty": None}
+        task = {"group_id": "a", "task_id": "choose a route", "source_text": "Win 3 matches",
+                "remaining": 3, "conditions": [{"type": "result", "value": "win"}],
+                "options": [squad, rivals]}
+        result = combine_tasks([task], [])
+        self.assertEqual(result["qualifying_match_count"], 3)
+        self.assertEqual(result["runs"][0]["route_options"], [rivals, squad])
 
     def test_daily_progress_requires_explicit_current_cycle(self):
         users.record_progress(self.state, SOURCE, "61:464", count=1, completed=True,

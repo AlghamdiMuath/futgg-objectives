@@ -124,6 +124,23 @@ class PlanningTests(unittest.TestCase):
         self.assertEqual(len(combined["runs"]), 1)
         self.assertEqual(len(combined["runs"][0]["match_tasks"]), 7)
 
+    def test_combined_runs_cover_every_playable_task_and_account_for_cumulative_targets(self):
+        # The phone Plan uses combined runs as its sole task list. Every bounded
+        # condition must still be reachable after removing the old detail cards.
+        result = self.plan(["82", "83", "84", "85"], ["live_events"])
+        bounded = {task["task_id"] for block in result["match_blocks"] for task in block["tasks"]}
+        runs = result["combined_plan"]["runs"]
+        displayed = [task["task_id"] for run in runs for task in run["match_tasks"]]
+        self.assertEqual(set(displayed), bounded)
+        self.assertEqual(len(displayed), len(bounded))
+        cumulative = {task["task_id"] for task in result["unscheduled_tasks"]
+                      if task["reasons"] == ["match_count_not_bounded"]}
+        attached = {task["task_id"] for run in runs for task in run["cumulative_targets"]}
+        unattached = set(result["combined_plan"]["cumulative_without_run"])
+        self.assertEqual(attached | unattached, cumulative)
+        self.assertEqual(result["combined_plan"]["qualifying_match_count"],
+                         sum(run["qualifying_matches"] for run in runs))
+
     def test_selected_groups_share_mode_and_any_fut_targets(self):
         result = self.plan(["94", "65"], ["squad_battles"], cycles={"65": "2026-09-24T07:00:00Z"})
         runs = result["combined_plan"]["runs"]

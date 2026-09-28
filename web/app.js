@@ -41,6 +41,29 @@ const arabicUI = {
   'No objectives match these filters.':'لا توجد تحديات تطابق هذه الفلاتر.','Add a challenge from Browse.':'أضف تحدياً من صفحة التصفح.',
   'Conditions':'الشروط','Unscheduled':'غير مجدول','No finite match blocks can be planned with the current selections, modes, and verified cycles.':'لا يمكن تخطيط مباريات محددة بالاختيارات والأنماط والفترات المؤكدة الحالية.',
   'No unscheduled tasks.':'لا توجد مهام غير مجدولة.','No completed tasks or unavailable groups.':'لا توجد مهام مكتملة أو مجموعات غير متاحة.',
+  'Play this next':'العب هذا أولاً','Then play':'ثم العب','Qualifying matches planned':'مباريات مؤهلة مخططة',
+  'These are qualifying results, not predicted attempts. One match can count for several tasks.':'هذه نتائج مؤهلة وليست توقعاً لعدد المحاولات. قد تُحتسب المباراة لأكثر من مهمة.',
+  'Choose a compatible route':'اختر مساراً متوافقاً','Starting XI':'التشكيلة الأساسية','Starting squad':'الفريق الأساسي','Required players':'اللاعبون المطلوبون',
+  'During this run':'خلال هذه المباريات','Also work toward':'تابع أيضاً','Cumulative targets':'الأهداف التراكمية',
+  'Task wording & conditions':'نص المهمة وشروطها','Source wording':'نص المصدر','Parsed conditions':'الشروط المستخلصة',
+  'Run context':'تفاصيل هذه المباريات','Review other tasks':'راجع المهام الأخرى','Tasks to review':'مهام تحتاج مراجعة',
+  'Completed & unavailable':'المكتمل وغير المتاح','Set available modes':'حدد الأنماط المتاحة',
+  'Add challenges to make a plan.':'أضف تحديات لإنشاء خطة.','No playable runs yet. Review modes, cycles, and tasks below.':'لا توجد مباريات قابلة للتخطيط بعد. راجع الأنماط والفترات والمهام أدناه.',
+  'Play':'العب','Win':'افز','Score':'سجّل','Assist':'اصنع','per match':'في كل مباراة','total':'إجمالاً',
+  'goal':'هدف','assist':'تمريرة حاسمة','Starting player traits may overlap when you own an eligible card.':'يمكن أن يجمع لاعب أساسي بين عدة سمات إذا كنت تملك بطاقة مؤهلة.',
+  'A required scorer or assister must start; you may substitute them after they contribute.':'يجب أن يبدأ المسجل أو صانع الأهداف المطلوب؛ ويمكن استبداله بعد مساهمته.',
+  'Record progress':'سجّل التقدم',
+  'Cycle start needed':'يلزم تحديد بداية الفترة','No permitted mode':'لا يوجد نمط مسموح','Needs source review':'تحتاج مراجعة المصدر',
+  'Condition':'الشرط','Value':'القيمة','Remaining':'المتبقي',
+  'type':'النوع','value':'القيمة','minimum per match':'الحد الأدنى لكل مباراة','minimum':'الحد الأدنى',
+  'trait':'السمة','slot':'الموضع','must start':'يجب أن يبدأ','starting 11':'التشكيلة الأساسية',
+  'group cycle start required':'يلزم تحديد بداية فترة التحدي','progress cycle unknown':'فترة التقدم غير معروفة',
+  'no permitted mode':'لا يوجد نمط مسموح','match count not bounded':'عدد المباريات غير محدد',
+  'not match task':'ليست مهمة مباريات','completion needs confirmation':'يلزم تأكيد الإكمال',
+  'cycle starts in future':'الفترة تبدأ لاحقاً','effective deadline passed':'انتهى الموعد المعتمد',
+  'source task missing':'المهمة غير موجودة في المصدر','task needs review':'المهمة تحتاج مراجعة',
+  'availability expired':'انتهى التحدي','availability upcoming':'التحدي قادم','availability unlisted':'أزيل التحدي من القائمة',
+  'group source group changed':'تغيرت مجموعة المصدر','group source deadline conflict':'تعارض موعد المصدر',
   'Updated ':'آخر تحديث: ','Saved locally.':'حُفظ محلياً.','Minimum ':'الحد الأدنى: ','Expires: ':'ينتهي: ','Cycle: ':'الفترة: ',
   'Effective expiry: ':'الانتهاء المعتمد: ','In-game observation: ':'تاريخ رُصد داخل اللعبة: ',' · recorded ':' · سُجّل ',
   'When progress was first saved: ':'عند حفظ التقدم أول مرة: ','Enter an explicit cycle start in Modes & cycles before saving progress.':'أدخل بداية فترة محددة في الأنماط والفترات قبل حفظ التقدم.',
@@ -55,16 +78,29 @@ const arabicUI = {
   'live events':'فعاليات مباشرة','milestones':'إنجازات','mastery':'إتقان','fc pro':'إف سي برو',
   'squad battles':'معارك الفرق','rivals':'المنافسون','champions':'الأبطال','rush':'راش','draft':'درافت','co op':'تعاوني',
   'pve live events':'فعاليات ضد الذكاء الاصطناعي','pvp live events':'فعاليات ضد لاعبين','fc pro open ladder':'سلم إف سي برو المفتوح',
+  'Spanish player':'لاعب إسباني','Serie A player':'لاعب من الدوري الإيطالي','Premier League':'الدوري الإنجليزي الممتاز',
+  'French players':'لاعبون فرنسيون','Japanese':'ياباني','English':'إنجليزي','players from Eredivisie':'لاعبون من الدوري الهولندي',
+  'Destined for Glory player':'لاعب من «مقدّر للمجد»','First Owned players':'لاعبون من الملكية الأولى',
+  'Preferred Position: LM':'المركز المفضل: وسط أيسر','players from USA':'لاعبون من الولايات المتحدة',
+  'player from any Premier League team':'لاعب من الدوري الإنجليزي الممتاز',
+  "player from any Women's Super League team":'لاعبة من الدوري الإنجليزي الممتاز للسيدات',
+  'outside the box':'من خارج منطقة الجزاء',
   'Semi-Pro':'شبه محترف','Professional':'محترف','World Class':'فئة عالمية','Legendary':'أسطوري','Ultimate':'ألتميت',
 };
 const openDetails = new Set();
+const savedPlanRoutes = (() => {
+  try { const value=JSON.parse(localStorage.getItem('planRoutes') || '{}');return value && typeof value==='object' && !Array.isArray(value) ? value : {}; }
+  catch (_) { return {}; }
+})();
 const $ = (id) => document.getElementById(id);
 const ui = value => language === 'ar' ? (arabicUI[value] || value) : value;
-const tr = value => language === 'ar' ? (arabicCatalog[value] || value) : value;
+const tr = value => language === 'ar' ? (arabicCatalog[value] || arabicUI[value] || value) : value;
 const number = value => Number(value).toLocaleString(language === 'ar' ? 'ar-SA' : undefined);
 const countUnit = (count, unit) => {
-  if (language !== 'ar' || unit !== 'matches') return `${number(count)} ${label(unit)}`;
-  return `${number(count)} ${count === 2 ? 'مباراتين' : count >= 3 && count <= 10 ? 'مباريات' : 'مباراة'}`;
+  if (language !== 'ar') return `${number(count)} ${count === 1 && unit === 'matches' ? 'match' : label(unit)}`;
+  if (unit === 'matches') return count === 1 ? 'مباراة واحدة' : count === 2 ? 'مباراتين' : `${number(count)} ${count >= 3 && count <= 10 ? 'مباريات' : 'مباراة'}`;
+  if (unit === 'goals') return count === 1 ? 'هدفاً واحداً' : count === 2 ? 'هدفين' : `${number(count)} أهداف`;
+  return `${number(count)} ${label(unit)}`;
 };
 function setLanguage(value) {
   language = value;
@@ -76,6 +112,7 @@ function setLanguage(value) {
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = ui(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = ui(el.dataset.i18nPlaceholder); });
   document.querySelectorAll('[data-i18n-aria-label]').forEach(el => { el.setAttribute('aria-label', ui(el.dataset.i18nAriaLabel)); });
+  if ($('message').textContent === 'Saved locally.' || $('message').textContent === 'حُفظ محلياً.') message(ui('Saved locally.'));
   if (snapshot) render();
 }
 const node = (tag, className, value) => {
@@ -248,6 +285,7 @@ function renderRewardControls(groups) {
 }
 function groupCard(group, selected) {
   const card = node('article','card');
+  card.dataset.groupId=group.id;
   const heading = node('div','card-heading');
   const status = availability(group);
   add(heading, node('span','category',label(group.category)), node('span','deadline '+(selected?.review_flags?.some(flag=>flag.includes('deadline'))?'review':''),deadlineLabel(group,selected)));
@@ -354,71 +392,183 @@ function renderSelected() {
     else { const card=node('article','card'); add(card,node('h3','',s.title ? tr(s.title) : ui('Unknown group ')+s.group_id),node('p','',`${ui('Unavailable: ')}${label(s.availability)}. ${ui('Stored evidence remains private.')}`));flags(card,s.review_flags);const b=node('button','danger',ui('Remove from list'));b.onclick=()=>post('select',{group_id:s.group_id,selected:false});add(card,b);add(list,card); }
   });
 }
+function planRouteText(option) {
+  const englishModes={squad_battles:'Squad Battles',rivals:'Rivals',champions:'Champions',rush:'Rush',
+    live_events:'Live Events',pve_live_events:'PVE Live Events',pvp_live_events:'PVP Live Events',
+    draft:'Draft',co_op:'Co-op',fc_pro_open_ladder:'FC Pro Open Ladder'};
+  const mode=language==='ar' ? label(option.mode) : (englishModes[option.mode] || label(option.mode));
+  return [mode,option.event ? tr(option.event) : null,
+    option.minimum_difficulty && `${ui('Minimum ')}${ui(option.minimum_difficulty)}`].filter(Boolean).join(' · ');
+}
+function planTaskText(task, cumulative=false) {
+  const conditions=task.conditions || [];
+  const result=conditions.find(c=>c.type==='result' && c.value==='win');
+  const goals=conditions.find(c=>c.type==='goals');
+  const assists=conditions.find(c=>c.type==='assists');
+  const style=conditions.find(c=>c.type==='goal_style');
+  const location=conditions.find(c=>c.type==='goal_location');
+  if (result) return ui('Win');
+  if (goals || style || location || (cumulative && task.target?.unit==='goals')) {
+    const amount=cumulative ? task.remaining : goals?.minimum_per_match;
+    if (language==='ar') return [ui('Score'),amount!=null ? countUnit(amount,'goals') : ui('goal'),
+      style ? `ب${tr(style.value)}` : null,location ? ui('outside the box') : null,
+      !cumulative && amount!=null ? ui('per match') : cumulative ? ui('total') : null].filter(Boolean).join(' ');
+    return [ui('Score'),amount!=null ? number(amount) : null,style ? tr(style.value) : null,
+      location ? label(location.value) : null,ui(amount===1?'goal':'goals'),!cumulative && amount!=null ? ui('per match') : cumulative ? ui('total') : null].filter(Boolean).join(' ');
+  }
+  if (assists || (cumulative && task.target?.unit==='assists')) {
+    const amount=cumulative ? task.remaining : assists?.minimum_per_match;
+    if (language==='ar') return [ui('Assist'),amount!=null ? number(amount) : null,
+      amount===1 ? ui('assist') : ui('assists'),!cumulative && amount!=null ? ui('per match') : cumulative ? ui('total') : null].filter(Boolean).join(' ');
+    return [ui('Assist'),amount!=null ? number(amount) : null,ui(amount===1?'goal':'goals'),
+      !cumulative && amount!=null ? ui('per match') : cumulative ? ui('total') : null].filter(Boolean).join(' ');
+  }
+  return cumulative ? tr(task.source_text) : ui('Play');
+}
+function planTaskDetail(task, cumulative=false, related=[]) {
+  const detail=node('details','plan-task');
+  const summary=node('summary');
+  add(summary,node('span','plan-task-action',planTaskText(task,cumulative)));
+  if (!cumulative) add(summary,node('span','plan-task-count',countUnit(task.remaining_qualifying_matches,'matches')));
+  add(detail,summary);
+  [task,...related].forEach(item=>{
+    add(detail,node('p','fine',ui('Source wording')+': '+tr(item.source_text)));
+    if (language==='ar' && tr(item.source_text)!==item.source_text) {
+      const original=node('p','fine original-source',`${ui('English source')}: ${item.source_text}`);
+      original.lang='en';original.dir='ltr';add(detail,original);
+    }
+  });
+  const conditions=task.conditions || [];
+  if (conditions.length) {
+    const list=node('ul','plan-conditions');
+    conditions.forEach(c=>add(list,node('li','',Object.entries(c).map(([key,value])=>`${label(key)}: ${typeof value==='boolean' ? (value ? '✓' : '—') : typeof value==='number' ? number(value) : tr(label(value))}`).join(' · '))));
+    add(detail,node('p','fine',ui('Parsed conditions')),list);
+  }
+  return detail;
+}
+function planDisclosure(title, count, className) {
+  const detail=node('details',className);
+  add(detail,node('summary','',count == null ? ui(title) : `${ui(title)} · ${number(count)}`));
+  return detail;
+}
 function renderPlan() {
   const p=snapshot.plan;
-  const combined=p.combined_plan||{runs:[],qualifying_match_count:0,optimization:'exact_for_separate_matches',cumulative_without_run:[]};
-  $('plan-summary').replaceChildren();
-  [['Shared qualifying matches',combined.qualifying_match_count],['Unscheduled',p.unscheduled_tasks.length],['Completed',p.completed_tasks.length]].forEach(([name,count])=>{
-    const box=node('div','stat');add(box,node('strong','',number(count)),node('span','',ui(name)));add($('plan-summary'),box);
+  const combined=p.combined_plan||{runs:[],qualifying_match_count:0,optimization:'exact_for_separate_matches'};
+  const runs=$('plan-runs'), extra=$('plan-extra'), summary=$('plan-summary');
+  runs.replaceChildren();extra.replaceChildren();summary.replaceChildren();
+  if (!snapshot.view.selected_groups.length) {
+    add(summary,node('p','empty',ui('Add challenges to make a plan.')));
+    return;
+  }
+  const total=node('div','plan-total');
+  add(total,node('strong','',number(combined.qualifying_match_count)),node('div','',ui('Qualifying matches planned')));
+  add(summary,total,node('p','fine plan-caveat',ui('These are qualifying results, not predicted attempts. One match can count for several tasks.')));
+  if (combined.optimization==='search_limited') add(summary,node('p','fine',ui('Search limited; this is the best plan found, not a proven minimum.')));
+  const groups=selectedMap();
+  const ordered=[...combined.runs].sort((a,b)=>{
+    const expiry=run=>Math.min(...run.group_ids.map(id=>{
+      const value=groups.get(id)?.effective_expires_at;
+      return value ? Date.parse(value) : Infinity;
+    }));
+    return expiry(a)-expiry(b) || a.qualifying_matches-b.qualifying_matches || planRouteText(a.mode_option).localeCompare(planRouteText(b.mode_option));
   });
-  const runs=$('plan-runs');runs.replaceChildren();
-  if (!combined.runs.length) add(runs,node('div','empty',ui('No shared match runs can be planned.')));
-  if (combined.optimization==='search_limited') add(runs,node('p','fine',ui('Search limited; this is the best plan found, not a proven minimum.')));
-  const names=new Map(snapshot.groups.map(g=>[g.id,g.title]));
-  combined.runs.forEach(run=>{
-    const card=node('article','card plan-route');
-    const route=[run.mode_option.event ? tr(run.mode_option.event) : label(run.mode_option.mode),run.mode_option.minimum_difficulty && `${ui('Minimum ')}${ui(run.mode_option.minimum_difficulty)}`].filter(Boolean).join(' · ');
-    add(card,node('h3','',language==='ar' ? `${countUnit(run.qualifying_matches,'matches')} مشتركة · ${route}` : `${number(run.qualifying_matches)} shared matches · ${route}`));
-    add(card,node('p','fine',ui('Shared across ')+run.group_ids.map(id=>tr(names.get(id)||id)).join(', ')));
+  if (!ordered.length) {
+    add(runs,node('p','empty',ui('No playable runs yet. Review modes, cycles, and tasks below.')));
+    const settings=node('button','ghost',ui('Set available modes'));settings.type='button';settings.onclick=()=>switchTab('settings');add(runs,settings);
+  }
+  ordered.forEach((run,index)=>{
+    const card=node('article',index===0?'plan-run plan-next':'plan-run');
+    const key=run.match_tasks.map(t=>t.task_id).sort().join('|');
+    const options=run.route_options?.length ? run.route_options : [run.mode_option];
+    const selected=options.find(option=>JSON.stringify(option)===savedPlanRoutes[key]) || run.mode_option;
+    const kicker=node('span','plan-kicker',ui(index===0?'Play this next':'Then play'));
+    const heading=node('div','plan-run-heading');
+    add(heading,node('strong','plan-run-number',number(run.qualifying_matches)),node('div','plan-run-title',label(run.qualifying_matches===1?'match':'matches')));
+    const routeLine=node('div','plan-mode',planRouteText(selected));
+    add(card,kicker,heading,routeLine);
+    if(options.length>1) {
+      const routeLabel=node('label','plan-route-choice',ui('Choose a compatible route'));
+      const chooser=node('select');chooser.setAttribute('aria-label',ui('Choose a compatible route'));
+      options.forEach((option,i)=>{const item=node('option','',planRouteText(option));item.value=String(i);add(chooser,item);});
+      chooser.value=String(Math.max(0,options.findIndex(option=>JSON.stringify(option)===JSON.stringify(selected))));
+      chooser.onchange=()=>{savedPlanRoutes[key]=JSON.stringify(options[Number(chooser.value)]);localStorage.setItem('planRoutes',JSON.stringify(savedPlanRoutes));renderPlan();};
+      add(routeLabel,chooser);add(card,routeLabel);
+    }
+    const setup=node('div','plan-setup');
     if(run.squad_requirements.length) {
-      add(card,node('p','',ui('Suggested starting squad: ')+run.squad_requirements.map(req=>`${req.minimum==='all'?ui('All'):number(req.minimum)} ${tr(req.trait)}`).join(' · ')));
-      if(run.squad_requirements.length > 1) add(card,node('p','fine',ui('One starter can satisfy more than one listed trait when eligible.')+' '+ui('Check that you own an eligible card for any overlapping traits.')));
+      const slots=new Map();
+      run.squad_requirements.forEach(req=>{
+        if(!slots.has(req.slot)) slots.set(req.slot,[]);
+        slots.get(req.slot).push(req);
+      });
+      slots.forEach((requirements,slot)=>{
+        const row=node('div');add(row,node('span','plan-setup-label',ui(slot==='starting_squad'?'Starting squad':'Starting XI')),
+          node('strong','',requirements.map(req=>`${req.minimum==='all'?ui('All'):number(req.minimum)} ${tr(req.trait)}`).join(' · ')));add(setup,row);
+      });
     }
     if(run.player_roles?.length) {
-      add(card,node('p','',run.player_roles.map(role=>`${ui(role.role==='scoring_player'?'Required scorer: ':'Required assister: ')}${tr(role.trait)}${role.must_start?ui(' (must start)'):''}`).join(' · ')));
-      if(run.player_roles.some(role=>role.must_start)) add(card,node('p','fine',ui('Required scorers and assisters must start; they can be substituted after contributing.')));
+      const row=node('div');add(row,node('span','plan-setup-label',ui('Required players')),
+        node('strong','',run.player_roles.map(role=>`${ui(role.role==='scoring_player'?'Required scorer: ':'Required assister: ')}${tr(role.trait)}${role.must_start?ui(' (must start)'):''}`).join(' · ')));add(setup,row);
     }
-    if(run.route_options?.length > 1) {
-      const choices=run.route_options.map(option=>[option.event ? tr(option.event) : label(option.mode),option.minimum_difficulty && `${ui('Minimum ')}${ui(option.minimum_difficulty)}`].filter(Boolean).join(' · '));
-      add(card,node('p','fine',ui('Compatible routes for this run: ')+choices.join(' · ')));
-    }
-    if(run.mode_option.mode==='squad_battles' && run.mode_option.minimum_difficulty && run.match_tasks.some(task=>task.conditions.some(condition=>condition.type==='result'&&condition.value==='win'))) add(card,node('p','fine',ui('For Squad Battles wins at this difficulty, play the weakest available team for a better chance of winning.')));
-    run.match_tasks.forEach(task=>add(card,node('p','',tr(task.source_text))));
-    if(run.cumulative_targets.length){
-      add(card,node('strong','',ui('Cumulative targets that can progress during this run')));
-      run.cumulative_targets.forEach(task=>add(card,node('p','',tr(task.source_text))));
-    }
-    add(runs,card);
-  });
-  const blocks=$('plan-blocks');blocks.replaceChildren();
-  if (!p.match_blocks.length) add(blocks,node('div','empty',ui('No finite match blocks can be planned with the current selections, modes, and verified cycles.')));
-  const routes=new Map();
-  p.match_blocks.forEach(block=>{
-    const key=JSON.stringify([block.group_id,block.cycle_start_utc,block.mode_option,block.effective_expires_at]);
-    if(!routes.has(key)) routes.set(key,[]);
-    routes.get(key).push(block);
-  });
-  routes.forEach(routeBlocks=>{
-    const first=routeBlocks[0], card=node('article','card plan-route');
-    add(card,node('h3','',tr(first.group_title)));
-    const route=[first.mode_option.event ? tr(first.mode_option.event) : label(first.mode_option.mode),first.mode_option.minimum_difficulty && `${ui('Minimum ')}${ui(first.mode_option.minimum_difficulty)}`].filter(Boolean).join(' · ');
-    if(route!==first.group_title) add(card,node('p','',route));
-    add(card,node('p','fine',ui('Expires: ')+fmt(first.effective_expires_at)+(first.cycle_start_utc ? ' · '+ui('Cycle: ')+fmt(first.cycle_start_utc) : '')));
-    routeBlocks.forEach(block=>{
-      const condition=node('div','plan-condition');
-      add(condition,node('strong','',language === 'ar' ? `${countUnit(block.qualifying_matches,'matches')} مؤهلة` : `${number(block.qualifying_matches)} ${ui(block.qualifying_matches===1?'qualifying match':'qualifying matches')}`));
-      block.tasks.forEach(task=>add(condition,node('p','',tr(task.source_text))));
-      add(card,condition);
+    if(setup.children.length) add(card,setup);
+    const tasks=node('div','plan-checklist');add(tasks,node('h4','',ui('During this run')));
+    const taskGroups=new Map();
+    run.match_tasks.forEach(task=>{
+      const signature=JSON.stringify([planTaskText(task),task.conditions]);
+      if(!taskGroups.has(signature)) taskGroups.set(signature,[]);
+      taskGroups.get(signature).push(task);
     });
-    add(blocks,card);
+    taskGroups.forEach(group=>{
+      group.sort((a,b)=>b.remaining_qualifying_matches-a.remaining_qualifying_matches);
+      add(tasks,planTaskDetail(group[0],false,group.slice(1)));
+    });
+    add(card,tasks);
+    if(run.cumulative_targets.length) {
+      const cumulative=planDisclosure('Also work toward',run.cumulative_targets.length,'plan-subdetails');
+      run.cumulative_targets.forEach(task=>add(cumulative,planTaskDetail(task,true)));
+      add(card,cumulative);
+    }
+    const context=planDisclosure('Run context',null,'plan-subdetails');
+    run.group_ids.forEach(id=>{
+      const group=groups.get(id);
+      if(group) add(context,node('p','fine',`${tr(group.title)}${group.effective_expires_at ? ' · '+ui('Expires: ')+fmt(group.effective_expires_at) : ''}${snapshot.groups.find(g=>g.id===id)?.repeat?.cadence ? ' · '+ui('Cycle: ')+fmt(snapshot.settings.cycles[id]) : ''}`));
+    });
+    if(run.squad_requirements.length>1) add(context,node('p','fine',ui('Starting player traits may overlap when you own an eligible card.')));
+    if(run.player_roles?.some(role=>role.must_start)) add(context,node('p','fine',ui('A required scorer or assister must start; you may substitute them after they contribute.')));
+    if(selected.mode==='squad_battles' && selected.minimum_difficulty && run.match_tasks.some(task=>task.conditions.some(c=>c.type==='result'&&c.value==='win')))
+      add(context,node('p','fine',ui('For Squad Battles wins at this difficulty, play the weakest available team for a better chance of winning.')));
+    add(card,context);
+    const progress=node('button','plan-progress',ui('Record progress'));progress.type='button';
+    progress.onclick=()=>{
+      run.group_ids.forEach(id=>openDetails.add(id));renderSelected();switchTab('selected');
+      $('selected-list').querySelector(`[data-group-id="${run.group_ids[0]}"]`)?.scrollIntoView({block:'start'});
+    };
+    add(card,progress);add(runs,card);
   });
-  const unscheduled=$('plan-unscheduled');unscheduled.replaceChildren();
-  if(!p.unscheduled_tasks.length) add(unscheduled,node('div','empty',ui('No unscheduled tasks.')));
-  p.unscheduled_tasks.forEach(t=>{const card=node('article','card');add(card,node('strong','',t.task_id),node('p','',tr(t.source_text)));const reasons=node('div','reason-list');flags(reasons,t.reasons);add(card,reasons);add(unscheduled,card);});
-  const other=$('plan-other');other.replaceChildren();
-  p.completed_tasks.forEach(t=>{const card=node('article','card');add(card,node('span','badge',ui('Completed')),node('p','',t.task_id+' · '+t.progress_key));add(other,card);});
-  p.unavailable_groups.forEach(g=>{const card=node('article','card');add(card,node('h3','',g.title ? tr(g.title) : g.group_id),node('p','',label(g.availability)));flags(card,g.review_flags);add(other,card);});
-  if(!other.children.length) add(other,node('div','empty',ui('No completed tasks or unavailable groups.')));
+  const attached=new Set(ordered.flatMap(run=>run.cumulative_targets.map(t=>t.task_id)));
+  const cumulative=p.unscheduled_tasks.filter(t=>t.reasons.length===1 && t.reasons[0]==='match_count_not_bounded' && !attached.has(t.task_id));
+  const blocked=p.unscheduled_tasks.filter(t=>!attached.has(t.task_id) && !cumulative.includes(t));
+  if(cumulative.length) {
+    const section=planDisclosure('Cumulative targets',cumulative.length,'plan-extra-section');
+    cumulative.forEach(t=>{
+      const row=node('div','plan-extra-row');add(row,node('strong','',tr(t.source_text)));
+      if(t.target) add(row,node('p','fine',`${ui('Remaining')}: ${countUnit(Math.max(0,t.target.count-(groups.get(t.group_id)?.tasks.find(x=>x.id===t.task_id)?.progress?.count||0)),t.target.unit)}`));
+      add(section,row);
+    });add(extra,section);
+  }
+  if(blocked.length) {
+    const section=planDisclosure('Tasks to review',blocked.length,'plan-extra-section');
+    blocked.forEach(t=>{
+      const row=node('div','plan-extra-row');add(row,node('strong','',tr(t.source_text)));
+      const reasons=node('div','reason-list');flags(reasons,t.reasons);add(row,reasons);add(section,row);
+    });add(extra,section);
+  }
+  if(p.completed_tasks.length || p.unavailable_groups.length) {
+    const section=planDisclosure('Completed & unavailable',p.completed_tasks.length+p.unavailable_groups.length,'plan-extra-section');
+    p.completed_tasks.forEach(t=>{const row=node('div','plan-extra-row');add(row,node('span','badge',ui('Completed')),node('span','',`${tr(groups.get(t.group_id)?.title||t.group_id)} · ${t.task_id}`));add(section,row);});
+    p.unavailable_groups.forEach(g=>{const row=node('div','plan-extra-row');add(row,node('strong','',tr(g.title||g.group_id)),node('p','fine',label(g.availability)));flags(row,g.review_flags);add(section,row);});
+    add(extra,section);
+  }
 }
 function renderSettings() {
   const modes=$('modes');modes.replaceChildren();

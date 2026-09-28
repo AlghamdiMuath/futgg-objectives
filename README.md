@@ -2,6 +2,8 @@
 
 ## Phone site
 
+Open **https://alghamdimuath.github.io/futgg-objectives/** on your phone.
+
 The hosted version is built by `python3 build_site.py` and published from `dist/` through GitHub Pages. It runs the existing Python interpretation and planning modules in the browser using Pyodide, so selections, settings, deadline observations, and progress stay in that browser's local storage. They are not shared with the loopback app or another phone. In **Settings → Your data**, download a backup before changing phones or clearing browser storage; import that backup on the new device.
 
 The GitHub Actions workflow in `.github/workflows/publish.yml` fetches FUT.GG every day at **21:30 Asia/Riyadh** (18:30 UTC), interprets the data, updates Arabic translations when the translation service is available, verifies the project, and republishes the site. It also runs on pushes to `main` and can be run manually. A failed FUT.GG fetch leaves the previous published site in place. The exact release time for new objectives is not guaranteed, so the scheduled time is a daily check rather than a reset boundary for in-game progress.

@@ -14,7 +14,7 @@ def main() -> None:
     for name in ("app.js", "style.css", "ar.json", "static_api.js"):
         copyfile(HERE / "web" / name, DIST / name)
     for name in ("fc27_interpreted.json", "interpret_objectives.py", "user_objectives.py",
-                 "plan_objectives.py", "prize_summary.py", "browser_api.py"):
+                 "plan_objectives.py", "optimize_matches.py", "prize_summary.py", "browser_api.py"):
         copyfile(HERE / name, DIST / name)
     html = (HERE / "web" / "index.html").read_text(encoding="utf-8")
     marker = '  <script src="./app.js" defer></script>'

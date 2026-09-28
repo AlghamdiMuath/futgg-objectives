@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 import plan_objectives as planner
+from optimize_matches import combine_tasks
 import user_objectives as users
 
 
@@ -91,6 +92,69 @@ class PlanningTests(unittest.TestCase):
         self.assertEqual({block["mode_option"]["event"] for block in result["match_blocks"]},
                          {"Destined for Glory Exhibition"})
         self.assertGreater(len(result["match_blocks"]), 1)
+        self.assertEqual(result["combined_plan"]["qualifying_match_count"], 7)
+        self.assertEqual(len(result["combined_plan"]["runs"]), 1)
+        self.assertEqual(len(result["combined_plan"]["runs"][0]["cumulative_targets"]), 2)
+
+    def test_same_event_conditions_share_thirty_matches(self):
+        result = self.plan(["88"], ["live_events"])
+        combined = result["combined_plan"]
+        self.assertEqual(combined["qualifying_match_count"], 30)
+        self.assertEqual(len(combined["runs"]), 1)
+        self.assertEqual(len(combined["runs"][0]["match_tasks"]), 7)
+
+    def test_selected_groups_share_mode_and_any_fut_targets(self):
+        result = self.plan(["94", "65"], ["squad_battles"], cycles={"65": "2026-09-24T07:00:00Z"})
+        runs = result["combined_plan"]["runs"]
+        self.assertEqual(len(runs), 1)
+        self.assertEqual(runs[0]["qualifying_matches"], 15)
+        self.assertEqual(set(runs[0]["group_ids"]), {"94", "65"})
+        self.assertIn("65:475", {task["task_id"] for task in runs[0]["cumulative_targets"]})
+
+    def test_first_owned_full_squad_requirement_remains_usable(self):
+        result = self.plan(["59"], ["squad_battles"])
+        run = result["combined_plan"]["runs"][0]
+        self.assertEqual(run["qualifying_matches"], 100)
+        self.assertEqual(run["squad_requirements"],
+                         [{"slot": "starting_squad", "trait": "First Owned players", "minimum": "all"}])
+
+    def test_two_challenge_example_has_one_ten_match_run_and_squad(self):
+        route = {"mode": "squad_battles", "event": None, "minimum_difficulty": None}
+        def task(group, identifier, remaining, conditions=(), cumulative=False):
+            return {"group_id": group, "task_id": identifier, "source_text": identifier,
+                    "target": {"unit": "goals", "scope": "cumulative", "count": remaining} if cumulative else None,
+                    "remaining": remaining, "conditions": list(conditions), "options": [route]}
+        separate = [task("a", "play ten", 10),
+                    task("b", "play five with Spanish starters", 5,
+                         [{"type": "squad", "minimum": 2, "trait": "Spanish players", "slot": "starting_11"}])]
+        cumulative = [task("a", "score ten", 10, cumulative=True),
+                      task("a", "assist ten", 10, cumulative=True),
+                      task("b", "Spanish goals", 5, [{"type": "scoring_player", "trait": "Spanish"}], True),
+                      task("b", "English winger goals", 5, [{"type": "scoring_player", "trait": "English winger"}], True),
+                      task("b", "Argentinian assists", 10, [{"type": "assisting_player", "trait": "Argentinian"}], True)]
+        result = combine_tasks(separate, cumulative)
+        self.assertEqual(result["qualifying_match_count"], 10)
+        self.assertEqual(len(result["runs"]), 1)
+        self.assertEqual(len(result["runs"][0]["cumulative_targets"]), 5)
+        self.assertEqual(result["runs"][0]["squad_requirements"],
+                         [{"slot": "starting_11", "trait": "Spanish players", "minimum": 2}])
+        self.assertEqual({role["trait"] for role in result["runs"][0]["player_roles"]},
+                         {"Spanish", "English winger", "Argentinian"})
+
+    def test_incompatible_lineups_create_two_runs_in_same_mode(self):
+        route = {"mode": "squad_battles", "event": None, "minimum_difficulty": None}
+        tasks = [
+            {"group_id": "a", "task_id": "spanish eleven", "source_text": "spanish eleven",
+             "remaining": 10, "conditions": [{"type": "squad", "minimum": 11,
+                                                "trait": "Spanish players", "slot": "starting_11"}],
+             "options": [route]},
+            {"group_id": "b", "task_id": "english scorer", "source_text": "english scorer",
+             "remaining": 5, "conditions": [{"type": "scoring_player", "trait": "English winger"}],
+             "options": [route]},
+        ]
+        result = combine_tasks(tasks, [])
+        self.assertEqual(result["qualifying_match_count"], 15)
+        self.assertEqual([run["qualifying_matches"] for run in result["runs"]], [10, 5])
 
     def test_daily_progress_requires_explicit_current_cycle(self):
         users.record_progress(self.state, SOURCE, "61:464", count=1, completed=True,

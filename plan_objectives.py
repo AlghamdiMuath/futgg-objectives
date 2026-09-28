@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from interpret_objectives import eligible_mode_options
+from optimize_matches import combine_tasks
 from user_objectives import load_state, selected_view, utc
 
 
@@ -34,6 +35,8 @@ def build_plan(interpreted: dict, view: dict, available_modes: set[str],
     unscheduled = []
     completed = []
     unavailable_groups = []
+    separate_tasks = []
+    cumulative_tasks = []
 
     for selected in view["selected_groups"]:
         group_id = selected["group_id"]
@@ -83,8 +86,18 @@ def build_plan(interpreted: dict, view: dict, available_modes: set[str],
             if task["kind"] == "match" and not options:
                 reasons.append("no_permitted_mode")
             if reasons:
+                if reasons == ["match_count_not_bounded"] and target and target.get("scope") == "cumulative":
+                    cumulative_tasks.append({"group_id": group_id, "task_id": task_id,
+                                             "source_text": task["source_text"], "target": target,
+                                             "remaining": max(0, target["count"] - count),
+                                             "conditions": task["conditions"], "options": options})
                 unscheduled.append(_unscheduled(selected, state_task, task, list(dict.fromkeys(reasons))))
                 continue
+
+            separate_tasks.append({"group_id": group_id, "task_id": task_id,
+                                   "source_text": task["source_text"],
+                                   "remaining": target["count"] - count,
+                                   "conditions": task["conditions"], "options": options})
 
             # First source-listed permitted route is a choice, not a claim of optimality.
             option = options[0]
@@ -119,7 +132,8 @@ def build_plan(interpreted: dict, view: dict, available_modes: set[str],
             "available_modes": sorted(modes), "excluded_modes": sorted(excluded),
             "match_blocks": plan, "unscheduled_tasks": unscheduled,
             "unavailable_groups": unavailable_groups,
-            "completed_tasks": completed}
+            "completed_tasks": completed,
+            "combined_plan": combine_tasks(separate_tasks, cumulative_tasks)}
 
 
 def _cycle_from_key(key: str) -> str | None:

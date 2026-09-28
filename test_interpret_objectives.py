@@ -47,6 +47,17 @@ class InterpretationTests(unittest.TestCase):
         self.assertEqual(len([c for c in self.tasks["98:1709"]["conditions"] if c["type"] == "squad"]), 2)
         self.assertEqual(self.tasks["59:275"]["conditions"][1]["minimum"], "all")
 
+    def test_player_scoring_and_assisting_roles_in_cumulative_tasks(self):
+        examples = (
+            ("Score 5 goals by a Spanish player in any FUT game mode.", "scoring_player", "Spanish"),
+            ("Score 5 goals by an English winger in any FUT game mode.", "scoring_player", "English winger"),
+            ("Assist 10 goals by an Argentinian player in any FUT game mode.", "assisting_player", "Argentinian"),
+        )
+        for text, role, trait in examples:
+            target, _ = layer.parse_match_target(text)
+            self.assertEqual(target["scope"], "cumulative")
+            self.assertIn({"type": role, "trait": trait}, layer.parse_conditions(text))
+
     def test_match_count_and_squad_clauses_do_not_become_event_names(self):
         for group_id, expected in (("109", "Destined for Glory Exhibition"),
                                    ("88", "Season 1: Ones to Watch Exhibition"),

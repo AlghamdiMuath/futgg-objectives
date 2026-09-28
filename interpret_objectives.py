@@ -134,14 +134,19 @@ def parse_conditions(text: str) -> list[dict]:
                 result.append({"type": "squad", "minimum": int(part.group(1)), "trait": part.group(2), "slot": "starting_11" if squad.group(2).lower() != "squad" else "starting_squad"})
     if "starting squad of First Owned players" in text:
         result.append({"type": "squad", "minimum": "all", "trait": "First Owned players", "slot": "starting_squad"})
+    role = "assisting_player" if text.lower().startswith("assist") else "scoring_player"
     for trait in re.findall(r"using (?:a|an) (.+?) player", text, re.I):
         if trait == "player with a Preferred Position of": continue
-        result.append({"type": "scoring_player", "trait": trait.strip()})
+        result.append({"type": role, "trait": trait.strip()})
     for trait in re.findall(r"(?:Score|Assist) (?:\d+ )?(?:goals? )?with (?:a|an) (.+?) player", text, re.I):
-        result.append({"type": "scoring_player", "trait": trait.strip()})
+        result.append({"type": role, "trait": trait.strip()})
+    actor = re.search(r"^(Score|Assist) (?:\d+[\d,]* )?(?:goals? |times )?by (?:a|an) (.+?)(?: player)?(?: in |\.|$)", text, re.I)
+    if actor:
+        result.append({"type": "scoring_player" if actor.group(1).lower() == "score" else "assisting_player",
+                       "trait": actor.group(2).strip()})
     position = re.search(r"using a player with a Preferred Position of ([A-Z]+)", text)
     if position:
-        result.append({"type": "scoring_player", "trait": f"Preferred Position: {position.group(1)}"})
+        result.append({"type": role, "trait": f"Preferred Position: {position.group(1)}"})
     if "outside the box" in text: result.append({"type": "goal_location", "value": "outside_the_box"})
     if "Low Driven goals" in text: result.append({"type": "goal_style", "value": "Low Driven"})
     if "direct Free Kicks" in text: result.append({"type": "goal_style", "value": "direct Free Kicks"})

@@ -8,6 +8,12 @@ const arabicUI = {
   'Search challenges or tasks':'ابحث عن التحديات أو المهام','Soonest expiry':'الأقرب انتهاءً','Highest player rating':'أعلى تقييم لاعب','Most coins':'أكثر عملات','Best pack quality':'أفضل حزمة',
   'All categories':'كل الفئات','Active':'نشط','All availability':'كل الحالات','Upcoming':'قادم','Expired':'منتهٍ',
   'Match plan':'خطة المباريات','Counts are per condition. One match may count toward several.':'الأعداد لكل شرط. قد تُحتسب مباراة واحدة لأكثر من شرط.',
+  'Shared match runs':'مباريات مشتركة','Condition details':'تفاصيل الشروط','Shared qualifying matches':'مباريات مؤهلة مشتركة',
+  'Conditional minimum for separate-match tasks. Goals, assists, wins, and squad rules must hold; cumulative targets can progress here but may need more matches.':'الحد الأدنى المشروط لمهام المباريات المنفصلة. يجب تحقيق شروط الأهداف والتمريرات والفوز والتشكيلة؛ ويمكن التقدم في الأهداف التراكمية هنا لكنها قد تحتاج إلى مباريات إضافية.',
+  'Shared across ':'مشتركة بين ',' challenges':' تحديات','Suggested starting squad: ':'التشكيلة الأساسية المقترحة: ',
+  'Cumulative targets that can progress during this run':'الأهداف التراكمية التي يمكن التقدم فيها خلال هذه المباريات',
+  'Required scorer: ':'اللاعب الذي يسجل: ','Required assister: ':'اللاعب الذي يصنع الأهداف: ',
+  'No shared match runs can be planned.':'لا يمكن تخطيط مباريات مشتركة.','Search limited; this is the best plan found, not a proven minimum.':'البحث محدود؛ هذه أفضل خطة عُثر عليها، وقد لا تكون الحد الأدنى.',
   'English source':'النص الإنجليزي الأصلي',
   'Needs attention':'يحتاج إلى مراجعة','Completed & unavailable':'المكتمل وغير المتاح','Modes & cycles':'الأنماط والفترات','Current cycle starts':'بداية الفترات الحالية',
   'Enter a verified UTC start for each daily or weekly challenge before saving progress.':'أدخل وقت بدء مؤكداً بالتوقيت العالمي UTC لكل تحدٍ يومي أو أسبوعي قبل حفظ التقدم.',
@@ -347,9 +353,28 @@ function renderSelected() {
 }
 function renderPlan() {
   const p=snapshot.plan;
+  const combined=p.combined_plan||{runs:[],qualifying_match_count:0,optimization:'exact_for_separate_matches',cumulative_without_run:[]};
   $('plan-summary').replaceChildren();
-  [['Conditions',p.match_blocks.length],['Unscheduled',p.unscheduled_tasks.length],['Completed',p.completed_tasks.length]].forEach(([name,count])=>{
+  [['Shared qualifying matches',combined.qualifying_match_count],['Unscheduled',p.unscheduled_tasks.length],['Completed',p.completed_tasks.length]].forEach(([name,count])=>{
     const box=node('div','stat');add(box,node('strong','',number(count)),node('span','',ui(name)));add($('plan-summary'),box);
+  });
+  const runs=$('plan-runs');runs.replaceChildren();
+  if (!combined.runs.length) add(runs,node('div','empty',ui('No shared match runs can be planned.')));
+  if (combined.optimization==='search_limited') add(runs,node('p','fine',ui('Search limited; this is the best plan found, not a proven minimum.')));
+  const names=new Map(snapshot.groups.map(g=>[g.id,g.title]));
+  combined.runs.forEach(run=>{
+    const card=node('article','card plan-route');
+    const route=[run.mode_option.event ? tr(run.mode_option.event) : label(run.mode_option.mode),run.mode_option.minimum_difficulty && `${ui('Minimum ')}${ui(run.mode_option.minimum_difficulty)}`].filter(Boolean).join(' · ');
+    add(card,node('h3','',language==='ar' ? `${countUnit(run.qualifying_matches,'matches')} مشتركة · ${route}` : `${number(run.qualifying_matches)} shared matches · ${route}`));
+    add(card,node('p','fine',ui('Shared across ')+run.group_ids.map(id=>tr(names.get(id)||id)).join(', ')));
+    if(run.squad_requirements.length) add(card,node('p','',ui('Suggested starting squad: ')+run.squad_requirements.map(req=>`${req.minimum==='all'?ui('All'):number(req.minimum)} ${tr(req.trait)}`).join(' · ')));
+    if(run.player_roles?.length) add(card,node('p','',run.player_roles.map(role=>`${ui(role.role==='scoring_player'?'Required scorer: ':'Required assister: ')}${tr(role.trait)}`).join(' · ')));
+    run.match_tasks.forEach(task=>add(card,node('p','',tr(task.source_text))));
+    if(run.cumulative_targets.length){
+      add(card,node('strong','',ui('Cumulative targets that can progress during this run')));
+      run.cumulative_targets.forEach(task=>add(card,node('p','',tr(task.source_text))));
+    }
+    add(runs,card);
   });
   const blocks=$('plan-blocks');blocks.replaceChildren();
   if (!p.match_blocks.length) add(blocks,node('div','empty',ui('No finite match blocks can be planned with the current selections, modes, and verified cycles.')));

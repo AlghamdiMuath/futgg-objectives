@@ -1,0 +1,6001 @@
+{
+  "schema_version": 1,
+  "source_schema_version": 3,
+  "source_fetched_at": "2026-09-27T12:30:06.822959Z",
+  "groups": [
+    {
+      "id": "94",
+      "title": "Squad Battles: Champions Qualification Points",
+      "category": "seasonal",
+      "description": "Compete in Squad Battles to earn Champions Qualification Points!",
+      "url": "https://www.fut.gg/objectives/seasonal/94-squad-battles-champions-qualification-points/",
+      "starts_at": "2026-09-27T07:00:00Z",
+      "expires_at": "2026-10-04T06:59:59Z",
+      "completion_rewards": [
+        "100 Points"
+      ],
+      "available_rewards": [
+        "100 Points",
+        "100 Points",
+        "50 Points",
+        "100 Points"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "9e9f1b55bce854171ba05d063db4b8fd8fc5ba5e0f113c84e9a44bfb8f50aa92",
+      "tasks": [
+        {
+          "id": "94:1696",
+          "title": "Win 15",
+          "source_text": "Win 15 matches in Squad Battles on min. World Class difficulty.",
+          "rewards": [
+            "100 Points"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "World Class"
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 15,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "29d34c37163967dd411b85a729145f77b2a08b3b2098fa1e37db4fea8b29331a"
+        },
+        {
+          "id": "94:1695",
+          "title": "Win 12",
+          "source_text": "Win 12 matches in Squad Battles on min. World Class difficulty.",
+          "rewards": [
+            "100 Points"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "World Class"
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 12,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "2ec55867ed9351fc2a85ccee0d3ed462fdfd8e76939f32809abe282be4651955"
+        },
+        {
+          "id": "94:1694",
+          "title": "Win 10",
+          "source_text": "Win 10 matches in Squad Battles on min. World Class difficulty.",
+          "rewards": [
+            "50 Points"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "World Class"
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "bc43b99ee3458a432141f88d8cac60e8f9f17a39f5bc416f3f09347384e5dc37"
+        }
+      ]
+    },
+    {
+      "id": "113",
+      "title": "Squad Foundations: Shunsuke Mito",
+      "category": "campaigns",
+      "description": "Complete these objectives to earn Squad Foundations Shunsuke Mito and SP! All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/campaigns/113-squad-foundations-shunsuke-mito/",
+      "starts_at": "2026-09-25T17:00:00Z",
+      "expires_at": "2026-10-03T16:59:59Z",
+      "completion_rewards": [
+        "Shunsuke Mito",
+        "100 SP"
+      ],
+      "available_rewards": [
+        "Shunsuke Mito",
+        "200 SP",
+        "Award",
+        "1 x 4x 83+ Gold Players Pack",
+        "1 x 4x 82+ Gold Players Pack",
+        "1 x 4x 81+ Gold Players Pack",
+        "1 x 4x 80+ Gold Players Pack"
+      ],
+      "total_season_points": 200,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "b6c191f7e8b69996cd8fd83eba3a9fde55a8f411a3c5e6146a7645d4a5ac6587",
+      "tasks": [
+        {
+          "id": "113:1759",
+          "title": "Winners Circle",
+          "source_text": "Win 7 matches in any FUT game mode.",
+          "rewards": [
+            "4X 83+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 7,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "6fc7ca54cb995ff3be3450542d69f16641e8db3bc6a854f7a0e0d81ad234ab97"
+        },
+        {
+          "id": "113:1758",
+          "title": "Wide Threat",
+          "source_text": "Score at least 1 goal in 3 separate matches using a player with a Preferred Position of LM.",
+          "rewards": [
+            "4X 82+ Gold Players Pack",
+            "100 SP"
+          ],
+          "kind": "match",
+          "status": "review",
+          "review_reasons": [
+            "mode_unspecified"
+          ],
+          "mode_options": [],
+          "target": {
+            "unit": "matches",
+            "count": 3,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "goals",
+              "minimum_per_match": 1
+            },
+            {
+              "type": "scoring_player",
+              "trait": "Preferred Position: LM"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "0167c1517bbc0c452c1bf6c796337331cd996decefcb8a862873d504b18c5195"
+        },
+        {
+          "id": "113:1757",
+          "title": "EVO Ascension",
+          "source_text": "Complete any Evolution to earn an additional repeat of the Repeat Delivery Evolution.",
+          "rewards": [
+            "Award"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Complete any Evolution to earn an additional repeat of the Repeat Delivery Evolution."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "5b00f006dc5101f5dff33133f5a3c78e7a6fa6d77c1db5524f84b91a07caaf40"
+        },
+        {
+          "id": "113:1756",
+          "title": "Smooth Samurai",
+          "source_text": "Score at least 1 goal in 4 separate matches using a Japanese player in any FUT game mode.",
+          "rewards": [
+            "4X 81+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 4,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "goals",
+              "minimum_per_match": 1
+            },
+            {
+              "type": "scoring_player",
+              "trait": "Japanese"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "c07dd83ed4eb8987c181490c860c1bc5d13f1c91b3a64598c472f293b5e37dd7"
+        },
+        {
+          "id": "113:1755",
+          "title": "Composed Victory",
+          "source_text": "Win 3 matches in any FUT game mode while having min. 2 players from Eredivisie in your starting 11.",
+          "rewards": [
+            "4X 80+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 3,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            },
+            {
+              "type": "squad",
+              "minimum": 2,
+              "trait": "players from Eredivisie",
+              "slot": "starting_11"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "7c063233316be5c07403d2764dd7f6595671914d38b217f449020807c2cdb0e5"
+        }
+      ]
+    },
+    {
+      "id": "109",
+      "title": "Destined for Glory Exhibition",
+      "category": "live-events",
+      "description": "Compete in the Destined for Glory Exhibition Live Event to earn multiple types of rewards and Squad Foundations Edouard Michut. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/live-events/109-destined-for-glory-exhibition/",
+      "starts_at": "2026-09-25T17:00:00Z",
+      "expires_at": "2026-10-02T16:59:59Z",
+      "completion_rewards": [
+        "Édouard Michut"
+      ],
+      "available_rewards": [
+        "Édouard Michut",
+        "300 SP",
+        "5,000 Coins",
+        "Award",
+        "1 Of 3 Destined For Glory W1 Loan Pick",
+        "1 x 5x 78+ Gold Players Pack",
+        "1 x 10x 75+ Gold Players Pack"
+      ],
+      "total_season_points": 300,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "67deed15ef3ed63b21d506e09d828a3c12c204f8f1e3a543de3afacb22c604a4",
+      "tasks": [
+        {
+          "id": "109:1743",
+          "title": "Score 1",
+          "source_text": "Score 1 goal from outside the box in the Destined for Glory Exhibition Live Event.",
+          "rewards": [
+            "5,000 Coins",
+            "200 SP"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Destined for Glory Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 1,
+            "scope": "cumulative"
+          },
+          "conditions": [
+            {
+              "type": "goal_location",
+              "value": "outside_the_box"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "9cd6034d3efd0e2971330cdff512c94e8a30648a4ce9b4112a2dfa756439d88c"
+        },
+        {
+          "id": "109:1742",
+          "title": "Score in 7",
+          "source_text": "Score at least 1 goal in 7 separate matches in the Destined for Glory Exhibition Live Event.",
+          "rewards": [
+            "5X 78+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Destined for Glory Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 7,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "goals",
+              "minimum_per_match": 1
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "9da74e0657f926dacb68ff3f9039f49938dc836667e608e6f31de669f89dde7b"
+        },
+        {
+          "id": "109:1741",
+          "title": "Score 5",
+          "source_text": "Score 5 Low Driven goals in the Destined for Glory Exhibition Live Event.",
+          "rewards": [
+            "Award"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Destined for Glory Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 5,
+            "scope": "cumulative"
+          },
+          "conditions": [
+            {
+              "type": "goal_style",
+              "value": "Low Driven"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "91002df7a99ba6c170dfbfe8ba0472ab1caf461a23f40f47018c7bacb06f845d"
+        },
+        {
+          "id": "109:1740",
+          "title": "Win 3",
+          "source_text": "Win 3 matches in the Destined for Glory Exhibition Live Event while having min. 2 French players in your starting 11.",
+          "rewards": [
+            "10X 75+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Destined for Glory Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 3,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            },
+            {
+              "type": "squad",
+              "minimum": 2,
+              "trait": "French players",
+              "slot": "starting_11"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "00a3117ef19aea909f0bfe57c3327161b30e693821350e6eea4dd99b86d67dc9"
+        },
+        {
+          "id": "109:1739",
+          "title": "Score in 3",
+          "source_text": "Score at least 1 goal in 3 separate matches in the Destined for Glory Exhibition Live Event while having min. 1 Destined for Glory player in your starting 11.",
+          "rewards": [
+            "100 SP"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Destined for Glory Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 3,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "goals",
+              "minimum_per_match": 1
+            },
+            {
+              "type": "squad",
+              "minimum": 1,
+              "trait": "Destined for Glory player",
+              "slot": "starting_11"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "9492b81052ee9905a114052dc5412d7a29f60f592c8bd503377c92a76f96bed6"
+        },
+        {
+          "id": "109:1738",
+          "title": "Play 1",
+          "source_text": "Play 1 match in the Destined for Glory Exhibition Live Event.",
+          "rewards": [
+            "1 Of 3 Destined For Glory W1 Loan Pick"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Destined for Glory Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "0e0a1192d123189bced85a6d09c76529d5ed7e73276ed4078117fa6ecb810dcf"
+        }
+      ]
+    },
+    {
+      "id": "123",
+      "title": "Gallery Foundations",
+      "category": "milestones",
+      "description": "Learn the basics of the Gallery! Grade and complete Sets, achieve Rank S, and increase your Gallery Level as you explore everything the Gallery has to offer. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/milestones/123-gallery-foundations/",
+      "starts_at": "2026-09-25T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "1,000 Coins",
+        "5 Gallery Tokens"
+      ],
+      "available_rewards": [
+        "5 Gallery Tokens",
+        "1,250 Coins",
+        "1 x 75+ Gold Player Pack",
+        "1 x Jumbo Gold Pack",
+        "1 x Small Silver Players Pack",
+        "1 x Jumbo Bronze Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "00dd8f4527317f4d687ddd2c5b195d33c0b44c4fff88ee516b24661101d7dbfc",
+      "tasks": [
+        {
+          "id": "123:1810",
+          "title": "Level Up",
+          "source_text": "Earn Gallery Score and reach Gallery Level 2.",
+          "rewards": [
+            "75+ Gold Player Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Earn Gallery Score and reach Gallery Level 2."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "ea96165ba95c5b491f3bb7fad4006f172db5001a6aa39ea3ced1e6aee6727ca5"
+        },
+        {
+          "id": "123:1809",
+          "title": "Three of a Kind",
+          "source_text": "Complete 3 Sets in the Gallery.",
+          "rewards": [
+            "Jumbo Gold Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 3,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 3 Sets in the Gallery."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "619d174ad6a2d88c6e770763aac020c25866db0f60b41af1b3094f1632935ce0"
+        },
+        {
+          "id": "123:1808",
+          "title": "Set the Standard",
+          "source_text": "Achieve Rank S on any Set in the Gallery.",
+          "rewards": [
+            "Small Silver Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Achieve Rank S on any Set in the Gallery."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "b1951c881b4eacfe3fbbc7ae9d95721969f530fea7721bb4e9fb588fe8fff523"
+        },
+        {
+          "id": "123:1807",
+          "title": "Set in Motion",
+          "source_text": "Complete the Starter Set and get familiar with the Gallery.",
+          "rewards": [
+            "Jumbo Bronze Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Complete the Starter Set and get familiar with the Gallery."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "a07274372594e82887414d2aad5b3545079df3f81eb6420bcd3346859d724733"
+        },
+        {
+          "id": "123:1806",
+          "title": "Make the Grade",
+          "source_text": "Grade any Set in the Gallery and see how your squad measures up.",
+          "rewards": [
+            "250 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Grade any Set in the Gallery and see how your squad measures up."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "95ce32f464af05828825b5afe5be57b4792e1cd614db7f98a51e02d4630c502a"
+        }
+      ]
+    },
+    {
+      "id": "72",
+      "title": "Weekly Rush Points",
+      "category": "seasonal",
+      "description": "Complete Rush Bonuses alongside your teammates to earn Rush Points and pack rewards! All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/72-weekly-rush-points/",
+      "starts_at": "2026-09-22T17:00:00Z",
+      "expires_at": "2026-09-29T16:59:59Z",
+      "completion_rewards": [
+        "2X 84+ Gold Players Pack"
+      ],
+      "available_rewards": [
+        "1 x 83+ Gold Player Pack",
+        "1 x 2x 82+ Gold Players Pack",
+        "1 x 2x 80+ Gold Players Pack",
+        "1 x 2x 78+ Gold Players Pack",
+        "1 x 2x 75+ Gold Players Pack",
+        "1 x 2x 84+ Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": "weekly",
+        "reset_schedule": null,
+        "cycle_key_required": true
+      },
+      "source_fingerprint": "320a5ecafeb049f72c8a8b01ef3f641d335adfa849ae4cbd0d2f57a09ee2697d",
+      "tasks": [
+        {
+          "id": "72:510",
+          "title": "35,000 Rush Points",
+          "source_text": "Earn 35,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "83+ Gold Player Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 35000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 35,000 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "57c1785723b059e245b35ba8ebec00ecdfcb4204943a4d57aa0ff13e34e07756"
+        },
+        {
+          "id": "72:509",
+          "title": "25,000 Rush Points",
+          "source_text": "Earn 25,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 82+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 25000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 25,000 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "cc524332d4566022e509bf7707c2363c4d42eca9166bc6bdfd8e039eff9b3bef"
+        },
+        {
+          "id": "72:508",
+          "title": "20,000 Rush Points",
+          "source_text": "Earn 20,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 80+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 20000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 20,000 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "f36eda45d0d4742c1e908adf1aa25afa2bb2342d203aedb35979693f37f47551"
+        },
+        {
+          "id": "72:507",
+          "title": "10,000 Rush Points",
+          "source_text": "Earn 10,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 78+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 10000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 10,000 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "ebd629a093d404ad3200d1cadb612ced26041eada39a8d1219d4ba2b3cb7f9dc"
+        },
+        {
+          "id": "72:506",
+          "title": "2,500 Rush Points",
+          "source_text": "Earn 2,500 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 75+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 2500,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 2,500 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "6d18f740fa9b0cd4ec577142060c58464e2f9d1ed4c164b4a78fd7a9bb0c3711"
+        }
+      ]
+    },
+    {
+      "id": "108",
+      "title": "FC Pro Open Ladder",
+      "category": "fc-pro",
+      "description": "Show your skills in the FC Pro Open Ladder to complete the group and earn rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/fc-pro/108-fc-pro-open-ladder/",
+      "starts_at": "2026-09-18T17:00:00Z",
+      "expires_at": "2026-10-04T16:59:59Z",
+      "completion_rewards": [
+        "Badge"
+      ],
+      "available_rewards": [
+        "Badge",
+        "Adidas Cnxt25 Pro Ball",
+        "Badge"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "3f5989fcec1ea02709e6af508412bccc3400fc70e0384930d9f24f38f846bac0",
+      "tasks": [
+        {
+          "id": "108:1734",
+          "title": "Compete",
+          "source_text": "Play 5 matches in the FC Pro Open Ladder.",
+          "rewards": [
+            "Badge"
+          ],
+          "kind": "match",
+          "status": "review",
+          "review_reasons": [
+            "qualification_dependency_inferred"
+          ],
+          "mode_options": [
+            {
+              "mode": "fc_pro_open_ladder",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [
+            {
+              "task_id": "108:1733",
+              "relation": "access_qualification",
+              "status": "review"
+            }
+          ],
+          "source_fingerprint": "b737ad008702ef802cf2cd6972a34799387dd4b0e59469d4d2b1897c2133ac4c"
+        },
+        {
+          "id": "108:1733",
+          "title": "Reach Division 5 Rivals",
+          "source_text": "Reach Division 5 in Rivals to qualify for the FC Pro Open Ladder.",
+          "rewards": [
+            "Adidas Cnxt25 Pro Ball"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "division",
+            "count": 5,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Reach Division 5 in Rivals to qualify for the FC Pro Open Ladder."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "85c77bf98e883a9d365273ec0efb8baf78d507903dd7eb6e9e403ece1cd69770"
+        }
+      ]
+    },
+    {
+      "id": "112",
+      "title": "Claim the Armband",
+      "category": "seasonal",
+      "description": "Complete this objective and choose 1 Squad Foundations Player Item from: Miley (Premier League), Moi Gómez (LALIGA EA SPORTS), Banzuzi (Bundesliga), or Danois (Ligue 1). All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/112-claim-the-armband/",
+      "starts_at": "2026-09-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "1 Of 4 Squad Foundations Pick"
+      ],
+      "available_rewards": [
+        "500 Coins",
+        "1 Of 4 Squad Foundations Pick"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "2fc3f6f0c057de6de699843e1e84cca72232e384970de0fe138c2eb56a1d11f5",
+      "tasks": [
+        {
+          "id": "112:1746",
+          "title": "Play 1",
+          "source_text": "Play a match in any FUT game mode.",
+          "rewards": [
+            "500 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "3e46b2a5dbe16fecab6a03396c3c3cc3801d277978e9010c449c0d5661d6ecb6"
+        }
+      ]
+    },
+    {
+      "id": "90",
+      "title": "FC 27 First Gameplay",
+      "category": "fc-pro",
+      "description": "Join in on the action of the FC 27 First Gameplay broadcast on Twitch/EASPORTSFC or YouTube/EASPORTSFC to earn your viewership rewards! All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/fc-pro/90-fc-27-first-gameplay/",
+      "starts_at": "2026-09-14T17:00:00Z",
+      "expires_at": "2026-09-29T16:59:59Z",
+      "completion_rewards": [
+        "Small Gold Players Pack"
+      ],
+      "available_rewards": [
+        "2,500 Coins",
+        "Coin Boost",
+        "1 x Small Electrum Players Pack",
+        "1 x Small Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "482468525ddafbdae055e554b503a8daef74ef4f68b9a71c1f57cfa047d65daf",
+      "tasks": [
+        {
+          "id": "90:1459",
+          "title": "Hit the Pitch",
+          "source_text": "Watch the FC 27 First Gameplay broadcast for at least 60 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC.",
+          "rewards": [
+            "Coin Boost",
+            "2,500 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "minutes",
+            "count": 60,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Watch the FC 27 First Gameplay broadcast for at least 60 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "0ed69100813f2e68ea4552a8e0a72fb0a7eec516a708cf43812f0d8dbcebac0c"
+        },
+        {
+          "id": "90:1458",
+          "title": "Kick Off",
+          "source_text": "Watch the FC 27 First Gameplay broadcast for at least 15 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC.",
+          "rewards": [
+            "Small Electrum Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "minutes",
+            "count": 15,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Watch the FC 27 First Gameplay broadcast for at least 15 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "3c4b4c922b5e9fc9d3aa1cd72829aa226a74990a5e6164fa81e9b0e7355cd04d"
+        }
+      ]
+    },
+    {
+      "id": "88",
+      "title": "Season 1: Ones to Watch Exhibition",
+      "category": "seasonal",
+      "description": "Complete the below challenges in the Season 1: Ones to Watch Exhibition. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/88-season-1-ones-to-watch-exhibition/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": "2026-10-22T06:59:59Z",
+      "completion_rewards": [
+        "Crysencio Summerville"
+      ],
+      "available_rewards": [
+        "Crysencio Summerville",
+        "Consumable",
+        "1 x 2x 81+ Gold Players Pack",
+        "1 x 2x 80+ Gold Players Pack",
+        "1 x 80+ Gold Player Pack",
+        "1 x 2x 78+ Gold Players Pack",
+        "1 x 2x 75+ Gold Players Pack",
+        "1 x Consumables Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "50639f3d49b52cf9e5db07279956aa2f8994c4ae7786e6b7ebda4ec17985e7a5",
+      "tasks": [
+        {
+          "id": "88:754",
+          "title": "Score in 30",
+          "source_text": "Score in 30 separate matches in the Season 1: Ones to Watch Exhibition.",
+          "rewards": [
+            "2X 81+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Season 1: Ones to Watch Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 30,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "goals",
+              "minimum_per_match": 1
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "6027f80481734fd4328e1a6e599f34c86e261201c1e943f39ff859ce18bcfb6f"
+        },
+        {
+          "id": "88:753",
+          "title": "Score in 20",
+          "source_text": "Score in 20 separate matches in the Season 1: Ones to Watch Exhibition.",
+          "rewards": [
+            "2X 80+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Season 1: Ones to Watch Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 20,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "goals",
+              "minimum_per_match": 1
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "d903466299f992a269cdb58333be29f159d5a3d73062d677d69190f23c6f72bd"
+        },
+        {
+          "id": "88:752",
+          "title": "Assist 20",
+          "source_text": "Assist in 20 separate matches in the Season 1: Ones to Watch Exhibition.",
+          "rewards": [
+            "80+ Gold Player Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Season 1: Ones to Watch Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 20,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "assists",
+              "minimum_per_match": 1
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "3b190ffaf065130c6073a8b6e1d44de74cf284534eb71520ca5e55f091050042"
+        },
+        {
+          "id": "88:751",
+          "title": "Assist 15",
+          "source_text": "Assist in 15 separate matches in the Season 1: Ones to Watch Exhibition.",
+          "rewards": [
+            "2X 78+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Season 1: Ones to Watch Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 15,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "assists",
+              "minimum_per_match": 1
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "25a3002432a68348e6928b8520fbfb433a37d6b208db298a4c2d27c3cc6d853d"
+        },
+        {
+          "id": "88:750",
+          "title": "Play 15",
+          "source_text": "Play 15 matches in the Season 1: Ones to Watch Exhibition.",
+          "rewards": [
+            "2X 75+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Season 1: Ones to Watch Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 15,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "942db3292aa7308eb9c31bb398a7c3b1960ff7162b795e7da7ba99e5b3021cf9"
+        },
+        {
+          "id": "88:749",
+          "title": "Play 5",
+          "source_text": "Play 5 matches in the Season 1: Ones to Watch Exhibition.",
+          "rewards": [
+            "Consumables Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Season 1: Ones to Watch Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "2d3d84e4318b3170ba54174def3c5f6e69e6f42f751545d15ff155b99b7d5816"
+        },
+        {
+          "id": "88:748",
+          "title": "Play 1",
+          "source_text": "Play 1 match in the Season 1: Ones to Watch Exhibition.",
+          "rewards": [
+            "Consumable"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Season 1: Ones to Watch Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "4435d9fc3746d035ad01a6b50fea5f54d0cd978410abc6eac4f0d04f5b9320e8"
+        }
+      ]
+    },
+    {
+      "id": "83",
+      "title": "Ones We Watched Legendary Challenge",
+      "category": "seasonal",
+      "description": "Beat the Ones We Watched Legendary challenges to earn rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/83-ones-we-watched-legendary-challenge/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": "2026-10-22T06:59:59Z",
+      "completion_rewards": [
+        "15X 75+ Laliga Gold Players Pack"
+      ],
+      "available_rewards": [
+        "5,000 Coins",
+        "1 x 10x 75+ Gold Players Pack",
+        "1 x 3x 80+ Gold Players Pack",
+        "1 x 2x 78+ Gold Players Pack",
+        "1 x 15x 75+ LALIGA Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "9135bc213e0e9ab255a9098e7231587ebb65e7e5dd1a13b45c8b53f516b5ae3d",
+      "tasks": [
+        {
+          "id": "83:731",
+          "title": "The Final Challenge",
+          "source_text": "Win 4 matches in the Ones We Watched Legendary Challenge.",
+          "rewards": [
+            "10X 75+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Legendary Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 4,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "ab0b46fdacdbde30b3b420bc21788c373bb6f812648330c44e7d6a653d796884"
+        },
+        {
+          "id": "83:730",
+          "title": "Defensive Masterclass",
+          "source_text": "Win 1 match in the Ones We Watched Legendary Challenge.",
+          "rewards": [
+            "3X 80+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Legendary Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "595d0d4b5feef619cd28276739e4125705548845263cb7daa562dd283508bab2"
+        },
+        {
+          "id": "83:729",
+          "title": "Score 5",
+          "source_text": "Score 5 times in the Ones We Watched Legendary Challenge.",
+          "rewards": [
+            "5,000 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Legendary Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 5,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "bf2d6e12ea523be1c27ae31eec05b90610d90cea883b913f7d1b8bf2c9b07807"
+        },
+        {
+          "id": "83:728",
+          "title": "Play 1",
+          "source_text": "Play 1 match in the Ones We Watched Legendary Challenge.",
+          "rewards": [
+            "2X 78+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Legendary Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "2f3c67ab781e3c924afcc1b33d9fc81e531e1ae5e078bd8f5bc6b4e283e234ec"
+        }
+      ]
+    },
+    {
+      "id": "82",
+      "title": "Ones We Watched World Class Challenge",
+      "category": "seasonal",
+      "description": "Beat the Ones We Watched World Class challenges to earn rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/82-ones-we-watched-world-class-challenge/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": "2026-10-22T06:59:59Z",
+      "completion_rewards": [
+        "5X 78+ Premier League Gold Players Pack"
+      ],
+      "available_rewards": [
+        "1,500 Coins",
+        "Evo Unlock",
+        "Consumable",
+        "1 x 2x 75+ Gold Players Pack",
+        "1 x 5x 78+ Premier League Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "fb1aef5480c28a8d5d8db34f345d08a895acfd6aaa1139c6e99ff40556dce3e0",
+      "tasks": [
+        {
+          "id": "82:727",
+          "title": "Pep's Domination",
+          "source_text": "Win 1 match in the Ones We Watched World Class Challenge.",
+          "rewards": [
+            "Evo Unlock"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched World Class Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "69f653f7742f529f80e29cd73eec2f604130a7b0531ac68351406686cd27cf88"
+        },
+        {
+          "id": "82:726",
+          "title": "Finesse",
+          "source_text": "Score two Finesse goals in 3 separate matches in the Ones We Watched World Class Challenge.",
+          "rewards": [
+            "Consumable"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched World Class Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 3,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "goals",
+              "minimum_per_match": 2
+            },
+            {
+              "type": "goal_style",
+              "value": "Finesse"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "d6f11b2b029a56f8a73ebb890d19ef082652348b14aacc3062f981f40853ca37"
+        },
+        {
+          "id": "82:725",
+          "title": "Serial Winner",
+          "source_text": "Assist 1 goal while having min. 1 Spanish player in your starting XI in the Ones We Watched World Class Challenge.",
+          "rewards": [
+            "1,500 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched World Class Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "assists",
+            "count": 1,
+            "scope": "cumulative"
+          },
+          "conditions": [
+            {
+              "type": "squad",
+              "minimum": 1,
+              "trait": "Spanish player",
+              "slot": "starting_11"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "a9b4d015a46f133576bb29e879815a946d596122cc3acaab8903217fbad9f5fc"
+        },
+        {
+          "id": "82:724",
+          "title": "PL Scorer",
+          "source_text": "Score with a Premier League player in the Ones We Watched World Class Challenge.",
+          "rewards": [
+            "2X 75+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched World Class Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 1,
+            "scope": "cumulative"
+          },
+          "conditions": [
+            {
+              "type": "scoring_player",
+              "trait": "Premier League"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "c4728b0e40990c14373b04f80e4ad47b506e8060743f4abf804edb659ee0e239"
+        }
+      ]
+    },
+    {
+      "id": "86",
+      "title": "Ones We Watched Professional Challenge",
+      "category": "seasonal",
+      "description": "Beat the Ones We Watched Professional Challenges to earn rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/86-ones-we-watched-professional-challenge/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": "2026-10-22T06:59:59Z",
+      "completion_rewards": [
+        "3X 78+ Serie A Gold Players Pack"
+      ],
+      "available_rewards": [
+        "1,750 Coins",
+        "Consumable",
+        "Consumable",
+        "1 x 2x 75+ Gold Players Pack",
+        "1 x Consumables Pack",
+        "1 x 3x 78+ Serie A Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "03c0c9f07bbf358eb16a569a80c3d27d956fccfb7b7b30ca495187f2b0b64920",
+      "tasks": [
+        {
+          "id": "86:743",
+          "title": "Top Scorer",
+          "source_text": "Score in 5 separate matches while having min. 1 Serie A player in your starting XI in the Ones We Watched Professional Challenge.",
+          "rewards": [
+            "2X 75+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Professional Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "goals",
+              "minimum_per_match": 1
+            },
+            {
+              "type": "squad",
+              "minimum": 1,
+              "trait": "Serie A player",
+              "slot": "starting_11"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "723f99ab2f68caa3ffa2ca9be750c805b97118df03e57309d1361194865df117"
+        },
+        {
+          "id": "86:742",
+          "title": "Win 1",
+          "source_text": "Win 1 match in the Ones We Watched Professional Challenge.",
+          "rewards": [
+            "1,750 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Professional Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "d6017a0750b475f628ab08ed4d4af89c026a22a56cecd9954dbf5d9d26e70777"
+        },
+        {
+          "id": "86:741",
+          "title": "Assister",
+          "source_text": "Assist 2 goals in 1 match in the Ones We Watched Professional Challenge.",
+          "rewards": [
+            "Consumables Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Professional Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "assists",
+              "minimum_per_match": 2
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "efc5f836060c6543c1f45dc7ad84577fd5f76f0c31efa16b85eabc553e7273c0"
+        },
+        {
+          "id": "86:740",
+          "title": "Play 1",
+          "source_text": "Play 1 match in the Ones We Watched Professional Challenge.",
+          "rewards": [
+            "Consumable"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Professional Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "efece49665d4a84f2df57c96688e40775c8f0c8c284d7643b6985e8ae73b0a0a"
+        }
+      ]
+    },
+    {
+      "id": "85",
+      "title": "Ones We Watched Semi-Pro Challenge",
+      "category": "seasonal",
+      "description": "Beat the Ones We Watched Semi-Pro Challenges to earn rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/85-ones-we-watched-semi-pro-challenge/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": "2026-10-22T06:59:59Z",
+      "completion_rewards": [
+        "82+ Premier League Gold Player Pack"
+      ],
+      "available_rewards": [
+        "750 Coins",
+        "Consumable",
+        "Consumable",
+        "1 x 2x 75+ Gold Players Pack",
+        "1 x Consumables Pack",
+        "1 x 82+ Premier League Gold Player Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "81ba5edcc4b43a90357c7a1a3292808f32422cf6b67fd9f68e31610ae8db27fd",
+      "tasks": [
+        {
+          "id": "85:739",
+          "title": "Win 1",
+          "source_text": "Win 1 match in the Ones We Watched Semi-Pro Challenge.",
+          "rewards": [
+            "2X 75+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Semi-Pro Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "167b4664abbba6a84515c2542dd62cbe4e4705cf1c8428ea9e4493938c47b1d5"
+        },
+        {
+          "id": "85:738",
+          "title": "Assist 3",
+          "source_text": "Assist 3 goals in the Ones We Watched Semi-Pro Challenge.",
+          "rewards": [
+            "Consumables Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Semi-Pro Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "assists",
+            "count": 3,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "85f575fc2827cdd0a3a9e08cedaa146dd2829a2c01cd87770a11beb06c7050a2"
+        },
+        {
+          "id": "85:737",
+          "title": "Play 2",
+          "source_text": "Play 2 matches with min. 1 Spanish player in your starting XI in the Ones We Watched Semi-Pro Challenge.",
+          "rewards": [
+            "750 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Semi-Pro Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 2,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "squad",
+              "minimum": 1,
+              "trait": "Spanish player",
+              "slot": "starting_11"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "242db7f1b7d6483dc2ba3f2187f59fd89533df434dc73077dd5c62a38605a99d"
+        },
+        {
+          "id": "85:736",
+          "title": "Score 1",
+          "source_text": "Score in the Ones We Watched Semi-Pro Challenge.",
+          "rewards": [
+            "Consumable"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Semi-Pro Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 1,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "62d97910816e903ff780d598068ba861f6cd657eaa868e249ecc68a37d7f93a5"
+        }
+      ]
+    },
+    {
+      "id": "84",
+      "title": "Ones We Watched Kick Off Challenge",
+      "category": "seasonal",
+      "description": "Beat the Ones We Watched Kick Off Challenges to earn rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/84-ones-we-watched-kick-off-challenge/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": "2026-10-22T06:59:59Z",
+      "completion_rewards": [
+        "2X 75+ Gold Players Pack"
+      ],
+      "available_rewards": [
+        "500 Coins",
+        "Consumable",
+        "Consumable",
+        "1 x 80+ Gold Player Pack",
+        "1 x Consumables Pack",
+        "1 x 2x 75+ Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "56955e56d4ee919315612fc0bd09c29b839374233c55b65d5f4bd5767368fdf8",
+      "tasks": [
+        {
+          "id": "84:735",
+          "title": "Win 1",
+          "source_text": "Win 1 match in the Ones We Watched Kick Off Challenge.",
+          "rewards": [
+            "80+ Gold Player Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Kick Off Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "86e68f50f2218d2fe7540b2eb60cab5b27d47f56c9f22f3ea43bb6367c9465f7"
+        },
+        {
+          "id": "84:734",
+          "title": "Assist in 3",
+          "source_text": "Assist in 3 separate matches in the Ones We Watched Kick Off Challenge.",
+          "rewards": [
+            "Consumables Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Kick Off Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 3,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "assists",
+              "minimum_per_match": 1
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "6922ab8ce8d89458b3d09d541e57894a3ee7d56a3b2d696447c66e4a047d3d7e"
+        },
+        {
+          "id": "84:733",
+          "title": "Play 2",
+          "source_text": "Play 2 matches in the Ones We Watched Kick Off Challenge.",
+          "rewards": [
+            "500 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Kick Off Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 2,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "cd6045f842ee08f056ce12c32d758aa96506d2bcd98996c504e678bd5526eab4"
+        },
+        {
+          "id": "84:732",
+          "title": "Score 1",
+          "source_text": "Score in the Ones We Watched Kick Off Challenge.",
+          "rewards": [
+            "Consumable"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Ones We Watched Kick Off Challenge",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 1,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "c52592cf5cfeddb23e7ef965fd7f52aab1ddf7e379e2900d03b90caa7a3ef553"
+        }
+      ]
+    },
+    {
+      "id": "87",
+      "title": "Ones We Watched Challenge Completionist",
+      "category": "seasonal",
+      "description": "Beat the Ones We Watched Objectives to earn rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/87-ones-we-watched-challenge-completionist/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": "2026-10-22T06:59:59Z",
+      "completion_rewards": [
+        "Savinho"
+      ],
+      "available_rewards": [
+        "Savinho",
+        "16,000 Coins"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "e81fecf2f8516cd6c0e0011b179e87f7c0f9f17b096f9541bfd48844f580ff8f",
+      "tasks": [
+        {
+          "id": "87:747",
+          "title": "Ones We Watched Legendary Challenge",
+          "source_text": "Complete the Ones We Watched Legendary Challenge objective.",
+          "rewards": [
+            "5,000 Coins"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "83",
+            "group_title": "Ones We Watched Legendary Challenge",
+            "completions": 1,
+            "distinct_periods": false
+          },
+          "prerequisites": [],
+          "source_fingerprint": "1d1725a689baca68635c4dfdd0a913641d3e0d4397b025121b45c9b5859064a4"
+        },
+        {
+          "id": "87:746",
+          "title": "Ones We Watched World Class Challenge",
+          "source_text": "Complete the Ones We Watched World Class Challenge objective.",
+          "rewards": [
+            "4,500 Coins"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "82",
+            "group_title": "Ones We Watched World Class Challenge",
+            "completions": 1,
+            "distinct_periods": false
+          },
+          "prerequisites": [],
+          "source_fingerprint": "b524c2877ba1b7a76b405f7ae643cca23066860349a0a0728c1727fa1c3d0235"
+        },
+        {
+          "id": "87:745",
+          "title": "Ones We Watched Professional Challenge",
+          "source_text": "Complete the Ones We Watched Professional Challenge objective.",
+          "rewards": [
+            "4,000 Coins"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "86",
+            "group_title": "Ones We Watched Professional Challenge",
+            "completions": 1,
+            "distinct_periods": false
+          },
+          "prerequisites": [],
+          "source_fingerprint": "7b4433714884252c291acd5c5ff4da972cde33fe7c9a0ac8f3dff33f8d3eb265"
+        },
+        {
+          "id": "87:744",
+          "title": "Ones We Watched Semi-Pro Challenge",
+          "source_text": "Complete the Ones We Watched Semi-Pro Challenge objective.",
+          "rewards": [
+            "2,500 Coins"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "85",
+            "group_title": "Ones We Watched Semi-Pro Challenge",
+            "completions": 1,
+            "distinct_periods": false
+          },
+          "prerequisites": [],
+          "source_fingerprint": "527efd767d173cbcbdd862785816b31e72e4eb710827dabcc9bd1d10a714aaa0"
+        }
+      ]
+    },
+    {
+      "id": "79",
+      "title": "Season 1: Ones to Watch Exhibition Completionist",
+      "category": "seasonal",
+      "description": "Complete all Season 1: Ones to Watch Exhibition Weekly Play Objectives, to earn Ones to Watch Ousmane Diomandé, an EVO and Coins! All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/79-season-1-ones-to-watch-exhibition-completionist/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": "2026-10-22T06:59:59Z",
+      "completion_rewards": [
+        "Ousmane Diomande"
+      ],
+      "available_rewards": [
+        "Ousmane Diomande",
+        "13,000 Coins",
+        "Award"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "fbcddcf536f6a4050cfbfbb7e0405962e8d2c4247d3265a89230a9d7f90d53d1",
+      "tasks": [
+        {
+          "id": "79:716",
+          "title": "4 Completions",
+          "source_text": "Complete the Season 1: Ones to Watch Exhibition Weekly Play Objective 4 times.",
+          "rewards": [
+            "7,000 Coins"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 4,
+            "scope": "distinct_periods"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "80",
+            "group_title": "Season 1: Ones to Watch Exhibition Weekly Play",
+            "completions": 4,
+            "distinct_periods": true
+          },
+          "prerequisites": [],
+          "source_fingerprint": "a278c273938c6debca58a10f625198ad910db3e99cba801fe494ff3a92bdeaa0"
+        },
+        {
+          "id": "79:715",
+          "title": "3 Completions",
+          "source_text": "Complete the Season 1: Ones to Watch Exhibition Weekly Play Objective 3 times.",
+          "rewards": [
+            "4,000 Coins"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 3,
+            "scope": "distinct_periods"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "80",
+            "group_title": "Season 1: Ones to Watch Exhibition Weekly Play",
+            "completions": 3,
+            "distinct_periods": true
+          },
+          "prerequisites": [],
+          "source_fingerprint": "b6899b3d11afbb6ff2a92a821b467c10da71b3358afdbb3c3eca4cc66a06c041"
+        },
+        {
+          "id": "79:714",
+          "title": "2 Completions",
+          "source_text": "Complete the Season 1: Ones to Watch Exhibition Weekly Play Objective 2 times.",
+          "rewards": [
+            "2,000 Coins"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 2,
+            "scope": "distinct_periods"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "80",
+            "group_title": "Season 1: Ones to Watch Exhibition Weekly Play",
+            "completions": 2,
+            "distinct_periods": true
+          },
+          "prerequisites": [],
+          "source_fingerprint": "82a281060a71e8876508c7f9b99265dcc975c9531177f7c861bba4a43c04c9aa"
+        },
+        {
+          "id": "79:713",
+          "title": "1 Completion",
+          "source_text": "Complete the Season 1: Ones to Watch Exhibition Weekly Play Objective 1 time.",
+          "rewards": [
+            "Award"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "distinct_periods"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "80",
+            "group_title": "Season 1: Ones to Watch Exhibition Weekly Play",
+            "completions": 1,
+            "distinct_periods": true
+          },
+          "prerequisites": [],
+          "source_fingerprint": "6a8a86ded689494d7f462d779eabd579955da3900df3f60730ead5661cfdb83e"
+        }
+      ]
+    },
+    {
+      "id": "80",
+      "title": "Season 1: Ones to Watch Exhibition Weekly Play",
+      "category": "seasonal",
+      "description": "Compete in the Season 1: Ones to Watch Exhibition to earn exclusive rewards! All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/80-season-1-ones-to-watch-exhibition-weekly-play/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": "2026-10-22T06:59:59Z",
+      "completion_rewards": [
+        "Consumable"
+      ],
+      "available_rewards": [
+        "Consumable",
+        "Consumable"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": "weekly",
+        "reset_schedule": null,
+        "cycle_key_required": true
+      },
+      "source_fingerprint": "08c98af449ba05b7f6c2509a36fd84594b5eb4b1ef87719759838c8fb56a6f04",
+      "tasks": [
+        {
+          "id": "80:718",
+          "title": "Score in 9",
+          "source_text": "Score in 9 separate matches in the Season 1: Ones to Watch Exhibition.",
+          "rewards": [
+            "Consumable"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": "Season 1: Ones to Watch Exhibition",
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 9,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "goals",
+              "minimum_per_match": 1
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "2256168351771a81448421527ffd6cb11e3da7ccc0cbd707b090921f25248807"
+        }
+      ]
+    },
+    {
+      "id": "98",
+      "title": "Ted Lasso's Masterclass",
+      "category": "milestones",
+      "description": "Complete challenges celebrating manager Ted Lasso and AFC Richmond to earn exclusive rewards! All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/milestones/98-ted-lassos-masterclass/",
+      "starts_at": "2026-09-11T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Manager",
+        "Evo Unlock"
+      ],
+      "available_rewards": [
+        "Award",
+        "Manager",
+        "Award",
+        "Stadium Tifo",
+        "Stadium Background Tifo",
+        "Badge",
+        "Stadium Stadium Theme",
+        "Award",
+        "Manager",
+        "Evo Unlock"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "6e7f44a4d77c4a8878de3017ae4c0119b4b47cc3768d5d1b2e73fa3dbe9bfd1e",
+      "tasks": [
+        {
+          "id": "98:1711",
+          "title": "Believe",
+          "source_text": "Win 1 match in any Football Ultimate Team game mode.",
+          "rewards": [
+            "Award"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "8596b4122a2d45d89325e2cf759e7fe0d59b91322b162e63cd9c1b2969b07318"
+        },
+        {
+          "id": "98:1710",
+          "title": "Biscuits with the Boss",
+          "source_text": "Build 20+ Chemistry in your squad.",
+          "rewards": [
+            "Manager"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Build 20+ Chemistry in your squad."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "aca40a96edef04b12a5c4a266b4e62c26244027173c0af68ca6bcf92283a4aa7"
+        },
+        {
+          "id": "98:1709",
+          "title": "Barbecue Sauce",
+          "source_text": "Score 5 goals in any Football Ultimate Team game mode while having at least 1 player from any Premier League team and 1 player from any Women's Super League team in your starting 11.",
+          "rewards": [
+            "Award"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 5,
+            "scope": "cumulative"
+          },
+          "conditions": [
+            {
+              "type": "squad",
+              "minimum": 1,
+              "trait": "player from any Premier League team",
+              "slot": "starting_11"
+            },
+            {
+              "type": "squad",
+              "minimum": 1,
+              "trait": "player from any Women's Super League team",
+              "slot": "starting_11"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "d3d781bb44f4a5457eaba5f663a2d976164be03bbc9d164227c0e63e4a100c38"
+        },
+        {
+          "id": "98:1708",
+          "title": "Be a Goldfish",
+          "source_text": "Play 3 matches in any Football Ultimate Team game mode while having at least 2 players from USA in your starting 11.",
+          "rewards": [
+            "Stadium Tifo",
+            "Stadium Background Tifo"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 3,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "squad",
+              "minimum": 2,
+              "trait": "players from USA",
+              "slot": "starting_11"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "a4f4bc1eb13f0f643e022c225564f7699a38c09f84b49bb88b65a2872d420b8e"
+        },
+        {
+          "id": "98:1707",
+          "title": "Unselfish Play",
+          "source_text": "Assist 4 goals in any Football Ultimate Team game mode.",
+          "rewards": [
+            "Badge",
+            "Stadium Stadium Theme"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "assists",
+            "count": 4,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "f0fab6540982cd4463c98f8bf5692135291664719fbe80bb4b971a7ef6586722"
+        },
+        {
+          "id": "98:1706",
+          "title": "Football is Life",
+          "source_text": "Play 1 match in any Football Ultimate Team game mode.",
+          "rewards": [
+            "Award"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "1c3bea40c87597e6d516fea57393e5ee794d6caa57300213110a498dac4f2cd2"
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "title": "Rivals Mastery",
+      "category": "mastery",
+      "description": "Beat your Rivals to prove you are the G.O.A.T!",
+      "url": "https://www.fut.gg/objectives/mastery/53-rivals-mastery/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Large Gold Players Pack"
+      ],
+      "available_rewards": [
+        "1 x Giant Gold Pack",
+        "1 x 10x 78+ Gold Players Pack",
+        "1 x Large Gold Pack",
+        "1 x Large Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "3a298eae424e55af8d1ed6c08c07074998d408e04362bc20bc9370dbc060d38f",
+      "tasks": [
+        {
+          "id": "53:251",
+          "title": "Win 100",
+          "source_text": "Win 100 Rivals matches.",
+          "rewards": [
+            "Giant Gold Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 100,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "1e5bbf878e32e1f959d5502766df58eb5f38b6f6ad4592e96e910fe447048614"
+        },
+        {
+          "id": "53:250",
+          "title": "Win 50",
+          "source_text": "Win 50 Rivals matches.",
+          "rewards": [
+            "10X 78+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 50,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "b700c8a76d961db787aa7ca7b666cc891eab873ba4e9062af34a7c982ecd1bf2"
+        },
+        {
+          "id": "53:249",
+          "title": "Win 25",
+          "source_text": "Win 25 Rivals matches.",
+          "rewards": [
+            "Large Gold Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 25,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "3941bed75f7d39cbdf8da824ca4f627c73e54164f983f5243ce0a1ae59ad6568"
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "title": "Champions Mastery",
+      "category": "mastery",
+      "description": "The stage is set! Show everyone you have what it takes to be the Golden G.O.A.T!",
+      "url": "https://www.fut.gg/objectives/mastery/52-champions-mastery/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "86+ Gold Player Pack",
+        "Stadium Trophy",
+        "50,000 Coins",
+        "25 Champions Tokens"
+      ],
+      "available_rewards": [
+        "25 Champions Tokens",
+        "50,000 Coins",
+        "Stadium Trophy",
+        "1 x Jumbo Gold Players Pack",
+        "1 x Giant Gold Pack",
+        "1 x 10x 78+ Gold Players Pack",
+        "1 x 86+ Gold Player Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "2db74070e8eb0db4afdc3e1412bdcb255d28edb498444bf2df38a3fee2f6f13e",
+      "tasks": [
+        {
+          "id": "52:248",
+          "title": "Win 100",
+          "source_text": "Win 100 Champions matches.",
+          "rewards": [
+            "Jumbo Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 100,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "03c0315abbdc9d5837a8518433e5892db3158d0a0902f21b47e0b75596eccbba"
+        },
+        {
+          "id": "52:247",
+          "title": "Win 50",
+          "source_text": "Win 50 Champions matches.",
+          "rewards": [
+            "Giant Gold Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 50,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "d36b20a74aeebeae734ea07c2bb9e4a64237e74bda3133a8a23db41cde6a8704"
+        },
+        {
+          "id": "52:246",
+          "title": "Win 25",
+          "source_text": "Win 25 Champions matches.",
+          "rewards": [
+            "10X 78+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 25,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "847f2ce273c9d85f888d068d98b900e93fb5b6c7b3fdf2aabc7d93f304f60802"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "title": "Total Football",
+      "category": "foundations",
+      "description": "Prove your worth by completing each of the Foundation Objectives groups to earn big rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/foundations/28-total-football/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Charalampos Kostoulas",
+        "Gold Players Pack"
+      ],
+      "available_rewards": [
+        "Charalampos Kostoulas",
+        "300 SP",
+        "1 Of 3 80+ Gold Player Pick",
+        "1 Of 3 75+ Gold Player Pick",
+        "1 x 82+ Gold Player Pack",
+        "1 x Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "b4992238c139abdcf95191423133880db95ca9c04110a031ebe2e9c487bc7a4c",
+      "tasks": [
+        {
+          "id": "28:152",
+          "title": "Complete 'Rising Through the Ranks'",
+          "source_text": "Fully complete the 'Rising Through the Ranks' Objectives Group.",
+          "rewards": [
+            "82+ Gold Player Pack",
+            "100 SP"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "27",
+            "group_title": "Rising Through the Ranks",
+            "completions": 1,
+            "distinct_periods": false
+          },
+          "prerequisites": [],
+          "source_fingerprint": "d92352c4febaa8240f1ed50e1252ba8aa2658312ab2e576f70023808cf1f8aba"
+        },
+        {
+          "id": "28:151",
+          "title": "Complete 'First Team Dreams'",
+          "source_text": "Fully complete the 'First Team Dreams' Objectives Group.",
+          "rewards": [
+            "1 Of 3 80+ Gold Player Pick",
+            "100 SP"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "26",
+            "group_title": "First Team Dreams",
+            "completions": 1,
+            "distinct_periods": false
+          },
+          "prerequisites": [],
+          "source_fingerprint": "bcc31e98f7b4fbea71f2dfc663b52cf2509a3d357b308dd419dc50eedd02081e"
+        },
+        {
+          "id": "28:150",
+          "title": "Complete 'The Journey Begins'",
+          "source_text": "Fully complete the 'The Journey Begins' Objectives Group.",
+          "rewards": [
+            "1 Of 3 75+ Gold Player Pick",
+            "100 SP"
+          ],
+          "kind": "dependency",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": {
+            "group_id": "25",
+            "group_title": "The Journey Begins",
+            "completions": 1,
+            "distinct_periods": false
+          },
+          "prerequisites": [],
+          "source_fingerprint": "a02a3008eacb6dbae648b95c86251577010112f96f41244f29441cfcbaac723e"
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "title": "Squad Battles Milestone",
+      "category": "milestones",
+      "description": "The challenge is set. Take to the pitch in Squad Battles and battle through the competition.",
+      "url": "https://www.fut.gg/objectives/milestones/42-squad-battles-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Large Gold Pack"
+      ],
+      "available_rewards": [
+        "Coin Boost",
+        "2 x 75+ Gold Player Pack",
+        "1 x x2 Players Pack",
+        "1 x Large Gold Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "4526e47eabcd1539e03e7991fef735a079664aa22b28627658008ac2a59741bf",
+      "tasks": [
+        {
+          "id": "42:205",
+          "title": "Play 15",
+          "source_text": "Play 15 Squad Battles Matches on any difficulty.",
+          "rewards": [
+            "75+ Gold Player Pack",
+            "X2 Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 15,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "155bae1984b8151b8223a4eb7c316d6766bf80a8a098c271a01a9cbc3727fbf0"
+        },
+        {
+          "id": "42:204",
+          "title": "Play 10",
+          "source_text": "Play 10 Squad Battles Matches on any difficulty.",
+          "rewards": [
+            "75+ Gold Player Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "33b6da253586b201e4cf24bcacf213b228f1c56811cef1fc30e5bd7fe0072a39"
+        },
+        {
+          "id": "42:203",
+          "title": "Play 5",
+          "source_text": "Play 5 Squad Battles Matches on any difficulty.",
+          "rewards": [
+            "Coin Boost"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "fc67395c2a57b1a59d5d3a74f21e0b092eb2bee69e00fb1242b89d8bb45e9b6f"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "title": "Rising Through the Ranks",
+      "category": "foundations",
+      "description": "All good clubs need polishing on and off the pitch. Complete these maintenance objectives to earn rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/foundations/27-rising-through-the-ranks/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "2X 80-83 Premier League Gold Players Pack",
+        "Transfer Market Access"
+      ],
+      "available_rewards": [
+        "250 SP",
+        "800 Coins",
+        "Consumable",
+        "1 Of 2 79+ Premier League Gold Player Pick",
+        "Transfer Market Access",
+        "2 x Small Silver Players Pack",
+        "1 x Consumables Pack",
+        "1 x 2x 80-83 Premier League Gold Players Pack"
+      ],
+      "total_season_points": 250,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "76c00444658e713dc680c11f57abfd23d6b36b02ca1c26be6aa48eeedbed530b",
+      "tasks": [
+        {
+          "id": "27:149",
+          "title": "Consumable Craze",
+          "source_text": "Apply a Consumable item.",
+          "rewards": [
+            "Small Silver Players Pack",
+            "200 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Apply a Consumable item."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "6e9d3bd4a20c8c8ac17fa7474bae069d57f86c5f24b5e4f6a7e93971c8a32663"
+        },
+        {
+          "id": "27:148",
+          "title": "Style and Substance",
+          "source_text": "Apply a Chemistry Style item.",
+          "rewards": [
+            "Consumables Pack",
+            "200 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Apply a Chemistry Style item."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "56dca8ded18eb668c85ed385d7b0883ebe5f327ec2a95711a308adfe41313be6"
+        },
+        {
+          "id": "27:147",
+          "title": "Form Fitting",
+          "source_text": "Change your Club's Formation.",
+          "rewards": [
+            "Small Silver Players Pack",
+            "200 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Change your Club's Formation."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "680349bd6517b25dadd0351153bd8bfa05486964133088275c3bd33cf6859e0a"
+        },
+        {
+          "id": "27:146",
+          "title": "For Club and Crest",
+          "source_text": "Change your Club name.",
+          "rewards": [
+            "Consumable",
+            "200 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Change your Club name."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "83822e80d93dd2fcac5c02fa25cfc2c96aaf2fe268013a3593b320287e38afef"
+        },
+        {
+          "id": "27:145",
+          "title": "Play 1",
+          "source_text": "Play a match in any FUT game mode.",
+          "rewards": [
+            "1 Of 2 79+ Premier League Gold Player Pick",
+            "250 SP"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "0ea95328a645af1c75a1d2053de6eec51bd603d9746a63e1ac247aaa6db6e139"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "title": "First Team Dreams",
+      "category": "foundations",
+      "description": "Complete these Squad Building Challenges to earn rewards and improve your squad. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/foundations/26-first-team-dreams/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Keane Lewis-Potter",
+        "Consumable"
+      ],
+      "available_rewards": [
+        "Keane Lewis-Potter",
+        "400 SP",
+        "1 Of 2 78+ Gold Player Pick",
+        "Consumable",
+        "1 Of 2 77+ Premier League Gold Player Pick",
+        "Consumable",
+        "1 x Jumbo Silver Pack"
+      ],
+      "total_season_points": 400,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "9bab3eb13a93286debc979effa07da4e788f014c84b5d39229af78df896b4904",
+      "tasks": [
+        {
+          "id": "26:144",
+          "title": "Targeted Investments",
+          "source_text": "Complete 3 Squad Building Challenge groups.",
+          "rewards": [
+            "1 Of 2 78+ Gold Player Pick",
+            "200 SP"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 3,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 3 Squad Building Challenge groups."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "1c2ebaf27b89b017aae250e9829dd130aab42967db9af9ff0846dc6fb1ae99ac"
+        },
+        {
+          "id": "26:143",
+          "title": "Trading Up",
+          "source_text": "Complete the Bronze Upgrade Squad Building Challenge group.",
+          "rewards": [
+            "Jumbo Silver Pack",
+            "Consumable"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Complete the Bronze Upgrade Squad Building Challenge group."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "8660857f2722735f478711d06c36475b925b5f9aecf8eb16e6372148372bc480"
+        },
+        {
+          "id": "26:142",
+          "title": "Players Come, Players Go",
+          "source_text": "Complete the \"Intro to Streamlined SBCs\" Squad Building Challenge group.",
+          "rewards": [
+            "1 Of 2 77+ Premier League Gold Player Pick",
+            "200 SP"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Complete the \"Intro to Streamlined SBCs\" Squad Building Challenge group."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "dd22b7070a79b68280912c7793c53745d73df4d7951e42f478a63737c8b9d8f4"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "title": "The Journey Begins",
+      "category": "foundations",
+      "description": "PVE Live Events offer a new way to play. Compete, earn and upgrade your way to the top. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/foundations/25-the-journey-begins/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "3X Premier League Gold Players Pack",
+        "Consumable"
+      ],
+      "available_rewards": [
+        "Victor Lindelöf",
+        "100 SP",
+        "100 Coins",
+        "Consumable",
+        "1 x Jumbo Gold Pack",
+        "1 x Silver Pack",
+        "1 x Bronze Pack",
+        "1 x Jumbo Bronze Pack",
+        "1 x Consumables Pack",
+        "1 x 3x Premier League Gold Players Pack"
+      ],
+      "total_season_points": 100,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "5663245e36ec078e8d93d4ca8751f811f1fa0ee6c1d5c0533b0725af748dcd47",
+      "tasks": [
+        {
+          "id": "25:141",
+          "title": "A Test of Skill",
+          "source_text": "Win a PVE Live Events match on min. Semi-Pro difficulty (or PVP Live Events).",
+          "rewards": [
+            "Jumbo Gold Pack",
+            "100 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "pve_live_events",
+              "event": null,
+              "minimum_difficulty": "Semi-Pro"
+            },
+            {
+              "mode": "pvp_live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "ad9671c1fca3cbfc470895bb7490028bf24ccf61bcab2c351941f72c53cdcd25"
+        },
+        {
+          "id": "25:140",
+          "title": "Finding the Net",
+          "source_text": "Score 20 goals in any Live Events match (or Rivals/Squad Battles).",
+          "rewards": [
+            "Silver Pack",
+            "Bronze Pack"
+          ],
+          "kind": "match",
+          "status": "review",
+          "review_reasons": [
+            "cumulative_vs_single_match_unclear"
+          ],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 20,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "201d52ba6bb20cfba82016aadce1be5c8cb1b015cd0225c38f28699c26bd4fcc"
+        },
+        {
+          "id": "25:139",
+          "title": "Hit the Pitch",
+          "source_text": "Play 7 Live Events matches (or Rivals/Squad Battles).",
+          "rewards": [
+            "Jumbo Bronze Pack",
+            "Consumables Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 7,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "6bbedbd72157ea2a705a906bcf08afa8425f72faa74488a7aa5ad8c58bf57a97"
+        },
+        {
+          "id": "25:138",
+          "title": "Lace 'em Up",
+          "source_text": "Play any Live Events match (or Rivals/Squad Battles).",
+          "rewards": [
+            "Victor Lindelöf",
+            "100 SP"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "a9cd3b1b6cc7212ba6be76a9545ebd6284bfc457240b21eeadc705cc28fa2f29"
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "title": "Draft Milestone",
+      "category": "milestones",
+      "description": "Draft your path to greatness!",
+      "url": "https://www.fut.gg/objectives/milestones/45-draft-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Large Gold Pack"
+      ],
+      "available_rewards": [
+        "1 Of 2 78+ Gold Player Pick",
+        "Coin Boost",
+        "1 x 75+ Gold Player Pack",
+        "1 x x2 Players Pack",
+        "1 x Large Gold Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "1d9c6892c1a44b3dbb1fc2313432c2e417ed640f591038b0b50b278b64c0c098",
+      "tasks": [
+        {
+          "id": "45:214",
+          "title": "Play 15",
+          "source_text": "Play 15 Draft matches.",
+          "rewards": [
+            "75+ Gold Player Pack",
+            "X2 Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "draft",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 15,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "bd3f32f57f41d579fd4ae918efa14925ef84cf484154fb2181fbafa077953999"
+        },
+        {
+          "id": "45:213",
+          "title": "Play 10",
+          "source_text": "Play 10 Draft matches.",
+          "rewards": [
+            "1 Of 2 78+ Gold Player Pick"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "draft",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "c0fd9bc717fb483c89f157c308b1f08ad5ddbe1c109e6b437663add7e50c315b"
+        },
+        {
+          "id": "45:212",
+          "title": "Play 5",
+          "source_text": "Play 5 Draft matches.",
+          "rewards": [
+            "Coin Boost"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "draft",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "56faf106e107f5f15f567a6c5000234cb9dcaea203ba99ea87659565997ea5c8"
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "title": "Co-Op Milestone",
+      "category": "milestones",
+      "description": "Team up with Friends to embark on the Co-op journey!",
+      "url": "https://www.fut.gg/objectives/milestones/46-co-op-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "80+ Gold Player Pack",
+        "5,000 Coins"
+      ],
+      "available_rewards": [
+        "5,000 Coins",
+        "1 Of 2 78+ Gold Player Pick",
+        "Coin Boost",
+        "1 x 75+ Gold Player Pack",
+        "1 x x2 Players Pack",
+        "1 x 80+ Gold Player Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "0f498b7899a00fd3f2d166649ff0edfd41175c2b98534cdc2a5eb6fdecdee557",
+      "tasks": [
+        {
+          "id": "46:217",
+          "title": "Play 50",
+          "source_text": "Play 50 Co-Op matches.",
+          "rewards": [
+            "75+ Gold Player Pack",
+            "X2 Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "co_op",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 50,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "12c20a00b928b766e00e2fec697deb9cfddac196ca0fc4a2ff6221f2632df0a3"
+        },
+        {
+          "id": "46:216",
+          "title": "Play 10",
+          "source_text": "Play 10 Co-Op matches.",
+          "rewards": [
+            "1 Of 2 78+ Gold Player Pick"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "co_op",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "01bce3e354a0f235f8a3a5ee97440466a96d5f8c39bd176d6029c2e74999a5e1"
+        },
+        {
+          "id": "46:215",
+          "title": "Play 5",
+          "source_text": "Play 5 Co-Op matches.",
+          "rewards": [
+            "Coin Boost"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "co_op",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "cd2e47dcbbb216fb5102325b8baea5b14fa2ba5f6557cec60a8d11cfab0a34f2"
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "title": "Rush Milestone",
+      "category": "milestones",
+      "description": "Squad up and complete Rush bonuses alongside other players as you try to reign supreme in Rush!",
+      "url": "https://www.fut.gg/objectives/milestones/50-rush-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "1 Of 2 78+ Gold Player Pick",
+        "Coin Boost"
+      ],
+      "available_rewards": [
+        "1 Of 2 78+ Gold Player Pick",
+        "1 Of 2 78+ Gold Player Pick",
+        "1 Of 2 78+ Gold Player Pick",
+        "Coin Boost",
+        "1 x Small Gold Players Pack",
+        "3 x 75+ Gold Player Pack",
+        "1 x Jumbo Gold Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "f9dfecb418567799e7245629226b53ac68a62f22bac08afb57bfcfbbb1cac28e",
+      "tasks": [
+        {
+          "id": "50:233",
+          "title": "Score 20",
+          "source_text": "Score 20 goals as a team in Rush.",
+          "rewards": [
+            "Small Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rush",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 20,
+            "scope": "cumulative"
+          },
+          "conditions": [
+            {
+              "type": "credited_to",
+              "value": "team"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "94c600d582f6a7ba43a1de98ff306918bb6c7cf3e32d374cac9ff64f8e53170b"
+        },
+        {
+          "id": "50:232",
+          "title": "Complete 20 Bonuses",
+          "source_text": "Complete 20 Rush bonuses.",
+          "rewards": [
+            "2x 75+ Gold Player Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 20,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 20 Rush bonuses."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "247975729817b8ff56c5c70618dc63e355132d4dafe390d961dce1562a9c7a81"
+        },
+        {
+          "id": "50:231",
+          "title": "Complete 10 Bonuses",
+          "source_text": "Complete 10 Rush bonuses.",
+          "rewards": [
+            "75+ Gold Player Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 10,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 10 Rush bonuses."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "ec5a5f8b8963fb8c2c2c534aa712bef9b5e05fa8dea05d5d5dbc34f2c85e9a0c"
+        },
+        {
+          "id": "50:230",
+          "title": "Play 15",
+          "source_text": "Play 15 Rush matches.",
+          "rewards": [
+            "Jumbo Gold Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rush",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 15,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "1599ec90e3d8503c32fe2b740dcc8c2c1da363a5a542a3ca57a4d148c823426a"
+        },
+        {
+          "id": "50:229",
+          "title": "Play 10",
+          "source_text": "Play 10 Rush matches.",
+          "rewards": [
+            "1 Of 2 78+ Gold Player Pick"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rush",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "a2883105117f3a7569d5302ed63fc3216f6e8ba39525dad52f6543f3068a47d6"
+        },
+        {
+          "id": "50:228",
+          "title": "Play 5",
+          "source_text": "Play 5 Rush matches.",
+          "rewards": [
+            "1 Of 2 78+ Gold Player Pick"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rush",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "45ead1eef2c474a6810bd707b06578c1a25747e3a7d4e7c17a8cff617c245ebc"
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "title": "Moments Stars Milestone",
+      "category": "milestones",
+      "description": "Complete Moments challenges and earn stars to show your football dominance!",
+      "url": "https://www.fut.gg/objectives/milestones/51-moments-stars-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Coin Boost",
+        "5,000 Coins"
+      ],
+      "available_rewards": [
+        "5,000 Coins",
+        "Coin Boost",
+        "1 x Small Gold Players Pack",
+        "1 x Large Silver Players Pack",
+        "1 x Large Bronze Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "75b188850b764b10b438ccfcff3ea15db06ce6357d8215f801b1ed0df199a985",
+      "tasks": [
+        {
+          "id": "51:236",
+          "title": "60 Stars",
+          "source_text": "Complete Moments challenges to earn 60 Stars.",
+          "rewards": [
+            "Small Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Complete Moments challenges to earn 60 Stars."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "383840a2b3e421b3ba89ec347a2de52c9b2f6908083cad2f7c1b042f00baeb6c"
+        },
+        {
+          "id": "51:235",
+          "title": "30 Stars",
+          "source_text": "Complete Moments challenges to earn 30 Stars.",
+          "rewards": [
+            "Large Silver Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Complete Moments challenges to earn 30 Stars."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "179a1cbcf6f75e3dba90fead8e3bddc668df5eac1e49b074b9875d7ff93ee538"
+        },
+        {
+          "id": "51:234",
+          "title": "15 Stars",
+          "source_text": "Complete Moments challenges to earn 15 Stars.",
+          "rewards": [
+            "Large Bronze Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": null,
+          "conditions": [],
+          "checklist": {
+            "action": "Complete Moments challenges to earn 15 Stars."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "b0676303a152535466af5960ea8dd091c5971c92b9366d70f88a9def097bd865"
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "title": "Squad Building Milestone",
+      "category": "milestones",
+      "description": "Build your way up to become a Squad Building Master!",
+      "url": "https://www.fut.gg/objectives/milestones/49-squad-building-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Large Gold Pack"
+      ],
+      "available_rewards": [
+        "1 Of 3 79+ Gold Player Pick",
+        "1 x Small Gold Players Pack",
+        "1 x Jumbo Gold Pack",
+        "1 x Large Gold Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "2c693eb1215b1cd883ec2f08d9bf2d8e0dbee4e0988392119ed1db9583c37fbf",
+      "tasks": [
+        {
+          "id": "49:227",
+          "title": "25 SBCs",
+          "source_text": "Complete 25 Squad Building Challenge groups.",
+          "rewards": [
+            "Small Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 25,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 25 Squad Building Challenge groups."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "1342e0332a6180260c253a38e7e8c3f244ff9b75f026cebace94324b11be9717"
+        },
+        {
+          "id": "49:226",
+          "title": "10 SBCs",
+          "source_text": "Complete 10 Squad Building Challenge groups.",
+          "rewards": [
+            "Jumbo Gold Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 10,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 10 Squad Building Challenge groups."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "71f27aac0212eab39658dd8d1f9f7d3b438aa3e3f3c0130c4d6e5795e046f523"
+        },
+        {
+          "id": "49:225",
+          "title": "5 SBCs",
+          "source_text": "Complete 5 Squad Building Challenge groups.",
+          "rewards": [
+            "1 Of 3 79+ Gold Player Pick"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 5,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 5 Squad Building Challenge groups."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "b167737e883c0f45213e6fb22becb5dca479f9cc7215912e4845123750676a94"
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "title": "Transfer Market Milestone",
+      "category": "milestones",
+      "description": "Wheel and deal your way to Transfer Market Mastery!",
+      "url": "https://www.fut.gg/objectives/milestones/47-transfer-market-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Coin Boost"
+      ],
+      "available_rewards": [
+        "15,000 Coins",
+        "Coin Boost"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "800dde38e354bd3e03f8542be57d3f58143dc7aadcb65ba74882f7b4c459d0eb",
+      "tasks": [
+        {
+          "id": "47:221",
+          "title": "List 50",
+          "source_text": "List 50 players on the Transfer Market.",
+          "rewards": [
+            "5,000 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 50,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "List 50 players on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "b0bc46d1ed04744dac0dc3a619bbec062cea294f6f18ea1e8acd552851f68e34"
+        },
+        {
+          "id": "47:220",
+          "title": "List 25",
+          "source_text": "List 25 players on the Transfer Market.",
+          "rewards": [
+            "2,500 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 25,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "List 25 players on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "97d047637e8656dd011d6bd7f7e5e8301f703a90171fc6065c6d43569ad55449"
+        },
+        {
+          "id": "47:219",
+          "title": "50 Buy Now",
+          "source_text": "Buy 50 players using Buy Now on the Transfer Market.",
+          "rewards": [
+            "5,000 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 50,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Buy 50 players using Buy Now on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "16b22853180185bd704a7cb7d23c3205d91ea45a70fa8736f74a62b8658f4de9"
+        },
+        {
+          "id": "47:218",
+          "title": "25 Buy Now",
+          "source_text": "Buy 25 players using Buy Now on the Transfer Market.",
+          "rewards": [
+            "2,500 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 25,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Buy 25 players using Buy Now on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "d351cc629e6274c68006912ceb5eba0ce5011e651dacc0f629a9720f4d6696bd"
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "title": "Live Events Milestone",
+      "category": "milestones",
+      "description": "Get acquainted with Live Events matches.",
+      "url": "https://www.fut.gg/objectives/milestones/48-live-events-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "1 Of 2 80+ Gold Player Pick"
+      ],
+      "available_rewards": [
+        "1 Of 3 79+ Gold Player Pick",
+        "1 Of 2 80+ Gold Player Pick",
+        "1 x Small Gold Players Pack",
+        "1 x Jumbo Gold Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "94b9783a5a3a9f41ae47986381fefce91bd9796c16b20c26d92be4de79f65945",
+      "tasks": [
+        {
+          "id": "48:224",
+          "title": "Play 20",
+          "source_text": "Play 20 Live Events matches.",
+          "rewards": [
+            "Small Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 20,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "0a5c9c3ccbe3859a46cbf7e91c5aca927db5e62c7d16fa049799e642294f93d4"
+        },
+        {
+          "id": "48:223",
+          "title": "Play 10",
+          "source_text": "Play 10 Live Events matches.",
+          "rewards": [
+            "Jumbo Gold Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "eb1f1494cce7f68dd08b0d83acf1f27295a3b0bf84350f384a0ba01cae4e62ff"
+        },
+        {
+          "id": "48:222",
+          "title": "Play 5",
+          "source_text": "Play 5 Live Events matches.",
+          "rewards": [
+            "1 Of 3 79+ Gold Player Pick"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "2c20c063fa34098d6838676a575501839d2c1d5d1b254fb4b38a845bc90ad6ad"
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "title": "Squad Battles Mastery",
+      "category": "mastery",
+      "description": "Keep battling over the year to prove you are a Squad Battles Master!",
+      "url": "https://www.fut.gg/objectives/mastery/54-squad-battles-mastery/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Giant Gold Pack"
+      ],
+      "available_rewards": [
+        "1 x 84+ Gold Player Pack",
+        "1 x Large Gold Pack",
+        "1 x Small Gold Players Pack",
+        "1 x Giant Gold Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "e8dff55d755aa943b2cd606eb1176af73beebddcbc80048a556d296b4f60f397",
+      "tasks": [
+        {
+          "id": "54:254",
+          "title": "Win 100",
+          "source_text": "Win 100 Squad Battles matches on min. Semi-Pro difficulty.",
+          "rewards": [
+            "84+ Gold Player Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "Semi-Pro"
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 100,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "84e52adef74318099de66c950c898f8dc93ae81bb34832a01c14539da62c701c"
+        },
+        {
+          "id": "54:253",
+          "title": "Win 50",
+          "source_text": "Win 50 Squad Battles matches on min. Semi-Pro difficulty.",
+          "rewards": [
+            "Large Gold Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "Semi-Pro"
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 50,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "bc08885626e4c36e225453a098e9334de25ce830a381969c9b237e14a9eb1860"
+        },
+        {
+          "id": "54:252",
+          "title": "Win 25",
+          "source_text": "Win 25 Squad Battles matches on min. Semi-Pro difficulty.",
+          "rewards": [
+            "Small Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "Semi-Pro"
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 25,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "651744fdf7402ce94b9ec9edd8471273b42ad88f91b2a059fc50d9a445c8fa0b"
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "title": "Rivals Milestone",
+      "category": "milestones",
+      "description": "The ultimate test of skill awaits in Division Rivals. Battle against the competition and emerge victorious.",
+      "url": "https://www.fut.gg/objectives/milestones/43-rivals-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "2X 82+ Gold Players Pack"
+      ],
+      "available_rewards": [
+        "5,000 Coins",
+        "1 Of 2 78+ Gold Player Pick",
+        "1 Of 2 77+ Gold Player Pick",
+        "1 x 75+ Gold Player Pack",
+        "1 x 2x 82+ Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "fc6f14d8a27525777c2ff9079cb48e55d0e99ba0d69e0dd4ac5ca20403bff120",
+      "tasks": [
+        {
+          "id": "43:208",
+          "title": "Play 15",
+          "source_text": "Play 15 Rivals matches.",
+          "rewards": [
+            "75+ Gold Player Pack",
+            "5,000 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 15,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "23b5e206d30ae97615e6fd54d5382a133df8ec494c12c4afa4eb2332783be954"
+        },
+        {
+          "id": "43:207",
+          "title": "Play 10",
+          "source_text": "Play 10 Rivals matches.",
+          "rewards": [
+            "1 Of 2 78+ Gold Player Pick"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "27019315212da567390bd94709a7a0f79e1bf9784bce45815a34c452ea58d304"
+        },
+        {
+          "id": "43:206",
+          "title": "Play 5",
+          "source_text": "Play 5 Rivals matches.",
+          "rewards": [
+            "1 Of 2 77+ Gold Player Pick"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "1500a3304dc758ea8e642c61f0cc1e34462290466e3e388ce2f3c34500ecc073"
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "title": "Champions Milestone",
+      "category": "milestones",
+      "description": "Every legend has a beginning. Enter Champions and begin your path to becoming the Golden G.O.A.T.",
+      "url": "https://www.fut.gg/objectives/milestones/44-champions-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "81+ Gold Player Pack",
+        "5,000 Coins"
+      ],
+      "available_rewards": [
+        "5,000 Coins",
+        "Coin Boost",
+        "1 x 4x 81+ Gold Players Pack",
+        "1 x 75-83 Gold Player Pack",
+        "1 x 81+ Gold Player Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "99bad6aa7581e8e839a560a7f99980db0fe1302083fc65cb5ba217905e40277f",
+      "tasks": [
+        {
+          "id": "44:211",
+          "title": "Play 15",
+          "source_text": "Play 15 Champions matches.",
+          "rewards": [
+            "4X 81+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 15,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "682ab3d2ad0569385601d9114d4134671e07ebe04fc35cdc1c76381d145eb0bf"
+        },
+        {
+          "id": "44:210",
+          "title": "Play 10",
+          "source_text": "Play 10 Champions matches.",
+          "rewards": [
+            "75-83 Gold Player Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "69261f1d181bf5ef9a4d9a9477674ec72bb3bec1696e0dc808fd12477acf3eb5"
+        },
+        {
+          "id": "44:209",
+          "title": "Play 5",
+          "source_text": "Play 5 Champions matches.",
+          "rewards": [
+            "Coin Boost"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 5,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "ee2b0ec7c8d6e00e7252106c3f9baf0b4bb1d76a82d0d547e4a407807b8772c6"
+        }
+      ]
+    },
+    {
+      "id": "81",
+      "title": "Gallery Milestone",
+      "category": "milestones",
+      "description": "Grow your Gallery Score, hit new levels, and earn rewards to build the ultimate club showcase!",
+      "url": "https://www.fut.gg/objectives/milestones/81-gallery-milestone/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Evo Unlock"
+      ],
+      "available_rewards": [
+        "Jesús Corona",
+        "1 Of 5 92+ Holographic Base Icon Player Pick",
+        "1 Of 5 88+ Holographic Base Hero Player Pick",
+        "1 Of 5 Holographic Base Icon Player Pick",
+        "1 Of 5 Holographic Base Hero Player Pick",
+        "Evo Unlock"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "05505ea3311dce09d229133863fc64b6af1cffe07e4a7964d19d5d36f1699b29",
+      "tasks": [
+        {
+          "id": "81:723",
+          "title": "Level 25",
+          "source_text": "Reach Gallery Level 25.",
+          "rewards": [
+            "1 Of 5 92+ Holographic Base Icon Player Pick"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "level",
+            "count": 25,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Reach Gallery Level 25."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "782da81768c46de208c7bea51786bbb7b7c49dc51488c2ec4b8fc26f9cb5e008"
+        },
+        {
+          "id": "81:722",
+          "title": "Level 20",
+          "source_text": "Reach Gallery Level 20.",
+          "rewards": [
+            "1 Of 5 88+ Holographic Base Hero Player Pick"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "level",
+            "count": 20,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Reach Gallery Level 20."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "20c7d0739a84cf92f8845f5ed4e9c65417fbde4a095ebebcffbcf2c5783a03b1"
+        },
+        {
+          "id": "81:721",
+          "title": "Level 15",
+          "source_text": "Reach Gallery Level 15.",
+          "rewards": [
+            "1 Of 5 Holographic Base Icon Player Pick"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "level",
+            "count": 15,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Reach Gallery Level 15."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "1265d661f59438524c2f4f9d7dd6929d406041227920900d05186b6faa6e2ebb"
+        },
+        {
+          "id": "81:720",
+          "title": "Level 10",
+          "source_text": "Reach Gallery Level 10.",
+          "rewards": [
+            "1 Of 5 Holographic Base Hero Player Pick"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "level",
+            "count": 10,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Reach Gallery Level 10."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "5d43bd937bce5d42ea3510f8753ca61ded769b2f01b3210aee2ee5bf5fc5d4f6"
+        },
+        {
+          "id": "81:719",
+          "title": "Level 5",
+          "source_text": "Reach Gallery Level 5.",
+          "rewards": [
+            "Jesús Corona"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "level",
+            "count": 5,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Reach Gallery Level 5."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "4220e99c374df82b1b8a7f0d20160bf0f1ae23173523aaa8a5af1779750d30d6"
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "title": "First Owned Mastery",
+      "category": "mastery",
+      "description": "Assemble a squad with First Owned (acquired from packs, objectives and SBCs) players and complete these Milestones!",
+      "url": "https://www.fut.gg/objectives/mastery/59-first-owned-mastery/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Giant Gold Pack",
+        "10,000 Coins"
+      ],
+      "available_rewards": [
+        "20,000 Coins",
+        "1 x 10x 75+ Gold Players Pack",
+        "1 x 7x 75+ Gold Players Pack",
+        "1 x Giant Gold Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "9f26542d8036f554e1ce384970bf01b311ba1692a49ae81375ffac82fbb34ceb",
+      "tasks": [
+        {
+          "id": "59:275",
+          "title": "First Owned Win 100",
+          "source_text": "Win 100 matches in any FUT game mode with a starting squad of First Owned players.",
+          "rewards": [
+            "10X 75+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 100,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            },
+            {
+              "type": "squad",
+              "minimum": "all",
+              "trait": "First Owned players",
+              "slot": "starting_squad"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "0ab538541734a1d16c854ed86a2682857bf8ea461327d9e30c5cdcaa6ddf4396"
+        },
+        {
+          "id": "59:274",
+          "title": "First Owned Win 50",
+          "source_text": "Win 50 matches in any FUT game mode with a starting squad of First Owned players.",
+          "rewards": [
+            "7X 75+ Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 50,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            },
+            {
+              "type": "squad",
+              "minimum": "all",
+              "trait": "First Owned players",
+              "slot": "starting_squad"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "73031c850fddcb0acd0aebd8a6accc3f3fede78c38776bb82032c4056cf546b5"
+        },
+        {
+          "id": "59:273",
+          "title": "First Owned Win 25",
+          "source_text": "Win 25 matches in any FUT game mode with a starting squad of First Owned players.",
+          "rewards": [
+            "10,000 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 25,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            },
+            {
+              "type": "squad",
+              "minimum": "all",
+              "trait": "First Owned players",
+              "slot": "starting_squad"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "358178f22cb289179bf39a6cf3eee875abcf68e5485089bcf73a07dd5bacc68a"
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "title": "Goals and Assist Mastery",
+      "category": "mastery",
+      "description": "Tally up your goals and assists and become a G/A Master!",
+      "url": "https://www.fut.gg/objectives/mastery/58-goals-and-assist-mastery/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Stadium Trophy",
+        "Giant Gold Pack"
+      ],
+      "available_rewards": [
+        "25,000 Coins",
+        "Coin Boost",
+        "Coin Boost",
+        "Stadium Trophy",
+        "Stadium Trophy",
+        "2 x 80+ Gold Player Pack",
+        "2 x 2x 75+ Gold Players Pack",
+        "1 x Giant Gold Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "9590639f549b2328dce6772ad13979fcd7175e16705afbce9524692b8c8470bc",
+      "tasks": [
+        {
+          "id": "58:272",
+          "title": "50 Assists from Crosses",
+          "source_text": "Assist 50 times from a cross in any FUT game mode.",
+          "rewards": [
+            "10,000 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "assists",
+            "count": 50,
+            "scope": "cumulative"
+          },
+          "conditions": [
+            {
+              "type": "assist_source",
+              "value": "cross"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "e376155cfaf0622b8cc049cb167248abdc6a96d34b38fa4e508a46a03ed77678"
+        },
+        {
+          "id": "58:271",
+          "title": "50 Direct Free Kicks",
+          "source_text": "Score 50 direct Free Kicks in any FUT game mode.",
+          "rewards": [
+            "10,000 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 50,
+            "scope": "cumulative"
+          },
+          "conditions": [
+            {
+              "type": "goal_style",
+              "value": "direct Free Kicks"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "c8f026a40c8ca12839e9f39597b929254e43a127fd369fd604e3e681f4534a51"
+        },
+        {
+          "id": "58:270",
+          "title": "Score 500",
+          "source_text": "Score 500 times in Squad Battles on min. Semi-Pro difficulty (or Rivals/Champions/Live Events).",
+          "rewards": [
+            "Coin Boost",
+            "80+ Gold Player Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "Semi-Pro"
+            },
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 500,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "077ef4e783186a984f0587f92e0e5a03e4dedf2bdec0dadcd4f0174307b341fb"
+        },
+        {
+          "id": "58:269",
+          "title": "Score 100",
+          "source_text": "Score 100 times in Squad Battles on min. Semi-Pro difficulty (or Rivals/Champions/Live Events).",
+          "rewards": [
+            "2X 75+ Gold Players Pack",
+            "2,500 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "Semi-Pro"
+            },
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 100,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "96e7cbbaa82ca67df68a70e11e74870be846103f5f3379140452ce38cf4d3238"
+        },
+        {
+          "id": "58:268",
+          "title": "Assist 500",
+          "source_text": "Assist 500 times in Squad Battles on min. Semi-Pro difficulty (or Rivals/Champions/Live Events).",
+          "rewards": [
+            "Coin Boost",
+            "80+ Gold Player Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "Semi-Pro"
+            },
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "assists",
+            "count": 500,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "200cbf4f842abb455dac6664827e044bf933bce0826e12b425a0b17d770ac5e8"
+        },
+        {
+          "id": "58:267",
+          "title": "Assist 100",
+          "source_text": "Assist 100 times in Squad Battles on min. Semi-Pro difficulty (or Rivals/Champions/Live Events).",
+          "rewards": [
+            "2X 75+ Gold Players Pack",
+            "2,500 Coins"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "Semi-Pro"
+            },
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "assists",
+            "count": 100,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "2bde6eb569b1d81cd677f0230fe31e82a4080a63f1ee92dfad7a97d48c1ce81b"
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "title": "Squad Building Mastery",
+      "category": "mastery",
+      "description": "Build your way up to become a Squad Building Master!",
+      "url": "https://www.fut.gg/objectives/mastery/56-squad-building-mastery/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Stadium Trophy",
+        "2X 83+ Gold Players Pack"
+      ],
+      "available_rewards": [
+        "2,500 Coins",
+        "Stadium Trophy",
+        "1 x 10x 80+ Gold Players Pack",
+        "1 x 7x 75+ Gold Players Pack",
+        "1 x Jumbo Gold Pack",
+        "1 x 2x 83+ Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "4d691cd6dcd0d8890f1c23913c800c078e2aeb161ede3cb851017366fff0982a",
+      "tasks": [
+        {
+          "id": "56:263",
+          "title": "250 SBCs",
+          "source_text": "Complete 250 Squad Building Challenge groups.",
+          "rewards": [
+            "10X 80+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 250,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 250 Squad Building Challenge groups."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "749b7c4325c94495076cf6d580d7d4b7389b40d0b37fa3906b0fd55b176e0fb7"
+        },
+        {
+          "id": "56:262",
+          "title": "100 SBCs",
+          "source_text": "Complete 100 Squad Building Challenge groups.",
+          "rewards": [
+            "7X 75+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 100,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 100 Squad Building Challenge groups."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "1ea508599fc60865dc32f4ca2c43d18a87ab0322bcce06c9043a8fb915507a80"
+        },
+        {
+          "id": "56:261",
+          "title": "50 SBCs",
+          "source_text": "Complete 50 Squad Building Challenge groups.",
+          "rewards": [
+            "Jumbo Gold Pack",
+            "2,500 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "actions",
+            "count": 50,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Complete 50 Squad Building Challenge groups."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "c9844eb6db8f0cf5482d6108901fd5765811a14b296a8dc03ce2286662f8639b"
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "title": "Transfer Market Mastery",
+      "category": "mastery",
+      "description": "Wheel and deal your way to Transfer Market Mastery!",
+      "url": "https://www.fut.gg/objectives/mastery/55-transfer-market-mastery/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Stadium Trophy",
+        "2X 82+ Gold Players Pack",
+        "10,000 Coins"
+      ],
+      "available_rewards": [
+        "25,000 Coins",
+        "Stadium Trophy",
+        "2 x 3x 81+ Gold Players Pack",
+        "2 x 80+ Gold Player Pack",
+        "1 x 2x 82+ Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "594ea6cabb9360c07929dcd1127fdf2945d48d8bfba1cf5c85ccd9cf3ee810dc",
+      "tasks": [
+        {
+          "id": "55:260",
+          "title": "List 1,000",
+          "source_text": "List 1,000 players on the Transfer Market.",
+          "rewards": [
+            "3X 81+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 1000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "List 1,000 players on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "ebe87bfc6d906f8ae28b1ebba2e5d66f26acbb11ae271858c208920fad36af46"
+        },
+        {
+          "id": "55:259",
+          "title": "List 500",
+          "source_text": "List 500 players on the Transfer Market.",
+          "rewards": [
+            "80+ Gold Player Pack",
+            "2,500 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 500,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "List 500 players on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "78bb2291e73cb1a37b7200031a5d7b81174d404d27134038781f7f7f67c50c6f"
+        },
+        {
+          "id": "55:258",
+          "title": "List 250",
+          "source_text": "List 250 players on the Transfer Market.",
+          "rewards": [
+            "5,000 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 250,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "List 250 players on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "63e8d13b5ca4693f374001b2a11050567a39514310e8f9c1a1f8e65abea765dc"
+        },
+        {
+          "id": "55:257",
+          "title": "1,000 Buy Now",
+          "source_text": "Buy 1,000 players using Buy Now on the Transfer Market.",
+          "rewards": [
+            "3X 81+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 1000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Buy 1,000 players using Buy Now on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "c3da6c1018838a1597c2d0fa763b1b4dae156796b8dd29fff39ffca99a07073e"
+        },
+        {
+          "id": "55:256",
+          "title": "500 Buy Now",
+          "source_text": "Buy 500 players using Buy Now on the Transfer Market.",
+          "rewards": [
+            "80+ Gold Player Pack",
+            "2,500 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 500,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Buy 500 players using Buy Now on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "65bb2f366384ee1cafb24a7bad11a27027ded3ef14fa1c1ad7ebee78e0bdca7d"
+        },
+        {
+          "id": "55:255",
+          "title": "250 Buy Now",
+          "source_text": "Buy 250 players using Buy Now on the Transfer Market.",
+          "rewards": [
+            "5,000 Coins"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 250,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Buy 250 players using Buy Now on the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "32d538074db8f10cca947ea6d56a532e6d280b43bfbbcc6731ec7e29de229cfd"
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "title": "Live Events Mastery",
+      "category": "mastery",
+      "description": "Generate that winning feeling in Live Events matches!",
+      "url": "https://www.fut.gg/objectives/mastery/57-live-events-mastery/",
+      "starts_at": "2026-08-17T17:00:00Z",
+      "expires_at": null,
+      "completion_rewards": [
+        "Giant Gold Pack"
+      ],
+      "available_rewards": [
+        "1 x 84+ Gold Player Pack",
+        "1 x Large Gold Pack",
+        "1 x Small Gold Players Pack",
+        "1 x Giant Gold Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": null,
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "c7f7468eeade8b227038d93ce8b61c9cc608a2da2d0a9e461304afec8ed6bf08",
+      "tasks": [
+        {
+          "id": "57:266",
+          "title": "Win 100",
+          "source_text": "Win 100 Live Events matches.",
+          "rewards": [
+            "84+ Gold Player Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 100,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "f7e7d937d8960ebe8b19e031bc3de5b7482f2e01a82b9d3cfd2062c226d34ef6"
+        },
+        {
+          "id": "57:265",
+          "title": "Win 50",
+          "source_text": "Win 50 Live Events matches.",
+          "rewards": [
+            "Large Gold Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 50,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "fd461a254bdbf0967e32f6a0ba380c4e48bb4c5d06ba15da91924f8ac72a1903"
+        },
+        {
+          "id": "57:264",
+          "title": "Win 25",
+          "source_text": "Win 25 Live Events matches.",
+          "rewards": [
+            "Small Gold Players Pack"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 25,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "98ae8a366c3715f0480105ccf9b3ef25dd806999a090d33a2ecf5ea292bae392"
+        }
+      ]
+    },
+    {
+      "id": "65",
+      "title": "Weekly Objectives",
+      "category": "seasonal",
+      "description": "Complete Weekly Objectives to earn SP!",
+      "url": "https://www.fut.gg/objectives/seasonal/65-weekly-objectives/",
+      "starts_at": "2026-08-17T07:00:00Z",
+      "expires_at": "2026-10-01T16:59:59Z",
+      "completion_rewards": [
+        "250 SP"
+      ],
+      "available_rewards": [
+        "500 SP"
+      ],
+      "total_season_points": 500,
+      "repeat": {
+        "cadence": "weekly",
+        "reset_schedule": null,
+        "cycle_key_required": true
+      },
+      "source_fingerprint": "4aa1aa452f0bde1f41c6399c1440e5f4f5c65170f6bc82fa4db2ec7d0323116c",
+      "tasks": [
+        {
+          "id": "65:475",
+          "title": "Score 10",
+          "source_text": "Score 10 goals in any FUT game mode using an English player.",
+          "rewards": [
+            "50 SP"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 10,
+            "scope": "cumulative"
+          },
+          "conditions": [
+            {
+              "type": "scoring_player",
+              "trait": "English"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "ca3ea0f24c85e719e153df54354be0cab8311e7037404cf74ca22c37c4bc8feb"
+        },
+        {
+          "id": "65:474",
+          "title": "Win 10",
+          "source_text": "Win 10 matches in Squad Battles on min. Semi-Pro difficulty (or Rivals/Champions/Live Events/Rush).",
+          "rewards": [
+            "50 SP"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": "Semi-Pro"
+            },
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "champions",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "live_events",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "rush",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "3e8bfafe2d61aaef945a4a420b1088b4da76003ff2d0a10d705f3b9bb0a6460b"
+        },
+        {
+          "id": "65:473",
+          "title": "Play 10",
+          "source_text": "Play 10 matches in Squad Battles on any difficulty (or Rush/Rivals).",
+          "rewards": [
+            "50 SP"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "squad_battles",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "rush",
+              "event": null,
+              "minimum_difficulty": null
+            },
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 10,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "6afa4345853304cacefa87a0864cac249edff25b30c45a13807742f67ef334a8"
+        },
+        {
+          "id": "65:472",
+          "title": "Buy 10",
+          "source_text": "Buy 10 Player Items using Buy Now in the Transfer Market.",
+          "rewards": [
+            "50 SP"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 10,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Buy 10 Player Items using Buy Now in the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "54f2bcbe9d37f1ad85e6c946601d1c7fac87af73614a4c0dfab8374e023f52cd"
+        },
+        {
+          "id": "65:471",
+          "title": "List 10",
+          "source_text": "List 10 player items in the Transfer Market.",
+          "rewards": [
+            "50 SP"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "items",
+            "count": 10,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "List 10 player items in the Transfer Market."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "9645932e5930fd41e274f681d4ad94b911ac1abd950351257ce7a67ed571c03b"
+        }
+      ]
+    },
+    {
+      "id": "61",
+      "title": "Daily Objectives",
+      "category": "seasonal",
+      "description": "Play, complete and earn SP from daily objective every 24 hours!",
+      "url": "https://www.fut.gg/objectives/seasonal/61-daily-objectives/",
+      "starts_at": "2026-08-17T07:00:00Z",
+      "expires_at": "2026-10-01T16:59:59Z",
+      "completion_rewards": [
+        "10 SP"
+      ],
+      "available_rewards": [
+        "30 SP"
+      ],
+      "total_season_points": 30,
+      "repeat": {
+        "cadence": "daily",
+        "reset_schedule": null,
+        "cycle_key_required": true
+      },
+      "source_fingerprint": "4d3faa9569e772430dc345b667a1396550991b7c70051139fbf1e102ec74b10a",
+      "tasks": [
+        {
+          "id": "61:464",
+          "title": "Play 1",
+          "source_text": "Play 1 match in any FUT game mode.",
+          "rewards": [
+            "10 SP"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "matches",
+            "count": 1,
+            "scope": "separate_matches"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "b6140b073034b1488105f570d091e816657de61975cc4b2b0371c953c5a82551"
+        },
+        {
+          "id": "61:463",
+          "title": "Scoring Success",
+          "source_text": "Score 2 goals in any FUT game mode.",
+          "rewards": [
+            "10 SP"
+          ],
+          "kind": "match",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
+          "target": {
+            "unit": "goals",
+            "count": 2,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": null,
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "b4287cbeedb78501a2cdbdbde35119a64094f8a4b59d6ce537cf6e796d7849b1"
+        }
+      ]
+    }
+  ],
+  "removed_groups": []
+}

@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+dist/
+node_modules/
+.pytest_cache/
+*.pyc
+*.tmp
+*.log
+.env
+.env.*
+state.json
+settings.json
+futgg-progress-backup.json

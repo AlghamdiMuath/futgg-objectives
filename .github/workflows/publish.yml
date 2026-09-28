@@ -1,0 +1,64 @@
+name: Refresh objectives and publish site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # 21:30 Asia/Riyadh (UTC+3), after the usual evening content window.
+    - cron: '30 18 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: futgg-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install parser dependency
+        run: python -m pip install -r requirements.txt
+      - name: Fetch and interpret current objectives
+        run: |
+          cp fc27_objectives.json /tmp/fc27-objectives-previous.json
+          python fetch_futgg_objectives.py --output fc27_objectives.json
+          python interpret_objectives.py --input fc27_objectives.json --output fc27_interpreted.json --previous /tmp/fc27-objectives-previous.json
+      - name: Update Arabic catalog
+        run: |
+          if ! python translate_objectives.py --input fc27_interpreted.json --output web/ar.json; then
+            echo '::warning::Arabic translation service failed; new source text will appear in English.'
+          fi
+      - name: Verify and build
+        run: |
+          python -m unittest discover -s . -p 'test_*.py' -q
+          python -m py_compile local_app.py prize_summary.py user_objectives.py plan_objectives.py interpret_objectives.py fetch_futgg_objectives.py translate_objectives.py browser_api.py build_site.py
+          node --check web/app.js
+          node --check web/static_api.js
+          python build_site.py
+      - name: Save refreshed public data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add fc27_objectives.json fc27_interpreted.json web/ar.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh FC 27 objectives'
+            git push
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

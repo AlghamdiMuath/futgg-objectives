@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_schema_version": 3,
-  "source_fetched_at": "2026-09-28T13:38:31.784086Z",
+  "source_fetched_at": "2026-09-28T16:25:56.425079Z",
   "groups": [
     {
       "id": "94",
@@ -1471,7 +1471,6 @@
       ],
       "available_rewards": [
         "1,500 Coins",
-        "Evo Unlock",
         "Consumable",
         "1 x 2x 75+ Gold Players Pack",
         "1 x 5x 78+ Premier League Gold Players Pack"
@@ -1482,14 +1481,14 @@
         "reset_schedule": null,
         "cycle_key_required": false
       },
-      "source_fingerprint": "fb1aef5480c28a8d5d8db34f345d08a895acfd6aaa1139c6e99ff40556dce3e0",
+      "source_fingerprint": "a3c94cc4dc9d23440149e55c6e02474b2dcc233fecc3e864a1407e2b7e12192d",
       "tasks": [
         {
           "id": "82:727",
           "title": "Pep's Domination",
           "source_text": "Win 1 match in the Ones We Watched World Class Challenge.",
           "rewards": [
-            "Evo Unlock"
+            "Pinged Pass"
           ],
           "kind": "match",
           "status": "parsed",
@@ -1515,7 +1514,7 @@
           "checklist": null,
           "dependency": null,
           "prerequisites": [],
-          "source_fingerprint": "69f653f7742f529f80e29cd73eec2f604130a7b0531ac68351406686cd27cf88"
+          "source_fingerprint": "59b105f82c8c5ee52596efcb4bd0f5af451b47fe8ab18089ca37083c2644954c"
         },
         {
           "id": "82:726",
@@ -2426,7 +2425,7 @@
       "expires_at": null,
       "completion_rewards": [
         "Manager",
-        "Evo Unlock"
+        "Believe"
       ],
       "available_rewards": [
         "Award",
@@ -2437,8 +2436,7 @@
         "Badge",
         "Stadium Stadium Theme",
         "Award",
-        "Manager",
-        "Evo Unlock"
+        "Manager"
       ],
       "total_season_points": null,
       "repeat": {
@@ -2446,7 +2444,7 @@
         "reset_schedule": null,
         "cycle_key_required": false
       },
-      "source_fingerprint": "6e7f44a4d77c4a8878de3017ae4c0119b4b47cc3768d5d1b2e73fa3dbe9bfd1e",
+      "source_fingerprint": "f563db51588db41c598877d56834073f4991354251ca5393f07bddf4722ed6bb",
       "tasks": [
         {
           "id": "98:1711",
@@ -6004,5 +6002,25 @@
     }
   ],
   "removed_groups": [],
-  "changes": []
+  "changes": [
+    {
+      "group_id": "82",
+      "change": "updated",
+      "fields": [
+        "available_rewards"
+      ],
+      "task_ids": [
+        "82:727"
+      ]
+    },
+    {
+      "group_id": "98",
+      "change": "updated",
+      "fields": [
+        "completion_rewards",
+        "available_rewards"
+      ],
+      "task_ids": []
+    }
+  ]
 }

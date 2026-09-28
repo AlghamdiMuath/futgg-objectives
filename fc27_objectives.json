@@ -2,7 +2,7 @@
   "schema_version": 3,
   "game": "EA SPORTS FC 27",
   "source": "https://www.fut.gg/objectives/",
-  "fetched_at": "2026-09-28T13:38:31.784086Z",
+  "fetched_at": "2026-09-28T16:25:56.425079Z",
   "groups": [
     {
       "id": "94",
@@ -556,7 +556,6 @@
       ],
       "available_rewards": [
         "1,500 Coins",
-        "Evo Unlock",
         "Consumable",
         "1 x 2x 75+ Gold Players Pack",
         "1 x 5x 78+ Premier League Gold Players Pack"
@@ -567,7 +566,7 @@
           "title": "Pep's Domination",
           "description": "Win 1 match in the Ones We Watched World Class Challenge.",
           "rewards": [
-            "Evo Unlock"
+            "Pinged Pass"
           ]
         },
         {
@@ -895,7 +894,7 @@
       "expires_at": null,
       "completion_rewards": [
         "Manager",
-        "Evo Unlock"
+        "Believe"
       ],
       "available_rewards": [
         "Award",
@@ -906,8 +905,7 @@
         "Badge",
         "Stadium Stadium Theme",
         "Award",
-        "Manager",
-        "Evo Unlock"
+        "Manager"
       ],
       "tasks": [
         {

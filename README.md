@@ -84,7 +84,7 @@ For match tasks, `target.scope` is `separate_matches` or `cumulative`. A separat
 
 `mode_options` is an OR list. `minimum_difficulty` applies only to its own option. `any_fut` is a wildcard: expand it against the application's actual mode catalog and apply exclusions before proposing games. `eligible_mode_options(options, excluded, available_modes)` performs that filtering; an empty result means no permitted route is known. This preserves Rivals, Champions, Live Events, and Rush alternatives when Squad Battles is excluded. The catalog must come from the app, since FUT.GG does not enumerate every mode covered by “any FUT game mode.”
 
-Dependencies use `dependency.group_id`, `completions`, and `distinct_periods`. A completionist target of four weekly completions requires four distinct weekly instances, not four checks of one instance. `prerequisites` records a possible access qualification only with `status: review` where the source wording does not prove a strict task dependency.
+Dependencies use `dependency.group_id`, `completions`, and `distinct_periods`. A completionist target of four weekly completions requires four distinct weekly instances, not four checks of one instance. `prerequisites` records confirmed access qualifications only when the rule has been verified; otherwise it retains `status: review`.
 
 ### Reset periods and changes
 
@@ -92,7 +92,7 @@ Dependencies use `dependency.group_id`, `completions`, and `distinct_periods`. A
 
 Call `changes(previous_raw_export, current_raw_export)` after a successful refresh, or pass `--previous old_raw.json` to include a change report in the interpreted output. The report identifies added/removed groups and changed group fields or task IDs. Refresh affected plans when text, deadlines, rewards, or availability change. Recheck expiry against the current UTC time at read time, as the fetcher README notes. A changed task fingerprint can trigger review of stored progress semantics while leaving the user's stored selection and progress untouched.
 
-Current review cases include one task with no stated mode (`113:1758`), a cumulative-versus-single-match wording ambiguity (`25:140`), and whether a Rivals qualification task strictly gates FC Pro Ladder play (`108:1734`). The public pages also do not give reliable reset times for Daily Objectives, Weekly Objectives, Weekly Rush Points, or Weekly Play. These require source review or a separately configured schedule before automatic planning or cycle-scoped progress.
+The remaining task-rule review case is whether “Score 20 goals in any Live Events match (or Rivals/Squad Battles)” (`25:140`) means one match or a cumulative total. The public pages also do not give reliable reset times for Daily Objectives, Weekly Objectives, Weekly Rush Points, or Weekly Play. Supply verified current cycle starts before recording their progress; the app does not infer reset times.
 
 ```bash
 python3 -m unittest discover -s . -p 'test_*.py'

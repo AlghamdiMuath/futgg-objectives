@@ -416,7 +416,7 @@ function renderSettings() {
 }
 function render() {
   $('source-date').textContent=ui('Updated ')+fmt(snapshot.view.source_fetched_at);
-  $('selected-count').textContent=number(snapshot.view.selected_groups.length);
+  $('selected-count').textContent=String(snapshot.view.selected_groups.length);
   if(snapshot.source_mismatch) message(ui('Raw export and interpreted export are from different refreshes. Run the interpretation command before relying on this plan.'));
   renderBrowse();renderSelected();renderPlan();renderSettings();switchTab(activeTab);
 }

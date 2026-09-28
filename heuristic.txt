@@ -129,7 +129,7 @@ We now treat the verified Mito LM task (113:1758) as any FUT mode. Is an
 omitted mode generally safe to interpret as any FUT mode, or should this stay
 limited to task IDs confirmed individually in the objective UI?
 
-Answer:
+Answer: yes any game mode.
 
 
 12. Eligible-card availability
@@ -139,7 +139,7 @@ French + Eredivisie + Destined for Glory. Should it ask the user to confirm
 they own an eligible overlapping card, or merely label this as an optional
 lineup optimization?
 
-Answer:
+Answer: label as optional, extra verification is on the user.
 
 
 13. Squad Battles opponent strength
@@ -149,7 +149,7 @@ Battles team. Is the opponent rating/chemistry and refresh state available in
 a form the planner can ask the user to enter? If so, which values should it
 use to rank the next opponent?
 
-Answer:
+Answer:no, just say for example when a selected challnge requires world class : "play world class against weakest teams for higher chances of win"
 
 
 14. Difficulty exceptions
@@ -158,7 +158,7 @@ Which FC 27 modes or objective types are exceptions to the normal rule that a
 higher difficulty satisfies a lower stated minimum? List any wording that
 should make the planner refuse that assumption.
 
-Answer:
+Answer:to my knowledge, there are no exceptions. higher does satify lower.
 
 
 15. Route-choice tie-breaker
@@ -169,3 +169,17 @@ the user's most recently enabled mode, a user-set preference order, or a
 different rule?
 
 Answer:
+make it general, a user will me make his choice. lay down the needed.
+
+Confirmed planner rules
+=======================
+
+* A parsed match objective that omits a mode can use any FUT game mode.
+* One eligible starter may cover more than one listed trait. The player must
+  verify that they own an eligible card.
+* Required scorers and assisters must start, and may be substituted after
+  contributing.
+* A higher stated difficulty satisfies a lower minimum. For Squad Battles
+  wins, recommend the weakest available opponent at the required difficulty.
+* When several routes require the same number of matches, show the compatible
+  routes and let the player choose.

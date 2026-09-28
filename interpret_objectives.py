@@ -20,6 +20,10 @@ MODE_NAMES = {
 }
 DIFFICULTIES = ("Semi-Pro", "Professional", "World Class", "Legendary", "Ultimate")
 
+# Verified in-game behavior supplied by a domain expert. Keep source-specific
+# rules here instead of treating every omitted mode as unrestricted.
+VERIFIED_ANY_FUT_TASK_IDS = {"113:1758"}
+
 
 def fingerprint(value: object) -> str:
     return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
@@ -137,16 +141,16 @@ def parse_conditions(text: str) -> list[dict]:
     role = "assisting_player" if text.lower().startswith("assist") else "scoring_player"
     for trait in re.findall(r"using (?:a|an) (.+?) player", text, re.I):
         if trait == "player with a Preferred Position of": continue
-        result.append({"type": role, "trait": trait.strip()})
+        result.append({"type": role, "trait": trait.strip(), "must_start": True})
     for trait in re.findall(r"(?:Score|Assist) (?:\d+ )?(?:goals? )?with (?:a|an) (.+?) player", text, re.I):
-        result.append({"type": role, "trait": trait.strip()})
+        result.append({"type": role, "trait": trait.strip(), "must_start": True})
     actor = re.search(r"^(Score|Assist) (?:\d+[\d,]* )?(?:goals? |times )?by (?:a|an) (.+?)(?: player)?(?: in |\.|$)", text, re.I)
     if actor:
         result.append({"type": "scoring_player" if actor.group(1).lower() == "score" else "assisting_player",
-                       "trait": actor.group(2).strip()})
+                       "trait": actor.group(2).strip(), "must_start": True})
     position = re.search(r"using a player with a Preferred Position of ([A-Z]+)", text)
     if position:
-        result.append({"type": role, "trait": f"Preferred Position: {position.group(1)}"})
+        result.append({"type": role, "trait": f"Preferred Position: {position.group(1)}", "must_start": True})
     if "outside the box" in text: result.append({"type": "goal_location", "value": "outside_the_box"})
     if "Low Driven goals" in text: result.append({"type": "goal_style", "value": "Low Driven"})
     if "direct Free Kicks" in text: result.append({"type": "goal_style", "value": "direct Free Kicks"})
@@ -189,6 +193,9 @@ def interpret_task(task: dict, group: dict, titles: dict[str, str]) -> dict:
             kind, (target, conditions) = "match", parsed
             conditions += parse_conditions(text)
             if mode_status != "explicit": reasons.append("mode_" + mode_status)
+            if task["id"] in VERIFIED_ANY_FUT_TASK_IDS:
+                modes = [_mode_option("any_fut")]
+                reasons = [reason for reason in reasons if reason != "mode_unspecified"]
             if re.search(r"\b(?:goals?|assists?) in any [\w ]+ match\b", text, re.I):
                 reasons.append("cumulative_vs_single_match_unclear")
         else:
@@ -249,16 +256,14 @@ def interpret_export(raw: dict) -> dict:
     groups = []
     for group in raw["groups"]:
         tasks = [interpret_task(task, group, titles) for task in group["tasks"]]
-        # The qualification text suggests an access gate, but does not prove
-        # whether task completion itself is required. Keep the link reviewable.
+        # Verified FC 27 behavior: a task that says it qualifies a player for
+        # a named mode is a strict access gate for that mode.
         for qualifier in tasks:
             match = re.search(r"to qualify for the (.+?)\.$", qualifier["source_text"])
             if match:
                 for task in tasks:
                     if task["id"] != qualifier["id"] and f"in the {match.group(1)}" in task["source_text"]:
-                        task["prerequisites"].append({"task_id": qualifier["id"], "relation": "access_qualification", "status": "review"})
-                        task["review_reasons"].append("qualification_dependency_inferred")
-                        task["status"] = "review"
+                        task["prerequisites"].append({"task_id": qualifier["id"], "relation": "access_qualification", "status": "confirmed"})
         groups.append({
             "id": group["id"], "title": group["title"], "category": group["category"],
             "description": group["description"], "url": group["url"],

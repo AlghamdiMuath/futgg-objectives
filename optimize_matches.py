@@ -42,10 +42,11 @@ def _squad_requirements(tasks: list[dict]) -> list[dict]:
 
 
 def _player_roles(tasks: list[dict]) -> list[dict]:
-    roles = {(condition["type"], condition["trait"])
+    roles = {(condition["type"], condition["trait"], condition.get("must_start", False))
              for task in tasks for condition in task["conditions"]
              if condition["type"] in ("scoring_player", "assisting_player")}
-    return [{"role": role, "trait": trait} for role, trait in sorted(roles)]
+    return [{"role": role, "trait": trait, "must_start": must_start}
+            for role, trait, must_start in sorted(roles)]
 
 
 def _trait_key(trait: str) -> str:

@@ -56,7 +56,7 @@ class InterpretationTests(unittest.TestCase):
         for text, role, trait in examples:
             target, _ = layer.parse_match_target(text)
             self.assertEqual(target["scope"], "cumulative")
-            self.assertIn({"type": role, "trait": trait}, layer.parse_conditions(text))
+            self.assertIn({"type": role, "trait": trait, "must_start": True}, layer.parse_conditions(text))
 
     def test_match_count_and_squad_clauses_do_not_become_event_names(self):
         for group_id, expected in (("109", "Destined for Glory Exhibition"),
@@ -76,10 +76,12 @@ class InterpretationTests(unittest.TestCase):
         self.assertEqual(self.tasks["79:716"]["dependency"], {"group_id": "80", "group_title": "Season 1: Ones to Watch Exhibition Weekly Play", "completions": 4, "distinct_periods": True})
 
     def test_ambiguity_and_period_identity(self):
-        self.assertEqual(self.tasks["113:1758"]["status"], "review")
-        self.assertEqual(self.tasks["113:1758"]["review_reasons"], ["mode_unspecified"])
+        self.assertEqual(self.tasks["113:1758"]["status"], "parsed")
+        self.assertEqual(self.tasks["113:1758"]["mode_options"], [{"mode": "any_fut", "event": None, "minimum_difficulty": None}])
+        self.assertIn({"type": "scoring_player", "trait": "Preferred Position: LM", "must_start": True},
+                      self.tasks["113:1758"]["conditions"])
         self.assertIn("cumulative_vs_single_match_unclear", self.tasks["25:140"]["review_reasons"])
-        self.assertEqual(self.tasks["108:1734"]["prerequisites"], [{"task_id": "108:1733", "relation": "access_qualification", "status": "review"}])
+        self.assertEqual(self.tasks["108:1734"]["prerequisites"], [{"task_id": "108:1733", "relation": "access_qualification", "status": "confirmed"}])
         repeat = self.groups["61"]["repeat"]
         self.assertEqual(repeat["cadence"], "daily")
         self.assertIsNone(repeat["reset_schedule"])

@@ -53,13 +53,34 @@ class PlanningTests(unittest.TestCase):
         self.assertEqual(without_cycle["match_blocks"], [])
         self.assertIn("group_cycle_start_required", without_cycle["unscheduled_tasks"][0]["reasons"])
 
-    def test_review_cumulative_and_no_mode_are_reported(self):
+    def test_verified_implicit_mode_is_planned_and_other_reviews_are_reported(self):
         result = self.plan(["25", "113", "58"], ["live_events", "rivals", "squad_battles"])
         reasons = {task["task_id"]: task["reasons"] for task in result["unscheduled_tasks"]}
         self.assertIn("cumulative_vs_single_match_unclear", reasons["25:140"])
-        self.assertIn("mode_unspecified", reasons["113:1758"])
+        self.assertNotIn("113:1758", reasons)
+        self.assertIn("113:1758", {task["task_id"] for run in result["combined_plan"]["runs"]
+                                    for task in run["match_tasks"]})
         self.assertIn("match_count_not_bounded", reasons["58:270"])
         self.assertEqual(next(t for t in result["unscheduled_tasks"] if t["task_id"] == "58:270")["target"]["count"], 500)
+
+    def test_fc_pro_ladder_waits_for_confirmed_division_five_gate(self):
+        blocked = self.plan(["108"], ["fc_pro_open_ladder"])
+        ladder = next(task for task in blocked["unscheduled_tasks"] if task["task_id"] == "108:1734")
+        self.assertIn("prerequisite_incomplete:108:1733", ladder["reasons"])
+        users.record_progress(self.state, SOURCE, "108:1733", count=5, completed=True, updated_at=NOW)
+        ready = self.plan(["108"], ["fc_pro_open_ladder"])
+        block = next(block for block in ready["match_blocks"] if block["tasks"][0]["task_id"] == "108:1734")
+        self.assertEqual(block["qualifying_matches"], 5)
+
+    def test_rush_point_ladder_shares_the_highest_recorded_weekly_count(self):
+        users.select(self.state, SOURCE, "72", NOW)
+        cycle = "2026-09-24T07:00:00Z"
+        users.record_progress(self.state, SOURCE, "72:510", count=35000, completed=True,
+                              updated_at=NOW, cycle_start_utc=cycle)
+        view = users.selected_view(self.state, SOURCE, NOW, {"72": cycle})
+        tasks = view["selected_groups"][0]["tasks"]
+        self.assertTrue(all(task["progress"]["count"] == 35000 and task["progress"]["completed"]
+                            for task in tasks))
 
     def test_effective_expiry_conflict_and_source_change_block(self):
         users.select(self.state, SOURCE, "25", NOW)

@@ -1,0 +1,171 @@
+Planner heuristic interview
+===========================
+
+Please answer from FC 27 game behavior, rather than what seems most likely
+from the wording alone. A short answer is fine. If the answer depends on a
+mode or event, name the exception.
+
+1. Implicit game mode
+---------------------
+Squad Foundations: Shunsuke Mito task 113:1758 says:
+"Score at least 1 goal in 3 separate matches using a player with a Preferred
+Position of LM."
+
+No game mode is stated. Does this count in every FUT mode, only particular
+modes, or does the objective UI itself impose an unstated restriction?
+
+Answer: any mode, could rivels, squad battels etc
+
+
+2. One player satisfying several squad requirements
+---------------------------------------------------
+For the Destined for Glory Exhibition and Shunsuke Mito tasks, the planner
+currently suggests a starting XI containing 1 Destined for Glory player,
+2 French players, and 2 Eredivisie players. Can one eligible player satisfy
+more than one of those requirements at once? For example, can a French
+Destined for Glory player who plays in the Eredivisie count toward all three?
+
+Answer: yes
+
+
+3. Starting XI versus substitute scorer
+---------------------------------------
+Task 113:1756 requires scoring in 4 separate matches with a Japanese player,
+while task 109:1739 requires a Destined for Glory player in the starting 11.
+If a Japanese scorer comes on as a substitute, does the Japanese scoring task
+count? Does that change if the scorer is also the required event player?
+
+Answer: player should be starting. its ok to substitue a starting it will still count, but the oppesite doesnt to my knowledge.
+
+
+4. Specific Live Event matches as "any FUT game mode"
+------------------------------------------------------
+Can a match in Destined for Glory Exhibition count at the same time toward
+the event tasks and Mito's "Win 7 matches in any FUT game mode" (113:1759),
+Japanese scoring task (113:1756), and Eredivisie squad-win task (113:1755)?
+Are there any Live Events that do not count as an "any FUT" match?
+
+Answer:to my knowledge, there are no exceptions, all modes count. and yes a single game can cuntrebute to many challenges.
+
+
+5. Combining separate-match conditions in one game
+---------------------------------------------------
+In one Destined for Glory Exhibition match, a user scores with a Japanese
+player, wins with 2 French players in the starting XI, and starts a Destined
+for Glory player. Should that single match advance all applicable separate-
+match tasks (109:1742, 109:1740, 109:1739, 113:1756, and 113:1755), assuming
+the player and squad traits are valid?
+
+Answer:yes all advance
+
+
+6. Cumulative goal attributes can overlap
+-----------------------------------------
+The same exhibition has cumulative objectives for 1 outside-the-box goal
+(109:1743) and 5 Low Driven goals (109:1741). If one goal is both Low Driven
+and outside the box, does it advance both objectives? More generally, can a
+single goal also count toward a nationality scorer objective at the same time?
+
+Answer:yes and yes, also assume i score 6 goals in a match, 5 lowdrevin and 1 out of the box this means im done with both challenges as well all in once. as long as there is no mention of "separate matches"
+
+
+7. Difficulty hierarchy
+-----------------------
+Squad Battles: Champions Qualification Points has 10, 12, and 15-win tiers
+at minimum World Class (94:1694-1696). Weekly Objectives has a 10-win route
+at minimum Semi-Pro (65:474). Does a World Class Squad Battles win count for
+both objective groups when both are selected? Are difficulty labels always a
+strict hierarchy for planning purposes?
+
+Answer: yes. difficulty is usually stated to tell the person whats the easiest he can do it, you can tell the user that he selected a challenge that is easier than other but advise to play the harder one on the weakest team to ensure double progress and higher chance of winning (squad batteles has like 5 team levels the weakest ones should be capitilized)
+
+
+8. Tiered thresholds in the same objective
+-------------------------------------------
+For 94:1694-1696, do the first 10 World Class wins simultaneously satisfy the
+10-win tier, then the same running total unlock the 12- and 15-win tiers? In
+other words, is one 15-win run the right plan rather than three independent
+runs of 10, 12, and 15 wins?
+
+Answer: yes, once you win 10 games, you only need to win 2 more to finish next challenge, it is cumulative.
+
+
+9. Alternate-mode route choice
+------------------------------
+Weekly Objectives task 65:474 allows 10 wins in Squad Battles at Semi-Pro or
+Rivals, Champions, Live Events, or Rush. Task 65:473 allows 10 matches in
+Squad Battles, Rush, or Rivals. Should the planner choose the route that
+minimizes matches across the selected objectives, even when a user has marked
+several modes as available? What player preference should break a tie?
+
+Answer:i dont get the question. but selection should be optimizing, you should tell the user to win squad battle on semi-pro so he can finish both challenges or play a different mode and win, if user uses filter to refuse playing for example squad battles then direct him to rivals or other accepted modes.
+
+
+10. FC Pro qualification and Rush-point thresholds
+--------------------------------------------------
+Two current rules are unclear from the public text:
+
+* FC Pro Open Ladder says "Reach Division 5 in Rivals to qualify" (108:1733)
+  and separately asks to play 5 Ladder matches (108:1734). Is Division 5 a
+  strict gate before any Ladder match can count, or only an entry requirement
+  that may already be met?
+* Weekly Rush Points lists 2,500, 10,000, 20,000, 25,000, and 35,000 point
+  targets (72:506-510). Does reaching 35,000 in the same weekly instance
+  complete every lower tier automatically?
+
+Answer: yes Division 5 is a strict gate, must be reached in rivals first, then ladder gets opened. Second question, yes.
+
+
+Remaining planner gaps
+======================
+
+These are the next questions that still need game knowledge before the
+planner can make stronger recommendations. Please answer only where you have
+reliable FC 27 experience.
+
+11. Mode-omission scope
+-----------------------
+We now treat the verified Mito LM task (113:1758) as any FUT mode. Is an
+omitted mode generally safe to interpret as any FUT mode, or should this stay
+limited to task IDs confirmed individually in the objective UI?
+
+Answer:
+
+
+12. Eligible-card availability
+------------------------------
+The planner may say one starter can cover overlapping requirements, such as
+French + Eredivisie + Destined for Glory. Should it ask the user to confirm
+they own an eligible overlapping card, or merely label this as an optional
+lineup optimization?
+
+Answer:
+
+
+13. Squad Battles opponent strength
+-----------------------------------
+You advised playing the hardest required difficulty against the weakest Squad
+Battles team. Is the opponent rating/chemistry and refresh state available in
+a form the planner can ask the user to enter? If so, which values should it
+use to rank the next opponent?
+
+Answer:
+
+
+14. Difficulty exceptions
+-------------------------
+Which FC 27 modes or objective types are exceptions to the normal rule that a
+higher difficulty satisfies a lower stated minimum? List any wording that
+should make the planner refuse that assumption.
+
+Answer:
+
+
+15. Route-choice tie-breaker
+----------------------------
+When two allowed routes produce the same number of qualifying matches and no
+other selected objective prefers one, should the default be Squad Battles,
+the user's most recently enabled mode, a user-set preference order, or a
+different rule?
+
+Answer:

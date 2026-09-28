@@ -11,8 +11,9 @@ const arabicUI = {
   'Shared match runs':'مباريات مشتركة','Condition details':'تفاصيل الشروط','Shared qualifying matches':'مباريات مؤهلة مشتركة',
   'Conditional minimum for separate-match tasks. Goals, assists, wins, and squad rules must hold; cumulative targets can progress here but may need more matches.':'الحد الأدنى المشروط لمهام المباريات المنفصلة. يجب تحقيق شروط الأهداف والتمريرات والفوز والتشكيلة؛ ويمكن التقدم في الأهداف التراكمية هنا لكنها قد تحتاج إلى مباريات إضافية.',
   'Shared across ':'مشتركة بين ',' challenges':' تحديات','Suggested starting squad: ':'التشكيلة الأساسية المقترحة: ',
+  'One starter can satisfy more than one listed trait when eligible.':'يمكن للاعب أساسي واحد استيفاء أكثر من سمة مذكورة إذا كان مؤهلاً لها.',
   'Cumulative targets that can progress during this run':'الأهداف التراكمية التي يمكن التقدم فيها خلال هذه المباريات',
-  'Required scorer: ':'اللاعب الذي يسجل: ','Required assister: ':'اللاعب الذي يصنع الأهداف: ',
+  'Required scorer: ':'اللاعب الذي يسجل: ','Required assister: ':'اللاعب الذي يصنع الأهداف: ',' (must start)':' (يجب أن يبدأ المباراة)',
   'No shared match runs can be planned.':'لا يمكن تخطيط مباريات مشتركة.','Search limited; this is the best plan found, not a proven minimum.':'البحث محدود؛ هذه أفضل خطة عُثر عليها، وقد لا تكون الحد الأدنى.',
   'English source':'النص الإنجليزي الأصلي',
   'Needs attention':'يحتاج إلى مراجعة','Completed & unavailable':'المكتمل وغير المتاح','Modes & cycles':'الأنماط والفترات','Current cycle starts':'بداية الفترات الحالية',
@@ -23,7 +24,7 @@ const arabicUI = {
   'Sections':'الأقسام','Search challenges':'ابحث عن التحديات','Sort challenges':'رتّب التحديات','Category':'الفئة','Availability':'الحالة','Reward type':'نوع المكافأة',
   'FC 27 in-game expiry in UTC':'تاريخ الانتهاء داخل FC 27 بالتوقيت العالمي UTC',
   'mode unspecified':'النمط غير محدد','cumulative vs single match unclear':'غير واضح إن كان العدد تراكميًا أو في مباراة واحدة',
-  'qualification dependency inferred':'علاقة التأهل مستنتجة وتحتاج مراجعة','source group changed':'تغيرت المجموعة في المصدر',
+  'qualification dependency inferred':'علاقة التأهل مستنتجة وتحتاج مراجعة','prerequisite incomplete':'المتطلب السابق غير مكتمل','source group changed':'تغيرت المجموعة في المصدر',
   'source task changed':'تغيرت المهمة في المصدر','source deadline conflict':'تعارض في تاريخ الانتهاء',
   'conflicting user deadlines':'تعارض في تواريخ الانتهاء المدخلة','stored task unlisted':'أزيلت المهمة من المصدر',
   'Quality unknown':'جودة الحزمة غير معروفة','player':'لاعب','players':'لاعبون','Reward leaders':'أبرز المكافآت','MOST COINS':'أكثر عملات',
@@ -365,8 +366,11 @@ function renderPlan() {
     const route=[run.mode_option.event ? tr(run.mode_option.event) : label(run.mode_option.mode),run.mode_option.minimum_difficulty && `${ui('Minimum ')}${ui(run.mode_option.minimum_difficulty)}`].filter(Boolean).join(' · ');
     add(card,node('h3','',language==='ar' ? `${countUnit(run.qualifying_matches,'matches')} مشتركة · ${route}` : `${number(run.qualifying_matches)} shared matches · ${route}`));
     add(card,node('p','fine',ui('Shared across ')+run.group_ids.map(id=>tr(names.get(id)||id)).join(', ')));
-    if(run.squad_requirements.length) add(card,node('p','',ui('Suggested starting squad: ')+run.squad_requirements.map(req=>`${req.minimum==='all'?ui('All'):number(req.minimum)} ${tr(req.trait)}`).join(' · ')));
-    if(run.player_roles?.length) add(card,node('p','',run.player_roles.map(role=>`${ui(role.role==='scoring_player'?'Required scorer: ':'Required assister: ')}${tr(role.trait)}`).join(' · ')));
+    if(run.squad_requirements.length) {
+      add(card,node('p','',ui('Suggested starting squad: ')+run.squad_requirements.map(req=>`${req.minimum==='all'?ui('All'):number(req.minimum)} ${tr(req.trait)}`).join(' · ')));
+      if(run.squad_requirements.length > 1) add(card,node('p','fine',ui('One starter can satisfy more than one listed trait when eligible.')));
+    }
+    if(run.player_roles?.length) add(card,node('p','',run.player_roles.map(role=>`${ui(role.role==='scoring_player'?'Required scorer: ':'Required assister: ')}${tr(role.trait)}${role.must_start?ui(' (must start)'):''}`).join(' · ')));
     run.match_tasks.forEach(task=>add(card,node('p','',tr(task.source_text))));
     if(run.cumulative_targets.length){
       add(card,node('strong','',ui('Cumulative targets that can progress during this run')));

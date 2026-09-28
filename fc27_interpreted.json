@@ -200,11 +200,15 @@
             "100 SP"
           ],
           "kind": "match",
-          "status": "review",
-          "review_reasons": [
-            "mode_unspecified"
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [
+            {
+              "mode": "any_fut",
+              "event": null,
+              "minimum_difficulty": null
+            }
           ],
-          "mode_options": [],
           "target": {
             "unit": "matches",
             "count": 3,
@@ -217,7 +221,8 @@
             },
             {
               "type": "scoring_player",
-              "trait": "Preferred Position: LM"
+              "trait": "Preferred Position: LM",
+              "must_start": true
             }
           ],
           "checklist": null,
@@ -274,7 +279,8 @@
             },
             {
               "type": "scoring_player",
-              "trait": "Japanese"
+              "trait": "Japanese",
+              "must_start": true
             }
           ],
           "checklist": null,
@@ -874,10 +880,8 @@
             "Badge"
           ],
           "kind": "match",
-          "status": "review",
-          "review_reasons": [
-            "qualification_dependency_inferred"
-          ],
+          "status": "parsed",
+          "review_reasons": [],
           "mode_options": [
             {
               "mode": "fc_pro_open_ladder",
@@ -897,7 +901,7 @@
             {
               "task_id": "108:1733",
               "relation": "access_qualification",
-              "status": "review"
+              "status": "confirmed"
             }
           ],
           "source_fingerprint": "b737ad008702ef802cf2cd6972a34799387dd4b0e59469d4d2b1897c2133ac4c"
@@ -1610,7 +1614,8 @@
           "conditions": [
             {
               "type": "scoring_player",
-              "trait": "Premier League"
+              "trait": "Premier League",
+              "must_start": true
             }
           ],
           "checklist": null,
@@ -5767,7 +5772,8 @@
           "conditions": [
             {
               "type": "scoring_player",
-              "trait": "English"
+              "trait": "English",
+              "must_start": true
             }
           ],
           "checklist": null,

@@ -42,6 +42,7 @@ def build_plan(interpreted: dict, view: dict, available_modes: set[str],
         group_id = selected["group_id"]
         group = groups.get(group_id)
         group_flags = selected["review_flags"]
+        state_tasks = {item["id"]: item for item in selected["tasks"]}
         if group is None:
             unavailable_groups.append({"group_id": group_id, "title": selected["title"],
                                        "availability": selected["availability"],
@@ -53,12 +54,18 @@ def build_plan(interpreted: dict, view: dict, available_modes: set[str],
                 unscheduled.append(_unscheduled(selected, state_task, None, ["source_task_missing"]))
                 continue
             progress = state_task["progress"]
+            reasons = []
+            for prerequisite in task.get("prerequisites", []):
+                if prerequisite.get("status") != "confirmed":
+                    continue
+                prerequisite_progress = state_tasks.get(prerequisite["task_id"], {}).get("progress")
+                if not prerequisite_progress or not prerequisite_progress["completed"]:
+                    reasons.append("prerequisite_incomplete:" + prerequisite["task_id"])
             if (progress and progress["completed"] and task["status"] == "parsed"
-                    and not state_task["review_flags"] and not group_flags):
+                    and not state_task["review_flags"] and not group_flags and not reasons):
                 completed.append({"group_id": group_id, "task_id": task_id,
                                   "progress_key": state_task["progress_key"]})
                 continue
-            reasons = []
             if selected["availability"] != "active":
                 reasons.append("availability_" + selected["availability"])
             if selected["effective_expires_at"] and selected["effective_expires_at"] <= as_of:

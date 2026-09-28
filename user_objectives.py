@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -99,6 +100,22 @@ def record_progress(state: dict, interpreted: dict, task_id: str, *, count: int,
     }
 
 
+def cumulative_threshold_family(task: dict) -> tuple[str, str] | None:
+    """Identify same-group checklist ladders such as weekly Rush points.
+
+    A number is deliberately removed only from otherwise identical public
+    instructions. This prevents unrelated cumulative counters, such as market
+    buys and listings, from sharing progress.
+    """
+    target = task.get("target") or {}
+    checklist = task.get("checklist") or {}
+    action = checklist.get("action")
+    if (task.get("kind") != "checklist" or target.get("scope") != "cumulative"
+            or not target.get("unit") or not isinstance(action, str)):
+        return None
+    return target["unit"], re.sub(r"\d[\d,]*", "#", action.casefold())
+
+
 def selected_view(state: dict, interpreted: dict, now: str,
                   cycles: dict[str, str] | None = None) -> dict:
     """Resolve availability at read time; never copy private data into an export."""
@@ -144,9 +161,28 @@ def selected_view(state: dict, interpreted: dict, now: str,
             cycle = cycles.get(group_id) if repeat["cycle_key_required"] else None
             if repeat["cycle_key_required"] and cycle is None:
                 flags.append("cycle_start_required")
+            progress_by_task = {}
+            threshold_progress = {}
             for task in group["tasks"]:
                 key = progress_key(task["id"], cycle, repeat) if not repeat["cycle_key_required"] or cycle else None
                 progress = state["progress"].get(key) if key else None
+                progress_by_task[task["id"]] = (key, progress)
+                family = cumulative_threshold_family(task)
+                if progress and family:
+                    previous = threshold_progress.get(family)
+                    if previous is None or progress["count"] > previous["count"]:
+                        threshold_progress[family] = progress
+            for task in group["tasks"]:
+                key, progress = progress_by_task[task["id"]]
+                family = cumulative_threshold_family(task)
+                aggregate = threshold_progress.get(family) if family else None
+                if aggregate and (progress is None or aggregate["count"] > progress["count"]):
+                    progress = {"task_id": task["id"], "cycle_start_utc": cycle,
+                                "count": aggregate["count"],
+                                "completed": aggregate["count"] >= task["target"]["count"],
+                                "updated_at": aggregate["updated_at"],
+                                "source_fingerprint": task["source_fingerprint"],
+                                "source_text": task["source_text"]}
                 task_flags = []
                 if progress and progress["source_fingerprint"] != task["source_fingerprint"]:
                     task_flags.append("source_task_changed")

@@ -218,7 +218,6 @@ function renderRewardControls(groups) {
     b.prize.pack_quality.minimum_rating-a.prize.pack_quality.minimum_rating ||
     (b.prize.pack_quality.player_count||0)-(a.prize.pack_quality.player_count||0))[0];
   if (coins || packs) {
-    add(leaders,node('h3','reward-heading',ui('Reward leaders')));
     const row=node('div','leader-grid');
     const leader=(title,value,group,kind) => {
       const button=node('button','leader');button.type='button';
@@ -318,10 +317,9 @@ function taskCard(task, stateTask, group) {
 }
 function renderBrowse() {
   const changeBox=$('source-changes');changeBox.replaceChildren();
-  if(snapshot.source_changes) {
+  if(snapshot.source_changes?.length) {
     const details=node('details','card');
     add(details,node('summary','',`${ui('Source changes since previous refresh')} (${number(snapshot.source_changes.length)})`));
-    if (!snapshot.source_changes.length) add(details,node('p','fine',ui('No source fields or tasks changed.')));
     snapshot.source_changes.forEach(c=>add(details,node('p','fine',`Group ${c.group_id}: ${c.change}${c.fields?.length ? ' · fields: '+c.fields.join(', ') : ''}${c.task_ids?.length ? ' · task IDs: '+c.task_ids.join(', ') : ''}`)));
     add(changeBox,details);
   }

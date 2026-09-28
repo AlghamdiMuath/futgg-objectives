@@ -9,3 +9,4 @@
 @media(max-width:520px){.language-control>span{display:none}.top-actions{gap:6px}.language-control select{max-width:100px}}
 .original-source{border-inline-start:2px solid #526c57;padding-inline-start:9px;text-align:start;overflow-wrap:anywhere}
 .backup-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.backup-upload{display:grid;gap:5px;font-size:13px}.backup-upload input{max-width:280px}
+@media(max-width:520px){.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;overflow:visible}.tabs button{min-width:0;padding:12px 0;white-space:nowrap;overflow-wrap:normal;font-size:14px}}@media(max-width:370px){.tabs button{font-size:12px}.tabs button span{padding-inline:4px}}

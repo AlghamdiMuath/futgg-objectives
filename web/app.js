@@ -14,7 +14,7 @@ const arabicUI = {
   'One starter can satisfy more than one listed trait when eligible.':'يمكن للاعب أساسي واحد استيفاء أكثر من سمة مذكورة إذا كان مؤهلاً لها.',
   'Check that you own an eligible card for any overlapping traits.':'تحقق من امتلاكك بطاقة مؤهلة للسمات المتداخلة.',
   'Compatible routes for this run: ':'المسارات المتوافقة لهذه المباريات: ',
-  'For Squad Battles wins at this difficulty, play the weakest available team for a better chance of winning.':'لفوز Squad Battles بهذه الصعوبة، العب ضد أضعف فريق متاح لفرصة أفضل للفوز.',
+  'For Squad Battles wins at this difficulty, play the weakest available team for a better chance of winning.':'لفوز سكواد باتلز بهذه الصعوبة، العب ضد أضعف فريق متاح لفرصة أفضل للفوز.',
   'Required scorers and assisters must start; they can be substituted after contributing.':'يجب أن يبدأ اللاعبون المطلوب منهم التسجيل أو الصناعة؛ ويمكن استبدالهم بعد مساهمتهم.',
   'Cumulative targets that can progress during this run':'الأهداف التراكمية التي يمكن التقدم فيها خلال هذه المباريات',
   'Required scorer: ':'اللاعب الذي يسجل: ','Required assister: ':'اللاعب الذي يصنع الأهداف: ',' (must start)':' (يجب أن يبدأ المباراة)',
@@ -39,6 +39,12 @@ const arabicUI = {
   'Stored progress for removed tasks':'تقدم محفوظ لمهام أزيلت','Manual check':'تحقق يدوي','Rewards: ':'المكافآت: ',
   'Completed':'مكتمل','Save progress':'حفظ التقدم','Available':'متاح','Exclude from plan':'استبعد من الخطة',
   'No objectives match these filters.':'لا توجد تحديات تطابق هذه الفلاتر.','Add a challenge from Browse.':'أضف تحدياً من صفحة التصفح.',
+  'All selected tasks are completed. Browse for another challenge or check upcoming cycles.':'اكتملت كل المهام المختارة. تصفح تحدياً آخر أو راجع الفترات القادمة.','All selected tasks completed':'اكتملت كل المهام المختارة','You have finished every task currently on your list. Browse for another challenge or review upcoming cycles.':'أنهيت كل المهام الموجودة في قائمتك. تصفح تحدياً آخر أو راجع الفترات القادمة.','Browse challenges':'تصفح التحديات','No selected tasks remain.':'لا توجد مهام مختارة متبقية.',
+  'No match runs are needed for the remaining manual targets. Record them from the plan.':'لا تحتاج الأهداف اليدوية المتبقية إلى مباريات محددة. سجّلها من الخطة.','Open plan':'افتح الخطة','No match runs are needed for the remaining manual tasks.':'لا تحتاج المهام اليدوية المتبقية إلى مباريات محددة.','Add a verified cycle start to include these repeat tasks in your plan.':'أضف بداية فترة مؤكدة لإدراج هذه المهام المتكررة في خطتك.','Some selected tasks need review before they can be planned.':'بعض المهام المختارة تحتاج إلى مراجعة قبل تخطيطها.','Your remaining work is cumulative. Record progress as you play.':'عملك المتبقي تراكمي. سجّل التقدم أثناء اللعب.','No match runs are needed for your remaining tasks.':'لا تحتاج مهامك المتبقية إلى مباريات محددة.',
+  'Listing ends':'ينتهي العرض','cycle':'دورة','Counts are evidence you entered; confirm completion after checking the objective in game.':'الأعداد التي أدخلتها دليل على التقدم؛ أكّد الإكمال بعد التحقق من الهدف داخل اللعبة.','Confirm completion':'أكّد الإكمال','Save progress':'حفظ التقدم','Review this task':'راجع هذه المهمة',
+  'Choose a local time to convert it to UTC.':'اختر الوقت المحلي لتحويله إلى UTC.','UTC value':'القيمة بالتوقيت العالمي UTC','Local time':'الوقت المحلي','Local time picker':'اختيار الوقت المحلي','Verified start in UTC':'بداية مؤكدة بالتوقيت العالمي UTC','verified cycle start in UTC':'بداية الفترة المؤكدة بالتوقيت العالمي UTC','Enter a valid date and time with Z or +00:00, or use the local time picker.':'أدخل تاريخاً ووقتاً صالحين مع Z أو ‎+00:00، أو استخدم اختيار الوقت المحلي.','Use the start shown or confirmed in FC 27; do not estimate it from the listing expiry.':'استخدم وقت البداية الظاهر أو المؤكد في FC 27؛ لا تقدّره من موعد انتهاء العرض.',
+  'Record a match':'سجّل مباراة','Enter the match stats once, then mark every task this match advanced.':'أدخل إحصاءات المباراة مرة واحدة، ثم حدّد كل مهمة تقدمت فيها.','Cancel':'إلغاء','Save match progress':'احفظ تقدم المباراة','Goals scored':'الأهداف المسجلة','Assists made':'التمريرات الحاسمة','Match stats':'إحصاءات المباراة','Which tasks did this match advance?':'ما المهام التي تقدمت فيها هذه المباراة؟','Cumulative progress':'التقدم التراكمي','Updated from match stats':'يُحدّث من إحصاءات المباراة','Choose at least one task or enter goals or assists that advance a cumulative target.':'اختر مهمة واحدة على الأقل أو أدخل أهدافاً أو تمريرات حاسمة تحقق هدفاً تراكمياً.',
+  'Previous cycle progress':'تقدم الفترة السابقة','Recorded':'تم تسجيل التقدم','recorded':'مسجل',
   'Conditions':'الشروط','Unscheduled':'غير مجدول','No finite match blocks can be planned with the current selections, modes, and verified cycles.':'لا يمكن تخطيط مباريات محددة بالاختيارات والأنماط والفترات المؤكدة الحالية.',
   'No unscheduled tasks.':'لا توجد مهام غير مجدولة.','No completed tasks or unavailable groups.':'لا توجد مهام مكتملة أو مجموعات غير متاحة.',
   'Play this next':'العب هذا أولاً','Then play':'ثم العب','Qualifying matches planned':'مباريات مؤهلة مخططة',
@@ -49,6 +55,7 @@ const arabicUI = {
   'Run context':'تفاصيل هذه المباريات','Review other tasks':'راجع المهام الأخرى','Tasks to review':'مهام تحتاج مراجعة',
   'Completed & unavailable':'المكتمل وغير المتاح','Set available modes':'حدد الأنماط المتاحة',
   'Add challenges to make a plan.':'أضف تحديات لإنشاء خطة.','No playable runs yet. Review modes, cycles, and tasks below.':'لا توجد مباريات قابلة للتخطيط بعد. راجع الأنماط والفترات والمهام أدناه.',
+  'Use the start shown or confirmed in FC 27; do not estimate it from the listing expiry.':'استخدم وقت البداية الظاهر أو المؤكد في FC 27؛ لا تقدّره من موعد انتهاء العرض.',
   'Play':'العب','Win':'افز','Score':'سجّل','Assist':'اصنع','per match':'في كل مباراة','total':'إجمالاً',
   'goal':'هدف','assist':'تمريرة حاسمة','Starting player traits may overlap when you own an eligible card.':'يمكن أن يجمع لاعب أساسي بين عدة سمات إذا كنت تملك بطاقة مؤهلة.',
   'A required scorer or assister must start; you may substitute them after they contribute.':'يجب أن يبدأ المسجل أو صانع الأهداف المطلوب؛ ويمكن استبداله بعد مساهمته.',
@@ -81,11 +88,25 @@ const arabicUI = {
   'Cannot load app':'تعذر تحميل التطبيق','Save failed':'تعذر الحفظ','Unknown group ':'مجموعة غير معروفة ','Unavailable: ':'غير متاح: ',
   'Stored evidence remains private.':'تبقى البيانات المحفوظة خاصة.','qualifying match':'مباراة مؤهلة','qualifying matches':'مباريات مؤهلة',
   'day left':'يوم متبقٍ','days left':'أيام متبقية','challenges':'تحديات','Tasks':'المهام','details':'التفاصيل',
+  'Next step':'الخطوة التالية','Choose challenges':'اختر التحديات','Set up modes':'حدد الأنماط','Follow your plan':'اتبع خطتك','Track progress':'سجّل تقدمك',
+  'Add a challenge to start a personal plan.':'أضف تحدياً لبدء خطة شخصية.','Choose the modes you can play to build your match plan.':'حدد الأنماط التي يمكنك لعبها لإنشاء خطة المباريات.',
+  'Your selected tasks need another playable mode.':'تحتاج مهامك المختارة إلى نمط لعب آخر متاح.',
+  'Set a verified cycle start for repeat challenges before tracking them.':'حدد بداية فترة مؤكدة للتحديات المتكررة قبل تتبعها.',
+  'Your next match run is ready.':'مبارياتك التالية جاهزة.','Review tasks that need attention in your list.':'راجع المهام التي تحتاج اهتماماً في قائمتك.',
+  'Open Browse':'افتح التصفح','Open settings':'افتح الإعدادات','Open plan':'افتح الخطة','Open my list':'افتح قائمتي',
+  'Select a challenge to see its tasks and plan.':'اختر تحدياً لعرض مهامه وخطته.','Browse challenges':'تصفح التحديات',
+  'tasks completed':'مهام مكتملة','of':'من','selected challenges':'تحديات مختارة','Record this task':'سجّل هذه المهمة',
+  'selected challenge':'تحدٍ مختار',
+  'Manual count':'العدد اليدوي','Set a cycle start before recording progress for this challenge.':'حدد بداية الفترة قبل تسجيل التقدم لهذا التحدي.',
+  'Choose modes you can play. Exclude a mode to keep it out of the plan.':'اختر الأنماط التي يمكنك لعبها. استبعد أي نمط لا تريده في الخطة.',
+  'Selected tasks list these modes: ':'الأنماط المذكورة في المهام المختارة: ',
+  'Unsaved changes':'تغييرات غير محفوظة','Clear filters':'امسح الفلاتر','No challenges found. Try clearing the filters.':'لم يُعثر على تحديات. جرّب مسح الفلاتر.',
+  'Selected repeat challenges':'التحديات المتكررة المختارة','Other repeat challenges':'تحديات متكررة أخرى','No selected repeat challenges.':'لا توجد تحديات متكررة مختارة.',
   'active':'نشط','upcoming':'قادم','expired':'منتهٍ','unlisted':'أزيل من القائمة','missing':'مفقود','needs review':'يحتاج مراجعة',
   'daily':'يومي','weekly':'أسبوعي','match':'مباراة','matches':'مباريات','goals':'أهداف','assists':'تمريرات حاسمة',
   'checklist':'قائمة تحقق','dependency':'متطلب سابق','manual':'يدوي','seasonal':'موسمي','campaigns':'حملات','foundations':'تأسيس',
   'live events':'فعاليات مباشرة','milestones':'إنجازات','mastery':'إتقان','fc pro':'إف سي برو',
-  'squad battles':'معارك الفرق','rivals':'المنافسون','champions':'الأبطال','rush':'راش','draft':'درافت','co op':'تعاوني',
+  'squad battles':'سكواد باتلز','rivals':'رايفلز','champions':'تشامبيونز','rush':'راش','draft':'درافت','co op':'تعاوني',
   'pve live events':'فعاليات ضد الذكاء الاصطناعي','pvp live events':'فعاليات ضد لاعبين','fc pro open ladder':'سلم إف سي برو المفتوح',
   'Spanish player':'لاعب إسباني','Serie A player':'لاعب من الدوري الإيطالي','Premier League':'الدوري الإنجليزي الممتاز',
   'French players':'لاعبون فرنسيون','Japanese':'ياباني','English':'إنجليزي','players from Eredivisie':'لاعبون من الدوري الهولندي',
@@ -97,6 +118,7 @@ const arabicUI = {
   'Semi-Pro':'شبه محترف','Professional':'محترف','World Class':'فئة عالمية','Legendary':'أسطوري','Ultimate':'ألتميت',
 };
 const openDetails = new Set();
+let pendingTaskFocus = null;
 const savedPlanRoutes = (() => {
   try { const value=JSON.parse(typeof localStorage !== 'undefined' ? localStorage.getItem('planRoutes') || '{}' : '{}');return value && typeof value==='object' && !Array.isArray(value) ? value : {}; }
   catch (_) { return {}; }
@@ -106,7 +128,8 @@ const ui = value => language === 'ar' ? (arabicUI[value] || value) : value;
 const tr = value => language === 'ar' ? (arabicCatalog[value] || arabicUI[value] || value) : value;
 const number = value => Number(value).toLocaleString(language === 'ar' ? 'ar-SA' : undefined);
 const countUnit = (count, unit) => {
-  if (language !== 'ar') return `${number(count)} ${count === 1 && unit === 'matches' ? 'match' : label(unit)}`;
+  const singular = {matches:'match',goals:'goal',assists:'assist',wins:'win',matches_played:'match'};
+  if (language !== 'ar') return `${number(count)} ${count === 1 ? singular[unit] || label(unit) : label(unit)}`;
   if (unit === 'matches') return count === 1 ? 'مباراة واحدة' : count === 2 ? 'مباراتين' : `${number(count)} ${count >= 3 && count <= 10 ? 'مباريات' : 'مباراة'}`;
   if (unit === 'goals') return count === 1 ? 'هدفاً واحداً' : count === 2 ? 'هدفين' : `${number(count)} أهداف`;
   return `${number(count)} ${label(unit)}`;
@@ -121,6 +144,7 @@ function setLanguage(value) {
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = ui(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = ui(el.dataset.i18nPlaceholder); });
   document.querySelectorAll('[data-i18n-aria-label]').forEach(el => { el.setAttribute('aria-label', ui(el.dataset.i18nAriaLabel)); });
+  if ($('settings-form').classList.contains('dirty')) $('settings-dirty').textContent=ui('Unsaved changes');
   if ($('message').textContent === 'Saved locally.' || $('message').textContent === 'حُفظ محلياً.') message(ui('Saved locally.'));
   if (snapshot) render();
 }
@@ -206,13 +230,67 @@ async function post(action, data) {
     snapshot = prepareSnapshot(result);
     message(ui('Saved locally.'));
     render();
-  } catch (error) { message(error.message); }
+    if (pendingTaskFocus) {
+      const target=pendingTaskFocus;pendingTaskFocus=null;
+      requestAnimationFrame(()=>focusTask(target.groupId,target.taskId));
+    }
+  } catch (error) { pendingTaskFocus=null;message(error.message); }
 }
 function switchTab(tab) {
   if (tab !== activeTab && ($('message').textContent === 'Saved locally.' || $('message').textContent === 'حُفظ محلياً.')) message('');
   activeTab = tab;
-  document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.tabs button').forEach(b => {
+    const active=b.dataset.tab === tab;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-current', active ? 'page' : 'false');
+  });
   document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === tab));
+}
+function focusTask(groupId, taskId) {
+  const card=[...$('selected-list').querySelectorAll('[data-group-id]')].find(el=>el.dataset.groupId===groupId);
+  const task=[...(card?.querySelectorAll('[data-task-id]')||[])].find(el=>el.dataset.taskId===taskId);
+  const target=task?.querySelector('input:not([type=checkbox]), button') || task || card;
+  target?.scrollIntoView({block:'center',behavior:'smooth'});
+  target?.focus({preventScroll:true});
+}
+function goToTask(groupId, taskId) {
+  openDetails.add(groupId);
+  renderSelected();switchTab('selected');
+  requestAnimationFrame(()=>focusTask(groupId,taskId));
+}
+function cycleSettings(groupId) {
+  switchTab('settings');
+  const input=[...document.querySelectorAll('#cycles input')].find(el=>el.dataset.groupId===groupId);
+  input?.scrollIntoView({block:'center',behavior:'smooth'});input?.focus({preventScroll:true});
+}
+function renderNextStep() {
+  const target=$('next-step');target.replaceChildren();
+  const selected=snapshot.view.selected_groups;
+  const hasModes=snapshot.settings.available_modes.some(mode=>!snapshot.settings.excluded_modes.includes(mode));
+  const hasRun=Boolean(snapshot.plan.combined_plan?.runs?.length);
+  const allComplete=selected.length>0 && selected.every(group=>group.tasks.length>0 && group.tasks.every(task=>task.progress?.completed));
+  const needsMode=snapshot.plan.unscheduled_tasks.some(task=>task.reasons.includes('no_permitted_mode'));
+  const missingCycle=selected.find(group=>snapshot.groups.find(source=>source.id===group.group_id)?.repeat?.cycle_key_required && !snapshot.settings.cycles[group.group_id]);
+  let copy, action, tab;
+  if (!selected.length) [copy,action,tab]=['Add a challenge to start a personal plan.','Open Browse','browse'];
+  else if (allComplete) [copy,action,tab]=['All selected tasks are completed. Browse for another challenge or check upcoming cycles.','Browse challenges','browse'];
+  else if (!hasModes && needsMode) [copy,action,tab]=['Choose the modes you can play to build your match plan.','Open settings','settings'];
+  else if (!hasRun && needsMode) [copy,action,tab]=['Your selected tasks need another playable mode.','Open settings','settings'];
+  else if (!hasRun && missingCycle) [copy,action,tab]=['Set a verified cycle start for repeat challenges before tracking them.','Open settings','settings'];
+  else if (hasRun) [copy,action,tab]=['Your next match run is ready.','Open plan','plan'];
+  else if (snapshot.plan.unscheduled_tasks.some(task=>task.reasons.length===1&&task.reasons[0]==='not_match_task')) [copy,action,tab]=['No match runs are needed for the remaining manual targets. Record them from the plan.','Open plan','plan'];
+  else [copy,action,tab]=['Review tasks that need attention in your list.','Open my list','selected'];
+  const steps=node('div','journey-steps');
+  [['Choose challenges','browse'],['Set up modes','settings'],['Follow your plan','plan'],['Track progress','selected']].forEach(([title,id],index)=>{
+    const step=node('span','journey-step',`${number(index+1)}. ${ui(title)}`);
+    if(id===tab) step.classList.add('current');
+    add(steps,step);
+  });
+  const body=node('div','next-step-body');
+  const copyBox=node('div');add(copyBox,node('strong','',ui('Next step')),node('p','',ui(copy)));
+  const button=node('button','primary',ui(action));button.type='button';
+  button.onclick=()=>tab==='settings'&&missingCycle&&hasModes&&!hasRun&&!needsMode?cycleSettings(missingCycle.group_id):switchTab(tab);
+  add(body,copyBox,button);add(target,steps,body);
 }
 function flags(parent, values) { values.forEach(v => add(parent, node('span', 'flag', label(v)))); }
 function availability(group) {
@@ -227,7 +305,8 @@ function deadlineLabel(group, selected) {
   const expiry = selected ? selected.effective_expires_at : group.expires_at;
   if (!expiry) return ui('Unknown');
   const days = Math.max(0, Math.ceil((new Date(expiry) - new Date(snapshot.view.as_of)) / 86400000));
-  return days === 1 ? `${number(days)} ${ui('day left')}` : `${number(days)} ${ui('days left')}`;
+  const remaining=days === 1 ? `${number(days)} ${ui('day left')}` : `${number(days)} ${ui('days left')}`;
+  return group.repeat?.cadence ? `${ui('Listing ends')}: ${remaining}` : remaining;
 }
 function prizeLine(prize) {
   if (prize.kind === 'player') return [tr(prize.label), prize.rating == null ? ui('Rating unknown') : language === 'ar' ? `التقييم ${number(prize.rating)}` : `${prize.rating} rated`];
@@ -299,8 +378,17 @@ function groupCard(group, selected) {
   const heading = node('div','card-heading');
   const status = availability(group);
   add(heading, node('span','category',label(group.category)), node('span','deadline '+(selected?.review_flags?.some(flag=>flag.includes('deadline'))?'review':''),deadlineLabel(group,selected)));
+  if(group.repeat?.cadence) add(heading,node('span','badge cycle-cue',`${label(group.repeat.cadence)} ${ui('cycle')}`));
   if (status !== 'active') add(heading,node('span','badge off',label(status)));
   add(card,heading,node('h3','',tr(group.title)));
+  if (selected) {
+    const completed=selected.tasks.filter(task=>task.progress?.completed).length;
+    const progress=node('div','group-progress');
+    add(progress,node('span','',`${number(completed)} ${ui('of')} ${number(selected.tasks.length)} ${ui('tasks completed')}`));
+    const meter=node('progress');meter.max=Math.max(1,selected.tasks.length);meter.value=completed;
+    meter.setAttribute('aria-label',`${tr(group.title)}: ${number(completed)} ${ui('of')} ${number(selected.tasks.length)} ${ui('tasks completed')}`);
+    add(progress,meter);add(card,progress);
+  }
   const prize = node('div','prize');
   const [prizeName,quality] = prizeLine(group.prize.main);
   add(prize,node('span','prize-icon',group.prize.main.kind==='player'?'★':group.prize.main.kind==='coins'?'●':group.prize.main.kind==='pack'?'▣':'·'));
@@ -330,7 +418,7 @@ function groupCard(group, selected) {
   }
   const link = node('a','fine',ui('Open FUT.GG source')); link.href = group.url; link.target = '_blank'; link.rel='noopener noreferrer'; add(detail,link);
   const deadline = node('form','deadline-form');
-  const expiry = node('input'); expiry.type='text'; expiry.placeholder='YYYY-MM-DDTHH:MM:SSZ'; expiry.required=true; expiry.setAttribute('aria-label','FC 27 in-game expiry in UTC');
+  const expiry = node('input'); expiry.type='text'; expiry.placeholder='YYYY-MM-DDTHH:MM:SSZ'; expiry.required=true; expiry.setAttribute('aria-label',ui('FC 27 in-game expiry in UTC'));
   const save = node('button','',ui('Record in-game expiry')); save.type='submit';
   deadline.onsubmit = event => { event.preventDefault(); post('deadline',{group_id:group.id, expires_at:expiry.value.trim(), source:'fc27_in_game'}); };
   add(deadline,expiry,save); add(detail,node('p','fine',ui('Only enter an expiry observed in FC 27.')),deadline);
@@ -340,11 +428,24 @@ function groupCard(group, selected) {
     add(detail,node('h3','',ui('Stored progress for removed tasks')));
     selected.unmatched_progress.forEach(p => add(detail,node('p','',p.task_id + ': ' + tr(p.source_text) + ' · ' + number(p.count))));
   }
+  if(selected?.progress_history?.length){
+    const history=node('details','cycle-history');add(history,node('summary','',`${ui('Previous cycle progress')} · ${number(selected.progress_history.length)}`));
+    const cycles=new Map();selected.progress_history.forEach(entry=>{if(!cycles.has(entry.cycle_start_utc))cycles.set(entry.cycle_start_utc,[]);cycles.get(entry.cycle_start_utc).push(entry);});
+    cycles.forEach((entries,start)=>{
+      const section=node('div','cycle-history-period');add(section,node('h4','',`${label(group.repeat.cadence)} · ${fmt(start)}`));
+      entries.forEach(entry=>{
+        const sourceTask=group.tasks.find(task=>task.id===entry.task_id);
+        const quantity=sourceTask?.target?countUnit(entry.count,sourceTask.target.unit):`${number(entry.count)} ${ui('recorded')}`;
+        add(section,node('p','fine',`${tr(entry.source_text)} · ${quantity} · ${ui(entry.completed?'Completed':'Recorded')}`));
+      });add(history,section);
+    });add(detail,history);
+  }
   add(card,detail);
   return card;
 }
 function taskCard(task, stateTask, group) {
   const div = node('div','task');
+  div.dataset.taskId=task.id;div.tabIndex=-1;
   add(div,node('strong','',tr(task.title)),node('p','',tr(task.source_text)));
   if (language === 'ar' && tr(task.source_text) !== task.source_text) {
     const original = node('p','fine original-source',`${ui('English source')}: ${task.source_text}`);
@@ -358,13 +459,24 @@ function taskCard(task, stateTask, group) {
   if (stateTask?.progress && stateTask.progress.source_text !== task.source_text)
     add(div,node('p','fine',ui('When progress was first saved: ') + tr(stateTask.progress.source_text)));
   if (!stateTask) return div;
+  if (group.repeat.cadence && !stateTask.progress_key) {
+    add(div,node('p','fine',ui('Set a cycle start before recording progress for this challenge.')));
+    const setup=node('button','',ui('Set verified cycle start'));setup.type='button';setup.onclick=()=>cycleSettings(group.id);
+    add(div,setup);return div;
+  }
   const form = node('form','task-controls');
   const count = node('input'); count.type='number'; count.min='0'; count.step='1'; count.value=stateTask.progress?.count ?? 0; count.required=true; count.setAttribute('aria-label',(language === 'ar' ? 'العدد اليدوي لـ ' : 'Manual count for ') + tr(task.title));
+  const countLabel=node('label','count-label',ui('Manual count'));add(countLabel,count);
   const checkLabel = node('label'); const completed=node('input'); completed.type='checkbox'; completed.checked=stateTask.progress?.completed || false;
+  const reached=Boolean(task.target && stateTask.progress && stateTask.progress.count>=task.target.count && !stateTask.progress.completed);
+  const completionHint=node('p','fine completion-hint',ui('Counts are evidence you entered; confirm completion after checking the objective in game.'));
+  completionHint.hidden=!reached || Boolean(stateTask.progress?.completed);
   add(checkLabel,completed,document.createTextNode(' ' + ui('Completed')));
-  const save = node('button','',ui('Save progress')); save.type='submit';
-  form.onsubmit = e => { e.preventDefault(); post('progress',{task_id:task.id,count:Number(count.value),completed:completed.checked}); };
-  add(form,count,checkLabel,save); add(div,form);
+  const save = node('button',reached?'primary':'',ui(reached?'Confirm completion':'Save progress')); save.type='submit';
+  count.addEventListener('input',()=>{const targetReached=Boolean(task.target && Number(count.value)>=task.target.count);completionHint.hidden=!targetReached||completed.checked;save.textContent=ui(targetReached&&!completed.checked?'Confirm completion':'Save progress');save.classList.toggle('primary',targetReached&&!completed.checked);});
+  completed.addEventListener('change',()=>{completionHint.hidden=!reached||completed.checked;save.textContent=ui(reached&&!completed.checked?'Confirm completion':'Save progress');save.classList.toggle('primary',reached&&!completed.checked);});
+  form.onsubmit = e => { e.preventDefault(); pendingTaskFocus={groupId:group.id,taskId:task.id};post('progress',{task_id:task.id,count:Number(count.value),completed:completed.checked}); };
+  add(form,countLabel,checkLabel,save); add(div,completionHint,form);
   if (group.repeat.cadence) add(div,node('p','fine',stateTask.progress_key ? ui('Cycle: ') + fmt(snapshot.settings.cycles[group.id]) : ui('Enter an explicit cycle start in Modes & cycles before saving progress.')));
   return div;
 }
@@ -390,13 +502,32 @@ function renderBrowse() {
     (rewardFilter==='coins'&&g.prize.coins!=null)||(rewardFilter==='pack'&&g.prize.has_pack)));
   $('result-count').textContent=`${number(groups.length)} ${ui('challenges')}`;
   const list=$('browse-list');list.replaceChildren();
-  if (!groups.length) add(list,node('div','empty',ui('No objectives match these filters.')));
+  if (!groups.length) {
+    const empty=node('div','empty');add(empty,node('p','',ui('No challenges found. Try clearing the filters.')));
+    const clear=node('button','',ui('Clear filters'));clear.type='button';clear.onclick=()=>{
+      $('search').value='';$('sort').value='soonest';$('category').value='';$('availability').value='active';rewardFilter='all';renderBrowse();
+    };add(empty,clear);add(list,empty);
+  }
   groups.forEach(g=>add(list,groupCard(g,selectedMap().get(g.id))));
 }
 function renderSelected() {
-  const list=$('selected-list');list.replaceChildren(); const groups=groupMap();
-  if (!snapshot.view.selected_groups.length) add(list,node('div','empty',ui('Add a challenge from Browse.')));
-  snapshot.view.selected_groups.forEach(s => {
+  const list=$('selected-list'),summary=$('selected-summary');list.replaceChildren();summary.replaceChildren();const groups=groupMap();
+  if (!snapshot.view.selected_groups.length) {
+    const empty=node('div','empty');add(empty,node('p','',ui('Select a challenge to see its tasks and plan.')));
+    const browse=node('button','primary',ui('Browse challenges'));browse.type='button';browse.onclick=()=>switchTab('browse');add(empty,browse);add(list,empty);
+  } else {
+    const selected=snapshot.view.selected_groups;
+    const total=selected.reduce((sum,group)=>sum+group.tasks.length,0);
+    const done=selected.reduce((sum,group)=>sum+group.tasks.filter(task=>task.progress?.completed).length,0);
+    const bar=node('div','selected-overview');
+    const copy=node('div');add(copy,node('strong','',`${number(selected.length)} ${ui(selected.length===1?'selected challenge':'selected challenges')}`),node('span','',`${number(done)} ${ui('of')} ${number(total)} ${ui('tasks completed')}`));
+    const plan=node('button','',ui('Open plan'));plan.type='button';plan.onclick=()=>switchTab('plan');add(bar,copy,plan);add(summary,bar);
+  }
+  const ordered=[...snapshot.view.selected_groups].sort((a,b)=>{
+    const deadline=group=>group.effective_expires_at ? Date.parse(group.effective_expires_at) : Infinity;
+    return deadline(a)-deadline(b) || tr(a.title||'').localeCompare(tr(b.title||''),language);
+  });
+  ordered.forEach(s => {
     const g=groups.get(s.group_id);
     if (g) add(list,groupCard(g,s));
     else { const card=node('article','card'); add(card,node('h3','',s.title ? tr(s.title) : ui('Unknown group ')+s.group_id),node('p','',`${ui('Unavailable: ')}${label(s.availability)}. ${ui('Stored evidence remains private.')}`));flags(card,s.review_flags);const b=node('button','danger',ui('Remove from list'));b.onclick=()=>post('select',{group_id:s.group_id,selected:false});add(card,b);add(list,card); }
@@ -510,11 +641,14 @@ function planTaskDetail(task, cumulative=false, related=[]) {
   if (!cumulative) add(summary,node('span','plan-task-count',countUnit(task.remaining_qualifying_matches,'matches')));
   add(detail,summary);
   [task,...related].forEach(item=>{
-    add(detail,node('p','fine',ui('Source wording')+': '+tr(item.source_text)));
+    const source=node('div','plan-source-item');
+    add(source,node('p','fine',ui('Source wording')+': '+tr(item.source_text)));
     if (language==='ar' && tr(item.source_text)!==item.source_text) {
       const original=node('p','fine original-source',`${ui('English source')}: ${item.source_text}`);
-      original.lang='en';original.dir='ltr';add(detail,original);
+      original.lang='en';original.dir='ltr';add(source,original);
     }
+    const button=node('button','plan-task-link',ui('Record this task'));button.type='button';
+    button.onclick=()=>goToTask(item.group_id,item.task_id);add(source,button);add(detail,source);
   });
   const conditions=task.conditions || [];
   if (conditions.length) {
@@ -528,6 +662,47 @@ function planDisclosure(title, count, className) {
   const detail=node('details',className);
   add(detail,node('summary','',count == null ? ui(title) : `${ui(title)} · ${number(count)}`));
   return detail;
+}
+function openMatchCheckin(run) {
+  const dialog=$('checkin-dialog'),content=$('checkin-content'),form=$('checkin-form');
+  content.replaceChildren();$('checkin-error').textContent='';
+  const groups=selectedMap();
+  const stats=node('div','checkin-stats');
+  [['goals','Goals scored'],['assists','Assists made']].forEach(([key,title])=>{
+    const label=node('label','count-label',ui(title)),input=node('input');input.type='number';input.min='0';input.step='1';input.value='0';input.dataset.stat=key;add(label,input);add(stats,label);
+  });
+  add(content,node('h3','',ui('Match stats')),stats);
+  const taskList=node('div','checkin-task-list');
+  add(taskList,node('h3','',ui('Which tasks did this match advance?')));
+  run.match_tasks.forEach(task=>{
+    const label=node('label','checkin-task'),check=node('input');check.type='checkbox';check.dataset.taskId=task.task_id;
+    add(label,check,node('span','',`${tr(groups.get(task.group_id)?.title||task.group_id)} · ${planTaskText(task)} — ${tr(task.source_text)}`));add(taskList,label);
+  });
+  add(content,taskList);
+  const cumulative=run.cumulative_targets.filter(task=>['goals','assists'].includes(task.target?.unit));
+  if(cumulative.length){
+    const section=node('div','checkin-cumulative');add(section,node('h3','',ui('Cumulative progress')));
+    cumulative.forEach(task=>add(section,node('p','fine',`${tr(groups.get(task.group_id)?.title||task.group_id)} · ${tr(task.source_text)} (${ui('Updated from match stats')})`)));
+    add(content,section);
+  }
+  form.onsubmit=event=>{
+    event.preventDefault();
+    const entries=[...content.querySelectorAll('input[data-task-id]:checked')].map(input=>{
+      const taskId=input.dataset.taskId,groupId=taskId.split(':',1)[0],stateTask=groups.get(groupId)?.tasks.find(item=>item.id===taskId);
+      return {task_id:taskId,count:(stateTask?.progress?.count||0)+1,completed:Boolean(stateTask?.progress?.completed)};
+    });
+    const statsValues=Object.fromEntries([...content.querySelectorAll('input[data-stat]')].map(input=>[input.dataset.stat,Number(input.value)]));
+    cumulative.forEach(task=>{
+      const increment=statsValues[task.target.unit]||0;
+      if(increment<=0)return;
+      const stateTask=groups.get(task.group_id)?.tasks.find(item=>item.id===task.task_id);
+      entries.push({task_id:task.task_id,count:(stateTask?.progress?.count||0)+increment,completed:Boolean(stateTask?.progress?.completed)});
+    });
+    const unique=[...new Map(entries.map(entry=>[entry.task_id,entry])).values()];
+    if(!unique.length){$('checkin-error').textContent=ui('Choose at least one task or enter goals or assists that advance a cumulative target.');return;}
+    dialog.close();post('progress_batch',{entries:unique});
+  };
+  dialog.showModal();
 }
 function planTaskList(tasks) {
   const list=node('div','plan-checklist');
@@ -549,7 +724,8 @@ function renderPlan() {
   const runs=$('plan-runs'), extra=$('plan-extra'), summary=$('plan-summary');
   runs.replaceChildren();extra.replaceChildren();summary.replaceChildren();
   if (!snapshot.view.selected_groups.length) {
-    add(summary,node('p','empty',ui('Add challenges to make a plan.')));
+    const empty=node('div','empty');add(empty,node('p','',ui('Add challenges to make a plan.')));
+    const browse=node('button','primary',ui('Browse challenges'));browse.type='button';browse.onclick=()=>switchTab('browse');add(empty,browse);add(summary,empty);
     return;
   }
   const total=node('div','plan-total');
@@ -565,11 +741,17 @@ function renderPlan() {
     return expiry(a)-expiry(b) || a.qualifying_matches-b.qualifying_matches || planRouteText(a.mode_option).localeCompare(planRouteText(b.mode_option));
   });
   const issues=planIssues(p,ordered);
+  const selected=snapshot.view.selected_groups;
+  const allComplete=selected.length>0 && selected.every(group=>group.tasks.length>0 && group.tasks.every(task=>task.progress?.completed));
+  if(allComplete) {
+    const done=node('div','complete-state');
+    add(done,node('strong','',ui('All selected tasks completed')),node('p','',ui('You have finished every task currently on your list. Browse for another challenge or review upcoming cycles.')));
+    const browse=node('button','primary',ui('Browse challenges'));browse.type='button';browse.onclick=()=>switchTab('browse');add(done,browse);
+    add(summary,done);add(runs,node('p','empty',ui('No selected tasks remain.')));
+    return;
+  }
   issues.cycle.forEach((tasks,id)=>{
-    const openCycleSettings=()=>{
-      switchTab('settings');const input=document.querySelector(`#cycles input[data-group-id="${id}"]`);
-      input?.scrollIntoView({block:'center'});input?.focus();
-    };
+    const openCycleSettings=()=>cycleSettings(id);
     if(ordered.length) {
       const teaser=node('button','plan-cycle-teaser',`${tr(groups.get(id)?.title||id)} · ${ui('Not in plan until cycle start')}`);
       teaser.type='button';teaser.onclick=openCycleSettings;add(summary,teaser);
@@ -584,8 +766,19 @@ function renderPlan() {
     add(alert,waiting);add(ordered.length?extra:summary,alert);
   });
   if (!ordered.length) {
-    add(runs,node('p','empty',ui('No playable runs yet. Review modes, cycles, and tasks below.')));
-    const settings=node('button','ghost',ui('Set available modes'));settings.type='button';settings.onclick=()=>switchTab('settings');add(runs,settings);
+    const emptyCopy=issues.manual.length ? 'No match runs are needed for the remaining manual tasks.' :
+      issues.cycle.size ? 'Add a verified cycle start to include these repeat tasks in your plan.' :
+      issues.blocked.length ? 'Some selected tasks need review before they can be planned.' :
+      issues.cumulative.length ? 'Your remaining work is cumulative. Record progress as you play.' :
+      'No match runs are needed for your remaining tasks.';
+    add(runs,node('p','empty',ui(emptyCopy)));
+    const blockedModes=issues.blocked.filter(task=>task.reasons.includes('no_permitted_mode'));
+    if(blockedModes.length) {
+      const taskIds=new Set(blockedModes.map(task=>task.task_id));
+      const named=[...new Set(snapshot.groups.flatMap(group=>group.tasks.filter(task=>taskIds.has(task.id)).flatMap(task=>task.mode_options.map(option=>option.mode))))];
+      if(named.length) add(runs,node('p','fine',ui('Selected tasks list these modes: ')+named.map(label).join(' · ')));
+      const settings=node('button','ghost',ui('Set available modes'));settings.type='button';settings.onclick=()=>switchTab('settings');add(runs,settings);
+    }
   }
   ordered.forEach((run,index)=>{
     const card=node('article',index===0?'plan-run plan-next':'plan-run');
@@ -661,10 +854,10 @@ function renderPlan() {
     if(selected.mode==='squad_battles' && selected.minimum_difficulty && run.match_tasks.some(task=>task.conditions.some(c=>c.type==='result'&&c.value==='win')))
       add(context,node('p','fine',ui('For Squad Battles wins at this difficulty, play the weakest available team for a better chance of winning.')));
     add(card,context);
+    const checkin=node('button','plan-checkin',ui('Record a match'));checkin.type='button';checkin.onclick=()=>openMatchCheckin(run);add(card,checkin);
     const progress=node('button','plan-progress',ui('Record progress'));progress.type='button';
     progress.onclick=()=>{
-      openDetails.add(taskGroupIds[0]);renderSelected();switchTab('selected');
-      $('selected-list').querySelector(`[data-group-id="${taskGroupIds[0]}"]`)?.scrollIntoView({block:'start'});
+      goToTask(taskGroupIds[0],focusTasks[0]?.task_id);
     };
     add(card,progress);add(runs,card);
   });
@@ -673,12 +866,16 @@ function renderPlan() {
     issues.cumulative.forEach(t=>{
       const row=node('div','plan-extra-row');add(row,node('strong','',tr(t.source_text)));
       if(t.target) add(row,node('p','fine',`${ui('Remaining')}: ${countUnit(Math.max(0,t.target.count-(groups.get(t.group_id)?.tasks.find(x=>x.id===t.task_id)?.progress?.count||0)),t.target.unit)}`));
+      const record=node('button','plan-task-link',ui('Record this task'));record.type='button';record.onclick=()=>goToTask(t.group_id,t.task_id);add(row,record);
       add(section,row);
     });add(extra,section);
   }
   if(issues.manual.length) {
     const section=planDisclosure('Manual tasks',issues.manual.length,'plan-extra-section');
-    issues.manual.forEach(t=>add(section,node('div','plan-extra-row',tr(t.source_text))));
+    issues.manual.forEach(t=>{
+      const row=node('div','plan-extra-row');add(row,node('span','',tr(t.source_text)));
+      const record=node('button','plan-task-link',ui('Record this task'));record.type='button';record.onclick=()=>goToTask(t.group_id,t.task_id);add(row,record);add(section,row);
+    });
     add(extra,section);
   }
   if(issues.blocked.length) {
@@ -686,6 +883,11 @@ function renderPlan() {
     issues.blocked.forEach(t=>{
       const row=node('div','plan-extra-row');add(row,node('strong','',tr(t.source_text)));
       const reasons=node('div','reason-list');flags(reasons,t.reasons);add(row,reasons);add(section,row);
+      const selectedGroup=groups.get(t.group_id);
+      const stateTask=selectedGroup?.tasks.find(task=>task.id===t.task_id);
+      const sourceTask=groupMap().get(t.group_id)?.tasks.find(task=>task.id===t.task_id);
+      const reached=Boolean(t.reasons.includes('completion_needs_confirmation') || stateTask?.progress && sourceTask?.target && stateTask.progress.count>=sourceTask.target.count && !stateTask.progress.completed);
+      const action=node('button','plan-task-link',ui(reached?'Confirm completion':'Review this task'));action.type='button';action.onclick=()=>goToTask(t.group_id,t.task_id);add(row,action);
     });add(extra,section);
   }
   if(p.completed_tasks.length || p.unavailable_groups.length) {
@@ -696,19 +898,40 @@ function renderPlan() {
   }
 }
 function renderSettings() {
+  $('settings-form').classList.remove('dirty');
+  $('settings-dirty').textContent='';
   const modes=$('modes');modes.replaceChildren();
   snapshot.mode_catalog.forEach(mode=>{
     const row=node('div','mode-row');add(row,node('strong','',label(mode)));
     for(const [key,title] of [['available_modes','Available'],['excluded_modes','Exclude from plan']]){
-      const l=node('label'),box=node('input');box.type='checkbox';box.dataset.mode=mode;box.dataset.key=key;box.checked=snapshot.settings[key].includes(mode);add(l,box,document.createTextNode(ui(title)));add(row,l);
+      const l=node('label'),box=node('input');box.type='checkbox';box.dataset.mode=mode;box.dataset.key=key;box.checked=snapshot.settings[key].includes(mode);
+      box.setAttribute('aria-label',`${label(mode)}: ${ui(title)}`);add(l,box,document.createTextNode(ui(title)));add(row,l);
     }
     add(modes,row);
   });
   const cycles=$('cycles');cycles.replaceChildren();
-  snapshot.groups.filter(g=>g.repeat.cadence).forEach(g=>{
+  const selectedIds=new Set(snapshot.view.selected_groups.map(group=>group.group_id));
+  const repeat=snapshot.groups.filter(g=>g.repeat.cadence);
+  const selectedRepeat=repeat.filter(g=>selectedIds.has(g.id));
+  const otherRepeat=repeat.filter(g=>!selectedIds.has(g.id));
+  const selectedSection=node('div','cycle-section');add(selectedSection,node('h4','',ui('Selected repeat challenges')));
+  if (!selectedRepeat.length) add(selectedSection,node('p','fine',ui('No selected repeat challenges.')));
+  const otherSection=planDisclosure('Other repeat challenges',otherRepeat.length,'cycle-other');
+  const cycleRow=g=>{
     const row=node('label','cycle-row');add(row,node('strong','',tr(g.title)),node('small','',`${label(g.repeat.cadence)} · ID ${g.id}`));
-    const input=node('input');input.type='text';input.placeholder='YYYY-MM-DDTHH:MM:SSZ';input.value=snapshot.settings.cycles[g.id]||'';input.dataset.groupId=g.id;add(row,input);add(cycles,row);
-  });
+    const input=node('input');input.type='text';input.placeholder='YYYY-MM-DDTHH:MM:SSZ';input.value=snapshot.settings.cycles[g.id]||'';input.dataset.groupId=g.id;input.setAttribute('aria-label',`${tr(g.title)} ${ui('verified cycle start in UTC')}`);
+    const local=node('input');local.type='datetime-local';local.className='cycle-local';local.setAttribute('aria-label',`${tr(g.title)} ${ui('Local time picker')}`);
+    const preview=node('small','cycle-preview',input.value ? `${ui('Local time')}: ${fmt(input.value)}` : ui('Choose a local time to convert it to UTC.'));
+    local.addEventListener('input',()=>{if(!local.value)return;input.value=new Date(local.value).toISOString().replace('.000Z','Z');preview.textContent=`${ui('UTC value')}: ${input.value}`;input.dispatchEvent(new Event('input',{bubbles:true}));});
+    if(input.value){const date=new Date(input.value);if(Number.isFinite(date.getTime()))local.value=`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}T${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;}
+    const error=node('small','cycle-error');error.id=`cycle-error-${g.id}`;error.setAttribute('role','alert');input.setAttribute('aria-describedby',error.id);
+    input.addEventListener('input',()=>{error.textContent='';input.removeAttribute('aria-invalid');});
+    add(row,node('small','',ui('Verified start in UTC')),input,node('small','',ui('Local time picker')),local,preview,error);
+    return row;
+  };
+  selectedRepeat.forEach(g=>add(selectedSection,cycleRow(g)));
+  otherRepeat.forEach(g=>add(otherSection,cycleRow(g)));
+  add(cycles,selectedSection,otherSection);
   const backup=$('backup-controls');backup.replaceChildren();
   if (window.objectiveApi) {
     add(backup,node('h3','',ui('Your data')),node('p','fine',ui('Progress is saved only in this browser. Export a backup before clearing browser data or changing phones.')));
@@ -732,21 +955,40 @@ function render() {
   $('source-date').textContent=ui('Updated ')+fmt(snapshot.view.source_fetched_at);
   $('selected-count').textContent=String(snapshot.view.selected_groups.length);
   if(snapshot.source_mismatch) message(ui('Raw export and interpreted export are from different refreshes. Run the interpretation command before relying on this plan.'));
-  renderBrowse();renderSelected();renderPlan();renderSettings();switchTab(activeTab);
+  renderBrowse();renderSelected();renderPlan();renderSettings();renderNextStep();switchTab(activeTab);
 }
 if (typeof module !== 'undefined') module.exports={planCoreRequirements,planGroupOrder,planIssues,planTaskText};
 if (typeof document !== 'undefined') {
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
   ['search','sort','category','availability'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',()=>snapshot&&renderBrowse()));
   $('reload').onclick=()=>{message('');load();};
+  $('checkin-cancel').onclick=()=>$('checkin-dialog').close();
   $('language').onchange=e=>setLanguage(e.target.value);
   $('settings-form').onsubmit=e=>{
     e.preventDefault();
     const data={available_modes:[],excluded_modes:[],cycles:{}};
     document.querySelectorAll('#modes input').forEach(input=>{if(input.checked)data[input.dataset.key].push(input.dataset.mode);});
-    document.querySelectorAll('#cycles input').forEach(input=>{if(input.value.trim())data.cycles[input.dataset.groupId]=input.value.trim();});
+    const cycleInputs=[...document.querySelectorAll('#cycles input[data-group-id]')];
+    for(const input of cycleInputs){
+      const value=input.value.trim(),error=$(`cycle-error-${input.dataset.groupId}`);error.textContent='';input.removeAttribute('aria-invalid');
+      if(!value)continue;
+      if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|\+00:00)$/.test(value)||!Number.isFinite(Date.parse(value))){
+        error.textContent=ui('Enter a valid date and time with Z or +00:00, or use the local time picker.');input.setAttribute('aria-invalid','true');input.scrollIntoView({block:'center',behavior:'smooth'});input.focus({preventScroll:true});return;
+      }
+      data.cycles[input.dataset.groupId]=value;
+    }
     post('settings',data);
   };
+  $('settings-form').addEventListener('change',e=>{
+    if(e.target.matches('#modes input') && e.target.checked) {
+      const opposite=e.target.dataset.key==='available_modes'?'excluded_modes':'available_modes';
+      const other=[...document.querySelectorAll('#modes input')].find(input=>input.dataset.mode===e.target.dataset.mode&&input.dataset.key===opposite);
+      if(other) other.checked=false;
+    }
+    $('settings-form').classList.add('dirty');
+    $('settings-dirty').textContent=ui('Unsaved changes');
+  });
+  $('settings-form').addEventListener('input',()=>{$('settings-form').classList.add('dirty');$('settings-dirty').textContent=ui('Unsaved changes');});
   setLanguage(language);
   load();
 }

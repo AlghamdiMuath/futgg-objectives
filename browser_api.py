@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 
 from plan_objectives import build_plan
 from prize_summary import summarize
@@ -86,6 +87,25 @@ def update_json(action: str, data_json: str, state_json: str | None,
         cycle = settings["cycles"].get(group_id) if group["repeat"]["cycle_key_required"] else None
         record_progress(state, SOURCE, task_id, count=data["count"],
                         completed=data["completed"], updated_at=now, cycle_start_utc=cycle)
+    elif action == "progress_batch":
+        entries = data.get("entries")
+        if not isinstance(entries, list) or not entries:
+            raise ValueError("A match check-in needs at least one progress update")
+        candidate = deepcopy(state)
+        for entry in entries:
+            if not isinstance(entry, dict):
+                raise ValueError("Invalid match check-in entry")
+            task_id = str(entry["task_id"])
+            group_id = task_id.split(":", 1)[0]
+            if group_id not in candidate["selections"]:
+                raise ValueError("Select each challenge before recording progress")
+            group = next((g for g in SOURCE["groups"] if g["id"] == group_id), None)
+            if group is None:
+                raise ValueError("Task is no longer listed")
+            cycle = settings["cycles"].get(group_id) if group["repeat"]["cycle_key_required"] else None
+            record_progress(candidate, SOURCE, task_id, count=entry["count"],
+                            completed=entry["completed"], updated_at=now, cycle_start_utc=cycle)
+        state = candidate
     elif action == "deadline":
         if data.get("source") != "fc27_in_game":
             raise ValueError("Confirm that this expiry was observed in FC 27")

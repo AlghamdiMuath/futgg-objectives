@@ -37,6 +37,30 @@ class BrowserApiTests(unittest.TestCase):
             browser_api.update_json("progress", '{"task_id":"94:1696","count":1,"completed":false}',
                                     None, None, "2026-09-28T18:30:00Z")
 
+    def test_match_checkin_updates_multiple_tasks_atomically(self):
+        now = "2026-09-28T18:30:00Z"
+        selected = json.loads(browser_api.update_json("select", '{"group_id":"94","selected":true}',
+                                                       None, None, now))
+        checked_in = json.loads(browser_api.update_json("progress_batch", json.dumps({"entries": [
+            {"task_id": "94:1696", "count": 1, "completed": False},
+            {"task_id": "94:1695", "count": 2, "completed": False}]}),
+            json.dumps(selected["state"]), json.dumps(selected["settings"]), now))
+        saved = {task["id"]: task["progress"] for task in
+                 checked_in["snapshot"]["view"]["selected_groups"][0]["tasks"]}
+        self.assertEqual(saved["94:1696"]["count"], 1)
+        self.assertEqual(saved["94:1695"]["count"], 2)
+
+        with self.assertRaises(ValueError):
+            browser_api.update_json("progress_batch", json.dumps({"entries": [
+                {"task_id": "94:1696", "count": 3, "completed": False},
+                {"task_id": "94:1695", "count": -1, "completed": False}]}),
+                json.dumps(checked_in["state"]), json.dumps(checked_in["settings"]), now)
+        unchanged = json.loads(browser_api.snapshot_json(json.dumps(checked_in["state"]),
+                                                         json.dumps(checked_in["settings"]), now))
+        values = {task["id"]: task["progress"]["count"] for task in
+                  unchanged["view"]["selected_groups"][0]["tasks"] if task["progress"]}
+        self.assertEqual(values, {"94:1696": 1, "94:1695": 2})
+
 
 if __name__ == "__main__":
     unittest.main()

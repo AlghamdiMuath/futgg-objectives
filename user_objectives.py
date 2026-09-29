@@ -156,11 +156,20 @@ def selected_view(state: dict, interpreted: dict, now: str,
             flags.append("unlisted_source_group")
         tasks = []
         unmatched_progress = []
+        progress_history = []
         if group_id in groups:
             repeat = group["repeat"]
             cycle = cycles.get(group_id) if repeat["cycle_key_required"] else None
             if repeat["cycle_key_required"] and cycle is None:
                 flags.append("cycle_start_required")
+            if repeat["cycle_key_required"]:
+                progress_history = [{key: entry[key] for key in
+                                     ("task_id", "cycle_start_utc", "count", "completed", "updated_at", "source_text")}
+                                    for entry in state["progress"].values()
+                                    if entry["task_id"].split(":", 1)[0] == group_id
+                                    and entry["cycle_start_utc"] != cycle]
+                progress_history.sort(key=lambda entry: (entry["cycle_start_utc"] or "", entry["updated_at"]),
+                                      reverse=True)
             progress_by_task = {}
             threshold_progress = {}
             for task in group["tasks"]:
@@ -198,7 +207,8 @@ def selected_view(state: dict, interpreted: dict, now: str,
                        "selection": selection, "availability": availability,
                        "source_expires_at": raw_expiry, "deadline_corrections": evidence,
                        "effective_expires_at": effective, "review_flags": flags,
-                       "tasks": tasks, "unmatched_progress": unmatched_progress})
+                       "tasks": tasks, "unmatched_progress": unmatched_progress,
+                       "progress_history": progress_history})
     return {"schema_version": 1, "as_of": current, "source_fetched_at": interpreted["source_fetched_at"],
             "selected_groups": result}
 

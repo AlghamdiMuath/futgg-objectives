@@ -98,6 +98,9 @@ class UserObjectivesTests(unittest.TestCase):
                  {"61": "2026-09-28T07:00:00Z", "80": "2026-10-01T07:00:00Z"})["selected_groups"]}
         self.assertIsNone(new["61"]["tasks"][0]["progress"])
         self.assertIsNone(new["80"]["tasks"][0]["progress"])
+        self.assertEqual(new["61"]["progress_history"][0]["task_id"], "61:464")
+        self.assertEqual(new["61"]["progress_history"][0]["count"], 1)
+        self.assertEqual(new["80"]["progress_history"][0]["task_id"], "80:718")
         self.assertEqual(len(self.state["progress"]), 2)
         self.assertIn("cycle_start_required", layer.selected_view(self.state, SOURCE, NOW)["selected_groups"][0]["review_flags"])
 

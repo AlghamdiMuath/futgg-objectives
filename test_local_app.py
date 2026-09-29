@@ -66,6 +66,23 @@ class LocalAppTests(unittest.TestCase):
         self.assertTrue(self.app.settings.exists())
         self.assertEqual(self.app.state.stat().st_mode & 0o777, 0o600)
 
+    def test_match_checkin_saves_multiple_task_updates_in_one_request(self):
+        self.request("/api/select", {"group_id": "94", "selected": True})
+        status, data = self.request("/api/progress_batch", {"entries": [
+            {"task_id": "94:1696", "count": 1, "completed": False},
+            {"task_id": "94:1695", "count": 1, "completed": False}]})
+        self.assertEqual(status, 200)
+        progress = {task["id"]: task["progress"]["count"] for task in
+                    data["view"]["selected_groups"][0]["tasks"] if task["progress"]}
+        self.assertEqual(progress, {"94:1696": 1, "94:1695": 1})
+
+        saved_state = self.app.state.read_bytes()
+        status, _ = self.request("/api/progress_batch", {"entries": [
+            {"task_id": "94:1696", "count": 2, "completed": False},
+            {"task_id": "94:1695", "count": -1, "completed": False}]})
+        self.assertEqual(status, 400)
+        self.assertEqual(self.app.state.read_bytes(), saved_state)
+
     def test_deadline_conflicts_and_source_changes_are_visible(self):
         self.request("/api/select", {"group_id": "25", "selected": True})
         status, data = self.request("/api/deadline", {"group_id": "25", "expires_at": "2026-10-02T17:00:00Z", "source": "fc27_in_game"})

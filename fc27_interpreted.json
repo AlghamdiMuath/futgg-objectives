@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_schema_version": 3,
-  "source_fetched_at": "2026-10-01T06:48:35.383748Z",
+  "source_fetched_at": "2026-10-01T06:52:53.890803Z",
   "groups": [
     {
       "id": "73",
@@ -5948,27 +5948,5 @@
       "availability": "expired"
     }
   ],
-  "changes": [
-    {
-      "group_id": "72",
-      "change": "removed"
-    },
-    {
-      "group_id": "73",
-      "change": "added"
-    },
-    {
-      "group_id": "81",
-      "change": "updated",
-      "fields": [
-        "completion_rewards",
-        "available_rewards"
-      ],
-      "task_ids": []
-    },
-    {
-      "group_id": "90",
-      "change": "removed"
-    }
-  ]
+  "changes": []
 }

@@ -459,6 +459,7 @@ def build_daily_plan(interpreted: dict, state: dict, excluded_modes: set[str],
     modes = sorted({option["mode"] for recipe in batch for option in [recipe["route"]]})
     return {"as_of": now, "priority": priority, "recommendations": batch,
             "available_count": len(recipes), "has_more": len(recipes) > len(batch),
+            "required_match_count": plan["combined_plan"]["qualifying_match_count"],
             "unscheduled_count": len(unscheduled), "excluded_modes": sorted(excluded_modes),
             "considered_modes": modes, "optimization": plan["combined_plan"]["optimization"],
             "batch_score": {key: sum(recipe["score"][key] if isinstance(recipe["score"][key], int) else 0
@@ -471,14 +472,28 @@ def build_daily_plan(interpreted: dict, state: dict, excluded_modes: set[str],
 
 def complete_daily_batch(interpreted: dict, state: dict, excluded_modes: set[str],
                          priority: str, now: str, reviewed_rules: dict | None = None,
-                         match_count: int = 1) -> dict:
+                         match_count: int = 1, cumulative_counts: dict | None = None) -> dict:
     if not isinstance(match_count, int) or not 1 <= match_count <= 10:
         raise ValueError("Match count must be between 1 and 10")
+    if cumulative_counts is None:
+        cumulative_counts = {}
+    if not isinstance(cumulative_counts, dict):
+        raise ValueError("Cumulative counts must be an object")
     interpreted = _with_reviewed_rules(interpreted, reviewed_rules or REVIEWED_RULES)
     plan = build_daily_plan(interpreted, state, excluded_modes, priority, now, reviewed_rules)
     groups, tasks = _task_map(interpreted)
     view = _active_view(interpreted, state, now, excluded_modes, priority)
     progress = _task_progress(view)
+    chosen = {task_id for recipe in plan["recommendations"][:match_count]
+              for task_id in recipe["task_ids"]}
+    for task_id, amount in cumulative_counts.items():
+        if task_id not in chosen or task_id not in tasks:
+            raise ValueError("Cumulative task is not in this match")
+        target = tasks[task_id][1].get("target") or {}
+        if target.get("scope") != "cumulative" or target.get("unit") not in ("goals", "assists"):
+            raise ValueError("Expected a cumulative goal or assist task")
+        if type(amount) is not int or amount < 0:
+            raise ValueError("Cumulative count must be a nonnegative integer")
     increments: dict[str, int] = {}
     for recipe in plan["recommendations"][:match_count]:
         for task_id in recipe["task_ids"]:
@@ -487,11 +502,10 @@ def complete_daily_batch(interpreted: dict, state: dict, excluded_modes: set[str
             if target.get("unit") == "matches":
                 increments[task_id] = increments.get(task_id, 0) + 1
             elif target.get("scope") == "cumulative" and target.get("unit") in ("goals", "assists"):
-                per_match = max((condition.get("minimum_per_match", 1)
-                                 for condition in task.get("conditions", [])
-                                 if condition.get("type") in ("goals", "assists")), default=1)
-                increments[task_id] = increments.get(task_id, 0) + per_match
+                increments[task_id] = increments.get(task_id, 0) + cumulative_counts.get(task_id, 0)
     for task_id, amount in increments.items():
+        if not amount:
+            continue
         group, task = tasks[task_id]
         before = progress.get(task_id) or {"count": 0, "completed": False}
         target = task.get("target") or {}

@@ -20,6 +20,11 @@ const arabicUI = {
   'Score a goal':'سجّل هدفاً','Make an assist':'اصنع هدفاً','Use a cross for an assist':'اصنع هدفاً من عرضية',
   'Score at least':'سجّل على الأقل','Make at least':'اصنع على الأقل','Low Driven':'منخفضاً (Low Driven)',
   'No special action — just play this match.':'لا يلزم إجراء خاص؛ العب هذه المباراة.',
+  'required match':'مباراة مطلوبة','required matches':'مباريات مطلوبة',
+  'Record this match':'سجّل هذه المباراة','Enter what counted in this match.':'أدخل ما احتُسب في هذه المباراة.',
+  'Goals':'أهداف','Assists':'تمريرات حاسمة','Goals with ':'أهداف بواسطة ','Assists with ':'تمريرات بواسطة ',
+  'Cancel':'إلغاء','Save match':'احفظ المباراة','Target ':'الهدف ',
+  'Outside-box goals':'أهداف من خارج منطقة الجزاء',
   'Available recommendations':'المباريات المتاحة','Fewer than ten useful matches are available right now.':'تتوفر حالياً أقل من عشر مباريات مفيدة.','No eligible match objectives are active.':'لا توجد أهداف مباريات مؤهلة نشطة.',
   'Some current objectives need review, are not match objectives, or have no compatible allowed mode.':'بعض الأهداف الحالية تحتاج إلى مراجعة، أو ليست أهداف مباريات، أو لا يتوفر لها نمط متوافق.','Current objective progress leaves fewer than ten incomplete match recommendations.':'يترك التقدم الحالي أقل من عشر توصيات مباريات غير مكتملة.',
   'Must do in this match':'المطلوب في هذه المباراة','Also advances':'يتقدم أيضاً','Conditional results. Wins, event access, and play time are not guaranteed.':'النتائج مشروطة. الفوز وإمكانية دخول الفعالية ومدة اللعب غير مضمونة.',
@@ -496,6 +501,46 @@ function dailyActions(recipe) {
   if(conditions.some(condition=>condition.type==='assist_source'&&condition.value==='cross'))actions.push(ui('Use a cross for an assist'));
   return [...new Set(actions)];
 }
+function dailyCumulativeLabel(objective) {
+  const conditions=objective.conditions||[];
+  const unit=objective.target.unit;
+  const role=conditions.find(condition=>condition.type===(unit==='goals'?'scoring_player':'assisting_player'));
+  const style=conditions.find(condition=>condition.type==='goal_style');
+  const location=conditions.find(condition=>condition.type==='goal_location');
+  if(role)return `${ui(unit==='goals'?'Goals with ':'Assists with ')}${dailyTraitShort(role.trait)}`;
+  if(style)return `${ui(style.value)} ${ui('Goals')}`;
+  if(location?.value==='outside_the_box')return ui('Outside-box goals');
+  return ui(unit==='goals'?'Goals':'Assists');
+}
+function recordDailyMatch(recipe) {
+  const cumulative=recipe.objectives.filter(objective=>objective.target?.scope==='cumulative'
+    &&['goals','assists'].includes(objective.target.unit));
+  if(!cumulative.length){post('daily_done',{match_count:1});return;}
+  const dialog=node('dialog','daily-checkin');
+  add(dialog,node('h2','',ui('Record this match')),
+    node('p','fine',ui('Enter what counted in this match.')));
+  const fields=node('div','daily-checkin-fields');
+  cumulative.forEach(objective=>{
+    const field=node('label','daily-checkin-field');
+    add(field,node('strong','',dailyCumulativeLabel(objective)),
+      node('small','',`${tr(objective.group_title)} · ${ui('Target ')}${number(objective.target.count)}`));
+    const input=node('input');input.type='number';input.min='0';input.step='1';input.value='0';
+    input.dataset.taskId=objective.task_id;input.setAttribute('aria-label',dailyCumulativeLabel(objective));
+    add(field,input);add(fields,field);
+  });add(dialog,fields);
+  const actions=node('div','checkin-actions');
+  const cancel=node('button','',ui('Cancel'));cancel.type='button';cancel.onclick=()=>dialog.close();
+  const save=node('button','primary',ui('Save match'));save.type='button';save.onclick=()=>{
+    const counts={};
+    for(const input of fields.querySelectorAll('input')){
+      if(!input.reportValidity())return;
+      counts[input.dataset.taskId]=Number(input.value);
+    }
+    dialog.close();post('daily_done',{match_count:1,cumulative_counts:counts});
+  };
+  add(actions,cancel,save);add(dialog,actions);
+  dialog.onclose=()=>dialog.remove();document.body.append(dialog);dialog.showModal();
+}
 function renderDaily() {
   const target=$('daily-planner');target.replaceChildren();
   const settings=snapshot.settings, daily=snapshot.daily_plan;
@@ -523,13 +568,12 @@ function renderDaily() {
   });add(modeDetails,modeGrid);add(controls,rewardLabel,modeDetails);add(target,controls);
   if(!daily.recommendations.length){add(target,node('div','empty',ui('No playable matches for these choices.')));return;}
   const first=daily.recommendations[0];
-  const count=daily.recommendations.length;
   const hero=node('article','daily-hero');
   const routeMode=dailyRouteText({...first.route,event:null});
   add(hero,node('span','daily-eyebrow',`${ui('Next match')}${first.route.event?` · ${routeMode}`:''}`),
     node('h3','daily-hero-route',first.route.event?tr(first.route.event):routeMode));
-  add(hero,node('p','daily-plan-count',daily.has_more?ui('10+ matches ahead'):
-    `${number(count)} ${ui(count===1?'match lined up':'matches lined up')}`));
+  if(daily.required_match_count)add(hero,node('p','daily-plan-count',
+    `${number(daily.required_match_count)} ${ui(daily.required_match_count===1?'required match':'required matches')}`));
   const starters=(first.setup.squad_requirements||[]).map(dailyStarterText);
   const scorers=(first.setup.player_roles||[]).map(role=>`${role.role==='assisting_player'?ui('Assist with'):ui('Score with')} ${dailyTraitShort(role.trait)}${role.must_start?' '+ui('starter'):''}`);
   const setup=node('div','daily-hero-setup');
@@ -540,7 +584,7 @@ function renderDaily() {
   if(actions.length){const list=node('ul','daily-actions');actions.forEach(action=>add(list,node('li','',action)));add(hero,list);}
   else add(hero,node('p','daily-simple-action',ui('No special action — just play this match.')));
   const done=node('button','primary daily-done',ui('I completed this match as planned'));done.type='button';
-  done.onclick=()=>post('daily_done',{match_count:1});add(hero,done);
+  done.onclick=()=>recordDailyMatch(first);add(hero,done);
   add(target,hero);
 }
 function renderBackup() {

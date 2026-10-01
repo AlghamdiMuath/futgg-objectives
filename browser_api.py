@@ -138,7 +138,7 @@ def update_json(action: str, data_json: str, state_json: str | None,
     elif action == "daily_done":
         state = complete_daily_batch(SOURCE, state, set(settings["excluded_modes"]),
                                      settings["reward_priority"], now, settings["reviewed_rules"],
-                                     data.get("match_count", 1))
+                                     data.get("match_count", 1), data.get("cumulative_counts"))
     else:
         raise ValueError("Unknown action")
     return json.dumps({"state": state, "settings": settings,

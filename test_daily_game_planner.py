@@ -90,6 +90,40 @@ class DailyPlannerApiTests(unittest.TestCase):
         plan = json.loads(browser_api.snapshot_json(None, json.dumps(settings), NOW))["daily_plan"]
         self.assertEqual(len(plan["recommendations"]), 1)
 
+    def test_ten_english_goals_can_finish_in_one_of_three_required_matches(self):
+        scenario = pack_scenario([("English goals event", "100 SP")])
+        group = scenario["groups"][0]
+        play = group["tasks"][0]
+        play["target"]["count"] = 3
+        play["source_text"] = "Play 3 matches in English goals event Live Event."
+        english = copy.deepcopy(play)
+        english.update({"id": f"{group['id']}:2",
+                        "source_text": "Score 10 goals using an English player.",
+                        "target": {"unit": "goals", "count": 10, "scope": "cumulative"},
+                        "conditions": [{"type": "scoring_player", "trait": "English", "must_start": True}],
+                        "rewards": [], "source_fingerprint": "english-goals"})
+        group["tasks"].append(english)
+        browser_api.initialize(json.dumps(scenario))
+        settings = json.dumps({**browser_api.DEFAULT_SETTINGS, "reward_priority": "season_points"})
+        before = json.loads(browser_api.snapshot_json(None, settings, NOW))["daily_plan"]
+        self.assertEqual(before["required_match_count"], 3)
+        self.assertEqual(len(before["recommendations"]), 3)
+
+        result = json.loads(browser_api.update_json("daily_done", json.dumps({
+            "match_count": 1, "cumulative_counts": {english["id"]: 10}}), None, settings, NOW))
+        progress = next(item for item in result["state"]["progress"].values()
+                        if item["task_id"] == english["id"])
+        self.assertEqual(progress["count"], 10)
+        self.assertTrue(progress["completed"])
+        after = result["snapshot"]["daily_plan"]
+        self.assertEqual(after["required_match_count"], 2)
+        self.assertFalse(any(english["id"] in recipe["task_ids"]
+                             for recipe in after["recommendations"]))
+
+        no_goals = json.loads(browser_api.update_json("daily_done", "{}", None, settings, NOW))
+        self.assertFalse(any(item["task_id"] == english["id"]
+                             for item in no_goals["state"]["progress"].values()))
+
 
 if __name__ == "__main__":
     unittest.main()

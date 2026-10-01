@@ -140,27 +140,6 @@ class App:
                                     completed=entry["completed"], updated_at=timestamp)
                 state = candidate
                 save_state(self.state, state)
-            elif action == "progress_batch":
-                entries = data.get("entries")
-                if not isinstance(entries, list) or not entries:
-                    raise ValueError("A match check-in needs at least one progress update")
-                candidate = deepcopy(state)
-                for entry in entries:
-                    if not isinstance(entry, dict):
-                        raise ValueError("Invalid match check-in entry")
-                    task_id = str(entry["task_id"])
-                    group_id = task_id.split(":", 1)[0]
-                    if group_id not in candidate["selections"]:
-                        raise ValueError("Select each challenge before recording progress")
-                    group = next((g for g in interpreted["groups"] if g["id"] == group_id), None)
-                    if group is None:
-                        raise ValueError("Task is no longer listed")
-                    cycle = settings["cycles"].get(group_id) if group["repeat"]["cycle_key_required"] else None
-                    record_progress(candidate, interpreted, task_id, count=entry["count"],
-                                    completed=entry["completed"], updated_at=timestamp,
-                                    cycle_start_utc=cycle)
-                state = candidate
-                save_state(self.state, state)
             elif action == "deadline":
                 if data.get("source") != "fc27_in_game":
                     raise ValueError("Confirm that this expiry was observed in FC 27")

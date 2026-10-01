@@ -7,7 +7,6 @@ import argparse
 import hashlib
 import json
 import re
-from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -217,20 +216,7 @@ def interpret_task(task: dict, group: dict, titles: dict[str, str]) -> dict:
 def repeat_info(group: dict) -> dict:
     title = group["title"].lower()
     cadence = "daily" if "daily" in title else "weekly" if "weekly" in title else None
-    return {"cadence": cadence, "reset_schedule": None, "cycle_key_required": cadence is not None}
-
-
-def progress_key(task_id: str, cycle_start: str | None, repeat: dict) -> str:
-    """Build an identity for private progress only after a reset boundary is known."""
-    if repeat["cycle_key_required"]:
-        if not cycle_start:
-            raise ValueError("Repeat objective requires an authoritative cycle start")
-        parsed = datetime.fromisoformat(cycle_start.replace("Z", "+00:00"))
-        if parsed.utcoffset() is None:
-            raise ValueError("Cycle start must include a timezone")
-        cycle_start = parsed.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-        return f"{task_id}@{cycle_start}"
-    return task_id
+    return {"cadence": cadence, "reset_schedule": None, "cycle_key_required": False}
 
 
 def eligible_mode_options(options: list[dict], excluded: set[str], available_modes: set[str]) -> list[dict]:

@@ -8,7 +8,7 @@ from copy import deepcopy
 from plan_objectives import build_plan
 from prize_summary import summarize
 from user_objectives import (correct_deadline, new_state, record_progress, select,
-                             selected_view, unselect, utc)
+                             selected_view, unselect, utc, reconcile_repeats)
 
 MODES = ("squad_battles", "rivals", "champions", "rush", "live_events",
          "pve_live_events", "pvp_live_events", "draft", "co_op", "fc_pro_open_ladder")
@@ -51,7 +51,7 @@ def _settings(value: str | None) -> dict:
 
 
 def _snapshot(state: dict, settings: dict, now: str) -> dict:
-    view = selected_view(state, SOURCE, now, settings["cycles"])
+    view = selected_view(state, SOURCE, now)
     plan = build_plan(SOURCE, view, set(settings["available_modes"]), set(settings["excluded_modes"]))
     return {"groups": [{**group, "prize": summarize(group)} for group in SOURCE["groups"]],
             "removed_groups": SOURCE.get("removed_groups", []),
@@ -60,12 +60,22 @@ def _snapshot(state: dict, settings: dict, now: str) -> dict:
 
 
 def snapshot_json(state_json: str | None, settings_json: str | None, now: str) -> str:
-    return json.dumps(_snapshot(_state(state_json), _settings(settings_json), now), ensure_ascii=False)
+    state, settings = _state(state_json), _settings(settings_json)
+    changed = reconcile_repeats(state, SOURCE, settings["cycles"])
+    legacy_settings = bool(settings["cycles"])
+    settings["cycles"] = {}
+    result = _snapshot(state, settings, now)
+    if changed:
+        result["private_state"] = state
+    if legacy_settings:
+        result["private_settings"] = settings
+    return json.dumps(result, ensure_ascii=False)
 
 
 def update_json(action: str, data_json: str, state_json: str | None,
                 settings_json: str | None, now: str) -> str:
     state, settings, data = _state(state_json), _settings(settings_json), json.loads(data_json)
+    reconcile_repeats(state, SOURCE, settings["cycles"])
     if not isinstance(data, dict):
         raise ValueError("Expected a JSON object")
     if action == "select":
@@ -84,9 +94,8 @@ def update_json(action: str, data_json: str, state_json: str | None,
         group = next((g for g in SOURCE["groups"] if g["id"] == group_id), None)
         if group is None:
             raise ValueError("Task is no longer listed")
-        cycle = settings["cycles"].get(group_id) if group["repeat"]["cycle_key_required"] else None
         record_progress(state, SOURCE, task_id, count=data["count"],
-                        completed=data["completed"], updated_at=now, cycle_start_utc=cycle)
+                        completed=data["completed"], updated_at=now)
     elif action == "progress_batch":
         entries = data.get("entries")
         if not isinstance(entries, list) or not entries:
@@ -102,9 +111,8 @@ def update_json(action: str, data_json: str, state_json: str | None,
             group = next((g for g in SOURCE["groups"] if g["id"] == group_id), None)
             if group is None:
                 raise ValueError("Task is no longer listed")
-            cycle = settings["cycles"].get(group_id) if group["repeat"]["cycle_key_required"] else None
             record_progress(candidate, SOURCE, task_id, count=entry["count"],
-                            completed=entry["completed"], updated_at=now, cycle_start_utc=cycle)
+                            completed=entry["completed"], updated_at=now)
         state = candidate
     elif action == "deadline":
         if data.get("source") != "fc27_in_game":
@@ -112,11 +120,8 @@ def update_json(action: str, data_json: str, state_json: str | None,
         correct_deadline(state, SOURCE, str(data["group_id"]), data["expires_at"], now)
     elif action == "settings":
         candidate = {"schema_version": 1, "available_modes": data["available_modes"],
-                     "excluded_modes": data["excluded_modes"], "cycles": data["cycles"]}
+                     "excluded_modes": data["excluded_modes"], "cycles": {}}
         settings = _settings(json.dumps(candidate))
-        valid_groups = {g["id"] for g in SOURCE["groups"] if g["repeat"]["cycle_key_required"]}
-        if any(group_id not in valid_groups for group_id in settings["cycles"]):
-            raise ValueError("Cycles must belong to a listed daily or weekly group")
     else:
         raise ValueError("Unknown action")
     return json.dumps({"state": state, "settings": settings,

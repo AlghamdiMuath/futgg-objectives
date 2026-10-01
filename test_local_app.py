@@ -46,21 +46,17 @@ class LocalAppTests(unittest.TestCase):
         except HTTPError as exc:
             return exc.code, json.loads(exc.read()) if exc.headers.get("Content-Type", "").startswith("application/json") else {}
 
-    def test_selection_progress_cycles_and_exports_stay_separate(self):
+    def test_selection_progress_without_dates_and_exports_stay_separate(self):
         original = self.source.read_bytes()
         status, data = self.request("/api/select", {"group_id": "61", "selected": True})
         self.assertEqual(status, 200)
         self.assertEqual(data["view"]["selected_groups"][0]["availability"], "active")
         status, data = self.request("/api/progress", {"task_id": "61:464", "count": 1, "completed": True})
-        self.assertEqual(status, 400)
-        self.assertIn("cycle start", data["error"])
-        cycle = "2026-09-27T07:00:00Z"
-        status, data = self.request("/api/settings", {"available_modes": ["rush"], "excluded_modes": [], "cycles": {"61": cycle}})
         self.assertEqual(status, 200)
-        status, data = self.request("/api/progress", {"task_id": "61:464", "count": 1, "completed": True})
-        self.assertEqual(status, 200)
-        self.assertEqual(data["view"]["selected_groups"][0]["tasks"][0]["progress_key"], "61:464@" + cycle)
+        self.assertTrue(data["view"]["selected_groups"][0]["tasks"][0]["progress_key"].startswith("61:464@"))
         self.assertTrue(any(t["task_id"] == "61:464" for t in data["plan"]["completed_tasks"]))
+        status, data = self.request("/api/settings", {"available_modes": ["rush"], "excluded_modes": []})
+        self.assertEqual(status, 200)
         self.assertEqual(self.source.read_bytes(), original)
         self.assertTrue(self.app.state.exists())
         self.assertTrue(self.app.settings.exists())
@@ -117,7 +113,8 @@ class LocalAppTests(unittest.TestCase):
         self.assertEqual(groups["113"]["prize"]["pack_quality"], {"minimum_rating": 83, "player_count": 4})
         self.assertEqual(groups["87"]["prize"]["coins"], 16000)
         self.assertEqual(groups["81"]["prize"]["other_players"], ["Jesús Corona"])
-        self.assertEqual(groups["72"]["prize"]["pack_quality"]["minimum_rating"], 84)
+        self.assertEqual(next(g for g in groups.values() if g["title"] == "Weekly Rush Points")
+                         ["prize"]["pack_quality"]["minimum_rating"], 84)
 
     def test_arabic_catalog_is_served_without_changing_source(self):
         original = self.source.read_bytes()

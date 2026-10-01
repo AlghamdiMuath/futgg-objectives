@@ -18,11 +18,11 @@ class PlanningTests(unittest.TestCase):
     def setUp(self):
         self.state = users.new_state()
 
-    def plan(self, group_ids, modes, excluded=(), cycles=None, source=SOURCE, now=NOW):
+    def plan(self, group_ids, modes, excluded=(), source=SOURCE, now=NOW):
         for group_id in group_ids:
             if group_id not in self.state["selections"]:
                 users.select(self.state, source, group_id, NOW)
-        view = users.selected_view(self.state, source, now, cycles)
+        view = users.selected_view(self.state, source, now)
         return planner.build_plan(source, view, set(modes), set(excluded))
 
     def test_identical_squad_battles_win_tiers_share_fifteen_qualifying_matches(self):
@@ -36,22 +36,16 @@ class PlanningTests(unittest.TestCase):
                          {"94:1696", "94:1695", "94:1694"})
         self.assertEqual(result["unscheduled_tasks"], [])
 
-    def test_current_cycle_progress_only_and_excluded_mode_alternative(self):
+    def test_repeat_progress_without_date_and_excluded_mode_alternative(self):
         users.record_progress(self.state, SOURCE, "65:474", count=4, completed=False,
-                              updated_at=NOW, cycle_start_utc="2026-09-24T07:00:00Z")
-        old = self.plan(["65"], ["squad_battles", "rivals", "rush"], ["squad_battles"],
-                        {"65": "2026-09-24T07:00:00Z"})
+                              updated_at=NOW)
+        old = self.plan(["65"], ["squad_battles", "rivals", "rush"], ["squad_battles"])
         win = next(block for block in old["match_blocks"] if any(t["task_id"] == "65:474" for t in block["tasks"]))
         self.assertEqual(win["qualifying_matches"], 6)
         self.assertEqual(win["mode_option"]["mode"], "rivals")
-        new = self.plan(["65"], ["squad_battles", "rivals", "rush"], ["squad_battles"],
-                        {"65": "2026-09-25T07:00:00Z"})
-        new_win = next(block for block in new["match_blocks"] if any(t["task_id"] == "65:474" for t in block["tasks"]))
-        self.assertEqual(new_win["qualifying_matches"], 10)
-        self.assertIn("65:472", {t["task_id"] for t in new["unscheduled_tasks"]})
         without_cycle = self.plan(["65"], ["rivals"])
-        self.assertEqual(without_cycle["match_blocks"], [])
-        self.assertIn("group_cycle_start_required", without_cycle["unscheduled_tasks"][0]["reasons"])
+        self.assertTrue(without_cycle["match_blocks"])
+        self.assertNotIn("group_cycle_start_required", [reason for task in without_cycle["unscheduled_tasks"] for reason in task["reasons"]])
 
     def test_verified_implicit_mode_is_planned_and_other_reviews_are_reported(self):
         result = self.plan(["25", "113", "58"], ["live_events", "rivals", "squad_battles"])
@@ -73,13 +67,15 @@ class PlanningTests(unittest.TestCase):
         self.assertEqual(block["qualifying_matches"], 5)
 
     def test_rush_point_ladder_shares_the_highest_recorded_weekly_count(self):
-        users.select(self.state, SOURCE, "72", NOW)
-        cycle = "2026-09-24T07:00:00Z"
-        users.record_progress(self.state, SOURCE, "72:510", count=35000, completed=True,
-                              updated_at=NOW, cycle_start_utc=cycle)
-        view = users.selected_view(self.state, SOURCE, NOW, {"72": cycle})
+        group = next(g for g in SOURCE["groups"] if g["title"] == "Weekly Rush Points")
+        highest = max(group["tasks"], key=lambda task: task["target"]["count"])
+        count = highest["target"]["count"]
+        users.select(self.state, SOURCE, group["id"], NOW)
+        users.record_progress(self.state, SOURCE, highest["id"], count=count, completed=True,
+                              updated_at=NOW)
+        view = users.selected_view(self.state, SOURCE, NOW)
         tasks = view["selected_groups"][0]["tasks"]
-        self.assertTrue(all(task["progress"]["count"] == 35000 and task["progress"]["completed"]
+        self.assertTrue(all(task["progress"]["count"] == count and task["progress"]["completed"]
                             for task in tasks))
 
     def test_effective_expiry_conflict_and_source_change_block(self):
@@ -142,7 +138,7 @@ class PlanningTests(unittest.TestCase):
                          sum(run["qualifying_matches"] for run in runs))
 
     def test_selected_groups_share_mode_and_any_fut_targets(self):
-        result = self.plan(["94", "65"], ["squad_battles"], cycles={"65": "2026-09-24T07:00:00Z"})
+        result = self.plan(["94", "65"], ["squad_battles"])
         runs = result["combined_plan"]["runs"]
         self.assertEqual(len(runs), 1)
         self.assertEqual(runs[0]["qualifying_matches"], 15)
@@ -205,19 +201,19 @@ class PlanningTests(unittest.TestCase):
         self.assertEqual(result["qualifying_match_count"], 3)
         self.assertEqual(result["runs"][0]["route_options"], [rivals, squad])
 
-    def test_daily_progress_requires_explicit_current_cycle(self):
+    def test_daily_progress_needs_no_date_and_resets_on_source_change(self):
         users.record_progress(self.state, SOURCE, "61:464", count=1, completed=True,
-                              updated_at=NOW, cycle_start_utc="2026-09-26T07:00:00Z")
-        old = self.plan(["61"], ["rush"], cycles={"61": "2026-09-26T07:00:00Z"},
-                        now="2026-09-26T12:30:06Z")
+                              updated_at=NOW)
+        old = self.plan(["61"], ["rush"])
         self.assertIn("61:464", {task["task_id"] for task in old["completed_tasks"]})
-        current = self.plan(["61"], ["rush"], cycles={"61": "2026-09-27T07:00:00Z"})
+        changed = copy.deepcopy(SOURCE)
+        group = next(g for g in changed["groups"] if g["id"] == "61")
+        group["tasks"][0]["source_text"] += " New edition."
+        self.assertTrue(users.reconcile_repeats(self.state, changed))
+        current = self.plan(["61"], ["rush"], source=changed)
         play = next(block for block in current["match_blocks"] if any(t["task_id"] == "61:464" for t in block["tasks"]))
         self.assertEqual(play["qualifying_matches"], 1)
         self.assertEqual(play["mode_option"]["mode"], "rush")
-        future = self.plan(["61"], ["rush"], cycles={"61": "2026-09-28T07:00:00Z"})
-        self.assertFalse(future["match_blocks"])
-        self.assertIn("cycle_starts_in_future", future["unscheduled_tasks"][0]["reasons"])
 
     def test_stale_view_is_rejected_and_completed_task_is_not_scheduled(self):
         users.select(self.state, SOURCE, "94", NOW)

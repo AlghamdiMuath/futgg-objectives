@@ -10,7 +10,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from interpret_objectives import progress_key
+from interpret_objectives import fingerprint
 
 SCHEMA_VERSION = 1
 
@@ -58,8 +58,72 @@ def select(state: dict, interpreted: dict, group_id: str, selected_at: str) -> N
     if group is None:
         raise ValueError(f"Group {group_id} is not currently listed")
     state["selections"].setdefault(group_id, {
-        "selected_at": utc(selected_at), "source_fingerprint": group["source_fingerprint"]
+        "selected_at": utc(selected_at), "source_fingerprint": group["source_fingerprint"],
+        "repeat_identity": repeat_identity(group) if group["repeat"]["cadence"] else None,
+        "title": group["title"], "cadence": group["repeat"]["cadence"],
     })
+
+
+def repeat_identity(group: dict) -> str:
+    """Identify a published repeat objective without using the fetch time or rewards."""
+    return fingerprint({"group_id": group["id"], "starts_at": group.get("starts_at"),
+                        "tasks": sorted((task["id"], task["source_text"]) for task in group["tasks"])})
+
+
+def reconcile_repeats(state: dict, interpreted: dict, legacy_cycles: dict | None = None) -> bool:
+    """Switch selected repeat objectives when the source replaces them."""
+    groups = groups_by_id(interpreted)
+    changed = False
+    for old_id, selection in list(state["selections"].items()):
+        old = groups.get(old_id)
+        title = selection.get("title") or (old or {}).get("title") or next(
+            (g["title"] for g in interpreted.get("removed_groups", []) if g["id"] == old_id), None)
+        cadence = selection.get("cadence") or (old or {}).get("repeat", {}).get("cadence") or (
+            "daily" if title and "daily" in title.casefold() else
+            "weekly" if title and "weekly" in title.casefold() else None)
+        if not cadence:
+            continue
+        candidates = [g for g in groups.values() if g["repeat"]["cadence"] == cadence
+                      and g["title"].casefold() == (title or "").casefold()]
+        current = old if old and old["repeat"]["cadence"] == cadence else None
+        newer = [g for g in candidates if current and g["id"] != old_id
+                 and (g.get("starts_at") or "") > (current.get("starts_at") or "")]
+        replacement = newer[0] if len(newer) == 1 else current or (candidates[0] if len(candidates) == 1 else None)
+        if replacement is None:
+            if old is None:
+                del state["selections"][old_id]
+                state["progress"] = {k: v for k, v in state["progress"].items()
+                                     if v["task_id"].split(":", 1)[0] != old_id}
+                changed = True
+            continue
+        identity = repeat_identity(replacement)
+        old_identity = selection.get("repeat_identity")
+        reset_progress = old_identity != identity or old_id != replacement["id"]
+        if old_identity is None:
+            # Legacy progress belongs only to the cycle explicitly selected by its owner.
+            legacy = (legacy_cycles or {}).get(old_id) if selection.get("source_fingerprint") == replacement["source_fingerprint"] else None
+            for task in replacement["tasks"]:
+                old_key = f'{task["id"]}@{legacy}' if legacy else None
+                if old_key in state["progress"]:
+                    state["progress"][f'{task["id"]}@{identity}'] = {
+                        **state["progress"][old_key], "cycle_start_utc": None}
+            changed = True
+        elif old_identity != identity or old_id != replacement["id"]:
+            changed = True
+        if selection.get("source_fingerprint") != replacement["source_fingerprint"]:
+            changed = True
+        if reset_progress:
+            state["progress"] = {k: v for k, v in state["progress"].items()
+                                 if v["task_id"].split(":", 1)[0] != old_id
+                                 or k.endswith("@" + identity)}
+        if old_id != replacement["id"]:
+            del state["selections"][old_id]
+            if replacement["id"] in state["selections"]:
+                continue
+            state["selections"][replacement["id"]] = selection
+        selection.update({"repeat_identity": identity, "source_fingerprint": replacement["source_fingerprint"],
+                          "title": replacement["title"], "cadence": cadence})
+    return changed
 
 
 def unselect(state: dict, group_id: str) -> None:
@@ -85,15 +149,13 @@ def record_progress(state: dict, interpreted: dict, task_id: str, *, count: int,
     group = next((g for g in groups_by_id(interpreted).values() if any(t["id"] == task_id for t in g["tasks"])), None)
     if group is None:
         raise ValueError(f"Unknown active task {task_id}")
-    repeat = group["repeat"]
-    if not repeat["cycle_key_required"] and cycle_start_utc is not None:
-        raise ValueError("Nonrepeat progress cannot have a cycle start")
-    cycle = utc(cycle_start_utc) if cycle_start_utc is not None else None
-    key = progress_key(task_id, cycle, repeat)
+    if cycle_start_utc is not None:
+        raise ValueError("Cycle dates are no longer used for progress")
+    key = f'{task_id}@{repeat_identity(group)}' if group["repeat"]["cadence"] else task_id
     task = next(t for t in group["tasks"] if t["id"] == task_id)
     original = state["progress"].get(key)
     state["progress"][key] = {
-        "task_id": task_id, "cycle_start_utc": cycle, "count": count, "completed": completed,
+        "task_id": task_id, "cycle_start_utc": None, "count": count, "completed": completed,
         "updated_at": utc(updated_at),
         "source_fingerprint": original["source_fingerprint"] if original else task["source_fingerprint"],
         "source_text": original["source_text"] if original else task["source_text"],
@@ -116,13 +178,11 @@ def cumulative_threshold_family(task: dict) -> tuple[str, str] | None:
     return target["unit"], re.sub(r"\d[\d,]*", "#", action.casefold())
 
 
-def selected_view(state: dict, interpreted: dict, now: str,
-                  cycles: dict[str, str] | None = None) -> dict:
+def selected_view(state: dict, interpreted: dict, now: str) -> dict:
     """Resolve availability at read time; never copy private data into an export."""
     current = utc(now)
     groups = groups_by_id(interpreted)
     removed = {g["id"]: g for g in interpreted.get("removed_groups", [])}
-    cycles = {gid: utc(start) for gid, start in (cycles or {}).items()}
     result = []
     for group_id, selection in state["selections"].items():
         group = groups.get(group_id) or removed.get(group_id)
@@ -159,21 +219,11 @@ def selected_view(state: dict, interpreted: dict, now: str,
         progress_history = []
         if group_id in groups:
             repeat = group["repeat"]
-            cycle = cycles.get(group_id) if repeat["cycle_key_required"] else None
-            if repeat["cycle_key_required"] and cycle is None:
-                flags.append("cycle_start_required")
-            if repeat["cycle_key_required"]:
-                progress_history = [{key: entry[key] for key in
-                                     ("task_id", "cycle_start_utc", "count", "completed", "updated_at", "source_text")}
-                                    for entry in state["progress"].values()
-                                    if entry["task_id"].split(":", 1)[0] == group_id
-                                    and entry["cycle_start_utc"] != cycle]
-                progress_history.sort(key=lambda entry: (entry["cycle_start_utc"] or "", entry["updated_at"]),
-                                      reverse=True)
+            identity = repeat_identity(group) if repeat["cadence"] else None
             progress_by_task = {}
             threshold_progress = {}
             for task in group["tasks"]:
-                key = progress_key(task["id"], cycle, repeat) if not repeat["cycle_key_required"] or cycle else None
+                key = f'{task["id"]}@{identity}' if identity else task["id"]
                 progress = state["progress"].get(key) if key else None
                 progress_by_task[task["id"]] = (key, progress)
                 family = cumulative_threshold_family(task)
@@ -186,7 +236,7 @@ def selected_view(state: dict, interpreted: dict, now: str,
                 family = cumulative_threshold_family(task)
                 aggregate = threshold_progress.get(family) if family else None
                 if aggregate and (progress is None or aggregate["count"] > progress["count"]):
-                    progress = {"task_id": task["id"], "cycle_start_utc": cycle,
+                    progress = {"task_id": task["id"], "cycle_start_utc": None,
                                 "count": aggregate["count"],
                                 "completed": aggregate["count"] >= task["target"]["count"],
                                 "updated_at": aggregate["updated_at"],
@@ -198,8 +248,9 @@ def selected_view(state: dict, interpreted: dict, now: str,
                 tasks.append({"id": task["id"], "source_text": task["source_text"],
                               "progress_key": key, "progress": progress, "review_flags": task_flags})
             current_ids = {task["id"] for task in group["tasks"]}
-            unmatched_progress = [entry for entry in state["progress"].values()
+            unmatched_progress = [entry for key, entry in state["progress"].items()
                                   if entry["task_id"].split(":", 1)[0] == group_id
+                                  and (not identity or key.endswith("@" + identity))
                                   and entry["task_id"] not in current_ids]
             if unmatched_progress:
                 flags.append("stored_task_unlisted")
@@ -228,9 +279,7 @@ def main() -> None:
     progress.add_argument("task_id")
     progress.add_argument("count", type=int)
     progress.add_argument("--completed", action="store_true")
-    progress.add_argument("--cycle-start-utc")
     view = commands.add_parser("view")
-    view.add_argument("--cycle", action="append", default=[], metavar="GROUP_ID=UTC_START")
     args = parser.parse_args()
     interpreted = json.loads(args.source.read_text(encoding="utf-8"))
     state = load_state(args.state)
@@ -242,11 +291,13 @@ def main() -> None:
     elif args.command == "deadline":
         correct_deadline(state, interpreted, args.group_id, args.expires_at, now)
     elif args.command == "progress":
+        reconcile_repeats(state, interpreted)
         record_progress(state, interpreted, args.task_id, count=args.count, completed=args.completed,
-                        updated_at=now, cycle_start_utc=args.cycle_start_utc)
+                        updated_at=now)
     else:
-        cycles = dict(item.split("=", 1) for item in args.cycle)
-        print(json.dumps(selected_view(state, interpreted, now, cycles), ensure_ascii=False, indent=2))
+        if reconcile_repeats(state, interpreted):
+            save_state(args.state, state)
+        print(json.dumps(selected_view(state, interpreted, now), ensure_ascii=False, indent=2))
         return
     save_state(args.state, state)
 

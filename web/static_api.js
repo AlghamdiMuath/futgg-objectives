@@ -37,7 +37,13 @@ window.objectiveApi = {
   ready,
   async snapshot() {
     const {state, settings} = privateData();
-    return callPython('snapshot_json', [state, settings, new Date().toISOString()]);
+    const result = await callPython('snapshot_json', [state, settings, new Date().toISOString()]);
+    if (result.private_state || result.private_settings) {
+      localStorage.setItem(PRIVATE_KEY, JSON.stringify({state: result.private_state ? JSON.stringify(result.private_state) : state,
+        settings: result.private_settings ? JSON.stringify(result.private_settings) : settings}));
+      delete result.private_state;delete result.private_settings;
+    }
+    return result;
   },
   async update(action, data) {
     const {state, settings} = privateData();

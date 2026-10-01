@@ -2,8 +2,70 @@
   "schema_version": 3,
   "game": "EA SPORTS FC 27",
   "source": "https://www.fut.gg/objectives/",
-  "fetched_at": "2026-09-28T17:40:26.296269Z",
+  "fetched_at": "2026-10-01T06:48:35.383748Z",
   "groups": [
+    {
+      "id": "73",
+      "category": "seasonal",
+      "title": "Weekly Rush Points",
+      "description": "Complete Rush Bonuses alongside your teammates to earn Rush Points and pack rewards! All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/73-weekly-rush-points/",
+      "starts_at": "2026-09-29T17:00:00Z",
+      "expires_at": "2026-10-06T16:59:59Z",
+      "completion_rewards": [
+        "2X 84+ Gold Players Pack"
+      ],
+      "available_rewards": [
+        "1 x 83+ Gold Player Pack",
+        "1 x 2x 82+ Gold Players Pack",
+        "1 x 2x 80+ Gold Players Pack",
+        "1 x 2x 78+ Gold Players Pack",
+        "1 x 2x 75+ Gold Players Pack",
+        "1 x 2x 84+ Gold Players Pack"
+      ],
+      "tasks": [
+        {
+          "id": "73:515",
+          "title": "35,000 Rush Points",
+          "description": "Earn 35,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "83+ Gold Player Pack"
+          ]
+        },
+        {
+          "id": "73:514",
+          "title": "25,000 Rush Points",
+          "description": "Earn 25,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 82+ Gold Players Pack"
+          ]
+        },
+        {
+          "id": "73:513",
+          "title": "20,000 Rush Points",
+          "description": "Earn 20,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 80+ Gold Players Pack"
+          ]
+        },
+        {
+          "id": "73:512",
+          "title": "10,000 Rush Points",
+          "description": "Earn 10,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 78+ Gold Players Pack"
+          ]
+        },
+        {
+          "id": "73:511",
+          "title": "2,500 Rush Points",
+          "description": "Earn 2,500 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 75+ Gold Players Pack"
+          ]
+        }
+      ]
+    },
     {
       "id": "94",
       "category": "seasonal",
@@ -251,68 +313,6 @@
       ]
     },
     {
-      "id": "72",
-      "category": "seasonal",
-      "title": "Weekly Rush Points",
-      "description": "Complete Rush Bonuses alongside your teammates to earn Rush Points and pack rewards! All rewards are untradeable.",
-      "url": "https://www.fut.gg/objectives/seasonal/72-weekly-rush-points/",
-      "starts_at": "2026-09-22T17:00:00Z",
-      "expires_at": "2026-09-29T16:59:59Z",
-      "completion_rewards": [
-        "2X 84+ Gold Players Pack"
-      ],
-      "available_rewards": [
-        "1 x 83+ Gold Player Pack",
-        "1 x 2x 82+ Gold Players Pack",
-        "1 x 2x 80+ Gold Players Pack",
-        "1 x 2x 78+ Gold Players Pack",
-        "1 x 2x 75+ Gold Players Pack",
-        "1 x 2x 84+ Gold Players Pack"
-      ],
-      "tasks": [
-        {
-          "id": "72:510",
-          "title": "35,000 Rush Points",
-          "description": "Earn 35,000 points by completing bonuses in Rush.",
-          "rewards": [
-            "83+ Gold Player Pack"
-          ]
-        },
-        {
-          "id": "72:509",
-          "title": "25,000 Rush Points",
-          "description": "Earn 25,000 points by completing bonuses in Rush.",
-          "rewards": [
-            "2X 82+ Gold Players Pack"
-          ]
-        },
-        {
-          "id": "72:508",
-          "title": "20,000 Rush Points",
-          "description": "Earn 20,000 points by completing bonuses in Rush.",
-          "rewards": [
-            "2X 80+ Gold Players Pack"
-          ]
-        },
-        {
-          "id": "72:507",
-          "title": "10,000 Rush Points",
-          "description": "Earn 10,000 points by completing bonuses in Rush.",
-          "rewards": [
-            "2X 78+ Gold Players Pack"
-          ]
-        },
-        {
-          "id": "72:506",
-          "title": "2,500 Rush Points",
-          "description": "Earn 2,500 points by completing bonuses in Rush.",
-          "rewards": [
-            "2X 75+ Gold Players Pack"
-          ]
-        }
-      ]
-    },
-    {
       "id": "108",
       "category": "fc-pro",
       "title": "FC Pro Open Ladder",
@@ -369,43 +369,6 @@
           "description": "Play a match in any FUT game mode.",
           "rewards": [
             "500 Coins"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "90",
-      "category": "fc-pro",
-      "title": "FC 27 First Gameplay",
-      "description": "Join in on the action of the FC 27 First Gameplay broadcast on Twitch/EASPORTSFC or YouTube/EASPORTSFC to earn your viewership rewards! All rewards are untradeable.",
-      "url": "https://www.fut.gg/objectives/fc-pro/90-fc-27-first-gameplay/",
-      "starts_at": "2026-09-14T17:00:00Z",
-      "expires_at": "2026-09-29T16:59:59Z",
-      "completion_rewards": [
-        "Small Gold Players Pack"
-      ],
-      "available_rewards": [
-        "2,500 Coins",
-        "Coin Boost",
-        "1 x Small Electrum Players Pack",
-        "1 x Small Gold Players Pack"
-      ],
-      "tasks": [
-        {
-          "id": "90:1459",
-          "title": "Hit the Pitch",
-          "description": "Watch the FC 27 First Gameplay broadcast for at least 60 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC.",
-          "rewards": [
-            "Coin Boost",
-            "2,500 Coins"
-          ]
-        },
-        {
-          "id": "90:1458",
-          "title": "Kick Off",
-          "description": "Watch the FC 27 First Gameplay broadcast for at least 15 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC.",
-          "rewards": [
-            "Small Electrum Players Pack"
           ]
         }
       ]
@@ -961,45 +924,45 @@
       ]
     },
     {
-      "id": "53",
+      "id": "54",
       "category": "mastery",
-      "title": "Rivals Mastery",
-      "description": "Beat your Rivals to prove you are the G.O.A.T!",
-      "url": "https://www.fut.gg/objectives/mastery/53-rivals-mastery/",
+      "title": "Squad Battles Mastery",
+      "description": "Keep battling over the year to prove you are a Squad Battles Master!",
+      "url": "https://www.fut.gg/objectives/mastery/54-squad-battles-mastery/",
       "starts_at": "2026-08-17T17:00:00Z",
       "expires_at": null,
       "completion_rewards": [
-        "Large Gold Players Pack"
+        "Giant Gold Pack"
       ],
       "available_rewards": [
-        "1 x Giant Gold Pack",
-        "1 x 10x 78+ Gold Players Pack",
+        "1 x 84+ Gold Player Pack",
         "1 x Large Gold Pack",
-        "1 x Large Gold Players Pack"
+        "1 x Small Gold Players Pack",
+        "1 x Giant Gold Pack"
       ],
       "tasks": [
         {
-          "id": "53:251",
+          "id": "54:254",
           "title": "Win 100",
-          "description": "Win 100 Rivals matches.",
+          "description": "Win 100 Squad Battles matches on min. Semi-Pro difficulty.",
           "rewards": [
-            "Giant Gold Pack"
+            "84+ Gold Player Pack"
           ]
         },
         {
-          "id": "53:250",
+          "id": "54:253",
           "title": "Win 50",
-          "description": "Win 50 Rivals matches.",
-          "rewards": [
-            "10X 78+ Gold Players Pack"
-          ]
-        },
-        {
-          "id": "53:249",
-          "title": "Win 25",
-          "description": "Win 25 Rivals matches.",
+          "description": "Win 50 Squad Battles matches on min. Semi-Pro difficulty.",
           "rewards": [
             "Large Gold Pack"
+          ]
+        },
+        {
+          "id": "54:252",
+          "title": "Win 25",
+          "description": "Win 25 Squad Battles matches on min. Semi-Pro difficulty.",
+          "rewards": [
+            "Small Gold Players Pack"
           ]
         }
       ]
@@ -1055,51 +1018,45 @@
       ]
     },
     {
-      "id": "28",
-      "category": "foundations",
-      "title": "Total Football",
-      "description": "Prove your worth by completing each of the Foundation Objectives groups to earn big rewards. All rewards are untradeable.",
-      "url": "https://www.fut.gg/objectives/foundations/28-total-football/",
+      "id": "53",
+      "category": "mastery",
+      "title": "Rivals Mastery",
+      "description": "Beat your Rivals to prove you are the G.O.A.T!",
+      "url": "https://www.fut.gg/objectives/mastery/53-rivals-mastery/",
       "starts_at": "2026-08-17T17:00:00Z",
       "expires_at": null,
       "completion_rewards": [
-        "Charalampos Kostoulas",
-        "Gold Players Pack"
+        "Large Gold Players Pack"
       ],
       "available_rewards": [
-        "Charalampos Kostoulas",
-        "300 SP",
-        "1 Of 3 80+ Gold Player Pick",
-        "1 Of 3 75+ Gold Player Pick",
-        "1 x 82+ Gold Player Pack",
-        "1 x Gold Players Pack"
+        "1 x Giant Gold Pack",
+        "1 x 10x 78+ Gold Players Pack",
+        "1 x Large Gold Pack",
+        "1 x Large Gold Players Pack"
       ],
       "tasks": [
         {
-          "id": "28:152",
-          "title": "Complete 'Rising Through the Ranks'",
-          "description": "Fully complete the 'Rising Through the Ranks' Objectives Group.",
+          "id": "53:251",
+          "title": "Win 100",
+          "description": "Win 100 Rivals matches.",
           "rewards": [
-            "82+ Gold Player Pack",
-            "100 SP"
+            "Giant Gold Pack"
           ]
         },
         {
-          "id": "28:151",
-          "title": "Complete 'First Team Dreams'",
-          "description": "Fully complete the 'First Team Dreams' Objectives Group.",
+          "id": "53:250",
+          "title": "Win 50",
+          "description": "Win 50 Rivals matches.",
           "rewards": [
-            "1 Of 3 80+ Gold Player Pick",
-            "100 SP"
+            "10X 78+ Gold Players Pack"
           ]
         },
         {
-          "id": "28:150",
-          "title": "Complete 'The Journey Begins'",
-          "description": "Fully complete the 'The Journey Begins' Objectives Group.",
+          "id": "53:249",
+          "title": "Win 25",
+          "description": "Win 25 Rivals matches.",
           "rewards": [
-            "1 Of 3 75+ Gold Player Pick",
-            "100 SP"
+            "Large Gold Pack"
           ]
         }
       ]
@@ -1687,45 +1644,51 @@
       ]
     },
     {
-      "id": "54",
-      "category": "mastery",
-      "title": "Squad Battles Mastery",
-      "description": "Keep battling over the year to prove you are a Squad Battles Master!",
-      "url": "https://www.fut.gg/objectives/mastery/54-squad-battles-mastery/",
+      "id": "28",
+      "category": "foundations",
+      "title": "Total Football",
+      "description": "Prove your worth by completing each of the Foundation Objectives groups to earn big rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/foundations/28-total-football/",
       "starts_at": "2026-08-17T17:00:00Z",
       "expires_at": null,
       "completion_rewards": [
-        "Giant Gold Pack"
+        "Charalampos Kostoulas",
+        "Gold Players Pack"
       ],
       "available_rewards": [
-        "1 x 84+ Gold Player Pack",
-        "1 x Large Gold Pack",
-        "1 x Small Gold Players Pack",
-        "1 x Giant Gold Pack"
+        "Charalampos Kostoulas",
+        "300 SP",
+        "1 Of 3 80+ Gold Player Pick",
+        "1 Of 3 75+ Gold Player Pick",
+        "1 x 82+ Gold Player Pack",
+        "1 x Gold Players Pack"
       ],
       "tasks": [
         {
-          "id": "54:254",
-          "title": "Win 100",
-          "description": "Win 100 Squad Battles matches on min. Semi-Pro difficulty.",
+          "id": "28:152",
+          "title": "Complete 'Rising Through the Ranks'",
+          "description": "Fully complete the 'Rising Through the Ranks' Objectives Group.",
           "rewards": [
-            "84+ Gold Player Pack"
+            "82+ Gold Player Pack",
+            "100 SP"
           ]
         },
         {
-          "id": "54:253",
-          "title": "Win 50",
-          "description": "Win 50 Squad Battles matches on min. Semi-Pro difficulty.",
+          "id": "28:151",
+          "title": "Complete 'First Team Dreams'",
+          "description": "Fully complete the 'First Team Dreams' Objectives Group.",
           "rewards": [
-            "Large Gold Pack"
+            "1 Of 3 80+ Gold Player Pick",
+            "100 SP"
           ]
         },
         {
-          "id": "54:252",
-          "title": "Win 25",
-          "description": "Win 25 Squad Battles matches on min. Semi-Pro difficulty.",
+          "id": "28:150",
+          "title": "Complete 'The Journey Begins'",
+          "description": "Fully complete the 'The Journey Begins' Objectives Group.",
           "rewards": [
-            "Small Gold Players Pack"
+            "1 Of 3 75+ Gold Player Pick",
+            "100 SP"
           ]
         }
       ]
@@ -1831,15 +1794,14 @@
       "starts_at": "2026-08-17T17:00:00Z",
       "expires_at": null,
       "completion_rewards": [
-        "Evo Unlock"
+        "Gallery Excellence"
       ],
       "available_rewards": [
         "Jesús Corona",
         "1 Of 5 92+ Holographic Base Icon Player Pick",
         "1 Of 5 88+ Holographic Base Hero Player Pick",
         "1 Of 5 Holographic Base Icon Player Pick",
-        "1 Of 5 Holographic Base Hero Player Pick",
-        "Evo Unlock"
+        "1 Of 5 Holographic Base Hero Player Pick"
       ],
       "tasks": [
         {
@@ -2264,5 +2226,28 @@
       ]
     }
   ],
-  "removed_groups": []
+  "removed_groups": [
+    {
+      "id": "72",
+      "title": "Weekly Rush Points",
+      "category": "seasonal",
+      "url": "https://www.fut.gg/objectives/seasonal/72-weekly-rush-points/",
+      "starts_at": "2026-09-22T17:00:00Z",
+      "expires_at": "2026-09-29T16:59:59Z",
+      "last_seen_at": "2026-09-28T17:40:26.296269Z",
+      "first_missing_at": "2026-10-01T06:48:35.383748Z",
+      "availability": "expired"
+    },
+    {
+      "id": "90",
+      "title": "FC 27 First Gameplay",
+      "category": "fc-pro",
+      "url": "https://www.fut.gg/objectives/fc-pro/90-fc-27-first-gameplay/",
+      "starts_at": "2026-09-14T17:00:00Z",
+      "expires_at": "2026-09-29T16:59:59Z",
+      "last_seen_at": "2026-09-28T17:40:26.296269Z",
+      "first_missing_at": "2026-10-01T06:48:35.383748Z",
+      "availability": "expired"
+    }
+  ]
 }

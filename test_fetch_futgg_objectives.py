@@ -34,6 +34,17 @@ groupEaId:94,eaId:1696,name:"Win 3"</script>
 
 
 class FetcherTests(unittest.TestCase):
+    def test_listing_with_overlay_link(self):
+        listing = LISTING.replace(
+            '<a href="/objectives/seasonal/94-squad-battles/"><h3>Squad Battles</h3><p>Play matches.</p></a>',
+            '<div><h3>Squad Battles</h3><p>Play matches.</p>'
+            '<a class="absolute inset-0" href="/objectives/seasonal/94-squad-battles/" '
+            'aria-label="Squad Battles"></a></div>',
+        )
+        group = fetcher.parse_listing(listing)[0]
+        self.assertEqual((group["id"], group["title"], group["description"]),
+                         ("94", "Squad Battles", "Play matches."))
+
     def test_dates_and_stable_task_id(self):
         group = fetcher.parse_listing(LISTING)[0]
         fetcher.parse_detail(DETAIL, group)

@@ -9,13 +9,13 @@ from copy import deepcopy
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from threading import Lock
+from threading import RLock
 from urllib.parse import urlparse
 
 from plan_objectives import build_plan
 from prize_summary import summarize
 from user_objectives import (correct_deadline, load_state, record_progress, save_state,
-                             select, selected_view, unselect, utc)
+                             select, selected_view, unselect, utc, reconcile_repeats)
 
 HERE = Path(__file__).resolve().parent
 MODES = ("squad_battles", "rivals", "champions", "rush", "live_events",
@@ -62,13 +62,22 @@ class App:
             raise ValueError("State and settings must have different paths")
         for path in (state, settings):
             check_private_path(path, source)
-        self.lock = Lock()
+        self.lock = RLock()
 
     def snapshot(self) -> dict:
+        with self.lock:
+            return self._snapshot()
+
+    def _snapshot(self) -> dict:
         interpreted = json.loads(self.source.read_text(encoding="utf-8"))
         state = load_state(self.state)
         settings = load_settings(self.settings)
-        view = selected_view(state, interpreted, now_utc(), settings["cycles"])
+        if reconcile_repeats(state, interpreted, settings["cycles"]):
+            save_state(self.state, state)
+        if settings["cycles"]:
+            settings["cycles"] = {}
+            save_state(self.settings, settings)
+        view = selected_view(state, interpreted, now_utc())
         plan = build_plan(interpreted, view, set(settings["available_modes"]), set(settings["excluded_modes"]))
         raw_path = self.source.parent / "fc27_objectives.json"
         raw_mismatch = False
@@ -86,6 +95,11 @@ class App:
             interpreted = json.loads(self.source.read_text(encoding="utf-8"))
             state = load_state(self.state)
             settings = load_settings(self.settings)
+            if reconcile_repeats(state, interpreted, settings["cycles"]):
+                save_state(self.state, state)
+            if settings["cycles"]:
+                settings["cycles"] = {}
+                save_state(self.settings, settings)
             timestamp = now_utc()
             if action == "select":
                 group_id = str(data["group_id"])
@@ -104,9 +118,8 @@ class App:
                 group = next((g for g in interpreted["groups"] if g["id"] == group_id), None)
                 if group is None:
                     raise ValueError("Task is no longer listed")
-                cycle = settings["cycles"].get(group_id) if group["repeat"]["cycle_key_required"] else None
                 record_progress(state, interpreted, task_id, count=data["count"],
-                                completed=data["completed"], updated_at=timestamp, cycle_start_utc=cycle)
+                                completed=data["completed"], updated_at=timestamp)
                 save_state(self.state, state)
             elif action == "progress_batch":
                 entries = data.get("entries")
@@ -123,10 +136,8 @@ class App:
                     group = next((g for g in interpreted["groups"] if g["id"] == group_id), None)
                     if group is None:
                         raise ValueError("Task is no longer listed")
-                    cycle = settings["cycles"].get(group_id) if group["repeat"]["cycle_key_required"] else None
                     record_progress(candidate, interpreted, task_id, count=entry["count"],
-                                    completed=entry["completed"], updated_at=timestamp,
-                                    cycle_start_utc=cycle)
+                                    completed=entry["completed"], updated_at=timestamp)
                 state = candidate
                 save_state(self.state, state)
             elif action == "deadline":
@@ -136,11 +147,8 @@ class App:
                 save_state(self.state, state)
             elif action == "settings":
                 candidate = {"schema_version": 1, "available_modes": data["available_modes"],
-                             "excluded_modes": data["excluded_modes"], "cycles": data["cycles"]}
+                             "excluded_modes": data["excluded_modes"], "cycles": {}}
                 validate_settings(candidate)
-                valid_groups = {g["id"] for g in interpreted["groups"] if g["repeat"]["cycle_key_required"]}
-                if any(group_id not in valid_groups for group_id in candidate["cycles"]):
-                    raise ValueError("Cycles must belong to a listed daily or weekly group")
                 save_state(self.settings, candidate)
             else:
                 raise ValueError("Unknown action")

@@ -18,8 +18,8 @@ class InterpretationTests(unittest.TestCase):
         cls.tasks = {t["id"]: t for g in cls.groups.values() for t in g["tasks"]}
 
     def test_real_export_is_accounted_for_and_source_text_is_preserved(self):
-        self.assertEqual(len(self.groups), 43)
-        self.assertEqual(len(self.tasks), 162)
+        self.assertEqual(len(self.groups), len(RAW["groups"]))
+        self.assertEqual(len(self.tasks), sum(len(g["tasks"]) for g in RAW["groups"]))
         source = {t["id"]: t["description"] for g in RAW["groups"] for t in g["tasks"]}
         self.assertEqual({tid: t["source_text"] for tid, t in self.tasks.items()}, source)
         self.assertTrue(all(t["kind"] == "match" or t["kind"] == "dependency" or t["kind"] == "checklist" for t in self.tasks.values()))
@@ -71,7 +71,10 @@ class InterpretationTests(unittest.TestCase):
         self.assertEqual(self.tasks["58:270"]["target"], {"unit": "goals", "count": 500, "scope": "cumulative"})
         self.assertEqual(self.tasks["42:205"]["target"], {"unit": "matches", "count": 15, "scope": "separate_matches"})
         self.assertEqual(self.tasks["123:1809"]["kind"], "checklist")
-        self.assertEqual(self.tasks["72:510"]["target"]["count"], 35000)
+        rush = next(g for g in self.groups.values() if g["title"] == "Weekly Rush Points")
+        top_rush = max((t for t in rush["tasks"] if t["target"] and t["target"]["unit"] == "points"),
+                       key=lambda t: t["target"]["count"])
+        self.assertEqual(top_rush["target"]["count"], 35000)
         self.assertEqual(self.tasks["28:152"]["dependency"]["group_id"], "27")
         self.assertEqual(self.tasks["79:716"]["dependency"], {"group_id": "80", "group_title": "Season 1: Ones to Watch Exhibition Weekly Play", "completions": 4, "distinct_periods": True})
 
@@ -85,10 +88,7 @@ class InterpretationTests(unittest.TestCase):
         repeat = self.groups["61"]["repeat"]
         self.assertEqual(repeat["cadence"], "daily")
         self.assertIsNone(repeat["reset_schedule"])
-        with self.assertRaisesRegex(ValueError, "cycle start"):
-            layer.progress_key("61:464", None, repeat)
-        self.assertNotEqual(layer.progress_key("61:464", "2026-09-27T07:00:00Z", repeat), layer.progress_key("61:464", "2026-09-28T07:00:00Z", repeat))
-        self.assertEqual(layer.progress_key("94:1696", None, self.groups["94"]["repeat"]), "94:1696")
+        self.assertFalse(repeat["cycle_key_required"])
 
     def test_omitted_mode_on_a_parsed_match_task_means_any_fut_mode(self):
         task = {"id": "example:1", "title": "Example",
@@ -104,10 +104,12 @@ class InterpretationTests(unittest.TestCase):
         self.assertEqual(layer.changes(RAW, new), [])
         new["groups"][0]["expires_at"] = "2026-10-05T06:59:59Z"
         new["groups"][0]["tasks"][0]["description"] += " Extra condition."
+        group_id = RAW["groups"][0]["id"]
+        task_id = RAW["groups"][0]["tasks"][0]["id"]
         report = layer.changes(RAW, new)
-        self.assertEqual(report, [{"group_id": "94", "change": "updated", "fields": ["expires_at"], "task_ids": ["94:1696"]}])
-        new["groups"] = [g for g in new["groups"] if g["id"] != "94"]
-        self.assertIn({"group_id": "94", "change": "removed"}, layer.changes(RAW, new))
+        self.assertEqual(report, [{"group_id": group_id, "change": "updated", "fields": ["expires_at"], "task_ids": [task_id]}])
+        new["groups"] = [g for g in new["groups"] if g["id"] != group_id]
+        self.assertIn({"group_id": group_id, "change": "removed"}, layer.changes(RAW, new))
 
 
 if __name__ == "__main__":

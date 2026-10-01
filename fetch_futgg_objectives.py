@@ -144,13 +144,15 @@ def parse_listing(html: str) -> list[dict]:
         match = OBJECTIVE_PATH.fullmatch(path)
         if not match or match.group(2) in seen:
             continue
-        title = link.find("h3")
+        # FUT.GG also uses a full-card overlay link beside the visible content.
+        card = link.parent if "absolute" in link.get("class", []) else link
+        title = card.find("h3")
         if not title:
             continue
         seen.add(match.group(2))
         if match.group(2) not in times:
             raise ValueError(f"Missing start/end times for objective group {match.group(2)}")
-        description = link.find("p")
+        description = card.find("p")
         groups.append({
             "id": match.group(2),
             "category": match.group(1),

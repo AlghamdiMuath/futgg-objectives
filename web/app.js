@@ -97,6 +97,12 @@ const arabicUI = {
   'Select a challenge to see its tasks and plan.':'اختر تحدياً لعرض مهامه وخطته.','Browse challenges':'تصفح التحديات',
   'tasks completed':'مهام مكتملة','of':'من','selected challenges':'تحديات مختارة','Record this task':'سجّل هذه المهمة',
   'selected challenge':'تحدٍ مختار',
+  'Squad recipe':'وصفة التشكيلة','Intentional actions':'الأهداف التي تحتاج تخطيطاً','Modes':'أنماط اللعب',
+  'Your squad recipe is ready.':'وصفة تشكيلتك جاهزة.',
+  'Your selected challenges are saved in this browser. Export a backup before changing phones.':'تُحفظ تحدياتك المختارة في هذا المتصفح. نزّل نسخة احتياطية قبل تغيير الهاتف.',
+  'No special squad setup for these challenges.':'لا تتطلب هذه التحديات تشكيلة خاصة.',
+  'Match routes and all tasks':'مسارات المباريات وجميع المهام',
+  '20+ chemistry':'انسجام 20+','An eligible player can cover more than one requirement.':'يمكن للاعب مؤهل تلبية أكثر من شرط.',
   'Manual count':'العدد اليدوي','Set a cycle start before recording progress for this challenge.':'حدد بداية الفترة قبل تسجيل التقدم لهذا التحدي.',
   'Choose modes you can play. Exclude a mode to keep it out of the plan.':'اختر الأنماط التي يمكنك لعبها. استبعد أي نمط لا تريده في الخطة.',
   'Selected tasks list these modes: ':'الأنماط المذكورة في المهام المختارة: ',
@@ -118,7 +124,6 @@ const arabicUI = {
   'Semi-Pro':'شبه محترف','Professional':'محترف','World Class':'فئة عالمية','Legendary':'أسطوري','Ultimate':'ألتميت',
 };
 const openDetails = new Set();
-let pendingTaskFocus = null;
 const savedPlanRoutes = (() => {
   try { const value=JSON.parse(typeof localStorage !== 'undefined' ? localStorage.getItem('planRoutes') || '{}' : '{}');return value && typeof value==='object' && !Array.isArray(value) ? value : {}; }
   catch (_) { return {}; }
@@ -144,7 +149,6 @@ function setLanguage(value) {
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = ui(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = ui(el.dataset.i18nPlaceholder); });
   document.querySelectorAll('[data-i18n-aria-label]').forEach(el => { el.setAttribute('aria-label', ui(el.dataset.i18nAriaLabel)); });
-  if ($('settings-form').classList.contains('dirty')) $('settings-dirty').textContent=ui('Unsaved changes');
   if ($('message').textContent === 'Saved locally.' || $('message').textContent === 'حُفظ محلياً.') message(ui('Saved locally.'));
   if (snapshot) render();
 }
@@ -230,11 +234,7 @@ async function post(action, data) {
     snapshot = prepareSnapshot(result);
     message(ui('Saved locally.'));
     render();
-    if (pendingTaskFocus) {
-      const target=pendingTaskFocus;pendingTaskFocus=null;
-      requestAnimationFrame(()=>focusTask(target.groupId,target.taskId));
-    }
-  } catch (error) { pendingTaskFocus=null;message(error.message); }
+  } catch (error) { message(error.message); }
 }
 function switchTab(tab) {
   if (tab !== activeTab && ($('message').textContent === 'Saved locally.' || $('message').textContent === 'حُفظ محلياً.')) message('');
@@ -245,52 +245,6 @@ function switchTab(tab) {
     b.setAttribute('aria-current', active ? 'page' : 'false');
   });
   document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === tab));
-}
-function focusTask(groupId, taskId) {
-  const card=[...$('selected-list').querySelectorAll('[data-group-id]')].find(el=>el.dataset.groupId===groupId);
-  const task=[...(card?.querySelectorAll('[data-task-id]')||[])].find(el=>el.dataset.taskId===taskId);
-  const target=task?.querySelector('input:not([type=checkbox]), button') || task || card;
-  target?.scrollIntoView({block:'center',behavior:'smooth'});
-  target?.focus({preventScroll:true});
-}
-function goToTask(groupId, taskId) {
-  openDetails.add(groupId);
-  renderSelected();switchTab('selected');
-  requestAnimationFrame(()=>focusTask(groupId,taskId));
-}
-function cycleSettings(groupId) {
-  switchTab('settings');
-  const input=[...document.querySelectorAll('#cycles input')].find(el=>el.dataset.groupId===groupId);
-  input?.scrollIntoView({block:'center',behavior:'smooth'});input?.focus({preventScroll:true});
-}
-function renderNextStep() {
-  const target=$('next-step');target.replaceChildren();
-  const selected=snapshot.view.selected_groups;
-  const hasModes=snapshot.settings.available_modes.some(mode=>!snapshot.settings.excluded_modes.includes(mode));
-  const hasRun=Boolean(snapshot.plan.combined_plan?.runs?.length);
-  const allComplete=selected.length>0 && selected.every(group=>group.tasks.length>0 && group.tasks.every(task=>task.progress?.completed));
-  const needsMode=snapshot.plan.unscheduled_tasks.some(task=>task.reasons.includes('no_permitted_mode'));
-  const missingCycle=selected.find(group=>snapshot.groups.find(source=>source.id===group.group_id)?.repeat?.cycle_key_required && !snapshot.settings.cycles[group.group_id]);
-  let copy, action, tab;
-  if (!selected.length) [copy,action,tab]=['Add a challenge to start a personal plan.','Open Browse','browse'];
-  else if (allComplete) [copy,action,tab]=['All selected tasks are completed. Browse for another challenge or check upcoming cycles.','Browse challenges','browse'];
-  else if (!hasModes && needsMode) [copy,action,tab]=['Choose the modes you can play to build your match plan.','Open settings','settings'];
-  else if (!hasRun && needsMode) [copy,action,tab]=['Your selected tasks need another playable mode.','Open settings','settings'];
-  else if (!hasRun && missingCycle) [copy,action,tab]=['Set a verified cycle start for repeat challenges before tracking them.','Open settings','settings'];
-  else if (hasRun) [copy,action,tab]=['Your next match run is ready.','Open plan','plan'];
-  else if (snapshot.plan.unscheduled_tasks.some(task=>task.reasons.length===1&&task.reasons[0]==='not_match_task')) [copy,action,tab]=['No match runs are needed for the remaining manual targets. Record them from the plan.','Open plan','plan'];
-  else [copy,action,tab]=['Review tasks that need attention in your list.','Open my list','selected'];
-  const steps=node('div','journey-steps');
-  [['Choose challenges','browse'],['Set up modes','settings'],['Follow your plan','plan'],['Track progress','selected']].forEach(([title,id],index)=>{
-    const step=node('span','journey-step',`${number(index+1)}. ${ui(title)}`);
-    if(id===tab) step.classList.add('current');
-    add(steps,step);
-  });
-  const body=node('div','next-step-body');
-  const copyBox=node('div');add(copyBox,node('strong','',ui('Next step')),node('p','',ui(copy)));
-  const button=node('button','primary',ui(action));button.type='button';
-  button.onclick=()=>tab==='settings'&&missingCycle&&hasModes&&!hasRun&&!needsMode?cycleSettings(missingCycle.group_id):switchTab(tab);
-  add(body,copyBox,button);add(target,steps,body);
 }
 function flags(parent, values) { values.forEach(v => add(parent, node('span', 'flag', label(v)))); }
 function availability(group) {
@@ -381,14 +335,6 @@ function groupCard(group, selected) {
   if(group.repeat?.cadence) add(heading,node('span','badge cycle-cue',`${label(group.repeat.cadence)} ${ui('cycle')}`));
   if (status !== 'active') add(heading,node('span','badge off',label(status)));
   add(card,heading,node('h3','',tr(group.title)));
-  if (selected) {
-    const completed=selected.tasks.filter(task=>task.progress?.completed).length;
-    const progress=node('div','group-progress');
-    add(progress,node('span','',`${number(completed)} ${ui('of')} ${number(selected.tasks.length)} ${ui('tasks completed')}`));
-    const meter=node('progress');meter.max=Math.max(1,selected.tasks.length);meter.value=completed;
-    meter.setAttribute('aria-label',`${tr(group.title)}: ${number(completed)} ${ui('of')} ${number(selected.tasks.length)} ${ui('tasks completed')}`);
-    add(progress,meter);add(card,progress);
-  }
   const prize = node('div','prize');
   const [prizeName,quality] = prizeLine(group.prize.main);
   add(prize,node('span','prize-icon',group.prize.main.kind==='player'?'★':group.prize.main.kind==='coins'?'●':group.prize.main.kind==='pack'?'▣':'·'));
@@ -417,29 +363,8 @@ function groupCard(group, selected) {
     selected.deadline_corrections.forEach(e => add(detail,node('p','fine',ui('In-game observation: ') + fmt(e.expires_at) + ui(' · recorded ') + fmt(e.recorded_at))));
   }
   const link = node('a','fine',ui('Open FUT.GG source')); link.href = group.url; link.target = '_blank'; link.rel='noopener noreferrer'; add(detail,link);
-  const deadline = node('form','deadline-form');
-  const expiry = node('input'); expiry.type='text'; expiry.placeholder='YYYY-MM-DDTHH:MM:SSZ'; expiry.required=true; expiry.setAttribute('aria-label',ui('FC 27 in-game expiry in UTC'));
-  const save = node('button','',ui('Record in-game expiry')); save.type='submit';
-  deadline.onsubmit = event => { event.preventDefault(); post('deadline',{group_id:group.id, expires_at:expiry.value.trim(), source:'fc27_in_game'}); };
-  add(deadline,expiry,save); add(detail,node('p','fine',ui('Only enter an expiry observed in FC 27.')),deadline);
   const selectedTasks = new Map((selected?.tasks || []).map(t => [t.id,t]));
   group.tasks.forEach(task => add(detail,taskCard(task, selectedTasks.get(task.id), group)));
-  if (selected?.unmatched_progress?.length) {
-    add(detail,node('h3','',ui('Stored progress for removed tasks')));
-    selected.unmatched_progress.forEach(p => add(detail,node('p','',p.task_id + ': ' + tr(p.source_text) + ' · ' + number(p.count))));
-  }
-  if(selected?.progress_history?.length){
-    const history=node('details','cycle-history');add(history,node('summary','',`${ui('Previous cycle progress')} · ${number(selected.progress_history.length)}`));
-    const cycles=new Map();selected.progress_history.forEach(entry=>{if(!cycles.has(entry.cycle_start_utc))cycles.set(entry.cycle_start_utc,[]);cycles.get(entry.cycle_start_utc).push(entry);});
-    cycles.forEach((entries,start)=>{
-      const section=node('div','cycle-history-period');add(section,node('h4','',`${label(group.repeat.cadence)} · ${fmt(start)}`));
-      entries.forEach(entry=>{
-        const sourceTask=group.tasks.find(task=>task.id===entry.task_id);
-        const quantity=sourceTask?.target?countUnit(entry.count,sourceTask.target.unit):`${number(entry.count)} ${ui('recorded')}`;
-        add(section,node('p','fine',`${tr(entry.source_text)} · ${quantity} · ${ui(entry.completed?'Completed':'Recorded')}`));
-      });add(history,section);
-    });add(detail,history);
-  }
   add(card,detail);
   return card;
 }
@@ -456,28 +381,6 @@ function taskCard(task, stateTask, group) {
   if (task.rewards.length) add(bits,node('span','',ui('Rewards: ') + task.rewards.map(tr).join(language === 'ar' ? '، ' : ', ')));
   add(div,bits);
   flags(div,[...task.review_reasons,...(stateTask?.review_flags || [])]);
-  if (stateTask?.progress && stateTask.progress.source_text !== task.source_text)
-    add(div,node('p','fine',ui('When progress was first saved: ') + tr(stateTask.progress.source_text)));
-  if (!stateTask) return div;
-  if (group.repeat.cadence && !stateTask.progress_key) {
-    add(div,node('p','fine',ui('Set a cycle start before recording progress for this challenge.')));
-    const setup=node('button','',ui('Set verified cycle start'));setup.type='button';setup.onclick=()=>cycleSettings(group.id);
-    add(div,setup);return div;
-  }
-  const form = node('form','task-controls');
-  const count = node('input'); count.type='number'; count.min='0'; count.step='1'; count.value=stateTask.progress?.count ?? 0; count.required=true; count.setAttribute('aria-label',(language === 'ar' ? 'العدد اليدوي لـ ' : 'Manual count for ') + tr(task.title));
-  const countLabel=node('label','count-label',ui('Manual count'));add(countLabel,count);
-  const checkLabel = node('label'); const completed=node('input'); completed.type='checkbox'; completed.checked=stateTask.progress?.completed || false;
-  const reached=Boolean(task.target && stateTask.progress && stateTask.progress.count>=task.target.count && !stateTask.progress.completed);
-  const completionHint=node('p','fine completion-hint',ui('Counts are evidence you entered; confirm completion after checking the objective in game.'));
-  completionHint.hidden=!reached || Boolean(stateTask.progress?.completed);
-  add(checkLabel,completed,document.createTextNode(' ' + ui('Completed')));
-  const save = node('button',reached?'primary':'',ui(reached?'Confirm completion':'Save progress')); save.type='submit';
-  count.addEventListener('input',()=>{const targetReached=Boolean(task.target && Number(count.value)>=task.target.count);completionHint.hidden=!targetReached||completed.checked;save.textContent=ui(targetReached&&!completed.checked?'Confirm completion':'Save progress');save.classList.toggle('primary',targetReached&&!completed.checked);});
-  completed.addEventListener('change',()=>{completionHint.hidden=!reached||completed.checked;save.textContent=ui(reached&&!completed.checked?'Confirm completion':'Save progress');save.classList.toggle('primary',reached&&!completed.checked);});
-  form.onsubmit = e => { e.preventDefault(); pendingTaskFocus={groupId:group.id,taskId:task.id};post('progress',{task_id:task.id,count:Number(count.value),completed:completed.checked}); };
-  add(form,countLabel,checkLabel,save); add(div,completionHint,form);
-  if (group.repeat.cadence) add(div,node('p','fine',stateTask.progress_key ? ui('Cycle: ') + fmt(snapshot.settings.cycles[group.id]) : ui('Enter an explicit cycle start in Modes & cycles before saving progress.')));
   return div;
 }
 function renderBrowse() {
@@ -517,10 +420,8 @@ function renderSelected() {
     const browse=node('button','primary',ui('Browse challenges'));browse.type='button';browse.onclick=()=>switchTab('browse');add(empty,browse);add(list,empty);
   } else {
     const selected=snapshot.view.selected_groups;
-    const total=selected.reduce((sum,group)=>sum+group.tasks.length,0);
-    const done=selected.reduce((sum,group)=>sum+group.tasks.filter(task=>task.progress?.completed).length,0);
     const bar=node('div','selected-overview');
-    const copy=node('div');add(copy,node('strong','',`${number(selected.length)} ${ui(selected.length===1?'selected challenge':'selected challenges')}`),node('span','',`${number(done)} ${ui('of')} ${number(total)} ${ui('tasks completed')}`));
+    const copy=node('div');add(copy,node('strong','',`${number(selected.length)} ${ui(selected.length===1?'selected challenge':'selected challenges')}`));
     const plan=node('button','',ui('Open plan'));plan.type='button';plan.onclick=()=>switchTab('plan');add(bar,copy,plan);add(summary,bar);
   }
   const ordered=[...snapshot.view.selected_groups].sort((a,b)=>{
@@ -558,389 +459,92 @@ function planStarterText(requirement) {
   const place=requirement.slot==='starting_squad' ? 'في الفريق الأساسي' : 'أساسي';
   if(amount==='all') return `كل اللاعبين ${place} من ${trait}`;
   if(amount===1) return `لاعب ${place} من ${trait}`;
-  if(amount===2) return `لاعبان ${requirement.slot==='starting_squad'?'في الفريق الأساسي':'أساسيان'} من ${trait}`;
+  if(amount===2) return `لاعبين ${requirement.slot==='starting_squad'?'في الفريق الأساسي':'أساسيين'} من ${trait}`;
   return `${number(amount)} لاعبين ${requirement.slot==='starting_squad'?'في الفريق الأساسي':'أساسيين'} من ${trait}`;
 }
-function planRoleText(role, forTask=false) {
-  if(language!=='ar') return `${planTraitShort(role.trait)} ${ui(role.role==='assisting_player'?'assister':'scorer')}`;
-  const player=role.trait==='Japanese' ? 'لاعب ياباني' : role.trait==='Preferred Position: LM' ?
-    'لاعب مركزه المفضل وسط أيسر' : tr(role.trait);
-  return forTask ? `باستخدام ${player}` : `${player} ${role.role==='assisting_player'?'للصناعة':'للتسجيل'}`;
-}
-function planCoreRequirements(run) {
-  const squad=new Map(), roles=new Map();
-  run.match_tasks.forEach(task=>task.conditions.forEach(condition=>{
-    if(condition.type==='squad') {
-      const key=JSON.stringify([condition.slot,condition.trait]);
-      const previous=squad.get(key);
-      if(!previous || condition.minimum==='all' || (previous.minimum!=='all' && condition.minimum>previous.minimum))
-        squad.set(key,{slot:condition.slot,trait:condition.trait,minimum:condition.minimum});
-    }
-    if(condition.type==='scoring_player' || condition.type==='assisting_player') {
-      const key=JSON.stringify([condition.type,condition.trait,condition.must_start]);
-      roles.set(key,{role:condition.type,trait:condition.trait,must_start:condition.must_start});
-    }
-  }));
-  return {squad:[...squad.values()],roles:[...roles.values()]};
-}
-function planGroupOrder(run,groups) {
-  return [...new Set(run.match_tasks.map(task=>task.group_id))].sort((a,b)=>{
-    const expiry=id=>groups.get(id)?.effective_expires_at ? Date.parse(groups.get(id).effective_expires_at) : Infinity;
-    return expiry(a)-expiry(b) || String(a).localeCompare(String(b));
-  });
-}
-function planIssues(plan,runs) {
-  const attached=new Set(runs.flatMap(run=>run.cumulative_targets.map(task=>task.task_id)));
-  const cycle=new Map(),cumulative=[],manual=[],blocked=[];
-  plan.unscheduled_tasks.forEach(task=>{
-    if(attached.has(task.task_id)) return;
-    if(task.reasons.includes('group_cycle_start_required')) {
-      if(!cycle.has(task.group_id)) cycle.set(task.group_id,[]);
-      cycle.get(task.group_id).push(task);
-    } else if(task.reasons.length===1 && task.reasons[0]==='match_count_not_bounded') cumulative.push(task);
-    else if(task.reasons.length===1 && task.reasons[0]==='not_match_task') manual.push(task);
-    else blocked.push(task);
-  });
-  return {cycle,cumulative,manual,blocked};
-}
-function planTaskText(task, cumulative=false) {
-  const conditions=task.conditions || [];
-  const result=conditions.find(c=>c.type==='result' && c.value==='win');
-  const goals=conditions.find(c=>c.type==='goals');
-  const assists=conditions.find(c=>c.type==='assists');
-  const style=conditions.find(c=>c.type==='goal_style');
-  const location=conditions.find(c=>c.type==='goal_location');
-  const scorer=conditions.find(c=>c.type==='scoring_player');
-  const squads=conditions.filter(c=>c.type==='squad');
-  const qualifier=scorer ? planRoleText({role:'scoring_player',trait:scorer.trait},true) : squads.length ?
-    squads.map(planStarterText).join(' + ') : null;
-  let action;
-  if (result) action=ui('Win');
-  else if (goals || style || location || (cumulative && task.target?.unit==='goals')) {
-    const amount=cumulative ? task.remaining : goals?.minimum_per_match;
-    if (language==='ar') action=[ui('Score'),amount!=null ? countUnit(amount,'goals') : ui('goal'),
-      style ? `ب${tr(style.value)}` : null,location ? ui('outside the box') : null,
-      !cumulative && amount!=null ? ui('per match') : cumulative ? ui('total') : null].filter(Boolean).join(' ');
-    else action=[ui('Score'),amount!=null ? number(amount) : null,style ? tr(style.value) : null,
-      location ? label(location.value) : null,ui(amount===1?'goal':'goals'),!cumulative && amount!=null ? ui('per match') : cumulative ? ui('total') : null].filter(Boolean).join(' ');
-  }
-  else if (assists || (cumulative && task.target?.unit==='assists')) {
-    const amount=cumulative ? task.remaining : assists?.minimum_per_match;
-    if (language==='ar') action=[ui('Assist'),amount!=null ? number(amount) : null,
-      amount===1 ? ui('assist') : ui('assists'),!cumulative && amount!=null ? ui('per match') : cumulative ? ui('total') : null].filter(Boolean).join(' ');
-    else action=[ui('Assist'),amount!=null ? number(amount) : null,ui(amount===1?'goal':'goals'),
-      !cumulative && amount!=null ? ui('per match') : cumulative ? ui('total') : null].filter(Boolean).join(' ');
-  }
-  else action=cumulative ? tr(task.source_text) : ui('Play');
-  return qualifier ? `${action} · ${qualifier}` : action;
-}
-function planTaskDetail(task, cumulative=false, related=[]) {
-  const detail=node('details','plan-task');
-  const summary=node('summary');
-  add(summary,node('span','plan-task-action',planTaskText(task,cumulative)));
-  if (!cumulative) add(summary,node('span','plan-task-count',countUnit(task.remaining_qualifying_matches,'matches')));
-  add(detail,summary);
-  [task,...related].forEach(item=>{
-    const source=node('div','plan-source-item');
-    add(source,node('p','fine',ui('Source wording')+': '+tr(item.source_text)));
-    if (language==='ar' && tr(item.source_text)!==item.source_text) {
-      const original=node('p','fine original-source',`${ui('English source')}: ${item.source_text}`);
-      original.lang='en';original.dir='ltr';add(source,original);
-    }
-    const button=node('button','plan-task-link',ui('Record this task'));button.type='button';
-    button.onclick=()=>goToTask(item.group_id,item.task_id);add(source,button);add(detail,source);
-  });
-  const conditions=task.conditions || [];
-  if (conditions.length) {
-    const list=node('ul','plan-conditions');
-    conditions.forEach(c=>add(list,node('li','',Object.entries(c).map(([key,value])=>`${label(key)}: ${typeof value==='boolean' ? (value ? '✓' : '—') : typeof value==='number' ? number(value) : tr(label(value))}`).join(' · '))));
-    add(detail,node('p','fine',ui('Parsed conditions')),list);
-  }
-  return detail;
-}
-function planDisclosure(title, count, className) {
-  const detail=node('details',className);
-  add(detail,node('summary','',count == null ? ui(title) : `${ui(title)} · ${number(count)}`));
-  return detail;
-}
-function openMatchCheckin(run) {
-  const dialog=$('checkin-dialog'),content=$('checkin-content'),form=$('checkin-form');
-  content.replaceChildren();$('checkin-error').textContent='';
-  const groups=selectedMap();
-  const stats=node('div','checkin-stats');
-  [['goals','Goals scored'],['assists','Assists made']].forEach(([key,title])=>{
-    const label=node('label','count-label',ui(title)),input=node('input');input.type='number';input.min='0';input.step='1';input.value='0';input.dataset.stat=key;add(label,input);add(stats,label);
-  });
-  add(content,node('h3','',ui('Match stats')),stats);
-  const taskList=node('div','checkin-task-list');
-  add(taskList,node('h3','',ui('Which tasks did this match advance?')));
-  run.match_tasks.forEach(task=>{
-    const label=node('label','checkin-task'),check=node('input');check.type='checkbox';check.dataset.taskId=task.task_id;
-    add(label,check,node('span','',`${tr(groups.get(task.group_id)?.title||task.group_id)} · ${planTaskText(task)} — ${tr(task.source_text)}`));add(taskList,label);
-  });
-  add(content,taskList);
-  const cumulative=run.cumulative_targets.filter(task=>['goals','assists'].includes(task.target?.unit));
-  if(cumulative.length){
-    const section=node('div','checkin-cumulative');add(section,node('h3','',ui('Cumulative progress')));
-    cumulative.forEach(task=>add(section,node('p','fine',`${tr(groups.get(task.group_id)?.title||task.group_id)} · ${tr(task.source_text)} (${ui('Updated from match stats')})`)));
-    add(content,section);
-  }
-  form.onsubmit=event=>{
-    event.preventDefault();
-    const entries=[...content.querySelectorAll('input[data-task-id]:checked')].map(input=>{
-      const taskId=input.dataset.taskId,groupId=taskId.split(':',1)[0],stateTask=groups.get(groupId)?.tasks.find(item=>item.id===taskId);
-      return {task_id:taskId,count:(stateTask?.progress?.count||0)+1,completed:Boolean(stateTask?.progress?.completed)};
+function planBulletPoints(data) {
+  const groups=new Map(data.groups.map(group=>[group.id,group]));
+  const bullets=[];
+  data.view.selected_groups.forEach(selected=>{
+    if(selected.availability!=='active') return;
+    const group=groups.get(selected.group_id);
+    if(!group) return;
+    group.tasks.forEach(task=>{
+      if(task.status!=='parsed') return;
+      const conditions=task.conditions||[];
+      const scorer=conditions.find(condition=>condition.type==='scoring_player');
+      const assister=conditions.find(condition=>condition.type==='assisting_player');
+      const squads=conditions.filter(condition=>condition.type==='squad');
+      const chemistry=task.kind==='checklist' && /\b20\+?\s*chemistry\b/i.test(task.source_text);
+      if(!scorer && !assister && !squads.length && !chemistry) return;
+      const target=task.target||{};
+      const amount=number(target.count);
+      const separate=target.scope==='separate_matches';
+      const role=scorer||assister;
+      let copy,priority;
+      if(chemistry){copy=language==='ar'?'ابنِ فريقاً بانسجام ٢٠+.':'Build 20+ chemistry.';priority=1;}
+      else if(role && separate){
+        const position=role.must_start?'starter':'player';
+        const player=role.trait==='Preferred Position: LM' ?
+          (language==='ar'?`${role.must_start?'لاعب أساسي':'لاعب'} مركزه المفضل وسط أيسر`:`a ${position} whose preferred position is LM`) :
+          (language==='ar'?`${role.must_start?'لاعب أساسي':'لاعب'} ${tr(role.trait)}`:`a ${planTraitShort(role.trait)} ${position}`);
+        copy=language==='ar' ? `${assister?'اصنع هدفاً':'سجّل'} في ${amount} مباريات باستخدام ${player}.` :
+          `${assister?'Assist':'Score'} in ${amount} matches with ${player}.`;
+        priority=3;
+      } else if(role){
+        const player=language==='ar'?`${role.must_start?'لاعب أساسي':'لاعب'} ${tr(role.trait)}`:
+          `${/^[aeiou]/i.test(planTraitShort(role.trait))?'an':'a'} ${planTraitShort(role.trait)} ${role.must_start?'starter':'player'}`;
+        copy=language==='ar'?`${assister?'اصنع':'سجّل'} ${amount} أهداف باستخدام ${player}.`:
+          `${assister?'Make':'Score'} ${amount} ${assister?'assists':'goals'} with ${player}.`;
+        priority=0;
+      } else if(squads.length && target.unit==='goals'){
+        const players=squads.map(planStarterText).join(language==='ar'?' و ':' and ');
+        copy=language==='ar'?`سجّل ${amount} أهداف مع ${players} في التشكيلة الأساسية.`:
+          `Score ${amount} goals with ${players} in your starting XI.`;
+        priority=2;
+      } else if(squads.length && separate){
+        const players=squads.map(planStarterText).join(language==='ar'?' و ':' and ');
+        const win=conditions.some(condition=>condition.type==='result'&&condition.value==='win');
+        copy=language==='ar'?`${win?'افز في':'العب'} ${amount} مباريات مع ${players}.`:
+          `${win?'Win':'Play'} ${amount} matches with ${players}.`;
+        priority=4;
+      } else return;
+      const options=task.mode_options||[];
+      if(options.length && !options.some(option=>option.mode==='any_fut')){
+        const modes=options.map(planRouteText).join(' / ');
+        copy+=language==='ar'?` (${modes})`:` (${modes})`;
+      }
+      bullets.push({priority,count:target.count||0,task_id:task.id,text:copy});
     });
-    const statsValues=Object.fromEntries([...content.querySelectorAll('input[data-stat]')].map(input=>[input.dataset.stat,Number(input.value)]));
-    cumulative.forEach(task=>{
-      const increment=statsValues[task.target.unit]||0;
-      if(increment<=0)return;
-      const stateTask=groups.get(task.group_id)?.tasks.find(item=>item.id===task.task_id);
-      entries.push({task_id:task.task_id,count:(stateTask?.progress?.count||0)+increment,completed:Boolean(stateTask?.progress?.completed)});
-    });
-    const unique=[...new Map(entries.map(entry=>[entry.task_id,entry])).values()];
-    if(!unique.length){$('checkin-error').textContent=ui('Choose at least one task or enter goals or assists that advance a cumulative target.');return;}
-    dialog.close();post('progress_batch',{entries:unique});
-  };
-  dialog.showModal();
-}
-function planTaskList(tasks) {
-  const list=node('div','plan-checklist');
-  const taskGroups=new Map();
-  tasks.forEach(task=>{
-    const signature=JSON.stringify([planTaskText(task),task.conditions]);
-    if(!taskGroups.has(signature)) taskGroups.set(signature,[]);
-    taskGroups.get(signature).push(task);
   });
-  taskGroups.forEach(group=>{
-    group.sort((a,b)=>b.remaining_qualifying_matches-a.remaining_qualifying_matches);
-    add(list,planTaskDetail(group[0],false,group.slice(1)));
-  });
-  return list;
+  bullets.sort((a,b)=>a.priority-b.priority || b.count-a.count || a.task_id.localeCompare(b.task_id));
+  return bullets;
 }
 function renderPlan() {
-  const p=snapshot.plan;
-  const combined=p.combined_plan||{runs:[],qualifying_match_count:0,optimization:'exact_for_separate_matches'};
-  const runs=$('plan-runs'), extra=$('plan-extra'), summary=$('plan-summary');
-  runs.replaceChildren();extra.replaceChildren();summary.replaceChildren();
-  if (!snapshot.view.selected_groups.length) {
-    const empty=node('div','empty');add(empty,node('p','',ui('Add challenges to make a plan.')));
-    const browse=node('button','primary',ui('Browse challenges'));browse.type='button';browse.onclick=()=>switchTab('browse');add(empty,browse);add(summary,empty);
+  const target=$('plan-advice');target.replaceChildren();
+  if(!snapshot.view.selected_groups.length){
+    add(target,node('p','empty',ui('Add challenges to make a plan.')));
     return;
   }
-  const total=node('div','plan-total');
-  add(total,node('strong','',number(combined.qualifying_match_count)),node('div','',ui('Qualifying matches planned')));
-  add(summary,total,node('p','fine plan-caveat',ui('These are qualifying results, not predicted attempts. One match can count for several tasks. Cumulative targets may need more matches.')));
-  if (combined.optimization==='search_limited') add(summary,node('p','fine',ui('Search limited; this is the best plan found, not a proven minimum.')));
-  const groups=selectedMap();
-  const ordered=[...combined.runs].sort((a,b)=>{
-    const expiry=run=>Math.min(...run.group_ids.map(id=>{
-      const value=groups.get(id)?.effective_expires_at;
-      return value ? Date.parse(value) : Infinity;
-    }));
-    return expiry(a)-expiry(b) || a.qualifying_matches-b.qualifying_matches || planRouteText(a.mode_option).localeCompare(planRouteText(b.mode_option));
-  });
-  const issues=planIssues(p,ordered);
-  const selected=snapshot.view.selected_groups;
-  const allComplete=selected.length>0 && selected.every(group=>group.tasks.length>0 && group.tasks.every(task=>task.progress?.completed));
-  if(allComplete) {
-    const done=node('div','complete-state');
-    add(done,node('strong','',ui('All selected tasks completed')),node('p','',ui('You have finished every task currently on your list. Browse for another challenge or review upcoming cycles.')));
-    const browse=node('button','primary',ui('Browse challenges'));browse.type='button';browse.onclick=()=>switchTab('browse');add(done,browse);
-    add(summary,done);add(runs,node('p','empty',ui('No selected tasks remain.')));
+  const bullets=planBulletPoints(snapshot);
+  if(!bullets.length){
+    add(target,node('p','empty',ui('No special squad setup for these challenges.')));
     return;
   }
-  issues.cycle.forEach((tasks,id)=>{
-    const openCycleSettings=()=>cycleSettings(id);
-    if(ordered.length) {
-      const teaser=node('button','plan-cycle-teaser',`${tr(groups.get(id)?.title||id)} · ${ui('Not in plan until cycle start')}`);
-      teaser.type='button';teaser.onclick=openCycleSettings;add(summary,teaser);
-    }
-    const alert=node('div','plan-cycle-alert');
-    add(alert,node('strong','',`${tr(groups.get(id)?.title||id)} · ${ui('Cycle start required')}`),
-      node('p','fine',`${number(tasks.length)} ${ui('Waiting for a verified cycle start')}. ${ui('Only use a cycle start you know from FC 27.')}`));
-    const settings=node('button','',ui('Set verified cycle start'));settings.type='button';settings.onclick=openCycleSettings;
-    add(alert,settings);
-    const waiting=planDisclosure('Waiting tasks',tasks.length,'plan-subdetails');
-    tasks.forEach(task=>add(waiting,node('p','fine',tr(task.source_text))));
-    add(alert,waiting);add(ordered.length?extra:summary,alert);
-  });
-  if (!ordered.length) {
-    const emptyCopy=issues.manual.length ? 'No match runs are needed for the remaining manual tasks.' :
-      issues.cycle.size ? 'Add a verified cycle start to include these repeat tasks in your plan.' :
-      issues.blocked.length ? 'Some selected tasks need review before they can be planned.' :
-      issues.cumulative.length ? 'Your remaining work is cumulative. Record progress as you play.' :
-      'No match runs are needed for your remaining tasks.';
-    add(runs,node('p','empty',ui(emptyCopy)));
-    const blockedModes=issues.blocked.filter(task=>task.reasons.includes('no_permitted_mode'));
-    if(blockedModes.length) {
-      const taskIds=new Set(blockedModes.map(task=>task.task_id));
-      const named=[...new Set(snapshot.groups.flatMap(group=>group.tasks.filter(task=>taskIds.has(task.id)).flatMap(task=>task.mode_options.map(option=>option.mode))))];
-      if(named.length) add(runs,node('p','fine',ui('Selected tasks list these modes: ')+named.map(label).join(' · ')));
-      const settings=node('button','ghost',ui('Set available modes'));settings.type='button';settings.onclick=()=>switchTab('settings');add(runs,settings);
-    }
-  }
-  ordered.forEach((run,index)=>{
-    const card=node('article',index===0?'plan-run plan-next':'plan-run');
-    const taskGroupIds=planGroupOrder(run,groups);
-    const core=planCoreRequirements(run);
-    const key=run.match_tasks.map(t=>t.task_id).sort().join('|');
-    const options=run.route_options?.length ? run.route_options : [run.mode_option];
-    const selected=options.find(option=>JSON.stringify(option)===savedPlanRoutes[key]) || run.mode_option;
-    const kicker=node('span','plan-kicker',ui(index===0?'Play this next':'Then play'));
-    const heading=node('div','plan-run-heading');
-    add(heading,node('strong','plan-run-number',number(run.qualifying_matches)),node('div','plan-run-title',label(run.qualifying_matches===1?'match':'matches')));
-    const routeLine=node('div','plan-mode',planRouteText(selected));
-    add(card,kicker,heading,routeLine);
-    if(taskGroupIds.length>1) {
-      const focusId=taskGroupIds[0], focus=groups.get(focusId),group=groupMap().get(focusId);
-      const priority=node('div','plan-priority');
-      add(priority,node('span','plan-setup-label',ui('Focus first')),
-        node('strong','',tr(focus?.title||focusId)));
-      if(group) add(priority,node('span','fine',deadlineLabel(group,focus)));
-      add(card,priority);
-    }
-    if(options.length>1) {
-      const routeLabel=node('label','plan-route-choice',ui('Choose a compatible route'));
-      const chooser=node('select');chooser.setAttribute('aria-label',ui('Choose a compatible route'));
-      options.forEach((option,i)=>{const item=node('option','',planRouteText(option));item.value=String(i);add(chooser,item);});
-      chooser.value=String(Math.max(0,options.findIndex(option=>JSON.stringify(option)===JSON.stringify(selected))));
-      chooser.onchange=()=>{savedPlanRoutes[key]=JSON.stringify(options[Number(chooser.value)]);localStorage.setItem('planRoutes',JSON.stringify(savedPlanRoutes));renderPlan();};
-      add(routeLabel,chooser);add(card,routeLabel);
-    }
-    const setup=node('div','plan-setup');
-    if(core.squad.length || core.roles.length) add(setup,node('span','plan-setup-label',ui('Start with this lineup')));
-    if(core.squad.length) {
-      const slots=new Map();
-      core.squad.forEach(req=>{
-        if(!slots.has(req.slot)) slots.set(req.slot,[]);
-        slots.get(req.slot).push(req);
-      });
-      slots.forEach((requirements,slot)=>{
-        const row=node('div');add(row,node('span','plan-setup-label',ui(slot==='starting_squad'?'Starting squad':'Starting XI')),
-          node('strong','',requirements.map(req=>language==='ar'?planStarterText(req):`${req.minimum==='all'?ui('All'):number(req.minimum)} ${planTraitShort(req.trait)}`).join(' · ')));add(setup,row);
-      });
-    }
-    if(core.roles.length) {
-      const row=node('div');add(row,node('span','plan-setup-label',ui('Start these players')),
-        node('strong','',core.roles.map(role=>planRoleText(role)).join(' · ')));add(setup,row);
-    }
-    if(setup.children.length) add(card,setup);
-    const focusTasks=run.match_tasks.filter(task=>task.group_id===taskGroupIds[0]);
-    const targets=node('section','plan-targets');
-    add(targets,node('h4','',ui('During this run')),planTaskList(focusTasks));
-    add(card,targets);
-    if(taskGroupIds.length>1) {
-      const others=planDisclosure('Other challenge targets',taskGroupIds.length-1,'plan-subdetails');
-      taskGroupIds.slice(1).forEach(id=>{
-        add(others,node('h4','plan-other-title',tr(groups.get(id)?.title||id)),
-          planTaskList(run.match_tasks.filter(task=>task.group_id===id)));
-      });
-      add(card,others);
-    }
-    if(run.cumulative_targets.length) {
-      const cumulative=planDisclosure('Also work toward',run.cumulative_targets.length,'plan-subdetails');
-      run.cumulative_targets.forEach(task=>add(cumulative,planTaskDetail(task,true)));
-      add(card,cumulative);
-    }
-    const context=planDisclosure('Run context',null,'plan-subdetails');
-    run.group_ids.forEach(id=>{
-      const group=groups.get(id);
-      if(group) add(context,node('p','fine',`${tr(group.title)}${group.effective_expires_at ? ' · '+ui('Expires: ')+fmt(group.effective_expires_at) : ''}${snapshot.groups.find(g=>g.id===id)?.repeat?.cadence ? ' · '+ui('Cycle: ')+fmt(snapshot.settings.cycles[id]) : ''}`));
-    });
-    if(core.squad.length>1) add(context,node('p','fine',ui('Starting player traits may overlap when you own an eligible card.')));
-    if(core.squad.length || core.roles.length) add(context,node('p','fine',ui('These traits apply to their listed task counts, not every match.')));
-    if(core.roles.some(role=>role.must_start)) add(context,node('p','fine',ui('A required scorer or assister must start; you may substitute them after they contribute.')));
-    if(selected.mode==='squad_battles' && selected.minimum_difficulty && run.match_tasks.some(task=>task.conditions.some(c=>c.type==='result'&&c.value==='win')))
-      add(context,node('p','fine',ui('For Squad Battles wins at this difficulty, play the weakest available team for a better chance of winning.')));
-    add(card,context);
-    const checkin=node('button','plan-checkin',ui('Record a match'));checkin.type='button';checkin.onclick=()=>openMatchCheckin(run);add(card,checkin);
-    const progress=node('button','plan-progress',ui('Record progress'));progress.type='button';
-    progress.onclick=()=>{
-      goToTask(taskGroupIds[0],focusTasks[0]?.task_id);
-    };
-    add(card,progress);add(runs,card);
-  });
-  if(issues.cumulative.length) {
-    const section=planDisclosure('Cumulative targets',issues.cumulative.length,'plan-extra-section');
-    issues.cumulative.forEach(t=>{
-      const row=node('div','plan-extra-row');add(row,node('strong','',tr(t.source_text)));
-      if(t.target) add(row,node('p','fine',`${ui('Remaining')}: ${countUnit(Math.max(0,t.target.count-(groups.get(t.group_id)?.tasks.find(x=>x.id===t.task_id)?.progress?.count||0)),t.target.unit)}`));
-      const record=node('button','plan-task-link',ui('Record this task'));record.type='button';record.onclick=()=>goToTask(t.group_id,t.task_id);add(row,record);
-      add(section,row);
-    });add(extra,section);
-  }
-  if(issues.manual.length) {
-    const section=planDisclosure('Manual tasks',issues.manual.length,'plan-extra-section');
-    issues.manual.forEach(t=>{
-      const row=node('div','plan-extra-row');add(row,node('span','',tr(t.source_text)));
-      const record=node('button','plan-task-link',ui('Record this task'));record.type='button';record.onclick=()=>goToTask(t.group_id,t.task_id);add(row,record);add(section,row);
-    });
-    add(extra,section);
-  }
-  if(issues.blocked.length) {
-    const section=planDisclosure('Tasks to review',issues.blocked.length,'plan-extra-section');
-    issues.blocked.forEach(t=>{
-      const row=node('div','plan-extra-row');add(row,node('strong','',tr(t.source_text)));
-      const reasons=node('div','reason-list');flags(reasons,t.reasons);add(row,reasons);add(section,row);
-      const selectedGroup=groups.get(t.group_id);
-      const stateTask=selectedGroup?.tasks.find(task=>task.id===t.task_id);
-      const sourceTask=groupMap().get(t.group_id)?.tasks.find(task=>task.id===t.task_id);
-      const reached=Boolean(t.reasons.includes('completion_needs_confirmation') || stateTask?.progress && sourceTask?.target && stateTask.progress.count>=sourceTask.target.count && !stateTask.progress.completed);
-      const action=node('button','plan-task-link',ui(reached?'Confirm completion':'Review this task'));action.type='button';action.onclick=()=>goToTask(t.group_id,t.task_id);add(row,action);
-    });add(extra,section);
-  }
-  if(p.completed_tasks.length || p.unavailable_groups.length) {
-    const section=planDisclosure('Completed & unavailable',p.completed_tasks.length+p.unavailable_groups.length,'plan-extra-section');
-    p.completed_tasks.forEach(t=>{const row=node('div','plan-extra-row');add(row,node('span','badge',ui('Completed')),node('span','',`${tr(groups.get(t.group_id)?.title||t.group_id)} · ${t.task_id}`));add(section,row);});
-    p.unavailable_groups.forEach(g=>{const row=node('div','plan-extra-row');add(row,node('strong','',tr(g.title||g.group_id)),node('p','fine',label(g.availability)));flags(row,g.review_flags);add(section,row);});
-    add(extra,section);
-  }
+  const list=node('ul','plan-bullets');
+  bullets.forEach(item=>add(list,node('li','',item.text)));
+  add(target,list);
 }
-function renderSettings() {
-  $('settings-form').classList.remove('dirty');
-  $('settings-dirty').textContent='';
-  const modes=$('modes');modes.replaceChildren();
-  snapshot.mode_catalog.forEach(mode=>{
-    const row=node('div','mode-row');add(row,node('strong','',label(mode)));
-    for(const [key,title] of [['available_modes','Available'],['excluded_modes','Exclude from plan']]){
-      const l=node('label'),box=node('input');box.type='checkbox';box.dataset.mode=mode;box.dataset.key=key;box.checked=snapshot.settings[key].includes(mode);
-      box.setAttribute('aria-label',`${label(mode)}: ${ui(title)}`);add(l,box,document.createTextNode(ui(title)));add(row,l);
-    }
-    add(modes,row);
-  });
-  const cycles=$('cycles');cycles.replaceChildren();
-  const selectedIds=new Set(snapshot.view.selected_groups.map(group=>group.group_id));
-  const repeat=snapshot.groups.filter(g=>g.repeat.cadence);
-  const selectedRepeat=repeat.filter(g=>selectedIds.has(g.id));
-  const otherRepeat=repeat.filter(g=>!selectedIds.has(g.id));
-  const selectedSection=node('div','cycle-section');add(selectedSection,node('h4','',ui('Selected repeat challenges')));
-  if (!selectedRepeat.length) add(selectedSection,node('p','fine',ui('No selected repeat challenges.')));
-  const otherSection=planDisclosure('Other repeat challenges',otherRepeat.length,'cycle-other');
-  const cycleRow=g=>{
-    const row=node('label','cycle-row');add(row,node('strong','',tr(g.title)),node('small','',`${label(g.repeat.cadence)} · ID ${g.id}`));
-    const input=node('input');input.type='text';input.placeholder='YYYY-MM-DDTHH:MM:SSZ';input.value=snapshot.settings.cycles[g.id]||'';input.dataset.groupId=g.id;input.setAttribute('aria-label',`${tr(g.title)} ${ui('verified cycle start in UTC')}`);
-    const local=node('input');local.type='datetime-local';local.className='cycle-local';local.setAttribute('aria-label',`${tr(g.title)} ${ui('Local time picker')}`);
-    const preview=node('small','cycle-preview',input.value ? `${ui('Local time')}: ${fmt(input.value)}` : ui('Choose a local time to convert it to UTC.'));
-    local.addEventListener('input',()=>{if(!local.value)return;input.value=new Date(local.value).toISOString().replace('.000Z','Z');preview.textContent=`${ui('UTC value')}: ${input.value}`;input.dispatchEvent(new Event('input',{bubbles:true}));});
-    if(input.value){const date=new Date(input.value);if(Number.isFinite(date.getTime()))local.value=`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}T${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;}
-    const error=node('small','cycle-error');error.id=`cycle-error-${g.id}`;error.setAttribute('role','alert');input.setAttribute('aria-describedby',error.id);
-    input.addEventListener('input',()=>{error.textContent='';input.removeAttribute('aria-invalid');});
-    add(row,node('small','',ui('Verified start in UTC')),input,node('small','',ui('Local time picker')),local,preview,error);
-    return row;
-  };
-  selectedRepeat.forEach(g=>add(selectedSection,cycleRow(g)));
-  otherRepeat.forEach(g=>add(otherSection,cycleRow(g)));
-  add(cycles,selectedSection,otherSection);
+function renderBackup() {
   const backup=$('backup-controls');backup.replaceChildren();
   if (window.objectiveApi) {
-    add(backup,node('h3','',ui('Your data')),node('p','fine',ui('Progress is saved only in this browser. Export a backup before clearing browser data or changing phones.')));
+    add(backup,node('h3','',ui('Your data')),node('p','fine',ui('Your selected challenges are saved in this browser. Export a backup before changing phones.')));
     const row=node('div','backup-actions');
     const download=node('button','',ui('Download backup'));
     download.type='button';download.onclick=()=>{
       const data=window.objectiveApi.exportPrivate() || JSON.stringify({state:JSON.stringify({schema_version:1,selections:{},deadline_corrections:{},progress:{}}),settings:JSON.stringify({schema_version:1,available_modes:[],excluded_modes:[],cycles:{}})});
       const url=URL.createObjectURL(new Blob([data],{type:'application/json'}));
-      const link=document.createElement('a');link.href=url;link.download='futgg-progress-backup.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+      const link=document.createElement('a');link.href=url;link.download='futgg-selections-backup.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
     };
     const upload=node('input');upload.type='file';upload.accept='application/json,.json';upload.setAttribute('aria-label',ui('Import backup'));
     upload.onchange=async()=>{
@@ -955,40 +559,14 @@ function render() {
   $('source-date').textContent=ui('Updated ')+fmt(snapshot.view.source_fetched_at);
   $('selected-count').textContent=String(snapshot.view.selected_groups.length);
   if(snapshot.source_mismatch) message(ui('Raw export and interpreted export are from different refreshes. Run the interpretation command before relying on this plan.'));
-  renderBrowse();renderSelected();renderPlan();renderSettings();renderNextStep();switchTab(activeTab);
+  renderBrowse();renderSelected();renderPlan();renderBackup();switchTab(activeTab);
 }
-if (typeof module !== 'undefined') module.exports={planCoreRequirements,planGroupOrder,planIssues,planTaskText};
+if (typeof module !== 'undefined') module.exports={planBulletPoints};
 if (typeof document !== 'undefined') {
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
   ['search','sort','category','availability'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',()=>snapshot&&renderBrowse()));
   $('reload').onclick=()=>{message('');load();};
-  $('checkin-cancel').onclick=()=>$('checkin-dialog').close();
   $('language').onchange=e=>setLanguage(e.target.value);
-  $('settings-form').onsubmit=e=>{
-    e.preventDefault();
-    const data={available_modes:[],excluded_modes:[],cycles:{}};
-    document.querySelectorAll('#modes input').forEach(input=>{if(input.checked)data[input.dataset.key].push(input.dataset.mode);});
-    const cycleInputs=[...document.querySelectorAll('#cycles input[data-group-id]')];
-    for(const input of cycleInputs){
-      const value=input.value.trim(),error=$(`cycle-error-${input.dataset.groupId}`);error.textContent='';input.removeAttribute('aria-invalid');
-      if(!value)continue;
-      if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|\+00:00)$/.test(value)||!Number.isFinite(Date.parse(value))){
-        error.textContent=ui('Enter a valid date and time with Z or +00:00, or use the local time picker.');input.setAttribute('aria-invalid','true');input.scrollIntoView({block:'center',behavior:'smooth'});input.focus({preventScroll:true});return;
-      }
-      data.cycles[input.dataset.groupId]=value;
-    }
-    post('settings',data);
-  };
-  $('settings-form').addEventListener('change',e=>{
-    if(e.target.matches('#modes input') && e.target.checked) {
-      const opposite=e.target.dataset.key==='available_modes'?'excluded_modes':'available_modes';
-      const other=[...document.querySelectorAll('#modes input')].find(input=>input.dataset.mode===e.target.dataset.mode&&input.dataset.key===opposite);
-      if(other) other.checked=false;
-    }
-    $('settings-form').classList.add('dirty');
-    $('settings-dirty').textContent=ui('Unsaved changes');
-  });
-  $('settings-form').addEventListener('input',()=>{$('settings-form').classList.add('dirty');$('settings-dirty').textContent=ui('Unsaved changes');});
   setLanguage(language);
   load();
 }

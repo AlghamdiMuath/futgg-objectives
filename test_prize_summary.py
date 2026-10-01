@@ -22,12 +22,12 @@ class PrizeSummaryTests(unittest.TestCase):
         coins = summarize(GROUPS["123"])
         self.assertEqual(coins["main"]["label"], "1,000 Coins")
         self.assertEqual(coins["coins"], 1250)
-        pack = summarize(GROUPS["72"])
+        pack = summarize({"completion_rewards": ["2X 84+ Gold Players Pack"]})
         self.assertEqual(pack["pack_quality"], {"minimum_rating": 84, "player_count": 2})
         self.assertEqual(pack["best_pack_label"], "2X 84+ Gold Players Pack")
 
     def test_unrated_pack_stays_unranked(self):
-        prize = summarize(GROUPS["90"])
+        prize = summarize({"completion_rewards": ["Unrated Pack"]})
         self.assertEqual(prize["main"]["kind"], "pack")
         self.assertIsNone(prize["pack_quality"])
 
@@ -40,7 +40,7 @@ class PrizeSummaryTests(unittest.TestCase):
 
     def test_players_listed_outside_completion_prize_are_named(self):
         gallery = summarize(GROUPS["81"])
-        self.assertEqual(gallery["main"]["label"], "Evo Unlock")
+        self.assertEqual(gallery["main"]["label"], GROUPS["81"]["completion_rewards"][0])
         self.assertTrue(gallery["has_player"])
         self.assertEqual(gallery["other_players"], ["Jesús Corona"])
         self.assertEqual(summarize(GROUPS["25"])["other_players"], ["Victor Lindelöf"])

@@ -1,8 +1,157 @@
 {
   "schema_version": 1,
   "source_schema_version": 3,
-  "source_fetched_at": "2026-09-28T17:40:26.296269Z",
+  "source_fetched_at": "2026-10-01T06:48:35.383748Z",
   "groups": [
+    {
+      "id": "73",
+      "title": "Weekly Rush Points",
+      "category": "seasonal",
+      "description": "Complete Rush Bonuses alongside your teammates to earn Rush Points and pack rewards! All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/seasonal/73-weekly-rush-points/",
+      "starts_at": "2026-09-29T17:00:00Z",
+      "expires_at": "2026-10-06T16:59:59Z",
+      "completion_rewards": [
+        "2X 84+ Gold Players Pack"
+      ],
+      "available_rewards": [
+        "1 x 83+ Gold Player Pack",
+        "1 x 2x 82+ Gold Players Pack",
+        "1 x 2x 80+ Gold Players Pack",
+        "1 x 2x 78+ Gold Players Pack",
+        "1 x 2x 75+ Gold Players Pack",
+        "1 x 2x 84+ Gold Players Pack"
+      ],
+      "total_season_points": null,
+      "repeat": {
+        "cadence": "weekly",
+        "reset_schedule": null,
+        "cycle_key_required": false
+      },
+      "source_fingerprint": "55a26de342927671b021578219b183cc6565a5f485e5f96539a89abe8dc04275",
+      "tasks": [
+        {
+          "id": "73:515",
+          "title": "35,000 Rush Points",
+          "source_text": "Earn 35,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "83+ Gold Player Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 35000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 35,000 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "57c1785723b059e245b35ba8ebec00ecdfcb4204943a4d57aa0ff13e34e07756"
+        },
+        {
+          "id": "73:514",
+          "title": "25,000 Rush Points",
+          "source_text": "Earn 25,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 82+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 25000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 25,000 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "cc524332d4566022e509bf7707c2363c4d42eca9166bc6bdfd8e039eff9b3bef"
+        },
+        {
+          "id": "73:513",
+          "title": "20,000 Rush Points",
+          "source_text": "Earn 20,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 80+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 20000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 20,000 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "f36eda45d0d4742c1e908adf1aa25afa2bb2342d203aedb35979693f37f47551"
+        },
+        {
+          "id": "73:512",
+          "title": "10,000 Rush Points",
+          "source_text": "Earn 10,000 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 78+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 10000,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 10,000 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "ebd629a093d404ad3200d1cadb612ced26041eada39a8d1219d4ba2b3cb7f9dc"
+        },
+        {
+          "id": "73:511",
+          "title": "2,500 Rush Points",
+          "source_text": "Earn 2,500 points by completing bonuses in Rush.",
+          "rewards": [
+            "2X 75+ Gold Players Pack"
+          ],
+          "kind": "checklist",
+          "status": "parsed",
+          "review_reasons": [],
+          "mode_options": [],
+          "target": {
+            "unit": "points",
+            "count": 2500,
+            "scope": "cumulative"
+          },
+          "conditions": [],
+          "checklist": {
+            "action": "Earn 2,500 points by completing bonuses in Rush."
+          },
+          "dependency": null,
+          "prerequisites": [],
+          "source_fingerprint": "6d18f740fa9b0cd4ec577142060c58464e2f9d1ed4c164b4a78fd7a9bb0c3711"
+        }
+      ]
+    },
     {
       "id": "94",
       "title": "Squad Battles: Champions Qualification Points",
@@ -700,155 +849,6 @@
       ]
     },
     {
-      "id": "72",
-      "title": "Weekly Rush Points",
-      "category": "seasonal",
-      "description": "Complete Rush Bonuses alongside your teammates to earn Rush Points and pack rewards! All rewards are untradeable.",
-      "url": "https://www.fut.gg/objectives/seasonal/72-weekly-rush-points/",
-      "starts_at": "2026-09-22T17:00:00Z",
-      "expires_at": "2026-09-29T16:59:59Z",
-      "completion_rewards": [
-        "2X 84+ Gold Players Pack"
-      ],
-      "available_rewards": [
-        "1 x 83+ Gold Player Pack",
-        "1 x 2x 82+ Gold Players Pack",
-        "1 x 2x 80+ Gold Players Pack",
-        "1 x 2x 78+ Gold Players Pack",
-        "1 x 2x 75+ Gold Players Pack",
-        "1 x 2x 84+ Gold Players Pack"
-      ],
-      "total_season_points": null,
-      "repeat": {
-        "cadence": "weekly",
-        "reset_schedule": null,
-        "cycle_key_required": true
-      },
-      "source_fingerprint": "320a5ecafeb049f72c8a8b01ef3f641d335adfa849ae4cbd0d2f57a09ee2697d",
-      "tasks": [
-        {
-          "id": "72:510",
-          "title": "35,000 Rush Points",
-          "source_text": "Earn 35,000 points by completing bonuses in Rush.",
-          "rewards": [
-            "83+ Gold Player Pack"
-          ],
-          "kind": "checklist",
-          "status": "parsed",
-          "review_reasons": [],
-          "mode_options": [],
-          "target": {
-            "unit": "points",
-            "count": 35000,
-            "scope": "cumulative"
-          },
-          "conditions": [],
-          "checklist": {
-            "action": "Earn 35,000 points by completing bonuses in Rush."
-          },
-          "dependency": null,
-          "prerequisites": [],
-          "source_fingerprint": "57c1785723b059e245b35ba8ebec00ecdfcb4204943a4d57aa0ff13e34e07756"
-        },
-        {
-          "id": "72:509",
-          "title": "25,000 Rush Points",
-          "source_text": "Earn 25,000 points by completing bonuses in Rush.",
-          "rewards": [
-            "2X 82+ Gold Players Pack"
-          ],
-          "kind": "checklist",
-          "status": "parsed",
-          "review_reasons": [],
-          "mode_options": [],
-          "target": {
-            "unit": "points",
-            "count": 25000,
-            "scope": "cumulative"
-          },
-          "conditions": [],
-          "checklist": {
-            "action": "Earn 25,000 points by completing bonuses in Rush."
-          },
-          "dependency": null,
-          "prerequisites": [],
-          "source_fingerprint": "cc524332d4566022e509bf7707c2363c4d42eca9166bc6bdfd8e039eff9b3bef"
-        },
-        {
-          "id": "72:508",
-          "title": "20,000 Rush Points",
-          "source_text": "Earn 20,000 points by completing bonuses in Rush.",
-          "rewards": [
-            "2X 80+ Gold Players Pack"
-          ],
-          "kind": "checklist",
-          "status": "parsed",
-          "review_reasons": [],
-          "mode_options": [],
-          "target": {
-            "unit": "points",
-            "count": 20000,
-            "scope": "cumulative"
-          },
-          "conditions": [],
-          "checklist": {
-            "action": "Earn 20,000 points by completing bonuses in Rush."
-          },
-          "dependency": null,
-          "prerequisites": [],
-          "source_fingerprint": "f36eda45d0d4742c1e908adf1aa25afa2bb2342d203aedb35979693f37f47551"
-        },
-        {
-          "id": "72:507",
-          "title": "10,000 Rush Points",
-          "source_text": "Earn 10,000 points by completing bonuses in Rush.",
-          "rewards": [
-            "2X 78+ Gold Players Pack"
-          ],
-          "kind": "checklist",
-          "status": "parsed",
-          "review_reasons": [],
-          "mode_options": [],
-          "target": {
-            "unit": "points",
-            "count": 10000,
-            "scope": "cumulative"
-          },
-          "conditions": [],
-          "checklist": {
-            "action": "Earn 10,000 points by completing bonuses in Rush."
-          },
-          "dependency": null,
-          "prerequisites": [],
-          "source_fingerprint": "ebd629a093d404ad3200d1cadb612ced26041eada39a8d1219d4ba2b3cb7f9dc"
-        },
-        {
-          "id": "72:506",
-          "title": "2,500 Rush Points",
-          "source_text": "Earn 2,500 points by completing bonuses in Rush.",
-          "rewards": [
-            "2X 75+ Gold Players Pack"
-          ],
-          "kind": "checklist",
-          "status": "parsed",
-          "review_reasons": [],
-          "mode_options": [],
-          "target": {
-            "unit": "points",
-            "count": 2500,
-            "scope": "cumulative"
-          },
-          "conditions": [],
-          "checklist": {
-            "action": "Earn 2,500 points by completing bonuses in Rush."
-          },
-          "dependency": null,
-          "prerequisites": [],
-          "source_fingerprint": "6d18f740fa9b0cd4ec577142060c58464e2f9d1ed4c164b4a78fd7a9bb0c3711"
-        }
-      ]
-    },
-    {
       "id": "108",
       "title": "FC Pro Open Ladder",
       "category": "fc-pro",
@@ -982,82 +982,6 @@
           "dependency": null,
           "prerequisites": [],
           "source_fingerprint": "3e46b2a5dbe16fecab6a03396c3c3cc3801d277978e9010c449c0d5661d6ecb6"
-        }
-      ]
-    },
-    {
-      "id": "90",
-      "title": "FC 27 First Gameplay",
-      "category": "fc-pro",
-      "description": "Join in on the action of the FC 27 First Gameplay broadcast on Twitch/EASPORTSFC or YouTube/EASPORTSFC to earn your viewership rewards! All rewards are untradeable.",
-      "url": "https://www.fut.gg/objectives/fc-pro/90-fc-27-first-gameplay/",
-      "starts_at": "2026-09-14T17:00:00Z",
-      "expires_at": "2026-09-29T16:59:59Z",
-      "completion_rewards": [
-        "Small Gold Players Pack"
-      ],
-      "available_rewards": [
-        "2,500 Coins",
-        "Coin Boost",
-        "1 x Small Electrum Players Pack",
-        "1 x Small Gold Players Pack"
-      ],
-      "total_season_points": null,
-      "repeat": {
-        "cadence": null,
-        "reset_schedule": null,
-        "cycle_key_required": false
-      },
-      "source_fingerprint": "482468525ddafbdae055e554b503a8daef74ef4f68b9a71c1f57cfa047d65daf",
-      "tasks": [
-        {
-          "id": "90:1459",
-          "title": "Hit the Pitch",
-          "source_text": "Watch the FC 27 First Gameplay broadcast for at least 60 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC.",
-          "rewards": [
-            "Coin Boost",
-            "2,500 Coins"
-          ],
-          "kind": "checklist",
-          "status": "parsed",
-          "review_reasons": [],
-          "mode_options": [],
-          "target": {
-            "unit": "minutes",
-            "count": 60,
-            "scope": "cumulative"
-          },
-          "conditions": [],
-          "checklist": {
-            "action": "Watch the FC 27 First Gameplay broadcast for at least 60 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC."
-          },
-          "dependency": null,
-          "prerequisites": [],
-          "source_fingerprint": "0ed69100813f2e68ea4552a8e0a72fb0a7eec516a708cf43812f0d8dbcebac0c"
-        },
-        {
-          "id": "90:1458",
-          "title": "Kick Off",
-          "source_text": "Watch the FC 27 First Gameplay broadcast for at least 15 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC.",
-          "rewards": [
-            "Small Electrum Players Pack"
-          ],
-          "kind": "checklist",
-          "status": "parsed",
-          "review_reasons": [],
-          "mode_options": [],
-          "target": {
-            "unit": "minutes",
-            "count": 15,
-            "scope": "cumulative"
-          },
-          "conditions": [],
-          "checklist": {
-            "action": "Watch the FC 27 First Gameplay broadcast for at least 15 minutes. Broadcast will go live on September 15th at 17:00 UTC until 18:30 UTC."
-          },
-          "dependency": null,
-          "prerequisites": [],
-          "source_fingerprint": "3c4b4c922b5e9fc9d3aa1cd72829aa226a74990a5e6164fa81e9b0e7355cd04d"
         }
       ]
     },
@@ -2376,7 +2300,7 @@
       "repeat": {
         "cadence": "weekly",
         "reset_schedule": null,
-        "cycle_key_required": true
+        "cycle_key_required": false
       },
       "source_fingerprint": "08c98af449ba05b7f6c2509a36fd84594b5eb4b1ef87719759838c8fb56a6f04",
       "tasks": [
@@ -2636,21 +2560,21 @@
       ]
     },
     {
-      "id": "53",
-      "title": "Rivals Mastery",
+      "id": "54",
+      "title": "Squad Battles Mastery",
       "category": "mastery",
-      "description": "Beat your Rivals to prove you are the G.O.A.T!",
-      "url": "https://www.fut.gg/objectives/mastery/53-rivals-mastery/",
+      "description": "Keep battling over the year to prove you are a Squad Battles Master!",
+      "url": "https://www.fut.gg/objectives/mastery/54-squad-battles-mastery/",
       "starts_at": "2026-08-17T17:00:00Z",
       "expires_at": null,
       "completion_rewards": [
-        "Large Gold Players Pack"
+        "Giant Gold Pack"
       ],
       "available_rewards": [
-        "1 x Giant Gold Pack",
-        "1 x 10x 78+ Gold Players Pack",
+        "1 x 84+ Gold Player Pack",
         "1 x Large Gold Pack",
-        "1 x Large Gold Players Pack"
+        "1 x Small Gold Players Pack",
+        "1 x Giant Gold Pack"
       ],
       "total_season_points": null,
       "repeat": {
@@ -2658,23 +2582,23 @@
         "reset_schedule": null,
         "cycle_key_required": false
       },
-      "source_fingerprint": "3a298eae424e55af8d1ed6c08c07074998d408e04362bc20bc9370dbc060d38f",
+      "source_fingerprint": "e8dff55d755aa943b2cd606eb1176af73beebddcbc80048a556d296b4f60f397",
       "tasks": [
         {
-          "id": "53:251",
+          "id": "54:254",
           "title": "Win 100",
-          "source_text": "Win 100 Rivals matches.",
+          "source_text": "Win 100 Squad Battles matches on min. Semi-Pro difficulty.",
           "rewards": [
-            "Giant Gold Pack"
+            "84+ Gold Player Pack"
           ],
           "kind": "match",
           "status": "parsed",
           "review_reasons": [],
           "mode_options": [
             {
-              "mode": "rivals",
+              "mode": "squad_battles",
               "event": null,
-              "minimum_difficulty": null
+              "minimum_difficulty": "Semi-Pro"
             }
           ],
           "target": {
@@ -2691,23 +2615,23 @@
           "checklist": null,
           "dependency": null,
           "prerequisites": [],
-          "source_fingerprint": "1e5bbf878e32e1f959d5502766df58eb5f38b6f6ad4592e96e910fe447048614"
+          "source_fingerprint": "84e52adef74318099de66c950c898f8dc93ae81bb34832a01c14539da62c701c"
         },
         {
-          "id": "53:250",
+          "id": "54:253",
           "title": "Win 50",
-          "source_text": "Win 50 Rivals matches.",
+          "source_text": "Win 50 Squad Battles matches on min. Semi-Pro difficulty.",
           "rewards": [
-            "10X 78+ Gold Players Pack"
+            "Large Gold Pack"
           ],
           "kind": "match",
           "status": "parsed",
           "review_reasons": [],
           "mode_options": [
             {
-              "mode": "rivals",
+              "mode": "squad_battles",
               "event": null,
-              "minimum_difficulty": null
+              "minimum_difficulty": "Semi-Pro"
             }
           ],
           "target": {
@@ -2724,23 +2648,23 @@
           "checklist": null,
           "dependency": null,
           "prerequisites": [],
-          "source_fingerprint": "b700c8a76d961db787aa7ca7b666cc891eab873ba4e9062af34a7c982ecd1bf2"
+          "source_fingerprint": "bc08885626e4c36e225453a098e9334de25ce830a381969c9b237e14a9eb1860"
         },
         {
-          "id": "53:249",
+          "id": "54:252",
           "title": "Win 25",
-          "source_text": "Win 25 Rivals matches.",
+          "source_text": "Win 25 Squad Battles matches on min. Semi-Pro difficulty.",
           "rewards": [
-            "Large Gold Pack"
+            "Small Gold Players Pack"
           ],
           "kind": "match",
           "status": "parsed",
           "review_reasons": [],
           "mode_options": [
             {
-              "mode": "rivals",
+              "mode": "squad_battles",
               "event": null,
-              "minimum_difficulty": null
+              "minimum_difficulty": "Semi-Pro"
             }
           ],
           "target": {
@@ -2757,7 +2681,7 @@
           "checklist": null,
           "dependency": null,
           "prerequisites": [],
-          "source_fingerprint": "3941bed75f7d39cbdf8da824ca4f627c73e54164f983f5243ce0a1ae59ad6568"
+          "source_fingerprint": "651744fdf7402ce94b9ec9edd8471273b42ad88f91b2a059fc50d9a445c8fa0b"
         }
       ]
     },
@@ -2894,24 +2818,21 @@
       ]
     },
     {
-      "id": "28",
-      "title": "Total Football",
-      "category": "foundations",
-      "description": "Prove your worth by completing each of the Foundation Objectives groups to earn big rewards. All rewards are untradeable.",
-      "url": "https://www.fut.gg/objectives/foundations/28-total-football/",
+      "id": "53",
+      "title": "Rivals Mastery",
+      "category": "mastery",
+      "description": "Beat your Rivals to prove you are the G.O.A.T!",
+      "url": "https://www.fut.gg/objectives/mastery/53-rivals-mastery/",
       "starts_at": "2026-08-17T17:00:00Z",
       "expires_at": null,
       "completion_rewards": [
-        "Charalampos Kostoulas",
-        "Gold Players Pack"
+        "Large Gold Players Pack"
       ],
       "available_rewards": [
-        "Charalampos Kostoulas",
-        "300 SP",
-        "1 Of 3 80+ Gold Player Pick",
-        "1 Of 3 75+ Gold Player Pick",
-        "1 x 82+ Gold Player Pack",
-        "1 x Gold Players Pack"
+        "1 x Giant Gold Pack",
+        "1 x 10x 78+ Gold Players Pack",
+        "1 x Large Gold Pack",
+        "1 x Large Gold Players Pack"
       ],
       "total_season_points": null,
       "repeat": {
@@ -2919,91 +2840,106 @@
         "reset_schedule": null,
         "cycle_key_required": false
       },
-      "source_fingerprint": "b4992238c139abdcf95191423133880db95ca9c04110a031ebe2e9c487bc7a4c",
+      "source_fingerprint": "3a298eae424e55af8d1ed6c08c07074998d408e04362bc20bc9370dbc060d38f",
       "tasks": [
         {
-          "id": "28:152",
-          "title": "Complete 'Rising Through the Ranks'",
-          "source_text": "Fully complete the 'Rising Through the Ranks' Objectives Group.",
+          "id": "53:251",
+          "title": "Win 100",
+          "source_text": "Win 100 Rivals matches.",
           "rewards": [
-            "82+ Gold Player Pack",
-            "100 SP"
+            "Giant Gold Pack"
           ],
-          "kind": "dependency",
+          "kind": "match",
           "status": "parsed",
           "review_reasons": [],
-          "mode_options": [],
+          "mode_options": [
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
           "target": {
-            "unit": "group_completions",
-            "count": 1,
-            "scope": "once"
+            "unit": "matches",
+            "count": 100,
+            "scope": "separate_matches"
           },
-          "conditions": [],
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
           "checklist": null,
-          "dependency": {
-            "group_id": "27",
-            "group_title": "Rising Through the Ranks",
-            "completions": 1,
-            "distinct_periods": false
-          },
+          "dependency": null,
           "prerequisites": [],
-          "source_fingerprint": "d92352c4febaa8240f1ed50e1252ba8aa2658312ab2e576f70023808cf1f8aba"
+          "source_fingerprint": "1e5bbf878e32e1f959d5502766df58eb5f38b6f6ad4592e96e910fe447048614"
         },
         {
-          "id": "28:151",
-          "title": "Complete 'First Team Dreams'",
-          "source_text": "Fully complete the 'First Team Dreams' Objectives Group.",
+          "id": "53:250",
+          "title": "Win 50",
+          "source_text": "Win 50 Rivals matches.",
           "rewards": [
-            "1 Of 3 80+ Gold Player Pick",
-            "100 SP"
+            "10X 78+ Gold Players Pack"
           ],
-          "kind": "dependency",
+          "kind": "match",
           "status": "parsed",
           "review_reasons": [],
-          "mode_options": [],
+          "mode_options": [
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
           "target": {
-            "unit": "group_completions",
-            "count": 1,
-            "scope": "once"
+            "unit": "matches",
+            "count": 50,
+            "scope": "separate_matches"
           },
-          "conditions": [],
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
           "checklist": null,
-          "dependency": {
-            "group_id": "26",
-            "group_title": "First Team Dreams",
-            "completions": 1,
-            "distinct_periods": false
-          },
+          "dependency": null,
           "prerequisites": [],
-          "source_fingerprint": "bcc31e98f7b4fbea71f2dfc663b52cf2509a3d357b308dd419dc50eedd02081e"
+          "source_fingerprint": "b700c8a76d961db787aa7ca7b666cc891eab873ba4e9062af34a7c982ecd1bf2"
         },
         {
-          "id": "28:150",
-          "title": "Complete 'The Journey Begins'",
-          "source_text": "Fully complete the 'The Journey Begins' Objectives Group.",
+          "id": "53:249",
+          "title": "Win 25",
+          "source_text": "Win 25 Rivals matches.",
           "rewards": [
-            "1 Of 3 75+ Gold Player Pick",
-            "100 SP"
+            "Large Gold Pack"
           ],
-          "kind": "dependency",
+          "kind": "match",
           "status": "parsed",
           "review_reasons": [],
-          "mode_options": [],
+          "mode_options": [
+            {
+              "mode": "rivals",
+              "event": null,
+              "minimum_difficulty": null
+            }
+          ],
           "target": {
-            "unit": "group_completions",
-            "count": 1,
-            "scope": "once"
+            "unit": "matches",
+            "count": 25,
+            "scope": "separate_matches"
           },
-          "conditions": [],
+          "conditions": [
+            {
+              "type": "result",
+              "value": "win"
+            }
+          ],
           "checklist": null,
-          "dependency": {
-            "group_id": "25",
-            "group_title": "The Journey Begins",
-            "completions": 1,
-            "distinct_periods": false
-          },
+          "dependency": null,
           "prerequisites": [],
-          "source_fingerprint": "a02a3008eacb6dbae648b95c86251577010112f96f41244f29441cfcbaac723e"
+          "source_fingerprint": "3941bed75f7d39cbdf8da824ca4f627c73e54164f983f5243ce0a1ae59ad6568"
         }
       ]
     },
@@ -4399,21 +4335,24 @@
       ]
     },
     {
-      "id": "54",
-      "title": "Squad Battles Mastery",
-      "category": "mastery",
-      "description": "Keep battling over the year to prove you are a Squad Battles Master!",
-      "url": "https://www.fut.gg/objectives/mastery/54-squad-battles-mastery/",
+      "id": "28",
+      "title": "Total Football",
+      "category": "foundations",
+      "description": "Prove your worth by completing each of the Foundation Objectives groups to earn big rewards. All rewards are untradeable.",
+      "url": "https://www.fut.gg/objectives/foundations/28-total-football/",
       "starts_at": "2026-08-17T17:00:00Z",
       "expires_at": null,
       "completion_rewards": [
-        "Giant Gold Pack"
+        "Charalampos Kostoulas",
+        "Gold Players Pack"
       ],
       "available_rewards": [
-        "1 x 84+ Gold Player Pack",
-        "1 x Large Gold Pack",
-        "1 x Small Gold Players Pack",
-        "1 x Giant Gold Pack"
+        "Charalampos Kostoulas",
+        "300 SP",
+        "1 Of 3 80+ Gold Player Pick",
+        "1 Of 3 75+ Gold Player Pick",
+        "1 x 82+ Gold Player Pack",
+        "1 x Gold Players Pack"
       ],
       "total_season_points": null,
       "repeat": {
@@ -4421,106 +4360,91 @@
         "reset_schedule": null,
         "cycle_key_required": false
       },
-      "source_fingerprint": "e8dff55d755aa943b2cd606eb1176af73beebddcbc80048a556d296b4f60f397",
+      "source_fingerprint": "b4992238c139abdcf95191423133880db95ca9c04110a031ebe2e9c487bc7a4c",
       "tasks": [
         {
-          "id": "54:254",
-          "title": "Win 100",
-          "source_text": "Win 100 Squad Battles matches on min. Semi-Pro difficulty.",
+          "id": "28:152",
+          "title": "Complete 'Rising Through the Ranks'",
+          "source_text": "Fully complete the 'Rising Through the Ranks' Objectives Group.",
           "rewards": [
-            "84+ Gold Player Pack"
+            "82+ Gold Player Pack",
+            "100 SP"
           ],
-          "kind": "match",
+          "kind": "dependency",
           "status": "parsed",
           "review_reasons": [],
-          "mode_options": [
-            {
-              "mode": "squad_battles",
-              "event": null,
-              "minimum_difficulty": "Semi-Pro"
-            }
-          ],
+          "mode_options": [],
           "target": {
-            "unit": "matches",
-            "count": 100,
-            "scope": "separate_matches"
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
           },
-          "conditions": [
-            {
-              "type": "result",
-              "value": "win"
-            }
-          ],
+          "conditions": [],
           "checklist": null,
-          "dependency": null,
+          "dependency": {
+            "group_id": "27",
+            "group_title": "Rising Through the Ranks",
+            "completions": 1,
+            "distinct_periods": false
+          },
           "prerequisites": [],
-          "source_fingerprint": "84e52adef74318099de66c950c898f8dc93ae81bb34832a01c14539da62c701c"
+          "source_fingerprint": "d92352c4febaa8240f1ed50e1252ba8aa2658312ab2e576f70023808cf1f8aba"
         },
         {
-          "id": "54:253",
-          "title": "Win 50",
-          "source_text": "Win 50 Squad Battles matches on min. Semi-Pro difficulty.",
+          "id": "28:151",
+          "title": "Complete 'First Team Dreams'",
+          "source_text": "Fully complete the 'First Team Dreams' Objectives Group.",
           "rewards": [
-            "Large Gold Pack"
+            "1 Of 3 80+ Gold Player Pick",
+            "100 SP"
           ],
-          "kind": "match",
+          "kind": "dependency",
           "status": "parsed",
           "review_reasons": [],
-          "mode_options": [
-            {
-              "mode": "squad_battles",
-              "event": null,
-              "minimum_difficulty": "Semi-Pro"
-            }
-          ],
+          "mode_options": [],
           "target": {
-            "unit": "matches",
-            "count": 50,
-            "scope": "separate_matches"
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
           },
-          "conditions": [
-            {
-              "type": "result",
-              "value": "win"
-            }
-          ],
+          "conditions": [],
           "checklist": null,
-          "dependency": null,
+          "dependency": {
+            "group_id": "26",
+            "group_title": "First Team Dreams",
+            "completions": 1,
+            "distinct_periods": false
+          },
           "prerequisites": [],
-          "source_fingerprint": "bc08885626e4c36e225453a098e9334de25ce830a381969c9b237e14a9eb1860"
+          "source_fingerprint": "bcc31e98f7b4fbea71f2dfc663b52cf2509a3d357b308dd419dc50eedd02081e"
         },
         {
-          "id": "54:252",
-          "title": "Win 25",
-          "source_text": "Win 25 Squad Battles matches on min. Semi-Pro difficulty.",
+          "id": "28:150",
+          "title": "Complete 'The Journey Begins'",
+          "source_text": "Fully complete the 'The Journey Begins' Objectives Group.",
           "rewards": [
-            "Small Gold Players Pack"
+            "1 Of 3 75+ Gold Player Pick",
+            "100 SP"
           ],
-          "kind": "match",
+          "kind": "dependency",
           "status": "parsed",
           "review_reasons": [],
-          "mode_options": [
-            {
-              "mode": "squad_battles",
-              "event": null,
-              "minimum_difficulty": "Semi-Pro"
-            }
-          ],
+          "mode_options": [],
           "target": {
-            "unit": "matches",
-            "count": 25,
-            "scope": "separate_matches"
+            "unit": "group_completions",
+            "count": 1,
+            "scope": "once"
           },
-          "conditions": [
-            {
-              "type": "result",
-              "value": "win"
-            }
-          ],
+          "conditions": [],
           "checklist": null,
-          "dependency": null,
+          "dependency": {
+            "group_id": "25",
+            "group_title": "The Journey Begins",
+            "completions": 1,
+            "distinct_periods": false
+          },
           "prerequisites": [],
-          "source_fingerprint": "651744fdf7402ce94b9ec9edd8471273b42ad88f91b2a059fc50d9a445c8fa0b"
+          "source_fingerprint": "a02a3008eacb6dbae648b95c86251577010112f96f41244f29441cfcbaac723e"
         }
       ]
     },
@@ -4759,15 +4683,14 @@
       "starts_at": "2026-08-17T17:00:00Z",
       "expires_at": null,
       "completion_rewards": [
-        "Evo Unlock"
+        "Gallery Excellence"
       ],
       "available_rewards": [
         "Jesús Corona",
         "1 Of 5 92+ Holographic Base Icon Player Pick",
         "1 Of 5 88+ Holographic Base Hero Player Pick",
         "1 Of 5 Holographic Base Icon Player Pick",
-        "1 Of 5 Holographic Base Hero Player Pick",
-        "Evo Unlock"
+        "1 Of 5 Holographic Base Hero Player Pick"
       ],
       "total_season_points": null,
       "repeat": {
@@ -4775,7 +4698,7 @@
         "reset_schedule": null,
         "cycle_key_required": false
       },
-      "source_fingerprint": "05505ea3311dce09d229133863fc64b6af1cffe07e4a7964d19d5d36f1699b29",
+      "source_fingerprint": "99bf08bed2ab4d1554d0d07956117114050410425468f87dd68eeac6c781d040",
       "tasks": [
         {
           "id": "81:723",
@@ -5741,7 +5664,7 @@
       "repeat": {
         "cadence": "weekly",
         "reset_schedule": null,
-        "cycle_key_required": true
+        "cycle_key_required": false
       },
       "source_fingerprint": "4aa1aa452f0bde1f41c6399c1440e5f4f5c65170f6bc82fa4db2ec7d0323116c",
       "tasks": [
@@ -5938,7 +5861,7 @@
       "repeat": {
         "cadence": "daily",
         "reset_schedule": null,
-        "cycle_key_required": true
+        "cycle_key_required": false
       },
       "source_fingerprint": "4d3faa9569e772430dc345b667a1396550991b7c70051139fbf1e102ec74b10a",
       "tasks": [
@@ -6001,6 +5924,51 @@
       ]
     }
   ],
-  "removed_groups": [],
-  "changes": []
+  "removed_groups": [
+    {
+      "id": "72",
+      "title": "Weekly Rush Points",
+      "category": "seasonal",
+      "url": "https://www.fut.gg/objectives/seasonal/72-weekly-rush-points/",
+      "starts_at": "2026-09-22T17:00:00Z",
+      "expires_at": "2026-09-29T16:59:59Z",
+      "last_seen_at": "2026-09-28T17:40:26.296269Z",
+      "first_missing_at": "2026-10-01T06:48:35.383748Z",
+      "availability": "expired"
+    },
+    {
+      "id": "90",
+      "title": "FC 27 First Gameplay",
+      "category": "fc-pro",
+      "url": "https://www.fut.gg/objectives/fc-pro/90-fc-27-first-gameplay/",
+      "starts_at": "2026-09-14T17:00:00Z",
+      "expires_at": "2026-09-29T16:59:59Z",
+      "last_seen_at": "2026-09-28T17:40:26.296269Z",
+      "first_missing_at": "2026-10-01T06:48:35.383748Z",
+      "availability": "expired"
+    }
+  ],
+  "changes": [
+    {
+      "group_id": "72",
+      "change": "removed"
+    },
+    {
+      "group_id": "73",
+      "change": "added"
+    },
+    {
+      "group_id": "81",
+      "change": "updated",
+      "fields": [
+        "completion_rewards",
+        "available_rewards"
+      ],
+      "task_ids": []
+    },
+    {
+      "group_id": "90",
+      "change": "removed"
+    }
+  ]
 }

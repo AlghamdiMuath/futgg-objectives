@@ -81,28 +81,48 @@ class UserObjectivesTests(unittest.TestCase):
         self.assertIn("stored_task_unlisted", missing["review_flags"])
         self.assertEqual(missing["unmatched_progress"][0]["source_text"], original)
 
-    def test_daily_and_weekly_progress_require_explicit_distinct_cycles(self):
+    def test_repeat_progress_tracks_source_identity_without_dates(self):
         layer.select(self.state, SOURCE, "61", NOW)
         layer.select(self.state, SOURCE, "80", NOW)
-        with self.assertRaisesRegex(ValueError, "cycle start"):
-            layer.record_progress(self.state, SOURCE, "61:464", count=1, completed=True, updated_at=NOW)
-        layer.record_progress(self.state, SOURCE, "61:464", count=1, completed=True, updated_at=NOW,
-                              cycle_start_utc="2026-09-27T07:00:00Z")
-        layer.record_progress(self.state, SOURCE, "80:718", count=3, completed=False, updated_at=NOW,
-                              cycle_start_utc="2026-09-24T07:00:00Z")
-        old = {g["group_id"]: g for g in layer.selected_view(self.state, SOURCE, NOW,
-                 {"61": "2026-09-27T07:00:00Z", "80": "2026-09-24T07:00:00Z"})["selected_groups"]}
+        layer.record_progress(self.state, SOURCE, "61:464", count=1, completed=True, updated_at=NOW)
+        layer.record_progress(self.state, SOURCE, "80:718", count=3, completed=False, updated_at=NOW)
+        old = {g["group_id"]: g for g in layer.selected_view(self.state, SOURCE, NOW)["selected_groups"]}
         self.assertTrue(old["61"]["tasks"][0]["progress"]["completed"])
         self.assertEqual(old["80"]["tasks"][0]["progress"]["count"], 3)
-        new = {g["group_id"]: g for g in layer.selected_view(self.state, SOURCE, NOW,
-                 {"61": "2026-09-28T07:00:00Z", "80": "2026-10-01T07:00:00Z"})["selected_groups"]}
+        changed = copy.deepcopy(SOURCE)
+        next(g for g in changed["groups"] if g["id"] == "61")["starts_at"] = "2026-09-28T07:00:00Z"
+        self.assertTrue(layer.reconcile_repeats(self.state, changed))
+        new = {g["group_id"]: g for g in layer.selected_view(self.state, changed, NOW)["selected_groups"]}
         self.assertIsNone(new["61"]["tasks"][0]["progress"])
-        self.assertIsNone(new["80"]["tasks"][0]["progress"])
-        self.assertEqual(new["61"]["progress_history"][0]["task_id"], "61:464")
-        self.assertEqual(new["61"]["progress_history"][0]["count"], 1)
-        self.assertEqual(new["80"]["progress_history"][0]["task_id"], "80:718")
-        self.assertEqual(len(self.state["progress"]), 2)
-        self.assertIn("cycle_start_required", layer.selected_view(self.state, SOURCE, NOW)["selected_groups"][0]["review_flags"])
+        self.assertEqual(new["80"]["tasks"][0]["progress"]["count"], 3)
+        self.assertEqual(len(self.state["progress"]), 1)
+
+    def test_replacement_repeat_group_is_selected_and_old_progress_deleted(self):
+        layer.select(self.state, SOURCE, "65", NOW)
+        layer.record_progress(self.state, SOURCE, "65:475", count=6, completed=False, updated_at=NOW)
+        changed = copy.deepcopy(SOURCE)
+        old = next(g for g in changed["groups"] if g["id"] == "65")
+        changed["groups"].remove(old)
+        new = copy.deepcopy(old)
+        new["id"] = "new-week"
+        new["starts_at"] = "2026-09-28T07:00:00Z"
+        new["tasks"] = [{**task, "id": task["id"].replace("65:", "new-week:")}
+                        for task in new["tasks"]]
+        changed["groups"].append(new)
+        self.assertTrue(layer.reconcile_repeats(self.state, changed))
+        self.assertEqual(list(self.state["selections"]), ["new-week"])
+        self.assertFalse(self.state["progress"])
+
+    def test_repeat_reward_edit_preserves_progress(self):
+        layer.select(self.state, SOURCE, "65", NOW)
+        layer.record_progress(self.state, SOURCE, "65:475", count=6, completed=False, updated_at=NOW)
+        changed = copy.deepcopy(SOURCE)
+        weekly = next(g for g in changed["groups"] if g["id"] == "65")
+        weekly["completion_rewards"] = ["Updated reward"]
+        weekly["source_fingerprint"] = "new-fingerprint"
+        self.assertTrue(layer.reconcile_repeats(self.state, changed))
+        view = layer.selected_view(self.state, changed, NOW)["selected_groups"][0]
+        self.assertEqual(next(task for task in view["tasks"] if task["id"] == "65:475")["progress"]["count"], 6)
 
     def test_storage_round_trip_and_invalid_timestamps(self):
         with tempfile.TemporaryDirectory() as directory:

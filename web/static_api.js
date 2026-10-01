@@ -3,7 +3,7 @@
 // Public data comes from the daily Pages build. Private progress never leaves this browser.
 const PRIVATE_KEY = 'futgg-objectives-private-v1';
 const PYTHON_FILES = ['interpret_objectives.py', 'user_objectives.py',
-  'optimize_matches.py', 'plan_objectives.py', 'prize_summary.py', 'browser_api.py'];
+  'optimize_matches.py', 'plan_objectives.py', 'prize_summary.py', 'daily_game_planner.py', 'browser_api.py'];
 
 function privateData() {
   const saved = localStorage.getItem(PRIVATE_KEY);

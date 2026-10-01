@@ -4,7 +4,7 @@
 
 Open **https://alghamdimuath.github.io/futgg-objectives/** on your phone.
 
-The hosted version is built by `python3 build_site.py` and published from `dist/` through GitHub Pages. It runs the existing Python interpretation and planning modules in the browser using Pyodide, so selections, settings, deadline observations, and progress stay in that browser's local storage. They are not shared with the loopback app or another phone. In **Settings → Your data**, download a backup before changing phones or clearing browser storage; import that backup on the new device.
+The hosted version is built by `python3 build_site.py` and published from `dist/` through GitHub Pages. It runs the Python interpretation and planning modules in the browser using Pyodide, so reward preferences, excluded modes, reviewed rules, selections, deadline observations, and progress stay in that browser's local storage. They are not shared with the loopback app or another phone. In **My list → Your data**, download a backup before changing phones or clearing browser storage; import that backup on the new device.
 
 The GitHub Actions workflow in `.github/workflows/publish.yml` fetches FUT.GG every day at **21:30 Asia/Riyadh** (18:30 UTC), interprets the data, updates Arabic translations when the translation service is available, verifies the project, and republishes the site. It also runs on pushes to `main` and can be run manually. A failed FUT.GG fetch leaves the previous published site in place. The exact release time for new objectives is not guaranteed, so the scheduled time is a daily check rather than a reset boundary for in-game progress.
 
@@ -20,15 +20,15 @@ python3 -m venv .venv
 
 Open **http://127.0.0.1:8765/** on the same laptop. Stop the server with Ctrl+C. The server binds only to loopback. By default, selections and any older private data live in `~/.local/share/futgg-objectives/state.json`. You can override the private paths with `--state /private/path/state.json --settings /private/path/settings.json`; `--port` changes the local port.
 
-The phone-first **Browse** screen supports search, filters, rewards, and challenge selection. **Plan** shows only the scoring and squad conditions that need deliberate setup, as direct bullet points. Routine matches and objectives stay in the read-only task details on **My list**. The site has no progress count, completion, date, or mode setup forms. A unique replacement for a selected repeat challenge is selected automatically when FUT.GG publishes it.
+The default **Today** screen presents the next ten reward-ranked match recipes from all active objectives, combining compatible tasks across groups. It separates deliberate match requirements from counters that can also advance, links each objective back to **Browse**, and shows the reward score behind the order. Choose Packs, Coins, Season Points, or a balanced profile; exclude modes you cannot play. Mark the batch done after playing it to record the planned progress and generate the next batch. A shorter batch explains whether current tasks need review, are not match objectives, or have no compatible allowed mode. Wins and access to a specific event remain conditional. The planner excludes Milestones and Mastery; **Browse** and **My list** remain available for the full challenge catalog and long-term progress. A unique replacement for a selected repeat challenge is selected automatically when FUT.GG publishes it.
 
 The **Language** control switches the app between English and Arabic and remembers the choice in this browser. Arabic uses right-to-left layout, and search accepts text in either language. FUT.GG currently publishes the objective pages used here in English. `web/ar.json` is a separate, machine-translated Arabic display catalog with reviewed corrections for current challenge names and key rules; it is not an original FUT.GG Arabic feed. The English source instruction remains visible beneath translated tasks. English text is always used for rule interpretation, source-change detection, and saved progress. A newly published or changed English string appears in English until its Arabic translation is added.
 
 The main card prize comes from the published group completion rewards. Coin and pack highlights and sorting use the largest **single** prize of each type in the group completion and available reward labels. They are not totals or guaranteed earnings. Pack sorting uses the printed minimum player rating first, then the printed players per pack; packs without a minimum rating sort after comparable packs. Player names in the current export have no ratings, so the cards say **Rating unknown** and player-rating sorting leaves those challenges unranked. Unknown or disputed deadlines are labeled **Unknown** or **Review** and sort after known expiries. These labels never infer ratings, pack contents, or reset dates.
 
-Daily and weekly objectives need no date entry. Existing saved progress remains private but does not affect the bullet plan. If FUT.GG republishes identical tasks and start time across an in-game reset, the app cannot detect that reset.
+Daily and weekly objectives need no date entry. Recorded private progress affects the next recommendation batch. If FUT.GG republishes identical tasks and start time across an in-game reset, the app cannot detect that reset.
 
-The UI displays published listing deadlines but has no date entry. The underlying CLI and API retain previously saved deadline evidence for compatibility; the bullet plan uses the current published objectives.
+The UI displays published listing deadlines but has no date entry. The underlying CLI and API retain previously saved deadline evidence for compatibility; the daily planner uses the current published objectives.
 
 Refresh the public export and interpretation from this directory, then click **Reload exports** in the app:
 
@@ -45,7 +45,7 @@ Run all tests and syntax checks:
 
 ```bash
 .venv/bin/python -m unittest discover -s . -p 'test_*.py'
-.venv/bin/python -m py_compile local_app.py prize_summary.py user_objectives.py plan_objectives.py optimize_matches.py interpret_objectives.py fetch_futgg_objectives.py translate_objectives.py
+.venv/bin/python -m py_compile local_app.py prize_summary.py user_objectives.py plan_objectives.py optimize_matches.py daily_game_planner.py interpret_objectives.py fetch_futgg_objectives.py translate_objectives.py browser_api.py build_site.py
 node --check web/app.js
 node --test test_plan_ui.js
 ```
@@ -127,21 +127,6 @@ When a newly published repeat objective changes identity, the app removes the ol
 
 Verification: `python3 -m unittest discover -s . -p 'test_*.py'` covers deadline evidence, repeat source changes, replacement selection, match planning, and private-state round trips.
 
-## Match planning core
+## Daily Game Planner
 
-`plan_objectives.py` consumes the interpreted export and the **derived selected view** from `user_objectives.selected_view()`. It does not read or alter the raw export or private state when called as a function. The CLI generates a fresh view from private state, then prints a plan as JSON:
-
-```bash
-python3 plan_objectives.py --state ~/fc27-user-state.json \
-  --mode squad_battles --mode rivals --mode rush --exclude rivals
-```
-
-`--mode` supplies the application's actual available mode catalog; repeat it for each mode. `--exclude` removes a mode. Excluding `live_events` also removes its PVE and PVP variants. `--as-of` can fix the UTC read time for a reproducible result. The output is private because it reflects selections and progress; keep redirected files outside published exports.
-
-Programmatic contract: `build_plan(interpreted, selected_view, available_modes: set[str], excluded_modes: set[str] | None = None)` returns schema version 1 JSON-compatible data. The view and export must have matching `source_fetched_at`. `match_blocks` holds chosen routes and qualifying counts; `combined_plan` shares compatible matches across groups. `completed_tasks`, `unscheduled_tasks`, and `unavailable_groups` retain the remaining details and reasons.
-
-`combined_plan` groups compatible separate-match tasks across selected groups into shared runs and minimizes the sum of qualifying matches over permitted routes. A specific Live Event match can also count toward a generic Live Events or any-FUT task. A higher difficulty can satisfy a lower minimum in the same mode. Each run shows its separate-match tasks, starting-squad requirements, required scorer/assister traits, and cumulative targets that can progress in those matches; a cumulative target may appear in several compatible runs because its progress can span them. The search is exact under these compatibility rules unless it reaches its node limit; then `optimization` is `search_limited`. The match count is a **conditional minimum for separate-match tasks**, not a guaranteed full-completion count: cumulative goals and assists have no stated per-match cap, match outcomes can fail, event access and available players are not verified, and unparsed or review tasks stay unscheduled. Different squad traits are conservatively treated as different players when checking the eleven-slot limit; one dual-eligible player may permit more overlap than the planner recognizes.
-
-Only active, parsed, separate-match tasks with a permitted catalog route and no review flags enter match blocks. A recorded count reduces the target. Tasks in the same group share a block when their route and conditions match. Qualifying matches are conditional outcomes, not predicted attempts or time.
-
-The planner reports cumulative goal or assist targets as `match_count_not_bounded` because their match count cannot be calculated from the export, even when they appear as opportunities in shared runs. Checklist and review tasks remain visible. It does not verify player ownership, event access, or match outcomes.
+The **Today** screen is the app's planner. It builds a short daily route from active objective groups, current progress, reward priorities, and excluded modes. Recommendations show the objective tasks they advance, the game mode/event, and the setup requirements. Completing a batch records progress for every listed task and refreshes the next route. The recommendation logic uses the match eligibility and compatibility helpers in `plan_objectives.py` and `optimize_matches.py`; those modules are internal and no longer provide a separate Plan screen or command-line planner.

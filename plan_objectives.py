@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
-"""Build a conditional match plan from interpreted objectives and a selected view."""
+"""Internal eligibility and compatibility engine used by the daily game planner."""
 
 from __future__ import annotations
 
-import argparse
 import json
-from datetime import datetime, timezone
-from pathlib import Path
 
 from interpret_objectives import eligible_mode_options
 from optimize_matches import combine_tasks
-from user_objectives import load_state, selected_view, utc, reconcile_repeats, save_state
+from user_objectives import utc
 
 
 def build_plan(interpreted: dict, view: dict, available_modes: set[str],
@@ -141,25 +138,3 @@ def _unscheduled(selected: dict, state_task: dict, task: dict | None, reasons: l
             "source_text": state_task["source_text"], "reasons": reasons,
             "target": task["target"] if task else None,
             "progress_key": state_task["progress_key"]}
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", type=Path, default=Path("fc27_interpreted.json"))
-    parser.add_argument("--state", type=Path, required=True, help="Private user-state JSON path")
-    parser.add_argument("--mode", action="append", required=True, help="Available mode; repeat for a catalog")
-    parser.add_argument("--exclude", action="append", default=[], help="Excluded mode; repeat as needed")
-    parser.add_argument("--as-of", help="Explicit UTC time; defaults to current UTC")
-    args = parser.parse_args()
-    interpreted = json.loads(args.source.read_text(encoding="utf-8"))
-    now = args.as_of or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-    state = load_state(args.state)
-    if reconcile_repeats(state, interpreted):
-        save_state(args.state, state)
-    view = selected_view(state, interpreted, now)
-    result = build_plan(interpreted, view, set(args.mode), set(args.exclude))
-    print(json.dumps(result, ensure_ascii=False, indent=2))
-
-
-if __name__ == "__main__":
-    main()

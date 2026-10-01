@@ -43,7 +43,7 @@ jobs:
       - name: Verify and build
         run: |
           python -m unittest discover -s . -p 'test_*.py' -q
-          python -m py_compile local_app.py prize_summary.py user_objectives.py plan_objectives.py optimize_matches.py interpret_objectives.py fetch_futgg_objectives.py translate_objectives.py browser_api.py build_site.py
+          python -m py_compile local_app.py prize_summary.py user_objectives.py plan_objectives.py optimize_matches.py daily_game_planner.py interpret_objectives.py fetch_futgg_objectives.py translate_objectives.py browser_api.py build_site.py
           node --check web/app.js
           node --check web/static_api.js
           node --test test_plan_ui.js

@@ -12,8 +12,8 @@ from pathlib import Path
 from threading import RLock
 from urllib.parse import urlparse
 
-from plan_objectives import build_plan
 from prize_summary import summarize
+from daily_game_planner import PRIORITIES, REVIEWED_RULES, build_daily_plan, complete_daily_batch
 from user_objectives import (correct_deadline, load_state, record_progress, save_state,
                              select, selected_view, unselect, utc, reconcile_repeats)
 
@@ -34,7 +34,8 @@ def check_private_path(path: Path, source: Path) -> None:
 
 def load_settings(path: Path) -> dict:
     settings = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {
-        "schema_version": 1, "available_modes": [], "excluded_modes": [], "cycles": {}}
+        "schema_version": 1, "available_modes": [], "excluded_modes": [],
+        "reward_priority": "balanced", "reviewed_rules": REVIEWED_RULES, "cycles": {}}
     validate_settings(settings)
     return settings
 
@@ -42,6 +43,12 @@ def load_settings(path: Path) -> dict:
 def validate_settings(settings: dict) -> None:
     if not isinstance(settings, dict) or settings.get("schema_version") != 1:
         raise ValueError("Invalid private settings schema")
+    settings.setdefault("reward_priority", "balanced")
+    if settings["reward_priority"] not in PRIORITIES:
+        raise ValueError("Invalid reward priority")
+    settings.setdefault("reviewed_rules", REVIEWED_RULES)
+    if not isinstance(settings["reviewed_rules"], dict):
+        raise ValueError("Invalid reviewed rules")
     for key in ("available_modes", "excluded_modes"):
         values = settings.get(key)
         if not isinstance(values, list) or any(not isinstance(v, str) or v not in MODES for v in values):
@@ -78,14 +85,15 @@ class App:
             settings["cycles"] = {}
             save_state(self.settings, settings)
         view = selected_view(state, interpreted, now_utc())
-        plan = build_plan(interpreted, view, set(settings["available_modes"]), set(settings["excluded_modes"]))
+        daily = build_daily_plan(interpreted, state, set(settings["excluded_modes"]),
+                                 settings["reward_priority"], view["as_of"], settings["reviewed_rules"])
         raw_path = self.source.parent / "fc27_objectives.json"
         raw_mismatch = False
         if raw_path.exists():
             raw_mismatch = json.loads(raw_path.read_text(encoding="utf-8")).get("fetched_at") != interpreted["source_fetched_at"]
         return {"groups": [{**group, "prize": summarize(group)} for group in interpreted["groups"]],
                 "removed_groups": interpreted.get("removed_groups", []),
-                "view": view, "plan": plan, "settings": settings, "mode_catalog": MODES,
+                "view": view, "daily_plan": daily, "settings": settings, "mode_catalog": MODES,
                 "source_mismatch": raw_mismatch, "source_changes": interpreted.get("changes")}
 
     def update(self, action: str, data: dict) -> dict:
@@ -147,9 +155,16 @@ class App:
                 save_state(self.state, state)
             elif action == "settings":
                 candidate = {"schema_version": 1, "available_modes": data["available_modes"],
-                             "excluded_modes": data["excluded_modes"], "cycles": {}}
+                             "excluded_modes": data["excluded_modes"],
+                             "reward_priority": data.get("reward_priority", settings["reward_priority"]),
+                             "reviewed_rules": settings["reviewed_rules"],
+                             "cycles": {}}
                 validate_settings(candidate)
                 save_state(self.settings, candidate)
+            elif action == "daily_done":
+                complete_daily_batch(interpreted, state, set(settings["excluded_modes"]),
+                                     settings["reward_priority"], timestamp, settings["reviewed_rules"])
+                save_state(self.state, state)
             else:
                 raise ValueError("Unknown action")
             return self.snapshot()
@@ -206,7 +221,7 @@ def make_handler(app: App):
                 self.send_error(403)
                 return
             action = urlparse(self.path).path.removeprefix("/api/")
-            if action not in {"select", "progress", "progress_batch", "deadline", "settings"}:
+            if action not in {"select", "progress", "progress_batch", "deadline", "settings", "daily_done"}:
                 self.send_error(404)
                 return
             try:

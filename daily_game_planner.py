@@ -36,13 +36,28 @@ def _with_reviewed_rules(interpreted: dict, reviewed_rules: dict) -> dict:
     return result
 
 
-def _active_view(interpreted: dict, state: dict, now: str, excluded_modes: set[str]) -> dict:
+def _has_reward(group: dict, reward: str) -> bool:
+    labels = list(group.get("completion_rewards", []))
+    labels.extend(label for task in group.get("tasks", []) for label in task.get("rewards", []))
+    if reward == "balanced":
+        return bool(labels)
+    if reward == "season_points":
+        # Generic "Points" can mean Champions qualification points.
+        return any(re.search(r"\b(?:SP|Season Points)\b", label, re.I) for label in labels)
+    return any(_reward(label)["kind"] == ("pack" if reward == "packs" else "coins")
+               for label in labels)
+
+
+def _active_view(interpreted: dict, state: dict, now: str, excluded_modes: set[str],
+                 reward: str = "balanced") -> dict:
     """Use the existing progress resolver while including every eligible group."""
     temporary = deepcopy(state)
     groups = {group["id"]: group for group in interpreted["groups"]}
     for group_id, group in groups.items():
         category = str(group.get("category", "")).casefold().replace("_", " ")
         if category in SKIP_CATEGORIES:
+            continue
+        if not _has_reward(group, reward):
             continue
         if group.get("starts_at") and group["starts_at"] > now:
             continue
@@ -53,7 +68,8 @@ def _active_view(interpreted: dict, state: dict, now: str, excluded_modes: set[s
     view["selected_groups"] = [group for group in view["selected_groups"]
                                if group.get("availability") == "active"
                                and str(groups.get(group["group_id"], {}).get("category", ""))
-                               .casefold().replace("_", " ") not in SKIP_CATEGORIES]
+                               .casefold().replace("_", " ") not in SKIP_CATEGORIES
+                               and _has_reward(groups.get(group["group_id"], {}), reward)]
     return view
 
 
@@ -72,7 +88,7 @@ def _reward(label: str) -> dict:
     generic = ("point", "sp", "token", "badge", "award", "consumable", "manager", "trophy",
                "boost", "unlock", "access", "pick", "tifo", "theme", "ball")
     if any(word in label.casefold() for word in generic):
-        points = re.search(r"([\d,]+)\s*(?:SP|Season Points|Points)\b", label, re.I)
+        points = re.search(r"([\d,]+)\s*(?:SP|Season Points)\b", label, re.I)
         return {"kind": "season_points" if points else "other", "label": label,
                 "amount": int(points[1].replace(",", "")) if points else 0}
     rated = re.fullmatch(r"(.+?)\s*\((\d{2})\)", label)
@@ -167,7 +183,7 @@ def _run_recipes(plan: dict, tasks: dict, groups: dict, progress: dict,
                                 else [])
                 required.append({"task_id": task_id, "group_id": group["id"],
                                  "group_title": group["title"], "source_text": task["source_text"],
-                                 "conditions": conditions, "deliberate": deliberate,
+                                 "conditions": conditions, "target": target, "deliberate": deliberate,
                                  "reviewed_rule": task.get("reviewed_rule", False),
                                  "reward_steps": reward_steps})
             # Natural match counters may also progress, but only list conditions
@@ -194,23 +210,24 @@ def _run_recipes(plan: dict, tasks: dict, groups: dict, progress: dict,
         conditions = task.get("conditions", [])
         setup = {"squad_requirements": _squad_requirements([{"conditions": conditions}]),
                  "player_roles": _player_roles([{"conditions": conditions}])}
-        for _ in range(min(remaining, 10)):
-            current = progress_state.get(task_id) or {"count": 0, "completed": False}
-            before = current.get("count", 0)
-            increment = _progress_increment(task)
-            reward_steps = (list(task.get("rewards", []))
-                            if target.get("count") and before < target["count"] <= before + increment
-                            else [])
-            objective = {"task_id": task_id, "group_id": group["id"],
-                         "group_title": group["title"], "source_text": task["source_text"],
-                         "conditions": conditions,
-                         "deliberate": any(condition.get("type") != "result" for condition in conditions),
-                         "reviewed_rule": task.get("reviewed_rule", False), "reward_steps": reward_steps}
-            recipes.append({"route": route, "setup": setup, "objectives": [objective],
-                            "task_ids": [task_id], "expires_at": group.get("expires_at"),
-                            "score": _score_recipe([task_id], tasks, groups, progress_state),
-                            "run_order": len(recipes), "run_id": run_id})
-            _advance_progress([task_id], tasks, progress_state)
+        # A cumulative goal or assist target has no reliable match count.
+        # Suggest one useful game, then recalculate from recorded progress.
+        current = progress_state.get(task_id) or {"count": 0, "completed": False}
+        before = current.get("count", 0)
+        increment = _progress_increment(task)
+        reward_steps = (list(task.get("rewards", []))
+                        if target.get("count") and before < target["count"] <= before + increment
+                        else [])
+        objective = {"task_id": task_id, "group_id": group["id"],
+                     "group_title": group["title"], "source_text": task["source_text"],
+                     "conditions": conditions, "target": target,
+                     "deliberate": any(condition.get("type") != "result" for condition in conditions),
+                     "reviewed_rule": task.get("reviewed_rule", False), "reward_steps": reward_steps}
+        recipes.append({"route": route, "setup": setup, "objectives": [objective],
+                        "task_ids": [task_id], "expires_at": group.get("expires_at"),
+                        "score": _score_recipe([task_id], tasks, groups, progress_state),
+                        "run_order": len(recipes), "run_id": run_id})
+        _advance_progress([task_id], tasks, progress_state)
     return recipes
 
 
@@ -414,7 +431,7 @@ def build_daily_plan(interpreted: dict, state: dict, excluded_modes: set[str],
     if priority not in PRIORITIES:
         raise ValueError("Invalid reward priority")
     interpreted = _with_reviewed_rules(interpreted, reviewed_rules or REVIEWED_RULES)
-    view = _active_view(interpreted, state, now, excluded_modes)
+    view = _active_view(interpreted, state, now, excluded_modes, priority)
     plan = build_plan(interpreted, view, ALL_MODES, excluded_modes)
     groups, tasks = _task_map(interpreted)
     progress = _task_progress(view)
@@ -439,15 +456,9 @@ def build_daily_plan(interpreted: dict, state: dict, excluded_modes: set[str],
         recipe["reason"] = "Advances " + ", ".join(parts)
     scheduled = {task_id for recipe in recipes_by_order for task_id in recipe["task_ids"]}
     unscheduled = [item for item in plan["unscheduled_tasks"] if item["task_id"] not in scheduled]
-    short_reason = None
-    if len(batch) < 10:
-        short_reason = ("Some current objectives need review, are not match objectives, or have no compatible allowed mode."
-                        if unscheduled else
-                        "Current objective progress leaves fewer than ten incomplete match recommendations.")
     modes = sorted({option["mode"] for recipe in batch for option in [recipe["route"]]})
     return {"as_of": now, "priority": priority, "recommendations": batch,
-            "available_count": len(recipes), "shortfall": max(0, 10 - len(batch)),
-            "shortfall_reason": short_reason,
+            "available_count": len(recipes), "has_more": len(recipes) > len(batch),
             "unscheduled_count": len(unscheduled), "excluded_modes": sorted(excluded_modes),
             "considered_modes": modes, "optimization": plan["combined_plan"]["optimization"],
             "batch_score": {key: sum(recipe["score"][key] if isinstance(recipe["score"][key], int) else 0
@@ -459,14 +470,17 @@ def build_daily_plan(interpreted: dict, state: dict, excluded_modes: set[str],
 
 
 def complete_daily_batch(interpreted: dict, state: dict, excluded_modes: set[str],
-                         priority: str, now: str, reviewed_rules: dict | None = None) -> dict:
+                         priority: str, now: str, reviewed_rules: dict | None = None,
+                         match_count: int = 1) -> dict:
+    if not isinstance(match_count, int) or not 1 <= match_count <= 10:
+        raise ValueError("Match count must be between 1 and 10")
     interpreted = _with_reviewed_rules(interpreted, reviewed_rules or REVIEWED_RULES)
     plan = build_daily_plan(interpreted, state, excluded_modes, priority, now, reviewed_rules)
     groups, tasks = _task_map(interpreted)
-    view = _active_view(interpreted, state, now, excluded_modes)
+    view = _active_view(interpreted, state, now, excluded_modes, priority)
     progress = _task_progress(view)
     increments: dict[str, int] = {}
-    for recipe in plan["recommendations"]:
+    for recipe in plan["recommendations"][:match_count]:
         for task_id in recipe["task_ids"]:
             group, task = tasks[task_id]
             target = task.get("target") or {}

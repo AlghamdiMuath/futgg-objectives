@@ -88,7 +88,7 @@ class BrowserApiTests(unittest.TestCase):
             "available_modes": [], "excluded_modes": all_modes, "reward_priority": "balanced"}),
             None, None, now))
         self.assertEqual(updated["snapshot"]["daily_plan"]["recommendations"], [])
-        self.assertEqual(updated["snapshot"]["daily_plan"]["shortfall"], 10)
+        self.assertFalse(updated["snapshot"]["daily_plan"]["has_more"])
 
 
 if __name__ == "__main__":

@@ -54,6 +54,42 @@ class DailyPlannerApiTests(unittest.TestCase):
         ])
         self.assertEqual(recommendations[0]["route"]["event"], "Event A")
 
+    def test_reward_choice_filters_groups_and_does_not_fill_ten_matches(self):
+        browser_api.initialize(json.dumps(pack_scenario([
+            ("SP event", "100 SP"),
+            ("Pack event", "2X 84+ Gold Players Pack"),
+            ("Coin event", "1,000 Coins"),
+            ("Other points event", "100 Points"),
+        ])))
+        settings = {**browser_api.DEFAULT_SETTINGS, "reward_priority": "season_points"}
+        plan = json.loads(browser_api.snapshot_json(None, json.dumps(settings), NOW))["daily_plan"]
+        self.assertEqual([recipe["route"]["event"] for recipe in plan["recommendations"]],
+                         ["SP event"])
+        self.assertFalse(plan["has_more"])
+
+        settings["reward_priority"] = "balanced"
+        all_rewards = json.loads(browser_api.snapshot_json(None, json.dumps(settings), NOW))["daily_plan"]
+        self.assertEqual(len(all_rewards["recommendations"]), 4)
+
+    def test_cumulative_goal_target_suggests_one_match_at_a_time(self):
+        scenario = pack_scenario([("Goals event", "100 SP")])
+        task = scenario["groups"][0]["tasks"][0]
+        task["source_text"] = "Score 20 goals in Goals event Live Event."
+        task["target"] = {"unit": "goals", "count": 20, "scope": "cumulative"}
+        task["conditions"] = []
+        browser_api.initialize(json.dumps(scenario))
+        settings = {**browser_api.DEFAULT_SETTINGS, "reward_priority": "season_points"}
+        plan = json.loads(browser_api.snapshot_json(None, json.dumps(settings), NOW))["daily_plan"]
+        self.assertEqual(len(plan["recommendations"]), 1)
+
+    def test_group_completion_reward_counts_for_reward_choice(self):
+        scenario = pack_scenario([("Group SP event", "2X 84+ Gold Players Pack")])
+        scenario["groups"][0]["completion_rewards"] = ["100 SP"]
+        browser_api.initialize(json.dumps(scenario))
+        settings = {**browser_api.DEFAULT_SETTINGS, "reward_priority": "season_points"}
+        plan = json.loads(browser_api.snapshot_json(None, json.dumps(settings), NOW))["daily_plan"]
+        self.assertEqual(len(plan["recommendations"]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
